@@ -7,27 +7,33 @@ use yii\easyii\modules\catalog\api\Catalog;
 
 class CustomModel{
   public $parentCategory;
-  public   $categories = [];
+  public $categories = [];
  
   // return array objectCategories  for Chaild Categories
   public function getChaildCategories(){
-    foreach(Catalog::tree() as $node)  self::getNodes($node);
+    foreach(Catalog::tree() as $node)  self::getChilds($node);
       
       return $this->categories;
 }
-  private function getNodes($node){
-      if ($node->slug == $this->parentCategory){
-         if(!count($node->children)){      
+  
+  
+  
+  private function getChilds($node){
+      $currentNodeSlug = $node->slug;
+       
+             if(!count($node->children)){      
                 
                     } else {
                                foreach($node->children as $child) {
-                                $this->categories[]=Catalog::cat($child->slug);
-                                self::getNodes($child);
+                                   if ($currentNodeSlug ==$this->parentCategory){
+                                       $this->categories[]=Catalog::cat($child->slug);
+                                   }
+                                   
+                                self::getChilds($child);
                                } 
 
                     }
-     }
-      
-      
+    
+           
   }
 }

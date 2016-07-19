@@ -12,10 +12,17 @@ $this->params['breadcrumbs'][] = $cat->model->title;
 
 <div class="row">
     <div class="col-md-8">
+    <?php   
+   
+    
+    
+    ?>
+        
+        
         <?php if(count($categories)) : ?>
             <br/>
             <?php foreach($categories as $item) : ?>
-                <?= $item->slug ?>
+                <?=($item->slug)  ?>
             <?php endforeach; ?>
         <?php else : ?>
             <p>Category is empty</p>

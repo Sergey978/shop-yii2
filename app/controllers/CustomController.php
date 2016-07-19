@@ -31,7 +31,8 @@ class CustomController extends \yii\web\Controller
     {
         $model = new CustomModel;
         $model->parentCategory = $slug;
-        $choiseBaseCat = $model->getChaildCategories();
+        $categories = $model->getChaildCategories();
+        
         return $this->render('cat',['categories'=>$categories] );
 
         

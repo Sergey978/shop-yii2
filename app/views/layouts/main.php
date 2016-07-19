@@ -28,6 +28,7 @@ $goodsCount = count(Shopcart::goods());
                         'items' => [
                             ['label' => 'Home', 'url' => ['site/index']],
                             ['label' => 'Shop', 'url' => ['shop/index']],
+                            ['label' => 'Создать', 'url' => ['custom/index']],
                             ['label' => 'News', 'url' => ['news/index']],
                             ['label' => 'Articles', 'url' => ['articles/index']],
                             ['label' => 'Gallery', 'url' => ['gallery/index']],

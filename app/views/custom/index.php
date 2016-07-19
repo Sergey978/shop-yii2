@@ -12,41 +12,8 @@ $page = Page::get('page-custom');
 $this->title = $page->seo('title', $page->model->title);
 $this->params['breadcrumbs'][] = $page->model->title;
 
-function renderNode($node){
-    if(!count($node->children)){
-        $html = '<li>'.Html::a($node->title, ['/shop/cat', 'slug' => $node->slug]).'</li>';
-    } else {
-        $html = '<li>'.$node->title.'</li>';
-        $html .= '<ul>';
-        foreach($node->children as $child) $html .= renderNode($child);
-        $html .= '</ul>';
-    }
-    return $html;
-}
+
 ?>
-<?php
-function renderCategory($node, $customCategory){
-    
-    if ($node->slug == 'category'){
-         if(!count($node->children)){      
-               
-                    } else {
-                               foreach($node->children as $child) {
-                                   
-                               // echo  Html::img($child->thumb(120, 240));
-                                  echo  $child->title.'<br>';
-                                echo HTML::img($child->image).'<br>' ;
-                                   renderCategory($child, $customCategory);
-                               } 
-
-                    }
-     }
-    
- 
-}
-?>
-
-
 
 <div class="row">
     <div class="col-md-8">
@@ -59,10 +26,13 @@ function renderCategory($node, $customCategory){
           
            
            <?php 
-          // echo $custom;
-         foreach(Catalog::tree() as $node) echo renderCategory($node, $customCategory);
+           foreach ($categories as $category){
+            
+               echo  Html::a(Html::img($category->thumb(180, 0, false)), ['/custom/cat', 'slug' => $category->slug]);
+               
+           }
          
-         
+         //print_r($categories);
          //Html::img($item->thumb(120, 240))
            
            ?>

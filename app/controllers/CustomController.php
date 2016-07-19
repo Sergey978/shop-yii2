@@ -7,35 +7,34 @@ use Yii;
 use yii\easyii\modules\catalog\api\Catalog;
 use yii\web\NotFoundHttpException;
 
+use app\models\CustomModel;
+
 class CustomController extends \yii\web\Controller
-{
+{ 
+    
+    
+    
     public function actionIndex()
     {
        
-        return $this->render('index',['customCategory'=>'category'] );
+       
+       $model = new CustomModel;
+       $model->parentCategory ='category';
+       $categories = $model->getChaildCategories();
+      
+        return $this->render('index',['categories'=>$categories] );
     }
 
+   
+    
     public function actionCat($slug)
     {
-        $filterForm = new GadgetsFilterForm();
-        $cat = Catalog::cat($slug);
+        $model = new CustomModel;
+        $model->parentCategory = $slug;
+        $choiseBaseCat = $model->getChaildCategories();
+        return $this->render('cat',['categories'=>$categories] );
 
-        if(!$cat){
-            throw new NotFoundHttpException('Shop category not found.');
-        }
-        $filters = null;
-        if($filterForm->load(Yii::$app->request->get()) && $filterForm->validate()) {
-            $filters = $filterForm->parse();
-        }
-
-        return $this->render('cat', [
-            'cat' => $cat,
-            'items' => $cat->items([
-                'pagination' => ['pageSize' => 2],
-                'filters' => $filters
-            ]),
-            'filterForm' => $filterForm
-        ]);
+        
     }
 
     public function actionSearch($text)

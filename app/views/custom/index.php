@@ -4,6 +4,9 @@ use yii\easyii\modules\file\api\File;
 use yii\easyii\modules\page\api\Page;
 use yii\helpers\Html;
 
+
+
+
 $page = Page::get('page-custom');
 
 $this->title = $page->seo('title', $page->model->title);
@@ -21,6 +24,28 @@ function renderNode($node){
     return $html;
 }
 ?>
+<?php
+function renderCategory($node, $customCategory){
+    
+    if ($node->slug == 'category'){
+         if(!count($node->children)){      
+               
+                    } else {
+                               foreach($node->children as $child) {
+                                   
+                               // echo  Html::img($child->thumb(120, 240));
+                                  echo  $child->title.'<br>';
+                                echo HTML::img($child->image).'<br>' ;
+                                   renderCategory($child, $customCategory);
+                               } 
+
+                    }
+     }
+    
+ 
+}
+?>
+
 
 
 <div class="row">
@@ -31,7 +56,16 @@ function renderNode($node){
         </h1>
         <br/>
         <ul>
-            <?php echo Catalog::cat( 'face' )->image ; ?>
+          
+           
+           <?php 
+          // echo $custom;
+         foreach(Catalog::tree() as $node) echo renderCategory($node, $customCategory);
+         
+         
+         //Html::img($item->thumb(120, 240))
+           
+           ?>
         </ul>
     </div>
     <div class="col-md-4">

@@ -205,7 +205,8 @@
                     "fancybox.jquery.json",
                     "demo"
                 ]
-            }
+            },
+            "time": "2016-04-25 17:41:48"
         },
         {
             "name": "bower-asset/jquery",
@@ -267,7 +268,8 @@
                     "Gruntfile.js",
                     "test"
                 ]
-            }
+            },
+            "time": "2014-09-06 14:29:29"
         },
         {
             "name": "bower-asset/jquery.inputmask",
@@ -364,7 +366,8 @@
                 "input",
                 "switch",
                 "switcher"
-            ]
+            ],
+            "time": "2014-11-04 05:50:52"
         },
         {
             "name": "bower-asset/microplugin",
@@ -439,7 +442,8 @@
                     "package.js",
                     "package.json"
                 ]
-            }
+            },
+            "time": "2016-07-04 06:39:29"
         },
         {
             "name": "bower-asset/moment-timezone",
@@ -472,7 +476,8 @@
                     "package.json"
                 ]
             },
-            "description": "Parse and display moments in any timezone."
+            "description": "Parse and display moments in any timezone.",
+            "time": "2016-05-03 16:47:33"
         },
         {
             "name": "bower-asset/punycode",

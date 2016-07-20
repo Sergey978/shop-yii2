@@ -37,12 +37,17 @@ class CustomModel  {
     
            
   }
-  
+  //return arrays of objects items in categories
   public function getItems($categories){
-      
-     $item =  Catalog::get( 1 );
-    
-       $items =  $item->model->find()->where();     
+      $items =[];
+     $item =  Catalog::get( 0 );
+     $i=0;
+     foreach ($categories as $category){
+          $items[$i] =  $item->model->find()->
+                  where(['category_id'=>$category->model->category_id])->all();
+          $i++;
+     }
+          
       
       return $items;
   }              

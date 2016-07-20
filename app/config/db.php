@@ -7,5 +7,5 @@ return [
     'password' => '',
     'charset' => 'utf8',
     'tablePrefix' => '',
-    'enableSchemaCache' => false,
+    'enableSchemaCache' => true,
 ];

@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $cat->model->title;
                          }
                     }
                     else {
-                        echo "пусто";
+                        echo "РїСѓСЃС‚Рѕ";
                     }
                        
                     
@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $cat->model->title;
                          }
                     }
                     else {
-                        echo "пусто";
+                        echo "РїСѓСЃС‚Рѕ";
                     }
               
          
@@ -57,9 +57,14 @@ $this->params['breadcrumbs'][] = $cat->model->title;
                 
             }  */
                // echo'test';
-            //print_r($items);
-            foreach ($items as $item){
-                echo $item->title.'<br>';
+           // print_r($items);
+          $i=0;
+            foreach ($categories as $category){
+               echo $category->title.'<br>';
+                foreach ($items[$i] as $item){
+                 echo $item->title.'<br>';
+           } 
+            $i++;
             }
                 
                 

@@ -32,8 +32,8 @@ class CustomController extends \yii\web\Controller
         $model = new CustomModel;
         $model->parentCategory = $slug;
         $categories = $model->getChaildCategories();
-        
-        return $this->render('cat',['categories'=>$categories] );
+        $items = $model->getItems($categories);
+        return $this->render('cat',['items'=>$items] );
 
         
     }

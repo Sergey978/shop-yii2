@@ -4,8 +4,9 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\easyii\modules\catalog\api\Catalog;
+use yii\easyii\modules\catalog\api\ItemObject;
 
-class CustomModel{
+class CustomModel  {
   public $parentCategory;
   public $categories = [];
  
@@ -36,4 +37,13 @@ class CustomModel{
     
            
   }
+  
+  public function getItems($categories){
+      
+     $item =  Catalog::get( 1 );
+    
+       $items =  $item->model->find()->where();     
+      
+      return $items;
+  }              
 }

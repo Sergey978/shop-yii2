@@ -7,39 +7,34 @@ use yii\easyii\modules\catalog\api\Catalog;
 use yii\easyii\modules\catalog\api\ItemObject;
 
 class CustomModel  {
-  public $parentCategory;
-  public $categories = [];
+  
  
-  // return array objectCategories  for Chaild Categories
-  public function getChaildCategories(){
-    foreach(Catalog::tree() as $node)  self::getChilds($node);
-      
-      return $this->categories;
-}
-  
-  
-  
-  private function getChilds($node){
-      $currentNodeSlug = $node->slug;
-       
-             if(!count($node->children)){      
-                
-                    } else {
-                               foreach($node->children as $child) {
-                                   if ($currentNodeSlug ==$this->parentCategory){
-                                       $this->categories[]=Catalog::cat($child->slug);
-                                   }
-                                   
-                                self::getChilds($child);
-                               } 
-
-                    }
+  // return array   Child Categories as ObjectCategories
+  public function getChaildCategories($slug){
+      $_parentCategory =  Catalog::cat($slug);
+      $_tree = $_lft = $_parentCategory->model->tree;
+      $_level = $_parentCategory->model->depth + 1;
+      $_lft = $_parentCategory->model->lft;
+      $_rgt = $_parentCategory->model->rgt;
     
-           
-  }
+      $_categories = $_parentCategory->model->find()->
+               where(['and',"tree=$_tree","depth=$_level",'status = 1',"lft >= $_lft","rgt <= $_rgt"])->
+              OrderBy('lft')->all();
+             
+      
+            foreach ($_categories as $category){
+                $categories[] =  Catalog::cat($category->slug);
+            }
+
+      return $categories;
+}
+
+  
+  
+  
   //return arrays of objects items in categories
   public function getItems($categories){
-      $items =[];
+     $items =[];
      $item =  Catalog::get( 0 );
      $i=0;
      foreach ($categories as $category){

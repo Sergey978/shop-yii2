@@ -37,11 +37,14 @@ class CustomModel  {
      $items =[];
      $item =  Catalog::get( 0 );
      $i=0;
-     foreach ($categories as $category){
-          $items[$i] =  $item->model->find()->
+    if(count($categories)){
+        foreach ($categories as $category){
+          $items[$category->slug] =  $item->model->find()->
                   where(['category_id'=>$category->model->category_id])->all();
-          $i++;
+         
      }
+    }
+     
           
       
       return $items;

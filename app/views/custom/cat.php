@@ -19,53 +19,17 @@ $this->params['breadcrumbs'][] = $cat->model->title;
         
             <br/>
             <?php
-            /*
-            foreach($categories as $category){
-                
-                     echo $category->title."  ".$category->model->category_id.'<br>' ; 
-                
-                       
-                     $goods =null;
-                     
-                     $goods = Catalog::items(['where'=>['category_id'=>9]]);
-                    if(count($goods)) {
-                        foreach($goods as $good) {
-                              
-                                 echo  Html::a($good->title, ['shop/view', 'slug' => $good->slug]).'<br>';
-                         }
-                    }
-                    else {
-                        echo "пусто";
-                    }
-                       
-                    
-                    $goods =null;
-                     
-                     $goods = Catalog::items(['where'=>['category_id'=>12]]);
-                    if(count($goods)) {
-                        foreach($goods as $good) {
-                              
-                                 echo  Html::a($good->title, ['shop/view', 'slug' => $good->slug]).'<br>';
-                         }
-                    }
-                    else {
-                        echo "пусто";
-                    }
-              
-         
-                
-                
-            }  */
-               // echo'test';
-           // print_r($items);
-          $i=0;
-            foreach ($categories as $category){
-               echo $category->title.'<br>';
-                foreach ($items[$i] as $item){
-                 echo $item->title.'<br>';
-           } 
-            $i++;
+            if(count($categories)){
+                 foreach ($categories as $category){
+                        echo $category->title.'<br>';
+                        foreach ($items[$category->slug] as $item){
+                        echo $item->title.'<br>';
+                } 
+            
+                }
             }
+            else echo "Пусто здесь"
+           
                 
                 
                

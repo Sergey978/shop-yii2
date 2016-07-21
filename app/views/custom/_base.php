@@ -9,22 +9,10 @@ use yii\easyii\modules\catalog\api\Catalog;
     <div class="col-md-10">
         
         
-      <?php  $items = Catalog::items(['where'=>['category_id'=>$categoryId]]); ?>
-        
-         <?php if(count($items)) : ?>
-            <br/>
-            <?php foreach($items as $item) : ?>
-                 <p><?= Html::a($item->title, ['shop/view', 'slug' => $item->slug]) ?></p>
-            <?php endforeach; ?>
-        <?php else : ?>
-            <p>items none</p>
-        <?php endif; ?>
-        
+        <h4><?= $item->title ?></h4>
+        <?php   $item =Catalog::get( $item->slug ) ?>
+         <?= Html::img($item->thumb(220, 0, false));?>
        
-        <p>
-            
-        </p>
-        
     </div>
 </div>
 <br>

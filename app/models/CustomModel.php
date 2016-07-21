@@ -39,8 +39,13 @@ class CustomModel  {
      $i=0;
     if(count($categories)){
         foreach ($categories as $category){
-          $items[$category->slug] =  $item->model->find()->
+        $items[$category->slug] =  $item->model->find()->
                   where(['category_id'=>$category->model->category_id])->all();
+            
+         
+                  // It does not work because of the cache
+           //   $items[$category->slug] = Catalog::items( ['where' =>['category_id'=>
+         //           $category->model->category_id]] );
          
      }
     }

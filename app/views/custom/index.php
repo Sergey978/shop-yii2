@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
            <?php 
            foreach ($categories as $category){
             
-               echo  Html::a(Html::img($category->thumb(180, 0, false)), ['/custom/cat', 'slug' => $category->slug]);
+               echo  Html::a(Html::img($category->thumb(220, 0, false)), ['/custom/cat', 'slug' => $category->slug]);
                
            }
          

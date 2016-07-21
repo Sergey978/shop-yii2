@@ -14,37 +14,24 @@ $this->params['breadcrumbs'][] = $cat->model->title;
 <div class="row">
     <div class="col-md-8">
    
-        
-        
-        
-            <br/>
-            <?php
-            if(count($categories)){
-                 foreach ($categories as $category){
-                        echo $category->title.'<br>';
-                        foreach ($items[$category->slug] as $item){
-                        echo $item->title.'<br>';
-                } 
+         <br/>
+            <?php if(count($categories)): ?>
             
-                }
-            }
-            else echo "Пусто здесь"
-           
-                
-                
-               
-              ?>
+                <?php foreach ($categories as $category)  : ?>   
+         <h2><?=$category->title.'<br>';?> </h2>
+                    <?php if(count($categories)): ?>
+                        <?php foreach ($items[$category->slug] as $item)  : ?> 
+                        <?= $this->render('_base', ['item' => $item]) ?>
+                    <?php endforeach; ?> 
+                  <?php endif; ?>  
+                <?php endforeach; ?>
+              <?php else : ?>
+                <p>Здесь ничего нет</p>
+            <?php endif; ?>
+             
+             
               
-                 
-           
-               
-              
-            
-        
-            
-            
-       
-           
+     
     </div>
    
 </div>

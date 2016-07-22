@@ -8,33 +8,27 @@ use yii\easyii\modules\catalog\api\Catalog;
 $this->params['breadcrumbs'][] = ['label' => 'Shop', 'url' => ['shop/index']];
 $this->params['breadcrumbs'][] = $cat->model->title;
 ?>
-<h1></h1>
-<br/>
+
 
 <div class="row">
-    <div class="col-md-8">
-   
-         <br/>
-            <?php if(count($categories)): ?>
+<?php if(count($categories)): ?>
             
-                <?php foreach ($categories as $category)  : ?>   
-         <h2><?=$category->title.'<br>';?> </h2>
-                    <?php if(count($categories)): ?>
-                        <?php foreach ($items[$category->slug] as $item)  : ?> 
-                        <?= $this->render('_base', ['item' => $item]) ?>
+<?php foreach ($categories as $category)  : ?>   
+    <h2><?=$category->title.': Выберите основу';?> </h2>
+     <?php if(count($categories)): ?>
+    <div>
+        
+                <?php foreach ($items[$category->slug] as $item)  : ?> 
+                
+      <div class = "base1">
+          <?= $this->render('_base', ['item' => $item]) ?>
+       </div>
+        
                     <?php endforeach; ?> 
+    </div>
                   <?php endif; ?>  
                 <?php endforeach; ?>
               <?php else : ?>
                 <p>Здесь ничего нет</p>
             <?php endif; ?>
-             
-             
-              
-     
-    </div>
-   
-</div>
-
-
-
+</div>   

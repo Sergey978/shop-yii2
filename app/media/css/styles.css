@@ -69,6 +69,14 @@ footer, .push {
     margin-bottom: 20px;
 }
 
+.base1 {
+ display:inline-block;
+}
+
+.base1 img {
+ display:block;
+}
+
 /*Form Wizard*/
 .bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
 .bs-wizard > .bs-wizard-step {padding: 0; position: relative;}

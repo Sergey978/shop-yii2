@@ -3,9 +3,26 @@ use yii\helpers\Html;
 use yii\easyii\modules\catalog\api\Catalog;
 ?>
 
+
         
-        <p><?= $item->title ?></p>
-        <?php   $item = Catalog::get( $item->slug ) ?>
-         <?= Html::img($item->thumb(220, 0, false));?>
-       
-  
+         <div class="col-md-3">
+        
+             
+           <?= Html::img($item->image,[
+                   'alt' =>$category->title,
+                   'class' => 'img-rounded',
+                   'title' => $item->description,
+                   'width'=>'200',
+                   'height'=>'auto',
+                  'data-toggle'=>'tooltip',
+                   
+                   ]);?>
+        
+             
+              <h4 ><?= $item->title ?></h4>
+            
+          </div>
+   
+                   
+                  
+    

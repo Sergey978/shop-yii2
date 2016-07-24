@@ -77,6 +77,14 @@ footer, .push {
  display:block;
 }
 
+.tooltip > .tooltip-inner {
+      background-color: #a2b5c7; 
+      color: #000;
+      max-width: 120%;
+      
+  }
+
+
 /*Form Wizard*/
 .bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
 .bs-wizard > .bs-wizard-step {padding: 0; position: relative;}

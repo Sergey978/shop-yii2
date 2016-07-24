@@ -17,15 +17,12 @@ class CustomModel  {
       $_lft = $_parentCategory->model->lft;
       $_rgt = $_parentCategory->model->rgt;
     
-      $_categories = $_parentCategory->model->find()->
+      $categories = $_parentCategory->model->find()->
                where(['and',"tree=$_tree","depth=$_level",'status = 1',"lft >= $_lft","rgt <= $_rgt"])->
               OrderBy('lft')->all();
              
       
-            foreach ($_categories as $category){
-                $categories[] =  Catalog::cat($category->slug);
-            }
-
+           
       return $categories;
 }
 
@@ -40,7 +37,7 @@ class CustomModel  {
     if(count($categories)){
         foreach ($categories as $category){
         $items[$category->slug] =  $item->model->find()->
-                  where(['category_id'=>$category->model->category_id])->all();
+                  where(['category_id'=>$category->category_id])->all();
             
          
                   // It does not work because of the cache

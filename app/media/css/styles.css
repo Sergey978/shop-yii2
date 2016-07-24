@@ -69,13 +69,7 @@ footer, .push {
     margin-bottom: 20px;
 }
 
-.base1 {
- display:inline-block;
-}
 
-.base1 img {
- display:block;
-}
 
 .tooltip > .tooltip-inner {
       background-color: #a2b5c7; 

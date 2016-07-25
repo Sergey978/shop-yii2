@@ -15,14 +15,14 @@ $this->params['breadcrumbs'][] = $page->model->title;
 
 ?>
 
-<div class="row">
-    <div class="col-md-8">
+
+   
        
            <h1>  <?= $page->seo('h1', $page->title) ?> </h1>
-    </div>
+    
        
-</div>      
-             <?= $this->render('_base', ['item' => $baseItem]) ?><br>
+      
+             <?= Html::img($baseItem->image) ?><br>
            
   <div class="row">   
         <div class="col-md-8">                 
@@ -40,15 +40,17 @@ $this->params['breadcrumbs'][] = $page->model->title;
                    ]), ['/custom/cat', 'slug' => $category->slug]);
           
           ?>
-          </div>     
-           <?php endforeach; ?>
+          
+         <?php endforeach; ?>
+        </div>     
+          
                          
           
   
-</div>           
+         
             
        
-<div class="row">   
+
     <div class="col-md-4">
         <?= $this->render('_search_form', ['text' => '']) ?>
 

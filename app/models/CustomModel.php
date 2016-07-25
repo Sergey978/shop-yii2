@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Yii;
 use yii\base\Model;
 use yii\easyii\modules\catalog\api\Catalog;
 use yii\easyii\modules\catalog\api\ItemObject;
@@ -26,6 +27,7 @@ class CustomModel  {
       return $categories;
 }
 
+
   
   
   
@@ -40,15 +42,23 @@ class CustomModel  {
                   where(['category_id'=>$category->category_id])->all();
             
          
-                  // It does not work because of the cache
+            // It does not work because of the cache
            //   $items[$category->slug] = Catalog::items( ['where' =>['category_id'=>
          //           $category->model->category_id]] );
          
      }
     }
      
-          
-      
+        
       return $items;
-  }              
+  }  
+  
+  public  function getIngridients(){
+      
+      $categoryId = Catalog::cat(Yii::$app->params['ingridients'])->model->category_id;
+      $ingridients = Catalog::items(  ['where' =>['category_id'=>$categoryId]]);
+                 
+      
+      return $ingridients;
+  }
 }

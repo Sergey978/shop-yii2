@@ -20,7 +20,7 @@ class CustomController extends \yii\web\Controller
        
        $model = new CustomModel;
        
-       $categories = $model->getChaildCategories('category');
+       $categories = $model->getChaildCategories(Yii::$app->params['category']);
       
         return $this->render('index',['categories'=>$categories] );
     }
@@ -37,7 +37,16 @@ class CustomController extends \yii\web\Controller
 
         
     }
+    
+    public function actionIngridients($slug){
+        $model =  new CustomModel;
+        $baseItem =  Catalog::get( $slug );
+        $ingridients = $model->getIngridients();
+        return $this->render('ingridients',['baseItem'=>$baseItem, 'ingridients'=>$ingridients] );
+    }
 
+    
+    
     public function actionSearch($text)
     {
         $text = filter_var($text, FILTER_SANITIZE_STRING);

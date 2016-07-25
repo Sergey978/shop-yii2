@@ -31,6 +31,7 @@ $config = [
                 '<controller:\w+>/view/<slug:[\w-]+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/cat/<slug:[\w-]+>' => '<controller>/cat',
+                '<controller:\w+>/ingridients/<slug:[\w-]+>' => '<controller>/ingridients'
             ],
         ],
         'assetManager' => [

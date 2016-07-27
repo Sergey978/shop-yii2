@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
                                            'height'=>'auto',
 
                                            ]), 
-                                            ['/custom/cat', 'slug' => $category->slug]);
+                                            ['/custom/move', 'slug' => $ingridient->slug]);
 
                              ?>
                

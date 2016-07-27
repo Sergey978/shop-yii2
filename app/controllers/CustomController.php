@@ -42,14 +42,23 @@ class CustomController extends \yii\web\Controller
         $model =  new CustomModel;
         $baseItem =  Catalog::get( $slug );
         $ingridients = $model->getIngridients();
-        $compositeGoods = new CompositeGoods($slug);
+        $compositeGoods = CompositeGoods::getInstance();
+        $compositeGoods->setBaseItem($slug);
+        
+       
+        
         
         return $this->render('ingridients',['baseItem'=>$baseItem, 
             'compositeGoods'=>$compositeGoods,
             'ingridients'=>$ingridients] );
     }
 
-    public function actionIngridientMove($slug){
+    public function actionMove($slug){
+        $compositeGoods = Yii::$app->session->get('compositeGoods');
+        $compositeGoods->move($slug);
+        $baseItem = $compositeGoods->baseItem;
+        return $this->redirect('/custom/ingridients/'.$baseItem);
+
         
     }
     

@@ -5,9 +5,32 @@ namespace app\models;
 class CompositeGoods{
     public $baseItem;
     public $ingridients = [];
+    private static $_instance = null;
     
-    function __construct($baseItem = null) {
-        $this->baseItem = $baseItem;
+   
+    private function __construct() {
+        self::$_instance = Yii::$app->session->get('compositeGoods');
+    }
+    protected function __clone() {
+   
+    }
+    
+    static public function getInstance() {
+    if(is_null(self::$_instance)){
+            self::$_instance = new self();
+        }
+            
+             Yii::$app->session->get('compositeGoods',$compositeGoods);
+            return self::$_instance;
+    }
+    
+    public function setBaseItem($slug){
+        $this->baseItem = $slug;
+    }
+    
+    
+    public function getBaseItem(){
+      return  $this->baseItem ;
     }
     
     
@@ -32,6 +55,18 @@ class CompositeGoods{
         }
         else{
             return false;
+        }
+    }
+    
+    public function move($slug){
+        if (count($this->ingridients) > 1 && 
+                ($i = array_search($slug, $this->ingridients)) !== false ){
+            unset($this->ingridients[$i]);
+            return -1;
+        }
+        else if (count($this->ingridients) < 6 ){
+            $this->ingridients[] = $slug;
+            return 1;
         }
     }
     

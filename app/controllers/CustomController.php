@@ -6,8 +6,8 @@ use app\models\GadgetsFilterForm;
 use Yii;
 use yii\easyii\modules\catalog\api\Catalog;
 use yii\web\NotFoundHttpException;
-
 use app\models\CustomModel;
+use app\models\CompositeGoods;
 
 class CustomController extends \yii\web\Controller
 { 
@@ -42,10 +42,16 @@ class CustomController extends \yii\web\Controller
         $model =  new CustomModel;
         $baseItem =  Catalog::get( $slug );
         $ingridients = $model->getIngridients();
-        return $this->render('ingridients',['baseItem'=>$baseItem, 'ingridients'=>$ingridients] );
+        $compositeGoods = new CompositeGoods($slug);
+        
+        return $this->render('ingridients',['baseItem'=>$baseItem, 
+            'compositeGoods'=>$compositeGoods,
+            'ingridients'=>$ingridients] );
     }
 
-    
+    public function actionIngridientMove($slug){
+        
+    }
     
     public function actionSearch($text)
     {

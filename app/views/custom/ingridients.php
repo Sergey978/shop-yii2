@@ -1,4 +1,6 @@
 <?php
+
+
 use yii\easyii\modules\catalog\api\Catalog;
 use yii\easyii\modules\file\api\File;
 use yii\easyii\modules\page\api\Page;
@@ -23,7 +25,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
             <?php   foreach ($ingridients as $ingridient) : ?>
             
            
-                   <div class="col-md-4 text-center "> 
+                   <div class="ingridient col-sm-6 col-md-4 col-lg-3 text-center"> 
                          <h4><?=$ingridient->title?></h4>
                             <?= Html::a(Html::img($ingridient->image,[
                                            'alt' =>$ingridient->title,
@@ -53,7 +55,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
        </div>  
       </div>
         
-        
+      <!-- echo composite goods -->  
          <div class="col-md-4">
              <div align = 'center'>
                  <h4><?=$baseItem->title?></h4>
@@ -67,14 +69,19 @@ $this->params['breadcrumbs'][] = $page->model->title;
                                     ]) ?> 
             </div>
         <h4>Ингридиенты</h4>
-        <?php foreach(Catalog::last(3) as $item) : ?>
+        <?php foreach($compositeGoods->ingridients as $slug) : ?>
+        <?php $item =   Catalog::get( $slug ); ?>
+        
+        
             <p>
                 <?= Html::img($item->thumb(30)) ?>
                 <?= Html::a($item->title, ['/shop/view', 'slug' => $item->slug]) ?><br/>
                 <span class="label label-warning"><?= $item->price ?>$</span>
             </p>
         <?php endforeach; ?>
-        </div>
+        
+         <?= $compositeGoods->baseItem; ?>
+         </div>
         
    </div>         
     

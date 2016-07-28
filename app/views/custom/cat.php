@@ -4,8 +4,10 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use yii\easyii\modules\catalog\api\Catalog;
 
-//$this->title = $cat->seo('title', $cat->model->title);
-$this->params['breadcrumbs'][] = ['label' => 'Выбор основы', 'url' => ['custom/index']];
+
+
+$this->title = $cat->seo('title', $cat->model->title);
+$this->params['breadcrumbs'][] = ['label' => 'Выбор Категории', 'url' => ['custom/index']];
 $this->params['breadcrumbs'][] = $cat->model->title;
 ?>
 

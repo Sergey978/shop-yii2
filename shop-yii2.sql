@@ -440,14 +440,16 @@ CREATE TABLE IF NOT EXISTS `easyii_loginform` (
   `time` int(11) DEFAULT '0',
   `success` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`log_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_loginform: 2 rows
+-- Дамп данных таблицы shop-yii2.easyii_loginform: 4 rows
 DELETE FROM `easyii_loginform`;
 /*!40000 ALTER TABLE `easyii_loginform` DISABLE KEYS */;
 INSERT INTO `easyii_loginform` (`log_id`, `username`, `password`, `ip`, `user_agent`, `time`, `success`) VALUES
 	(1, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1468832910, 1),
-	(2, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1; rv:46.0) Gecko/20100101 Firefox/46.0', 1468834439, 1);
+	(2, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1; rv:46.0) Gecko/20100101 Firefox/46.0', 1468834439, 1),
+	(3, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1468937448, 1),
+	(4, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1469449127, 1);
 /*!40000 ALTER TABLE `easyii_loginform` ENABLE KEYS */;
 
 
@@ -535,9 +537,9 @@ CREATE TABLE IF NOT EXISTS `easyii_pages` (
   `slug` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`page_id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_pages: 11 rows
+-- Дамп данных таблицы shop-yii2.easyii_pages: 14 rows
 DELETE FROM `easyii_pages`;
 /*!40000 ALTER TABLE `easyii_pages` DISABLE KEYS */;
 INSERT INTO `easyii_pages` (`page_id`, `title`, `text`, `slug`) VALUES
@@ -551,7 +553,10 @@ INSERT INTO `easyii_pages` (`page_id`, `title`, `text`, `slug`) VALUES
 	(8, 'Gallery', '', 'page-gallery'),
 	(9, 'Guestbook', '', 'page-guestbook'),
 	(10, 'FAQ', '', 'page-faq'),
-	(11, 'Contact', '<p><strong>Address</strong>: Dominican republic, Santo Domingo, Some street 123</p><p><strong>ZIP</strong>: 123456</p><p><strong>Phone</strong>: +1 234 56-78</p><p><strong>E-mail</strong>: demo@example.com</p>', 'page-contact');
+	(11, 'Contact', '<p><strong>Address</strong>: Dominican republic, Santo Domingo, Some street 123</p><p><strong>ZIP</strong>: 123456</p><p><strong>Phone</strong>: +1 234 56-78</p><p><strong>E-mail</strong>: demo@example.com</p>', 'page-contact'),
+	(12, 'Выбор категории', '', 'page-custom'),
+	(13, 'Выбор основы', '', 'page-base'),
+	(14, 'Выбор Ингридиентов', '', 'page-ingridients');
 /*!40000 ALTER TABLE `easyii_pages` ENABLE KEYS */;
 
 
@@ -612,9 +617,9 @@ CREATE TABLE IF NOT EXISTS `easyii_seotext` (
   `description` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`seotext_id`),
   UNIQUE KEY `model_item` (`class`,`item_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_seotext: 27 rows
+-- Дамп данных таблицы shop-yii2.easyii_seotext: 28 rows
 DELETE FROM `easyii_seotext`;
 /*!40000 ALTER TABLE `easyii_seotext` DISABLE KEYS */;
 INSERT INTO `easyii_seotext` (`seotext_id`, `class`, `item_id`, `h1`, `title`, `keywords`, `description`) VALUES
@@ -644,7 +649,8 @@ INSERT INTO `easyii_seotext` (`seotext_id`, `class`, `item_id`, `h1`, `title`, `
 	(24, 'yii\\easyii\\modules\\article\\models\\Item', 2, 'Second article H1', '', '', ''),
 	(25, 'yii\\easyii\\modules\\article\\models\\Item', 3, 'Third article H1', '', '', ''),
 	(26, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, 'Album 1 H1', 'Extended Album 1 title', '', ''),
-	(27, 'yii\\easyii\\modules\\gallery\\models\\Category', 2, 'Album 2 H1', 'Extended Album 2 title', '', '');
+	(27, 'yii\\easyii\\modules\\gallery\\models\\Category', 2, 'Album 2 H1', 'Extended Album 2 title', '', ''),
+	(28, 'yii\\easyii\\modules\\page\\models\\Page', 12, 'Страница выбора категории', '', '', '');
 /*!40000 ALTER TABLE `easyii_seotext` ENABLE KEYS */;
 
 

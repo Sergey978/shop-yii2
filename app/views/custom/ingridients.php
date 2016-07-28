@@ -1,8 +1,6 @@
 <?php
 
-
 use yii\easyii\modules\catalog\api\Catalog;
-use yii\easyii\modules\file\api\File;
 use yii\easyii\modules\page\api\Page;
 use yii\helpers\Html;
 
@@ -12,7 +10,10 @@ use yii\helpers\Html;
 $page = Page::get('page-ingridients');
 
 $this->title = $page->seo('title', $page->model->title);
-$this->params['breadcrumbs'][] = $page->model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Выбор категории', 'url' => ['custom/index']];
+$this->params['breadcrumbs'][] = ['label' => 'Выбор основы'];
+$this->params['breadcrumbs'][] = $page->title;
+
 
 
 ?>
@@ -42,7 +43,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
              
              
             
-              <p><?=$ingridient->price?></p>
+              <p><?= 'Цена '. $ingridient->price?></p>
               
              </div>
              
@@ -69,18 +70,19 @@ $this->params['breadcrumbs'][] = $page->model->title;
                                     ]) ?> 
             </div>
         <h4>Ингридиенты</h4>
-        <?php foreach($compositeGoods->ingridients as $slug) : ?>
+        <?php foreach($compositeGoods->getIngridients() as $slug) : ?>
         <?php $item =   Catalog::get( $slug ); ?>
         
         
             <p>
-                <?= Html::img($item->thumb(30)) ?>
+                <?= Html::img($item->thumb(50)) ?>
                 <?= Html::a($item->title, ['/shop/view', 'slug' => $item->slug]) ?><br/>
                 <span class="label label-warning"><?= $item->price ?>$</span>
             </p>
         <?php endforeach; ?>
         
-         <?= $compositeGoods->baseItem; ?>
+          
+           <?= Html::a('Очистить', ['/custom/ingridients/'], ['class'=>'btn btn-primary']) ?>
          </div>
         
    </div>         

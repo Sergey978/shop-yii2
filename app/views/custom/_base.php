@@ -5,7 +5,7 @@ use yii\easyii\modules\catalog\api\Catalog;
 
 
         
-         <div class="col-md-3">
+         <div class="col-sm-6 col-md-4 col-lg-3 text-center">
         
              
            <?=  Html::a(Html::img($item->image,[

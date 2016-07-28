@@ -1,15 +1,22 @@
 <?php
 namespace app\models;
 
+use \Yii;
+
 
 class CompositeGoods{
-    public $baseItem;
-    public $ingridients = [];
+    private  $baseItem;
+    private  $ingridients = [];
+    private static $session ;
     private static $_instance = null;
     
    
     private function __construct() {
-        self::$_instance = Yii::$app->session->get('compositeGoods');
+        if (self::$session->isActive){
+            $baseItem = $session->get('baseItem');
+            $ingridients = $session->get('ingridients');
+        }
+        self::$session = Yii::$app->session;
     }
     protected function __clone() {
    
@@ -19,55 +26,54 @@ class CompositeGoods{
     if(is_null(self::$_instance)){
             self::$_instance = new self();
         }
-            
-             Yii::$app->session->get('compositeGoods',$compositeGoods);
+           
             return self::$_instance;
     }
     
     public function setBaseItem($slug){
         $this->baseItem = $slug;
+        self::$session->set('baseItem', $this->baseItem);
     }
     
     
     public function getBaseItem(){
-      return  $this->baseItem ;
+      if (self::$session->has('baseItem')){
+          $this->baseItem =  self::$session->get('baseItem');
+      } 
+        return  $this->baseItem ;
     }
     
     
-    public function addIngridient($ingreidientSlug){
-        if (count($this->ingridients) < 6 ){
-            $this->ingridients[] = $ingreidientSlug;
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    
-    
-    public function removeIngridient($ingreidientSlug){
-        if (count($this->ingridients) > 1 ){
-            while (($i = array_search($ingreidientSlug, $this->ingridients)) !== false) {
-            unset($array[$i]);
-            } 
-            
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
     
     public function move($slug){
+        if (self::$session->has('ingridients')){
+          $this->ingridients = self::$session->get('ingridients');
+      } 
+        
+        
         if (count($this->ingridients) > 1 && 
                 ($i = array_search($slug, $this->ingridients)) !== false ){
             unset($this->ingridients[$i]);
-            return -1;
+            $result =  -1;
         }
         else if (count($this->ingridients) < 6 ){
             $this->ingridients[] = $slug;
-            return 1;
+            $result = 1;
         }
+        self::$session->set('ingridients', $this->ingridients);
+        
+        return result;
+        
     }
+     
     
+    
+     public function getIngridients(){
+         if (self::$session->has('ingridients')){
+          $this->ingridients = self::$session->get('ingridients');
+      }
+      
+      return $this->ingridients;
+     }
+       
 }

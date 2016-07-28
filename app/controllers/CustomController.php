@@ -20,6 +20,9 @@ class CustomController extends \yii\web\Controller
        
        $model = new CustomModel;
        
+      $compositeGoods = CompositeGoods::getInstance();
+      $compositeGoods->clear();
+       
        $categories = $model->getChaildCategories(Yii::$app->params['category']);
       
         return $this->render('index',['categories'=>$categories] );
@@ -83,5 +86,20 @@ class CustomController extends \yii\web\Controller
             'item' => $item,
             'addToCartForm' => new \app\models\AddToCartForm()
         ]);
+    }
+    
+    
+    public function actionClear(){
+        $compositeGoods = CompositeGoods::getInstance();
+        $item = Catalog::get($compositeGoods->getBaseItem());
+        
+        if(!$item){
+            throw new NotFoundHttpException('Item not found.');
+        }
+        
+        $compositeGoods->clear();
+        
+        return $this->redirect('/custom/ingridients/'.$item->slug);
+        
     }
 }

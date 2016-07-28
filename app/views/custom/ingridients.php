@@ -76,13 +76,13 @@ $this->params['breadcrumbs'][] = $page->title;
         
             <p>
                 <?= Html::img($item->thumb(50)) ?>
-                <?= Html::a($item->title, ['/shop/view', 'slug' => $item->slug]) ?><br/>
+                <?= Html::a($item->title, ['/custom/move', 'slug' => $item->slug]) ?><br/>
                 <span class="label label-warning"><?= $item->price ?>$</span>
             </p>
         <?php endforeach; ?>
         
           
-           <?= Html::a('Очистить', ['/custom/ingridients/'], ['class'=>'btn btn-primary']) ?>
+           <?= Html::a('Очистить', ['/custom/clear'], ['class'=>'btn btn-primary']) ?>
          </div>
         
    </div>         

@@ -13,10 +13,11 @@ class CompositeGoods{
    
     private function __construct() {
         if (self::$session->isActive){
-            $baseItem = $session->get('baseItem');
-            $ingridients = $session->get('ingridients');
+            $baseItem = self::$session->get('baseItem');
+            $ingridients = self::$session->get('ingridients');
         }
         self::$session = Yii::$app->session;
+        self::$session->open();
     }
     protected function __clone() {
    
@@ -74,6 +75,12 @@ class CompositeGoods{
       }
       
       return $this->ingridients;
+     }
+     
+     public  function clear(){
+        self::$session->remove('baseItem');
+        self::$session->remove('ingridients');   
+        
      }
        
 }

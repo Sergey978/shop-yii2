@@ -108,7 +108,7 @@ class CustomController extends \yii\web\Controller
     public function actionShopCartAdd(){
          $compositeGoods = CompositeGoods::getInstance();
          $item = Catalog::get($compositeGoods->getBaseItem());
-         $ingridients = base64_encode(json_encode($compositeGoods->getIngridients()));
+         $ingridients = implode ('|',$compositeGoods->getIngridients());
          
          $form = new AddToCartForm();
          $success = 0;

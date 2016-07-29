@@ -31,14 +31,18 @@ $this->params['breadcrumbs'][] = $page->model->title;
                 <?php foreach($goods as $good) : ?>
                     <tr>
                         <td>
-                            <?= Html::a($good->item->title, ['/shop/view', 'slug' => $good->item->slug]) ?>
-                              <? $ingridients = json_decode(base64_decode($good->options))?>
-                                <? // print_r($ingridients)?>
-                          <? if (is_array($ingridients )):?>  
+                            <?= Html::a($good->item->title, ['/shop/view', 'slug' => $good->item->slug]) ?><br>
+                              <? $ingridients = explode ('|',$good->options)?>
+                                
+                          <? if (count($ingridients ) > 1):?>  
+                             
+                            <h4>Ингридиенты</h4>
                                 <? foreach ($ingridients as $ingridient) :?>
                                 <? $component = yii\easyii\modules\catalog\api\Catalog::get($ingridient); ?>
-                                    <?= $component->title.' цена '.$component->price ?>
                               
+                                        <?= $component->title.'  '.'цена - '.$component->price.' грн.' ?><br>
+                                        
+                               
                               <? endforeach;?>
                               <? else :?>                               
                             

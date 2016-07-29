@@ -3,7 +3,7 @@
 use yii\easyii\modules\catalog\api\Catalog;
 use yii\easyii\modules\page\api\Page;
 use yii\helpers\Html;
-
+use app\models\AddToCartForm;
 
 
 
@@ -59,6 +59,10 @@ $this->params['breadcrumbs'][] = $page->title;
       <!-- echo composite goods -->  
          <div class="col-md-4">
              <div align = 'center'>
+                 
+        <?php if(Yii::$app->request->get(AddToCartForm::SUCCESS_VAR)) : ?>
+                    <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Added to cart</h4>
+                <?php else : ?>      
                  <h4><?=$baseItem->title?></h4>
         <?= Html::img($baseItem->image,[
                                     'alt' =>$baseItem->title,
@@ -83,6 +87,8 @@ $this->params['breadcrumbs'][] = $page->title;
         
           
            <?= Html::a('Очистить', ['/custom/clear'], ['class'=>'btn btn-primary']) ?>
+            <?= Html::a('Добавить в корзину', ['/custom/shop-cart-add'], ['class'=>'btn btn-success']) ?>
+         <?php endif; ?>    
          </div>
         
    </div>         

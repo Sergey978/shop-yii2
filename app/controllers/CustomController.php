@@ -4,10 +4,12 @@ namespace app\controllers;
 
 use app\models\GadgetsFilterForm;
 use Yii;
+use app\models\AddToCartForm;
 use yii\easyii\modules\catalog\api\Catalog;
 use yii\web\NotFoundHttpException;
 use app\models\CustomModel;
 use app\models\CompositeGoods;
+use yii\easyii\modules\shopcart\api\Shopcart;
 
 class CustomController extends \yii\web\Controller
 { 
@@ -101,5 +103,20 @@ class CustomController extends \yii\web\Controller
         
         return $this->redirect('/custom/ingridients/'.$item->slug);
         
+    }
+    
+    public function actionShopCartAdd(){
+         $compositeGoods = CompositeGoods::getInstance();
+         $item = Catalog::get($compositeGoods->getBaseItem());
+         $ingridients = base64_encode(json_encode($compositeGoods->getIngridients()));
+         
+         $form = new AddToCartForm();
+         $success = 0;
+        
+        $response = Shopcart::add($item->id, 1, $ingridients);
+        $success = $response['result'] == 'success' ? 1 : 0;
+      
+
+        return $this->redirect(Yii::$app->request->referrer.'?'.AddToCartForm::SUCCESS_VAR.'='.$success);
     }
 }

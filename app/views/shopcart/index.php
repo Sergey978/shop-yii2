@@ -32,7 +32,20 @@ $this->params['breadcrumbs'][] = $page->model->title;
                     <tr>
                         <td>
                             <?= Html::a($good->item->title, ['/shop/view', 'slug' => $good->item->slug]) ?>
-                            <?= $good->options ? "($good->options)" : '' ?>
+                              <? $ingridients = json_decode(base64_decode($good->options))?>
+                                <? // print_r($ingridients)?>
+                          <? if (is_array($ingridients )):?>  
+                                <? foreach ($ingridients as $ingridient) :?>
+                                <? $component = yii\easyii\modules\catalog\api\Catalog::get($ingridient); ?>
+                                    <?= $component->title.' цена '.$component->price ?>
+                              
+                              <? endforeach;?>
+                              <? else :?>                               
+                            
+                                  <?= $good->options ? "($good->options)" : '' ?>
+                            
+                            <?   endif; ?>
+                                                     
                         </td>
                         <td><?= Html::textInput("Good[$good->id]", $good->count, ['class' => 'form-control input-sm']) ?></td>
                         <td>

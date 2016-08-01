@@ -95,7 +95,7 @@ Text Domain: Inspire
 
 /* 1. BODY */
 body {
-	font-size: 12px;
+	font-size: 18px;
 	background: #fff;
 	vertical-align: middle;
 	font-family: 'Roboto', sans-serif;
@@ -215,7 +215,7 @@ legend {
 }
 .header-top {
 	height: 28px;
-	background: #f8f8f8;
+//	background: #f8f8f8;
 }
 .header .logo {
 	vertical-align: middle;
@@ -364,7 +364,7 @@ a.block-currency:focus {
 	display: inline-block;
 	padding: 0px;
 	color: #a6a6a6;
-	font-size: 12px;
+	font-size: 18px;
 	padding-left: 20px;
 }
 .toplinks div.links div a:hover {

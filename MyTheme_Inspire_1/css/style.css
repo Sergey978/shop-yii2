@@ -20,7 +20,8 @@ Text Domain: Inspire
 3.   Header
 3a.  language &amp; currency
 3b.  Toplink 
-3c.  Top Shopping Cart 
+3c.  Top Shopping Cart
+3d.  Top phonees 
 4.   NAVIGATION
 4a.  Mob Menu 
 5.   Header Service 
@@ -538,7 +539,7 @@ a.block-currency:focus {
 .icon-cart:before {
 	color: #000;
 	content: '\f07a';
-	font-size: 24px;
+	font-size: 36px;
 	height: 22px;
 	line-height: 20px;
 	padding-right: 7px;
@@ -779,6 +780,42 @@ a.glyphicon-remove:hover, a.glyphicon-pencil:hover {
 	color: #333;
 	text-decoration: none;
 }
+
+
+/* 3.b Top phones */
+
+div.col-xs-6 .phone {
+	font-weight: bold;
+	font-size: 34px;
+	margin-left: 8px;
+	color: #a6a6a6;
+	padding-top: 15%;
+}
+
+div.col-xs-10 .phone {
+	font-weight: bold;
+	font-size: 34px;
+	margin-left: 16px;
+	padding-left: 16px;
+	color: #a6a6a6;
+	padding-top: 10%;
+}
+
+div.col-xs-6 .phone::before {
+    content: "\f095";
+    font-family: FontAwesome;
+    margin-right: 10px;
+	
+}
+
+div.col-xs-10 .phone::before {
+    content: "\f095";
+    font-family: FontAwesome;
+    margin-right: 10px;
+	
+}
+
+
 /* 4. NAVIGATION */
 
 .sticky #nav {

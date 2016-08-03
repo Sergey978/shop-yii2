@@ -7,7 +7,7 @@ $asset = \app\assets\AppAsset::register($this);
 <html lang="<?= Yii::$app->language ?>">
     <head>
         <meta charset="<?= Yii::$app->charset ?>">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
@@ -15,7 +15,7 @@ $asset = \app\assets\AppAsset::register($this);
         <link rel="icon" href="<?= $asset->baseUrl ?>/favicon.ico" type="image/x-icon">
         <?php $this->head() ?>
     </head>
-    <body>
+    <body class="cms-index-index">
         <?php $this->beginBody() ?>
         <?= $content ?>
         <?php $this->endBody() ?>

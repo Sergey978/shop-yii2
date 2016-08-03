@@ -536,17 +536,31 @@ a.block-currency:focus {
 	font-weight: 500;
 	line-height: 1.6em
 }
+
+i.icon-cart {
+	font-size: 40px;
+    
+    width: 100px;
+    height: 100px;
+    padding: 20px 10px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    transition: all 0.5s;
+    
+    
+}
+
 .icon-cart:before {
-	color: #000;
+	color: #7bbd42;
 	content: '\f07a';
-	font-size: 36px;
+	font-size: 72px;
 	height: 22px;
 	line-height: 20px;
-	padding-right: 7px;
-	text-align: center;
+	padding-right: 10px;
+	text-align: left;
 	width: 25px;
-	border-radius: 2px;
-	float: left;
+	
+	float: center;
 }
 .mini-cart .basket a:hover {
 	text-decoration: none;
@@ -557,6 +571,10 @@ a.block-currency:focus {
 	font-weight: bold;
 	line-height: 1em;
 }
+.cart-box {
+	display: block;
+}
+
 .mini-cart .basket .cart-box {
 	display: inline-block;
 }
@@ -578,7 +596,7 @@ a.block-currency:focus {
 .top-cart-contain {
 	color: #333;
 	display: block;
-	float: right;
+	float: center;
 	margin: 0px 0px 0px 0px;
 	padding: 0;
 	right: 0;

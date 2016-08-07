@@ -13,28 +13,34 @@ $this->params['breadcrumbs'][] = $cat->model->title;
 
 
 
-<?php if(count($categories)): ?>
+     
+    <ul class="products-grid">
+         
+        <?php if(count($categories)): ?>
             
     <?php foreach ($categories as $category)  : ?>   
         <h3><?=$category->title.': Выберите основу';?> </h3>
-            <div class="container">
-                <div class="row" >
+            
+        <div class="row" > 
             <?php if(count($categories)): ?>
                 <?php foreach ($items[$category->slug] as $item)  : ?>
-                    <?= $this->render('_base', ['item' => $item]) ?>
+                    <?= $this->render('base2', ['item' => $item]) ?>
                         <?php endforeach; ?>
                             <?php endif; ?>
-                </div>
-            </div>
+               
+        </div>  
     <?php endforeach; ?>
 <?php else : ?>
     <p>Здесь ничего нет</p>
 <?php endif; ?>
+      
   
-
-
-       
-           
+    </ul>
+    
+    
+    
+    
+ 
        
        
        

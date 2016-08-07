@@ -72,9 +72,10 @@ footer, .push {
 
 
 .tooltip > .tooltip-inner {
-      background-color: #a2b5c7; 
+      background-color: #fff; 
       color: #000;
       max-width: 120%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5); 
       
   }
 .ingridient {height: 250px;}

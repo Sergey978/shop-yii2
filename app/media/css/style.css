@@ -96,7 +96,7 @@ Text Domain: Inspire
 
 /* 1. BODY */
 body {
-	font-size: 18px;
+	font-size: 12px;
 	background: #fff;
 	vertical-align: middle;
 	font-family: 'Roboto', sans-serif;
@@ -255,6 +255,7 @@ legend {
 /* 3a. language &amp; currency */
 .block-language-wrapper {
 	display: inline-block !important;
+        font-size: 12px;
 	margin: 5px 0 0 0;
 }
 .block-language {
@@ -2720,7 +2721,7 @@ margin-right: 10px;
 }
 .item .col-item .images-container {
 	position: relative;
-	overflow: hidden;
+	
 }
 .item .col-item .images-container .product-image:before {
 	background: rgba(0,0,0,0.19);
@@ -2740,7 +2741,6 @@ margin-right: 10px;
 	position: absolute;
 	bottom: -42px;
 	height: 42px;
-	width: 100%;
 	text-align: center;
 	background: #7bbd42;
 	transition: all 0.3s ease-out 0s;
@@ -8909,8 +8909,8 @@ button.subscribe:before {
 	right: 0;
 	left: 0;
 	margin: auto;
-	width: 40px;
-	height: 40px;
+	width: 90px;
+	height: 0px;
 	display: block;
 	transform: scale(0);
 	opacity: 0;
@@ -8932,6 +8932,8 @@ button.subscribe:before {
 	font-size: 0;
 	cursor: pointer;
 }
+
+
 .qv-button-container a span span:before {
 	content: "\f06e";
 	font-size: 19px;
@@ -8940,6 +8942,23 @@ button.subscribe:before {
 	width: 38px;
 	text-align: center;
 }
+//added
+
+.qv-button-container div span span {
+	font-size: 0;
+	cursor: pointer;
+}
+
+.qv-button-container div span span:before {
+	content: "\f046";
+	font-size: 90px;
+	font-family: FontAwesome;
+	color: #7bbd42;
+	width: 60px;
+	text-align: center;
+}
+//----end added
+
 .small-pr-slider .a-qv-close:before {
 	width: 20px;
 	height: 20px;

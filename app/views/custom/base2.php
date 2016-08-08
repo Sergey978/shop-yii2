@@ -6,7 +6,7 @@ use yii\easyii\modules\catalog\api\Catalog;
 
         
           
-        <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6">
+        <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                 <div class="col-item">
                
                   <div class="images-container"> 

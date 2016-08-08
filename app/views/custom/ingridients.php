@@ -22,15 +22,22 @@ $this->params['breadcrumbs'][] = $page->title;
     <div class="row">  
      
         <div class="col-md-8">    
-          <div class="row">
+            <ul class="products-grid">
             <?php   foreach ($ingridients as $ingridient) : ?>
             
            
-                   <div class="ingridient col-sm-6 col-md-4 col-lg-3 text-center"> 
-                         <h4><?=$ingridient->title?></h4>
+               
+               <li class="item col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                 <div class="col-item">
+               
+                    <div class="images-container"> 
+                     
+                       
+                       
+                       
                             <?= Html::a(Html::img($ingridient->image,[
                                            'alt' =>$ingridient->title,
-                                           'class' => 'img-rounded',
+                                           'class' => 'img-responsive center-block img-thumbnail',
                                            'width'=>'140',
                                            'height'=>'auto',
 
@@ -39,21 +46,46 @@ $this->params['breadcrumbs'][] = $page->title;
 
                              ?>
                
-             
-             
-             
-            
-              <p><?= 'Цена '. $ingridient->price?></p>
               
-             </div>
-             
-               
-               
-             
-          
+              
+           <div class="qv-button-container"> 
+                        <div class="qv-e-button">
+                            <span><span>Quick View</span></span>
+                        </div> 
+                   </div>
+                  
+                  </div>
+                
+                  <div class="info">
+                    <div class="info-inner">
+                      <div class="h5"> 
+                            <?= $ingridient->title ?> 
+                      </div>
+                      <!--item-title-->
+                      <div class="item-content">
+                        <div class="ratings">
+                          
+                        </div>
+                        <div class="price-box">
+                          <p class="special-price"> <span class="price"> $45.00 </span> </p>
+                          <p class="old-price"> <span class="price-sep">-</span> <span class="price"> $50.00 </span> </p>
+                        </div>
+                      </div>
+                      <!--item-content--> 
+                    </div>
+                    <!--info-inner--> 
+                    
+                    <!--actions-->
+                    
+                   
+                  </div>
+                </div>
+                
+                
+        </li>
          
          <?php endforeach; ?>
-       </div>  
+       </ul>
       </div>
         
       <!-- echo composite goods -->  

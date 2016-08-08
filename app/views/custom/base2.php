@@ -26,9 +26,9 @@ use yii\easyii\modules\catalog\api\Catalog;
                       
                      
                    <div class="qv-button-container"> 
-                        <div class="qv-e-button" 
-                            >
-                            <span><span>Quick View</span></span></div> 
+                        <div class="qv-e-button">
+                            <span><span>Quick View</span></span>
+                        </div> 
                    </div>
                   
                   </div>

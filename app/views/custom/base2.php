@@ -27,7 +27,10 @@ use yii\easyii\modules\catalog\api\Catalog;
                      
                    <div class="qv-button-container"> 
                         <div class="qv-e-button">
-                            <span><span>Quick View</span></span>
+                            
+                         <?=  Html::a(  '<span><span>Quick View</span></span>',
+                             ['/custom/ingridients/', 'slug' => $item->slug]);?> 
+                            
                         </div> 
                    </div>
                   
@@ -44,8 +47,11 @@ use yii\easyii\modules\catalog\api\Catalog;
                           
                         </div>
                         <div class="price-box">
-                          <p class="special-price"> <span class="price"> $45.00 </span> </p>
-                          <p class="old-price"> <span class="price-sep">-</span> <span class="price"> $50.00 </span> </p>
+                          <p class="special-price"> <span class="price"> <?=$item->price ?> грн.</span> </p>
+                           <p class="old-price"> <span class="price-sep">-</span> 
+                               <span class="price"> 
+                                     <? /*$ingridient->oldPrice */?>
+                               </span> </p>
                         </div>
                       </div>
                       <!--item-content--> 

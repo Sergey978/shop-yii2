@@ -2615,6 +2615,7 @@ ul.topnav em:hover {
 }
 .col-item {
 	position: relative;
+         min-height: 240px;
 }
 .col-item .photo img {
 	margin: 0 auto;
@@ -8918,7 +8919,7 @@ button.subscribe:before {
 	border: 0;
 	font-size: 0;
 	background: #7bbd42;
-	line-height: 40px;
+	line-height: 10px;
 	text-align: center;
 }
 .qv-button-container:hover {
@@ -8951,7 +8952,7 @@ button.subscribe:before {
 
 .qv-button-container div span span:before {
 	content: "\f046";
-	font-size: 90px;
+	font-size: 72px;
 	font-family: FontAwesome;
 	color: #7bbd42;
 	width: 60px;

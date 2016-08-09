@@ -74,11 +74,12 @@ footer, .push {
 .tooltip > .tooltip-inner {
       background-color: #fff; 
       color: #000;
-      max-width: 120%;
+      max-width: 400px;
+      width: 200%;
       box-shadow: 0 0 10px rgba(0,0,0,0.5); 
       
   }
-.ingridient {height: 250px;}
+
 
 /*Form Wizard*/
 .bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}

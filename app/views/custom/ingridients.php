@@ -21,28 +21,24 @@ $this->params['breadcrumbs'][] = $page->title;
  <h1>  <?= $page->seo('h1', $page->title) ?> </h1>
     <div class="row">  
      
-        <div class="col-md-8">    
+        <div class="col-md-8 col-sm-6">    
             
             <ul class="products-grid">
            
                 <?php   foreach ($ingridients as $ingridient) : ?>
                
-                <li class="item col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                  <div class="col-item">
+                <li class="item  col-lg-3 col-md-4 col-sm-6 ">
+                  <div class="col-item" >
 
                      <div class="images-container"> 
-
-
-
 
                              <?= Html::a(Html::img($ingridient->image,[
                                             'alt' =>$ingridient->title,
                                             'class' => 'img-responsive center-block',
                                             'title' => $ingridient->description,
                                             'data-toggle'=>'tooltip',
-                                            'max-width'=>"140px",
-                                            'height'=>'auto',
-
+                                            'width'=>'145px',
+                                 
                                             ]), 
                                              ['/custom/move', 'slug' => $ingridient->slug]);
 
@@ -50,7 +46,8 @@ $this->params['breadcrumbs'][] = $page->title;
 
                             <div class="qv-button-container"> 
                                   <div class="qv-e-button">
-                                      <span><span></span></span>
+                                   <?=  Html::a(  '<span><span>Quick View</span></span>',
+                             ['/custom/move/', 'slug' => $ingridient->slug]);?> 
                                   </div> 
                              </div>
 
@@ -65,12 +62,14 @@ $this->params['breadcrumbs'][] = $page->title;
                        </div>
                        <!--item-title-->
                        <div class="item-content">
-                         <div class="ratings">
-
+                         <div class="ratings"> 
                          </div>
                          <div class="price-box">
-                           <p class="special-price"> <span class="price"> $45.00 </span> </p>
-                           <p class="old-price"> <span class="price-sep">-</span> <span class="price"> $50.00 </span> </p>
+                           <p class="special-price"> <span class="price"> <?=$ingridient->price ?> грн.</span> </p>
+                           <p class="old-price"> <span class="price-sep">-</span> 
+                               <span class="price"> 
+                                     <? /*$ingridient->oldPrice */?>
+                               </span> </p>
                          </div>
                        </div>
                        <!--item-content--> 
@@ -92,7 +91,7 @@ $this->params['breadcrumbs'][] = $page->title;
       
          </div>
       <!-- echo composite goods -->  
-         <div class="col-md-4">
+         <div class="col-md-4  col-sm-6">
              <div align = 'center'>
                  
         <?php if(Yii::$app->request->get(AddToCartForm::SUCCESS_VAR)) : ?>

@@ -12,6 +12,8 @@ $this->params['breadcrumbs'][] = $cat->model->title;
 ?>
 
 
+     
+   <div class="col-main  col-sm-push-3 wow">    
 
      
     <ul class="products-grid">
@@ -37,7 +39,8 @@ $this->params['breadcrumbs'][] = $cat->model->title;
   
     </ul>
     
-    
+   </div>
+
     
     
  

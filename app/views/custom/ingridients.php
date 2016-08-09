@@ -21,23 +21,22 @@ $this->params['breadcrumbs'][] = $page->title;
  <h1>  <?= $page->seo('h1', $page->title) ?> </h1>
     <div class="row">  
      
-        <div class="col-md-8 col-sm-6">    
+        <div class="col-main col-sm-9 col-sm-push-3 wow">    
             
             <ul class="products-grid">
            
                 <?php   foreach ($ingridients as $ingridient) : ?>
                
-                <li class="item  col-lg-3 col-md-4 col-sm-6 ">
+                <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6">
                   <div class="col-item" >
 
                      <div class="images-container"> 
 
                              <?= Html::a(Html::img($ingridient->image,[
                                             'alt' =>$ingridient->title,
-                                            'class' => 'img-responsive center-block',
+                                            'class' => 'product-image center-block img-thumbnail',
                                             'title' => $ingridient->description,
                                             'data-toggle'=>'tooltip',
-                                            'width'=>'145px',
                                  
                                             ]), 
                                              ['/custom/move', 'slug' => $ingridient->slug]);
@@ -91,7 +90,7 @@ $this->params['breadcrumbs'][] = $page->title;
       
          </div>
       <!-- echo composite goods -->  
-         <div class="col-md-4  col-sm-6">
+         <div class="sidebar col-sm-3 col-xs-12 col-sm-pull-9 wow">
              <div align = 'center'>
                  
         <?php if(Yii::$app->request->get(AddToCartForm::SUCCESS_VAR)) : ?>

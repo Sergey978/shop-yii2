@@ -5,6 +5,8 @@ use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use yii\widgets\Menu;
 
+$asset = \app\assets\AppAsset::register($this);
+
 $goodsCount = count(Shopcart::goods());
 ?>
 <?php $this->beginContent('@app/views/layouts/base.php'); ?>
@@ -18,7 +20,7 @@ $goodsCount = count(Shopcart::goods());
       <div class="row">
         <div class="col-lg-2 col-sm-3 col-md-2 col-xs-12"> 
           <!-- Header Logo --> 
-          <a class="logo" title="Magento Commerce" href="#"><img alt="Magento Commerce" src="images/Lerox_logo.jpg"></a> 
+          <a class="logo" title="Magento Commerce" href="#"><img alt="Magento Commerce" src="<?= $asset->baseUrl ?>/images/Lerox_logo.jpg"></a> 
           <!-- End Header Logo --> 
         </div>
         
@@ -29,11 +31,11 @@ $goodsCount = count(Shopcart::goods());
 				
                             <div class="row">  
 					   <div class="col-xs-4">
-						<div class="dropdown block-language-wrapper"> <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#"> <img src="images/english.png" alt="language"> English <span class="caret"></span> </a>
+						<div class="dropdown block-language-wrapper"> <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#"> <img src="<?= $asset->baseUrl ?>/images/english.png" alt="language"> English <span class="caret"></span> </a>
 						  <ul class="dropdown-menu" role="menu">
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="images/english.png" alt="language"> English </a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="images/francais.png" alt="language"> French </a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="images/german.png" alt="language"> German </a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="<?= $asset->baseUrl ?>/images/english.png" alt="language"> English </a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="<?= $asset->baseUrl ?>/images/francais.png" alt="language"> French </a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="<?= $asset->baseUrl ?>/images/german.png" alt="language"> German </a></li>
 						  </ul>
 						</div>
 					  </div> 

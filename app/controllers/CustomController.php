@@ -59,8 +59,17 @@ class CustomController extends \yii\web\Controller
     public function actionMove($slug){
         $compositeGoods = CompositeGoods::getInstance();
         $compositeGoods->move($slug);
-        $baseItem = $compositeGoods->getBaseItem();
-        return $this->redirect('/custom/ingridients/'.$baseItem);
+        $ingridients = $compositeGoods->getIngridients();
+        
+        foreach ($ingridients as $slug){
+            $selectedIngridients[] = Catalog::get($slug);
+        }
+        
+        if (Yii::$app->request->isAjax) {
+          
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return ['ingridients' =>$selectedIngridients ];
+        }
 
         
     }

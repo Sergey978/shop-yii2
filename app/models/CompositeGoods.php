@@ -52,7 +52,7 @@ class CompositeGoods{
       } 
         
         
-        if (count($this->ingridients) > 1 && 
+        if (count($this->ingridients) > 0 && 
                 ($i = array_search($slug, $this->ingridients)) !== false ){
             unset($this->ingridients[$i]);
             $result =  -1;

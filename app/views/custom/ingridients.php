@@ -30,8 +30,8 @@ $this->params['breadcrumbs'][] = $page->title;
                 <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6">
                   <div class="col-item" >
 
-                     <div class="images-container"> 
-
+                     <div class="images-container" > 
+                        <div class="ingridient">
                              <?= Html::a(Html::img($ingridient->image,[
                                             'alt' =>$ingridient->title,
                                             'class' => 'product-image center-block img-thumbnail',
@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $page->title;
                              ['/custom/move/', 'slug' => $ingridient->slug]);?> 
                                   </div> 
                              </div>
-
+                        </div>        
                      </div>
                  
 
@@ -94,30 +94,29 @@ $this->params['breadcrumbs'][] = $page->title;
              <div align = 'center'>
                  
         <?php if(Yii::$app->request->get(AddToCartForm::SUCCESS_VAR)) : ?>
-                    <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Added to cart</h4>
+                    <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Товар добавлен в корзину</h4>
                 <?php else : ?>      
                  <h4><?=$baseItem->title?></h4>
-        <?= Html::img($baseItem->image,[
-                                    'alt' =>$baseItem->title,
-                                    'class' => 'img-rounded',
-                                    'title' => $baseItem->description,
-                                    'width'=>'180',
-                                    'height'=>'auto',
-                                    'data-toggle'=>'tooltip',
-                                    ]) ?> 
+                <?= Html::img($baseItem->image,[
+                                            'alt' =>$baseItem->title,
+                                            'class' => 'product-image center-block img-thumbnail',
+                                            'title' => $baseItem->description,
+                                            'data-toggle'=>'tooltip',
+                                            ]) ?> 
             </div>
-        <h4>Ингридиенты</h4>
-        <?php foreach($compositeGoods->getIngridients() as $slug) : ?>
-        <?php $item =   Catalog::get( $slug ); ?>
-        
-        
-            <p>
-                <?= Html::img($item->thumb(50)) ?>
-                <?= Html::a($item->title, ['/custom/move', 'slug' => $item->slug]) ?><br/>
-                <span class="label label-warning"><?= $item->price ?>$</span>
-            </p>
-        <?php endforeach; ?>
-        
+             
+             <div id="ingridients">
+                    <h4>Ингридиенты</h4>
+                    <?php foreach($compositeGoods->getIngridients() as $slug) : ?>
+                    <?php $item  =   Catalog::get( $slug ); ?>
+
+                        <p>
+                            <?= Html::img($item->thumb(50)) ?>
+                            <?= Html::a($item->title, ['/custom/move', 'slug' => $item->slug]) ?><br/>
+                            <span class="label label-warning"><?= $item->price ?>грн</span>
+                        </p>
+                    <?php endforeach; ?>
+            </div>
           
            <?= Html::a('Очистить', ['/custom/clear'], ['class'=>'btn btn-primary']) ?>
             <?= Html::a('Добавить в корзину', ['/custom/shop-cart-add'], ['class'=>'btn btn-success']) ?>

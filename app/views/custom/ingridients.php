@@ -37,6 +37,7 @@ $this->params['breadcrumbs'][] = $page->title;
                                             'class' => 'product-image center-block img-thumbnail',
                                             'title' => $ingridient->description,
                                             'data-toggle'=>'tooltip',
+                                            'data-placement' => 'auto'
                                  
                                             ]), 
                                              ['/custom/move', 'slug' => $ingridient->slug]);
@@ -102,21 +103,43 @@ $this->params['breadcrumbs'][] = $page->title;
                                             'class' => 'product-image center-block img-thumbnail',
                                             'title' => $baseItem->description,
                                             'data-toggle'=>'tooltip',
-                                            ]) ?> 
+                                            ]) ?>
+                <p class="special-price"> 
+                    <span class="price"> <?=$baseItem->price ?> грн.</span> 
+                </p>
             </div>
              
-             <div id="ingridients">
-                    <h4>Ингридиенты</h4>
+             
+                    <h4>Ингредиенты</h4>
+            <div id="ingridients">        
                     <?php foreach($compositeGoods->getIngridients() as $slug) : ?>
                     <?php $item  =   Catalog::get( $slug ); ?>
 
                         <p>
-                            <?= Html::img($item->thumb(50)) ?>
-                            <?= Html::a($item->title, ['/custom/move', 'slug' => $item->slug]) ?><br/>
-                            <span class="label label-warning"><?= $item->price ?>грн</span>
+                            <?= Html::img($item->image,[
+                                            'alt' =>$item->title,
+                                            'class' => 'img-rounded',
+                                            'width' => 60,
+                                            'height' => 'auto',
+                                
+                                            ]) ?> 
+                            
+                            
+                            
+                            
+                            <?= $item->title ?><br/>
+                            <span class="label label-warning"><?= $item->price ?>грн.</span>
                         </p>
                     <?php endforeach; ?>
+                     
+                
+            
             </div>
+                    
+                <p class="special-price"> 
+                    <span class="price" id="summ">Общая цена <?= $summ ?> грн.</span> 
+                </p>
+                 <br>  <br> 
           
            <?= Html::a('Очистить', ['/custom/clear'], ['class'=>'btn btn-primary']) ?>
             <?= Html::a('Добавить в корзину', ['/custom/shop-cart-add'], ['class'=>'btn btn-success']) ?>

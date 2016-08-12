@@ -4,20 +4,39 @@ $(function(){
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip({
         html: true, 
-        placement: "auto"
+        
         });
 });
 
 function getIngridients(url){
-    
-    $.get(url, function(data){
+        $.get(url, function(data){
+      console.log(data);
+            $('#summ').empty();
+            $('#summ').append('Общая цена '+ data.summ +' грн.');
+            
+            if(!(data.ingridients === null) && data.ingridients.length > 0 ){
+            $('#ingridients').empty();
+            
+            
+            $.each(data.ingridients, function(){
+                var ingridient = '<p>'+ 
+                        '<img class="img-rounded" width="60" height="auto" alt="' + 
+                        this.model.title + '" src="'+ this.model.image + '">'+
+                        this.model.title + '<br>' +
+                        '<span class="label label-warning">'+ this.model.price +'грн.</span>'+
+                        '</p>';
+                
+                $('#ingridients').append(ingridient);
+                
+            
+            })
+               
+            
+        }
+        else {
+              $('#ingridients').empty();
+        }
       
-        console.log(data.ingridients[0].slug);
-     
-            
-       
-            
-       
 });
     
 };

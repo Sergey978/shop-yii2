@@ -2,7 +2,7 @@
 namespace app\models;
 
 use \Yii;
-
+use \yii\easyii\modules\catalog\api\Catalog;
 
 class CompositeGoods{
     private  $baseItem;
@@ -13,8 +13,8 @@ class CompositeGoods{
    
     private function __construct() {
         if (self::$session->isActive){
-            $baseItem = self::$session->get('baseItem');
-            $ingridients = self::$session->get('ingridients');
+            $this->baseItem = self::$session->get('baseItem');
+            $this->ingridients = self::$session->get('ingridients');
         }
         self::$session = Yii::$app->session;
         self::$session->open();
@@ -81,6 +81,24 @@ class CompositeGoods{
         self::$session->remove('baseItem');
         self::$session->remove('ingridients');   
         
+     }
+     
+     public function getSumm(){
+        $summ = 0;
+         
+        
+        
+        $baseItem = Catalog::get($this->getBaseItem());
+        $ingridients = $this->getIngridients();
+        $summ += $baseItem->price;
+        
+        if (count($ingridients) > 0){
+            foreach ($ingridients as $ingridient){
+                
+                $summ += Catalog::get($ingridient)->price;
+            }
+        }
+      return $summ;
      }
        
 }

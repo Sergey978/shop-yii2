@@ -74,8 +74,8 @@ footer, .push {
 .tooltip > .tooltip-inner {
       background-color: #fff; 
       color: #000;
-      max-width: 400px;
-      width: 200%;
+      max-width: 320px;
+      width: 180%;
       box-shadow: 0 0 10px rgba(0,0,0,0.5); 
       
   }

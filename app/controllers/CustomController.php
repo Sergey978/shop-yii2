@@ -50,25 +50,30 @@ class CustomController extends \yii\web\Controller
         $ingridients = $model->getIngridients();
         $compositeGoods = CompositeGoods::getInstance();
         $compositeGoods->setBaseItem($slug);
+        $summ = $compositeGoods->getSumm();
         
         return $this->render('ingridients',['baseItem'=>$baseItem, 
             'compositeGoods'=>$compositeGoods,
-            'ingridients'=>$ingridients] );
+            'ingridients'=>$ingridients,
+            'summ' => $summ]);
     }
 
     public function actionMove($slug){
         $compositeGoods = CompositeGoods::getInstance();
         $compositeGoods->move($slug);
         $ingridients = $compositeGoods->getIngridients();
+        $summ = $compositeGoods->getSumm();
         
         foreach ($ingridients as $slug){
             $selectedIngridients[] = Catalog::get($slug);
         }
+        $priceBaseItem = Catalog::get($compositeGoods->getBaseItem())->model->price;
         
         if (Yii::$app->request->isAjax) {
           
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            return ['ingridients' =>$selectedIngridients ];
+            return ['ingridients' =>$selectedIngridients,
+                    'summ' => $summ];
         }
 
         
@@ -86,18 +91,7 @@ class CustomController extends \yii\web\Controller
         ]);
     }
 
-    public function actionView($slug)
-    {
-        $item = Catalog::get($slug);
-        if(!$item){
-            throw new NotFoundHttpException('Item not found.');
-        }
-
-        return $this->render('view', [
-            'item' => $item,
-            'addToCartForm' => new \app\models\AddToCartForm()
-        ]);
-    }
+   
     
     
     public function actionClear(){

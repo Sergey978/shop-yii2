@@ -107,13 +107,12 @@ class CustomController extends \yii\web\Controller
         return $this->redirect('/custom/ingridients/'.$item->slug);
         
     }
-    
+    //добавляет составной товар в корзину
     public function actionShopCartAdd(){
          $compositeGoods = CompositeGoods::getInstance();
          $item = Catalog::get($compositeGoods->getBaseItem());
          $ingridients = implode ('|',$compositeGoods->getIngridients());
          
-         $form = new AddToCartForm();
          $success = 0;
         
         $response = Shopcart::add($item->id, 1, $ingridients);

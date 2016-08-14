@@ -111,7 +111,7 @@ $goodsCount = count(Shopcart::goods());
              <i class="icon-cart hidden-xs "></i>
 			 <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> 
 			 <a href="#"> <i class="icon-cart-sm hidden-sm  hidden-md hidden-lg"></i>
-                <div class="cart-box"><span class="title">Корзина</span><span id="cart-total"> 2 </span></div>
+                <div class="cart-box"><span class="title">Корзина</span><span id="cart-total"> <?= $goodsCount ?>  </span></div>
                 		
 			 </a>
 				</div>

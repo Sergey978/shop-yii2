@@ -36,11 +36,11 @@ $this->params['breadcrumbs'][] = $page->model->title;
                                 
                           <? if (count($ingridients ) > 1):?>  
                              
-                            <h4>Ингридиенты</h4>
+                            <h5>Ингредиенты</h5>
                                 <? foreach ($ingridients as $ingridient) :?>
                                 <? $component = yii\easyii\modules\catalog\api\Catalog::get($ingridient); ?>
                               
-                                        <?= $component->title.'  '.'цена - '.$component->price.' грн.' ?><br>
+                                        <?= '&emsp;'.$component->title.' <br> '.'&emsp;.....  цена - '.$component->price.' грн.' ?><br>
                                         
                                
                               <? endforeach;?>

@@ -28,24 +28,28 @@ $this->params['breadcrumbs'][] = $page->model->title;
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach($goods as $good) : ?>
+                    <? $summCostAllIngredients = 0; ?>
+                    <?php foreach($goods as $good) : ?>
                     <tr>
                         <td>
+                            
                             <?= Html::a($good->item->title, ['/shop/view', 'slug' => $good->item->slug]) ?><br>
                               <? $ingridients = explode ('|',$good->options)?>
-                                
+                            <?  $summCostIngredients = 0;?>     
                           <? if (count($ingridients ) > 1):?>  
-                             
+                          
                             <h5>Ингредиенты</h5>
                                 <? foreach ($ingridients as $ingridient) :?>
                                 <? $component = yii\easyii\modules\catalog\api\Catalog::get($ingridient); ?>
                               
                                         <?= '&emsp;'.$component->title.' <br> '.'&emsp;.....  цена - '.$component->price.' грн.' ?><br>
-                                        
+                                        <? $summCostIngredients+=$component->price; ?>
                                
                               <? endforeach;?>
-                              <? else :?>                               
-                            
+                                        
+                              <? else :?>   
+                                        
+                                   <? $summCostAllIngredients +=  $summCostIngredients;  ?>
                                   <?= $good->options ? "($good->options)" : '' ?>
                             
                             <?   endif; ?>
@@ -56,15 +60,16 @@ $this->params['breadcrumbs'][] = $page->model->title;
                             <?php if($good->discount) : ?>
                                 <del class="text-muted "><small><?= $good->item->oldPrice ?></small></del>
                             <?php endif; ?>
-                            <?= $good->price ?>
+                            <?= $good->price  + $summCostIngredients?>
                         </td>
-                        <td><?= $good->price * $good->count ?></td>
+                        <td><?= ($good->price + $summCostIngredients)* $good->count ?></td>
                         <th><?= Html::a('<i class="glyphicon glyphicon-trash text-danger"></i>', ['/shopcart/remove', 'id' => $good->id], ['title' => 'Remove item']) ?></th>
                     </tr>
+                     <? $summCostAllIngredients += $summCostIngredients * $good->count; ?>
                 <?php endforeach; ?>
                 <tr>
                     <td colspan="5" class="text-right">
-                        <h3>Total: <?= Shopcart::cost() ?>$</h3>
+                        <h3>Всего: <?= Shopcart::cost() + $summCostAllIngredients.' '?>грн.</h3>
                     </td>
                 </tr>
                 </tbody>

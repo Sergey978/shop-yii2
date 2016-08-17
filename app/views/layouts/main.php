@@ -4,6 +4,7 @@ use yii\easyii\modules\subscribe\api\Subscribe;
 use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use yii\widgets\Menu;
+use yii\helpers\Html;
 
 $asset = \app\assets\AppAsset::register($this);
 
@@ -20,7 +21,7 @@ $goodsCount = count(Shopcart::goods());
       <div class="row">
         <div class="col-lg-2 col-sm-3 col-md-2 col-xs-12"> 
           <!-- Header Logo --> 
-          <a class="logo" title="Magento Commerce" href="#"><img alt="Magento Commerce" src="<?= $asset->baseUrl ?>/images/Lerox_logo.jpg"></a> 
+          <a class="logo" title="Lerox" href="#"><img alt="Lerox" src="<?= $asset->baseUrl ?>/images/Lerox_logo.jpg"></a> 
           <!-- End Header Logo --> 
         </div>
         
@@ -109,42 +110,47 @@ $goodsCount = count(Shopcart::goods());
 			<div class="top-cart-contain">
             <div class="mini-cart">
              <i class="icon-cart hidden-xs "></i>
-			 <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> 
-			 <a href="#"> <i class="icon-cart-sm hidden-sm  hidden-md hidden-lg"></i>
-                <div class="cart-box"><span class="title">Корзина</span><span id="cart-total"> <?= $goodsCount ?>  </span></div>
-                		
-			 </a>
-				</div>
-              <div>
-                <div style="display: none;" class="top-cart-content arrow_box">
-                  <div class="block-subtitle">Recently added item(s)</div>
-                  <ul id="cart-sidebar" class="mini-products-list">
-                    <li class="item even"> <a class="product-image" href="#" title="Downloadable Product "><img alt="Downloadable Product " src="images/product1.jpg" width="80"></a>
-                      <div class="detail-item">
-                        <div class="product-details"> <a href="#" title="Remove This Item" onclick="" class="glyphicon glyphicon-remove">&nbsp;</a> <a class="glyphicon glyphicon-pencil" title="Edit item" href="#">&nbsp;</a>
-                          <p class="product-name"> <a href="#" title="Downloadable Product">Downloadable Product </a> </p>
+             
+			<div  data-hover="dropdown" class="basket"> 
+                             <a href="/shopcart"><i class="icon-cart-sm hidden-sm  hidden-md hidden-lg"></i>
+                                   <div class="cart-box">
+                                       <span class="title">Корзина</span>
+                                       <span id="cart-total"> <?= $goodsCount ?>  </span>
+                                   </div>
+
+                            </a>
+			</div>
+                        <div>
+                          <div style="display: none;" class="top-cart-content arrow_box">
+                            <div class="block-subtitle">Recently added item(s)</div>
+                            <ul id="cart-sidebar" class="mini-products-list">
+                              <li class="item even"> <a class="product-image" href="#" title="Downloadable Product "><img alt="Downloadable Product " src="images/product1.jpg" width="80"></a>
+                                <div class="detail-item">
+                                  <div class="product-details"> <a href="#" title="Remove This Item" onclick="" class="glyphicon glyphicon-remove">&nbsp;</a> <a class="glyphicon glyphicon-pencil" title="Edit item" href="#">&nbsp;</a>
+                                    <p class="product-name"> <a href="#" title="Downloadable Product">Downloadable Product </a> </p>
+                                  </div>
+                                  <div class="product-details-bottom"> <span class="price">$100.00</span> <span class="title-desc">Qty:</span> <strong>1</strong> </div>
+                                </div>
+                              </li>
+                              <li class="item last odd"> <a class="product-image" href="#" title="  Sample Product "><img alt="  Sample Product " src="images/product11.jpg" width="80"></a>
+                                <div class="detail-item">
+                                  <div class="product-details"> <a href="#" title="Remove This Item" onclick="" class="glyphicon glyphicon-remove">&nbsp;</a> <a class="glyphicon glyphicon-pencil" title="Edit item" href="#">&nbsp;</a>
+                                    <p class="product-name"> <a href="#" title="  Sample Product "> Sample Product </a> </p>
+                                  </div>
+                                  <div class="product-details-bottom"> <span class="price">$320.00</span> <span class="title-desc">Qty:</span> <strong>2</strong> </div>
+                                </div>
+                              </li>
+                            </ul>
+                            <div class="top-subtotal">Subtotal: <span class="price">$420.00</span></div>
+                            <div class="actions">
+                              <button class="btn-checkout" type="button"><span>Checkout</span></button>
+                              <?= Html::a('Корзина', ['/shopcart'], ['class'=>'view-cart']) ?>
+                          
+                            </div>
+                          </div>
                         </div>
-                        <div class="product-details-bottom"> <span class="price">$100.00</span> <span class="title-desc">Qty:</span> <strong>1</strong> </div>
                       </div>
-                    </li>
-                    <li class="item last odd"> <a class="product-image" href="#" title="  Sample Product "><img alt="  Sample Product " src="images/product11.jpg" width="80"></a>
-                      <div class="detail-item">
-                        <div class="product-details"> <a href="#" title="Remove This Item" onclick="" class="glyphicon glyphicon-remove">&nbsp;</a> <a class="glyphicon glyphicon-pencil" title="Edit item" href="#">&nbsp;</a>
-                          <p class="product-name"> <a href="#" title="  Sample Product "> Sample Product </a> </p>
-                        </div>
-                        <div class="product-details-bottom"> <span class="price">$320.00</span> <span class="title-desc">Qty:</span> <strong>2</strong> </div>
-                      </div>
-                    </li>
-                  </ul>
-                  <div class="top-subtotal">Subtotal: <span class="price">$420.00</span></div>
-                  <div class="actions">
-                    <button class="btn-checkout" type="button"><span>Checkout</span></button>
-                    <button class="view-cart" type="button"><span>View Cart</span></button>
-                  </div>
-                </div>
-              </div>
-            </div>
-				<div id="ajaxconfig_info" style="display:none"> <a href="#/"></a>
+				<div id="ajaxconfig_info" style="display:none"> <a href="/shopcart"></a>
 				  <input value="" type="hidden">
 				  <input id="enable_module" value="1" type="hidden">
 				  <input class="effect_to_cart" value="1" type="hidden">
@@ -175,7 +181,7 @@ $goodsCount = count(Shopcart::goods());
               <ul style="display:none;" class="submenu">
                 <li>
                   <ul class="topnav">
-                    <li class="level0 nav-7 level-top parent"> <a class="level-top" href="#index.html"> <span>Home</span> </a>
+                      <li class="level0 nav-7 level-top parent"> <a class="level-top" href="/index.php"> <span>Главная</span> </a>
                     
                     </li>
                     <li class="level0 nav-6 level-top parent"> <a class="level-top" href="#"> <span>Pages</span> </a>
@@ -198,7 +204,7 @@ $goodsCount = count(Shopcart::goods());
        
         <a class="logo-small" title="Magento Commerce" href="#index.html"><img alt="Magento Commerce" src="images/logo-small.png"></a>
         <ul id="nav" class="hidden-xs">
-          <li class="level0 parent drop-menu"><a href="#index.html" class="active"><span>Home</span> </a>
+            <li class="level0 parent drop-menu"><a href="/index.php" class="active"><span>Главная</span> </a>
             
           </li>
           <li class="level0 parent drop-menu"><a href="#"><span>Pages</span> </a>

@@ -49,4 +49,12 @@ $(document).ready(function(){
         getIngridients(this.href);
         return false;
     });
-});         
+}); 
+
+
+$(document).ready(function(){
+    $('.images-container .cat a').hover(function(){
+        console.log('hi');
+     $(this).children('img').stop().animate({width:"300px",height:"300px"}, 400);
+    }, function(){ $(this).children('img').stop().animate({width:"150px",height:"150px"}, 400); });
+  });

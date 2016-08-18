@@ -23,21 +23,27 @@ $this->params['breadcrumbs'][] = $page->model->title;
         <br/>
         <ul class = 'row'>
          
-        <?php     foreach ($categories as $category) : ?>
+        <?php     foreach ($categories as $c) : ?>
+            <? $category =  Catalog::cat( $c->slug ); ?> 
             <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                 <div class="col-item">
                
                   <div class="images-container"> 
-         
+                                <?= $category->seo('title'); ?>   
                             <?= Html::a(Html::img($category->image,[
                                 'alt' =>$category->title,
                                 'class' => 'img-rounded img-responsive',
-                                'width'=>'220',
+                                'width'=>'174',
                                 'height'=>'auto',
 
                                 ]), ['/custom/cat', 'slug' => $category->slug]);
                             ?>
-         
+       
+                      <br>
+                      <br>
+       
+                   
+                      
                    </div>
                 </div>   
             </li>   

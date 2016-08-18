@@ -202,7 +202,7 @@ $goodsCount = count(Shopcart::goods());
         </div>
         <!--End mobile-menu --> 
        
-        <a class="logo-small" title="Magento Commerce" href="#index.html"><img alt="Magento Commerce" src="images/logo-small.png"></a>
+        <a class="logo-small" title="Magento Commerce" href="#index.html"><img alt="Lerox" src="<?= $asset->baseUrl ?>/images/logo-small.png"></a>
         <ul id="nav" class="hidden-xs">
             <li class="level0 parent drop-menu"><a href="/index.php" class="active"><span>Главная</span> </a>
             

@@ -53,8 +53,12 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){
-    $('.images-container .cat a').hover(function(){
-        console.log('hi');
-     $(this).children('img').stop().animate({width:"300px",height:"300px"}, 400);
-    }, function(){ $(this).children('img').stop().animate({width:"150px",height:"150px"}, 400); });
+    $('.images-container .cat ').hover(function(){
+      
+       
+     $(this).children('a').children('img').stop().animate({width:"200px",height:"200px"}, 400);
+     $(this).children('h4').css({'font-size':'22px'});
+    }, function(){ $(this).children('a').children('img').stop().animate({width:"174px",height:"174px"}, 400);
+    $(this).children('h4').css({'font-size':'18px'});
+});
   });

@@ -30,11 +30,13 @@ $this->params['breadcrumbs'][] = $page->model->title;
                
                   <div class="images-container"> 
                       <div class="cat">
-                             <?= $category->seo('title'); ?>   
+                             <h4><?= $category->seo('title'); ?></h4>   
                             <?= Html::a(Html::img($category->image,[
                                 'alt' =>$category->title,
                                 'class' => 'img-rounded img-responsive',
-                                
+                                'title' => $category->seo('description'),
+                                'data-toggle'=>'tooltip',
+                                'data-placement' => 'bottom'
 
                                 ]), ['/custom/cat', 'slug' => $category->slug]);
                             ?>

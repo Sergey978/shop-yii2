@@ -5,10 +5,13 @@ use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use yii\widgets\Menu;
 use yii\helpers\Html;
+use yii\easyii\modules\catalog\api\Catalog;
 
 $asset = \app\assets\AppAsset::register($this);
 
-$goodsCount = count(Shopcart::goods());
+$goods = Shopcart::goods();
+$goodsCount = count($goods);
+
 ?>
 <?php $this->beginContent('@app/views/layouts/base.php'); ?>
 
@@ -107,7 +110,7 @@ $goodsCount = count(Shopcart::goods());
 		
 		<!-- Top Cart -->
         <div class="col-lg-3 col-sm-5 col-md-4 col-xs-12">
-			<div class="top-cart-contain">
+            <div class="top-cart-contain">
             <div class="mini-cart">
              <i class="icon-cart hidden-xs "></i>
              
@@ -122,25 +125,62 @@ $goodsCount = count(Shopcart::goods());
 			</div>
                         <div>
                           <div style="display: none;" class="top-cart-content arrow_box">
-                            <div class="block-subtitle">Recently added item(s)</div>
-                            <ul id="cart-sidebar" class="mini-products-list">
-                              <li class="item even"> <a class="product-image" href="#" title="Downloadable Product "><img alt="Downloadable Product " src="images/product1.jpg" width="80"></a>
-                                <div class="detail-item">
-                                  <div class="product-details"> <a href="#" title="Remove This Item" onclick="" class="glyphicon glyphicon-remove">&nbsp;</a> <a class="glyphicon glyphicon-pencil" title="Edit item" href="#">&nbsp;</a>
-                                    <p class="product-name"> <a href="#" title="Downloadable Product">Downloadable Product </a> </p>
-                                  </div>
-                                  <div class="product-details-bottom"> <span class="price">$100.00</span> <span class="title-desc">Qty:</span> <strong>1</strong> </div>
-                                </div>
-                              </li>
-                              <li class="item last odd"> <a class="product-image" href="#" title="  Sample Product "><img alt="  Sample Product " src="images/product11.jpg" width="80"></a>
-                                <div class="detail-item">
-                                  <div class="product-details"> <a href="#" title="Remove This Item" onclick="" class="glyphicon glyphicon-remove">&nbsp;</a> <a class="glyphicon glyphicon-pencil" title="Edit item" href="#">&nbsp;</a>
-                                    <p class="product-name"> <a href="#" title="  Sample Product "> Sample Product </a> </p>
-                                  </div>
-                                  <div class="product-details-bottom"> <span class="price">$320.00</span> <span class="title-desc">Qty:</span> <strong>2</strong> </div>
-                                </div>
-                              </li>
-                            </ul>
+                            <div class="block-subtitle">Добавленные товары</div>
+                            <?php if(count($goods)) : ?>
+                                        <ul id="cart-sidebar" class="mini-products-list">
+                                            <? $summCostAllIngredients = 0; ?>
+                                            <?php foreach($goods as $good) : ?>   
+                                             
+                                            <li class="item even">
+                                                 <?=  Html::img($good->item->image,[
+                                                    'alt' =>$good->item->title,
+                                                    'class' => 'product-image',
+                                                    'width'=>'80',
+                                                    'height'=>'auto', ]);?>
+                                                
+                                                
+                                                
+                                                <div class="detail-item">
+                                                    <div class="product-details"> 
+                                                        
+                                                      <?=  Html::a('&nbsp;', 
+                                                            ['/shopcart/remove/', 'id' => $good->id], 
+                                                            ['title'=>'Удалить из корзины', 'class'=>'glyphicon glyphicon-remove' ]);?>
+                                                        
+                                                        <? $ingridients = explode ('|',$good->options)?>
+                                                        <?  $summCostIngredients = 0;?>
+                                                        <? if (count($ingridients ) > 0):?> 
+                                                        <h5>Составное средство. </h5>
+                                                        <p class="product-name"> 
+                                                            
+                                                             <?=$good->item->title ?> 
+                                                            
+                                                        </p>
+
+
+                                                            <? foreach ($ingridients as $ingridient) :?>
+                                                                    <? $component = Catalog::get($ingridient); ?>
+                                                                    <? $summCostIngredients+=$component->price; ?>
+                                                            <? endforeach;?>
+
+                                                        <? else :?>  
+                                                          <?= $good->options ? "($good->options)" : '' ?>
+                                                        <? endif; ?>
+                                                        
+
+                                                     
+                                                    </div>
+                                                    <div class="product-details-bottom"> <span class="price">$100.00</span> <span class="title-desc">Qty:</span> <strong>1</strong> </div>
+                                                </div>
+                                              </li>  
+                                              
+                                              
+                                              
+                                              
+                                        </ul>
+                            
+                            <? $summCostAllIngredients += $summCostIngredients * $good->count; ?>
+                            <?php endforeach; ?>
                             <div class="top-subtotal">Subtotal: <span class="price">$420.00</span></div>
                             <div class="actions">
                               <button class="btn-checkout" type="button"><span>Checkout</span></button>
@@ -150,14 +190,10 @@ $goodsCount = count(Shopcart::goods());
                           </div>
                         </div>
                       </div>
-				<div id="ajaxconfig_info" style="display:none"> <a href="/shopcart"></a>
-				  <input value="" type="hidden">
-				  <input id="enable_module" value="1" type="hidden">
-				  <input class="effect_to_cart" value="1" type="hidden">
-				  <input class="title_shopping_cart" value="Go to shopping cart" type="hidden">
-				</div>
-
-			</div>
+		<?php else : ?>
+                    <div class="top-subtotal">Корзина пуста</div>
+                <?php endif; ?>		
+            </div>
           <div class="signup"> &nbsp</div>
         </div> 
         <!-- End Top Cart --> 

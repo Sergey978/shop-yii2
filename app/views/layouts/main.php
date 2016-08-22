@@ -148,42 +148,46 @@ $goodsCount = count($goods);
                                                             ['title'=>'Удалить из корзины', 'class'=>'glyphicon glyphicon-remove' ]);?>
                                                         
                                                         <? $ingridients = explode ('|',$good->options)?>
+                                                        
+                                                          <p class="product-name"> <?=$good->item->title ?></p>
+                                                        
                                                         <?  $summCostIngredients = 0;?>
-                                                        <? if (count($ingridients ) > 0):?> 
-                                                        <h5>Составное средство. </h5>
-                                                        <p class="product-name"> 
-                                                            
-                                                             <?=$good->item->title ?> 
-                                                            
-                                                        </p>
+                                                        <? if (Catalog::get($ingridients[0] )):?> 
+                                                                <h5>Составное средство. </h5>
+                                                              
+                                                                    <? foreach ($ingridients as $ingridient) :?>
+                                                                            <? $component = Catalog::get($ingridient); ?>
+                                                                            <? $summCostIngredients+=$component->price; ?>
+                                                                    <? endforeach;?>
 
-
-                                                            <? foreach ($ingridients as $ingridient) :?>
-                                                                    <? $component = Catalog::get($ingridient); ?>
-                                                                    <? $summCostIngredients+=$component->price; ?>
-                                                            <? endforeach;?>
-
-                                                        <? else :?>  
-                                                          <?= $good->options ? "($good->options)" : '' ?>
+                                                                <? else :?>  
+                                                                  <?= $good->options ? "($good->options)" : '' ?>
                                                         <? endif; ?>
                                                         
 
                                                      
                                                     </div>
-                                                    <div class="product-details-bottom"> <span class="price">$100.00</span> <span class="title-desc">Qty:</span> <strong>1</strong> </div>
+                                                    <? $summCostIngredients += $good->price ?>
+                                                    <div class="product-details-bottom"> 
+                                                        <span class="price">
+                                                            <?= $summCostIngredients  * $good->count.'  грн.'; ?>  
+                                                        </span> 
+                                                        <span class="title-desc">Количество:</span> 
+                                                        <strong> <?= $good->count; ?></strong> 
+                                                    </div>
                                                 </div>
-                                              </li>  
+                                             </li>  
                                               
-                                              
+                                               <? $summCostAllIngredients += $summCostIngredients * $good->count; ?>
+                                            <?php endforeach; ?>
                                               
                                               
                                         </ul>
                             
-                            <? $summCostAllIngredients += $summCostIngredients * $good->count; ?>
-                            <?php endforeach; ?>
-                            <div class="top-subtotal">Subtotal: <span class="price">$420.00</span></div>
+                           
+                            <div class="top-subtotal">Всего: <span class="price"><?=$summCostAllIngredients?> грн.</span></div>
                             <div class="actions">
-                              <button class="btn-checkout" type="button"><span>Checkout</span></button>
+                              <button class="btn-checkout" type="button"><span>Оформить заказ</span></button>
                               <?= Html::a('Корзина', ['/shopcart'], ['class'=>'view-cart']) ?>
                           
                             </div>

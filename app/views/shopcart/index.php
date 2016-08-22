@@ -3,6 +3,7 @@ use yii\easyii\modules\page\api\Page;
 use yii\easyii\modules\shopcart\api\Shopcart;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\easyii\modules\catalog\api\Catalog;
 
 $page = Page::get('page-shopcart');
 
@@ -36,7 +37,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
                             <?= Html::a($good->item->title, ['/shop/view', 'slug' => $good->item->slug]) ?><br>
                               <? $ingridients = explode ('|',$good->options)?>
                             <?  $summCostIngredients = 0;?>     
-                          <? if (count($ingridients ) > 0):?>  
+                          <? if (Catalog::get($ingridients [0])):?>  
                           <?=' Цена ...'. $good->price. 'грн.'?> 
                             <h5>Ингредиенты</h5>
                                 <? foreach ($ingridients as $ingridient) :?>

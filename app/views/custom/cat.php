@@ -16,28 +16,33 @@ $this->params['breadcrumbs'][] = $cat->model->title;
    <div class="col-main  col-sm-push-3 wow">    
 
      
-    <ul class="products-grid">
+   
          
         <?php if(count($categories)): ?>
             
     <?php foreach ($categories as $category)  : ?>   
-        <h3><?=$category->title.': Выберите основу';?> </h3>
-            
-        <div class="row" > 
-            <?php if(count($categories)): ?>
-                <?php foreach ($items[$category->slug] as $item)  : ?>
-                    <?= $this->render('base2', ['item' => $item]) ?>
-                        <?php endforeach; ?>
-                            <?php endif; ?>
-               
-        </div>  
+       <div class="container">
+            <a data-toggle="collapse" href="#<?=$category->slug?>">
+                     <?=$category->title.': Выберите основу';?> 
+             </a>
+
+             <div id="<?=$category->slug?>" class="panel-collapse collapse" > 
+                 <?php if(count($categories)): ?>
+                     <?php foreach ($items[$category->slug] as $item)  : ?>
+                         <?= $this->render('base2', ['item' => $item]) ?>
+                             <?php endforeach; ?>
+                                 <?php endif; ?>
+
+             </div>  
+        </div> 
     <?php endforeach; ?>
+      
 <?php else : ?>
     <p>Здесь ничего нет</p>
 <?php endif; ?>
       
   
-    </ul>
+   
     
    </div>
 

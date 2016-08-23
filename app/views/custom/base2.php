@@ -6,7 +6,7 @@ use yii\easyii\modules\catalog\api\Catalog;
 
         
           
-        <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
+        <div class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                 <div class="col-item">
                
                   <div class="images-container"> 
@@ -65,5 +65,5 @@ use yii\easyii\modules\catalog\api\Catalog;
                 </div>
                 
                 
-        </li>
+        </div>
     

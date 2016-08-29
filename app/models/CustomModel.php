@@ -6,6 +6,9 @@ use Yii;
 use yii\base\Model;
 use yii\easyii\modules\catalog\api\Catalog;
 use yii\easyii\modules\catalog\api\ItemObject;
+use \yii\db\Query;
+
+
 
 class CustomModel  {
   
@@ -13,7 +16,7 @@ class CustomModel  {
   // return array   Child Categories as ObjectCategories
   public function getChaildCategories($slug){
       $_parentCategory =  Catalog::cat($slug);
-      $_tree = $_lft = $_parentCategory->model->tree;
+      $_tree  = $_parentCategory->model->tree;
       $_level = $_parentCategory->model->depth + 1;
       $_lft = $_parentCategory->model->lft;
       $_rgt = $_parentCategory->model->rgt;
@@ -61,4 +64,25 @@ class CustomModel  {
       
       return $ingridients;
   }
+  
+  public  function getItemsInTree($slug){
+      $_idTree = (new \yii\db\Query())
+          ->select(['tree'])
+          ->from('easyii_catalog_categories')
+          ->where(['slug' => $slug])
+          ->one();
+      
+     $_idTree;
+      
+      $items = (new \yii\db\Query())
+              ->select('easyii_catalog_items.slug')
+              ->from(['easyii_catalog_items'])
+              ->innerJoin('easyii_catalog_categories',
+                       'easyii_catalog_items.category_id = '
+                      . 'easyii_catalog_categories.category_id AND easyii_catalog_categories.tree ='.$_idTree['tree'] )
+              ->all();
+      
+      return $items;
+  }
+  
 }

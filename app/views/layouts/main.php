@@ -6,6 +6,7 @@ use yii\widgets\Breadcrumbs;
 use yii\widgets\Menu;
 use yii\helpers\Html;
 use yii\easyii\modules\catalog\api\Catalog;
+use app\models\CustomModel;
 
 $asset = \app\assets\AppAsset::register($this);
 
@@ -221,7 +222,7 @@ $goodsCount = count($goods);
               <ul style="display:none;" class="submenu">
                 <li>
                   <ul class="topnav">
-                      <li class="level0 nav-7 level-top parent"> <a class="level-top" href="/index.php"> <span>Главная</span> </a>
+                      <li class="level0 nav-7 level-top parent"> <a class="level-top" href="/index"> <span>Главная</span> </a>
                     
                     </li>
                     <li class="level0 nav-6 level-top parent"> <a class="level-top" href="#"> <span>Pages</span> </a>
@@ -242,59 +243,44 @@ $goodsCount = count($goods);
         </div>
         <!--End mobile-menu --> 
        
-        <a class="logo-small" title="Lerox" href="/index.php"><img alt="Lerox" src="<?= $asset->baseUrl ?>/images/logo-small.png"></a>
+        <a class="logo-small" title="Lerox" href="/index"><img alt="Lerox" src="<?= $asset->baseUrl ?>/images/logo-small.png"></a>
         <ul id="nav" class="hidden-xs">
-            <li class="level0 parent drop-menu"><a href="/index.php" class="active"><span>Главная</span> </a>
+            <li class="level0 parent drop-menu"><a href="/index" class="active"><span>Главная</span> </a>
             
           </li>
           <li class="level0 nav-7 level-top parent"><a href="#"><span>Pages</span> </a>
     
           </li>
-          <li class="level0 nav-7 level-top parent"> <a href="grid.html" class="level-top "> <span>Women</span> </a>
+          <li class="level0 nav-7 level-top parent"> <a href="grid" class="level-top "> <span>Готовые средства</span> </a>
             <div class="level0-wrapper dropdown-6col" style="display:none;">
               <div class="level0-wrapper2">
                 <div class="nav-block nav-block-center grid12-8 itemgrid itemgrid-4col">
                   <ul class="level0">
-                    <li class="level1 nav-6-1 parent item"> <a href="grid.html"><span>Styliest Bag</span></a> 
-                      <!--sub sub category-->
-                      <ul class="level1">
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Clutch Handbags</span></a> </li>
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Diaper Bags</span></a> </li>
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Bags</span></a> </li>
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Hobo Handbags</span></a> </li>
-                      </ul>
-                      <!--sub sub category--> 
-                    </li>
-                    <li class="level1 nav-6-1 parent item"> <a href="grid.html"><span>Material Bag</span></a> 
-                      <!--sub sub category-->
-                      <ul class="level1">
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Beaded Handbags</span></a> </li>
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Fabric Handbags</span></a> </li>
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Handbags</span></a> </li>
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Leather Handbags</span></a> </li>
-                      </ul>
-                      <!--sub sub category--> 
-                    </li>
-                    <li class="level1 nav-6-1 parent item"> <a href="grid.html"><span>Shoes</span></a> 
-                      <!--sub sub category-->
-                      <ul class="level1">
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Flat Shoes</span></a> </li>
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Flat Sandals</span></a> </li>
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Boots</span></a> </li>
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Heels</span></a> </li>
-                      </ul>
-                      <!--sub sub category--> 
-                    </li>
-                    <li class="level1 nav-6-1 parent item"> <a href="grid.html"><span>Jwellery</span></a> 
-                      <!--sub sub category-->
-                      <ul class="level1">
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Bracelets</span></a> </li>
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Necklaces &amp; Pendants</span></a> </li>
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Pendants</span></a> </li>
-                        <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Pins &amp; Brooches</span></a> </li>
-                      </ul>
-                      <!--sub sub category--> 
-                    </li>
+                      <? $model = new CustomModel(); ?>
+                      <? $categories = $model->getChaildCategories('gotovaya-produkciya'); ?>
+                      <? foreach ($categories as $category): ?>
+                            <li class="level1 nav-6-1 parent item"> 
+                                <a href="grid/<?=$category->slug?>"><span><?=$category->title?></span></a> 
+                          
+                                  <!--sub sub category-->
+                                  <ul class="level1">
+                                    <? $subcategories = $model->getChaildCategories($category->slug);?>
+                                      <? foreach ($subcategories as $subcategory): ?>
+                                      
+                                    <li class="level2 nav-6-1-1"> 
+                                        <a href="grid/<?=$subcategory->slug?>">
+                                         <span><?=$subcategory->title?></span>
+                                        </a> 
+                                    </li>
+                                    
+                                    
+                                     <? endforeach;     ?>
+                                  </ul>
+                                  <!--sub sub category--> 
+                                </li>
+                    
+                       <? endforeach;     ?>
+                    
                   </ul>
                   <div class="nav-add">
                     <div class="push_item1">

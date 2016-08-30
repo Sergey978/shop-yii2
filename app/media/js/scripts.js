@@ -1,6 +1,9 @@
 $(function(){
     console.log('Hello world!');
 });
+
+
+//Всплывающие подсказки jquery tooltip
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip({
         html: true, 
@@ -8,6 +11,7 @@ $(document).ready(function(){
         });
 });
 
+// получение списка ингридиентов с помощью AJAX 
 function getIngridients(url){
         $.get(url, function(data){
       console.log(data);
@@ -43,7 +47,7 @@ function getIngridients(url){
      
      
      
-     
+// при клике на ссылку ингридиента      
 $(document).ready(function(){
     $("div.ingridient  a").click(function(){
         getIngridients(this.href);
@@ -51,7 +55,7 @@ $(document).ready(function(){
     });
 }); 
 
-
+//увеличение размеров картинок на выборе категории
 $(document).ready(function(){
     $('.images-container .cat ').hover(function(){
       

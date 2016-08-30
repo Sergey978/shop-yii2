@@ -79,21 +79,26 @@ $model = new CustomModel();
                     <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6">
                       <div class="col-item">
 
-                        <div class="images-container"> <a class="product-image" title="<?=$good->title?>" href="product_detail.html"> <img src="<?=$good->image?>" class="img-responsive" alt="a"> </a>
-                          <div class="actions">
-                            <div class="actions-inner">
-                              <button type="button" title="Add to Cart" class="button btn-cart"><span>Add to Cart</span></button>
-                              <ul class="add-to-links">
-                                <li><a href="wishlist.html" title="Add to Wishlist" class="link-wishlist"><span>Add to Wishlist</span></a></li>
-                                <li><a href="compare.html" title="Add to Compare" class="link-compare "><span>Add to Compare</span></a></li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="qv-button-container"> <a class="qv-e-button btn-quickview-1" href="quick_view.html"><span><span>Quick View</span></span></a> </div>
+                        <div class="images-container"> 
+                            <a class="product-image" title="<?=$good->title?>" href="product_detail.html"> 
+                                <img src="<?=$good->image?>" class="img-responsive" alt="<?=$good->title?>"> 
+                            </a>
+                          
+                          
+                             <div class="qv-button-container"> 
+                              <div class="qv-e-button">
+
+                               <?=  Html::a(  '<span><span>Quick View</span></span>',
+                                   ['/custom/ingridients/', 'slug' => $item->slug]);?> 
+
+                              </div> 
+                         </div>
+                            
+                            
                         </div>
                         <div class="info">
                           <div class="info-inner">
-                            <div class="item-title"> <a title=" Sample Product" href="product_detail.html"> Sample Product </a> </div>
+                            <div class="item-title"> <a title=" <?=$good->title?>" href="product_detail.html"> <?=$good->title?> </a> </div>
                             <!--item-title-->
                             <div class="item-content">
                               <div class="ratings">
@@ -102,8 +107,8 @@ $model = new CustomModel();
                                 </div>
                               </div>
                               <div class="price-box">
-                                <p class="special-price"> <span class="price"> $45.00 </span> </p>
-                                <p class="old-price"> <span class="price-sep">-</span> <span class="price"> $50.00 </span> </p>
+                                <p class="special-price"> <span class="price"> <?=$good->price.' грн.'?> </span> </p>
+                                
                               </div>
                             </div>
                             <!--item-content--> 

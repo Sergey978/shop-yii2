@@ -2720,10 +2720,17 @@ margin-right: 10px;
 	margin-top: 4px;
 	margin-bottom: 4px
 }
-.item .col-item .images-container {
+
+
+.item .col-item  .images-container {
 	position: relative;
 	
 }
+	
+
+
+
+
 .item .col-item .images-container .product-image:before {
 	background: rgba(0,0,0,0.19);
 	content: "";

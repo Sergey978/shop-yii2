@@ -34,6 +34,8 @@ $config = [
                 '<controller:\w+>/cat/<slug:[\w-]+>' => '<controller>/cat',
                 '<controller:\w+>/ingridients/<slug:[\w-]+>' => '<controller>/ingridients',
                 '<controller:\w+>/move/<slug:[\w-]+>' => '<controller>/move',
+                '<controller:\w+>/category/<slug:[\w-]+>' => '<controller>/category',
+                '<controller:\w+>/subcategory/<slug:[\w-]+>' => '<controller>/subcategory',
             ],
         ],
         'assetManager' => [

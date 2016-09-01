@@ -143,11 +143,11 @@ $model = new CustomModel();
                  
               <ul>
                 <? foreach ($categories as $category): ?>  
-                <li> <a  href="#"><?=$category->title?></a> <span class="subDropdown minus"></span>
+                <li> <a  href="/grid/category/<?=$category->slug ?>"><?=$category->title?></a> <span class="subDropdown minus"></span>
                   <? $subcategories = $model->getChaildCategories($category->slug);?>  
                   <ul class="level0_415" style="display:block">
                         <? foreach ($subcategories as $subcategory): ?>
-                            <li> <a href="grid/<?=$subcategory->slug?>">
+                            <li> <a href="/grid/subcategory/<?=$subcategory->slug?>">
                             <?=$subcategory->title?></a> 
                                
                             </li>

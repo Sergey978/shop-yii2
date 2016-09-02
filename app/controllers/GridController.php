@@ -13,13 +13,15 @@ class GridController extends \yii\web\Controller
     public function actionIndex(){
         $model = new CustomModel;
         
-        $items = $model->getItemsInTree('gotovaya-produkciya');
-        
+         $cat = Catalog::cat('gotovaya-produkciya');
+         $result = $model->getChildItems('gotovaya-produkciya');
              
        
         
         return $this->render('index',[
-            'items' => $items,]);
+           'items' => $result['items'],
+           'pages' => $result['pages'],
+           'cat' => $cat,]);
     }
     
     
@@ -31,25 +33,15 @@ class GridController extends \yii\web\Controller
             throw new NotFoundHttpException('Shop category not found.');
         }
         
-         $items = $model->getChildItems($cat->slug);
+         $result = $model->getChildItems($cat->slug);
          
           return $this->render('index',[
-            'items' => $items,]);
+            'items' => $result['items'],
+              'pages'  => $result['pages'],
+              'cat' => $cat,]);
     }
 
-    public function actionSubcategory($slug){
-        $model = new CustomModel;
-        $cat = Catalog::cat($slug);
-
-        if(!$cat){
-            throw new NotFoundHttpException('Shop category not found.');
-        }
-        
-         $items = $model->getChildItems($cat->slug);
-         
-          return $this->render('index',[
-            'items' => $items,]);
-    }
+   
 }
 
 

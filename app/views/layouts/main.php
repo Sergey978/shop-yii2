@@ -260,7 +260,7 @@ $goodsCount = count($goods);
                       <? $categories = $model->getChaildCategories('gotovaya-produkciya'); ?>
                       <? foreach ($categories as $category): ?>
                             <li class="level1 nav-6-1 parent item"> 
-                                <a href="grid/<?=$category->slug?>"><span><?=$category->title?></span></a> 
+                                <a href="/grid/category/<?=$category->slug?>"><span><?=$category->title?></span></a> 
                           
                                   <!--sub sub category-->
                                   <ul class="level1">
@@ -268,7 +268,7 @@ $goodsCount = count($goods);
                                       <? foreach ($subcategories as $subcategory): ?>
                                       
                                     <li class="level2 nav-6-1-1"> 
-                                        <a href="grid/<?=$subcategory->slug?>">
+                                        <a href="/grid/category/<?=$subcategory->slug?>">
                                          <span><?=$subcategory->title?></span>
                                         </a> 
                                     </li>

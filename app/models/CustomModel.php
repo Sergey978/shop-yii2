@@ -6,7 +6,8 @@ use Yii;
 use yii\base\Model;
 use yii\easyii\modules\catalog\api\Catalog;
 use yii\easyii\modules\catalog\api\ItemObject;
-use \yii\db\Query;
+use yii\db\Query;
+use yii\data\Pagination;
 
 
 
@@ -94,8 +95,8 @@ class CustomModel  {
     
      
       
-      
-      $items = (new \yii\db\Query())
+      // выполняем запрос
+      $query  = (new \yii\db\Query())
               ->select('easyii_catalog_items.slug')
               ->from(['easyii_catalog_items'])
               ->innerJoin('easyii_catalog_categories',
@@ -103,11 +104,24 @@ class CustomModel  {
                       . 'easyii_catalog_categories.category_id '
                       . ' AND easyii_catalog_categories.lft >= '.$_lft
                       . ' AND easyii_catalog_categories.rgt <= '.$_rgt
-                      . ' AND easyii_catalog_categories.tree = '.$_tree )
-              ->all();
-          
-      return $items;
-      
+                      . ' AND easyii_catalog_categories.tree = '.$_tree );
+              
+       // делаем копию выборки
+      $countQuery = clone $query;
+      // подключаем класс Pagination, выводим по 9 пунктов на страницу
+      $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 3]);
+      $pages->pageSizeParam = false;
+    
+       // производим выборку элементов уже для конкретной страницы
+        $items = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+            
+        // Передаем данные в представление
+        return  [
+             'items' => $items,
+             'pages' => $pages,
+        ];
   }
   
 }

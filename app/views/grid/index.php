@@ -4,10 +4,12 @@ use yii\easyii\modules\file\api\File;
 use yii\easyii\modules\page\api\Page;
 use yii\helpers\Html;
 use app\models\CustomModel;
+use yii\widgets\LinkPager;
 
 
 
-$this->params['breadcrumbs'][] = $page->model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Готовые средства', 'url' => ['/grid/index']];
+$this->params['breadcrumbs'][] = $cat->model->title;
 $model = new CustomModel(); 
 ?>
 <section class="main-container col2-left-layout">
@@ -15,61 +17,23 @@ $model = new CustomModel();
       <div class="row">
         <section class="col-main col-sm-9 col-sm-push-3 wow">
           <div class="category-title">
-            <h1>Tops &amp; Tees</h1>
+            <h1><?=$cat->title?></h1>
           </div>
-          <!-- category banner -->
-          <div class="category-description std">
-            <div class="slider-items-products">
-              <div id="category-desc-slider" class="product-flexslider hidden-buttons">
-                <div style="opacity: 1; display: block;" class="slider-items slider-width-col1 owl-carousel owl-theme"> 
-                  
-                  <!-- Item -->
-                  <div class="owl-wrapper-outer"><div style="width: 3392px; left: 0px; display: block;" class="owl-wrapper"><div style="width: 848px;" class="owl-item"><div class="item"> <a href="#"><img alt="category-banner" src="images/category-banner-img.jpg"></a>
-                    <div class="cat-img-title cat-bg cat-box">
-                      <h2 class="cat-heading">New Fashion 2015</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus diam arcu.</p>
-                    </div>
-                  </div></div><div style="width: 848px;" class="owl-item"><div class="item"> <a href="#x"><img alt="category-banner" src="images/category-banner-img1.jpg"></a> </div></div></div></div>
-                  <!-- End Item --> 
-                  
-                  <!-- Item -->
-                  
-                  <!-- End Item --> 
-                  
-                <div class="owl-controls clickable"><div class="owl-buttons"><div class="owl-prev"><a class="flex-prev"></a></div><div class="owl-next"><a class="flex-next"></a></div></div></div></div>
-              </div>
-            </div>
-          </div>
-          <!-- category banner -->
+          
           <div class="category-products">
             <div class="toolbar">
               
         
               <div class="pager">
-                <div id="limiter">
-                  <label>View: </label>
-                  <ul>
-                    <li><a href="#">15<span class="right-arrow"></span></a>
-                      <ul>
-                        <li><a href="#">20</a></li>
-                        <li><a href="#">30</a></li>
-                        <li><a href="#">35</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-                <div class="pages">
-                  <label>Page:</label>
-                  <ul class="pagination">
-                    <li><a href="#">«</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">»</a></li>
-                  </ul>
-                </div>
+               
+                 <?   echo LinkPager::widget([
+                                'pagination' => $pages,
+                                'registerLinkTags' => true
+                            ]);
+                  
+                 
+                 ?>
+             
               </div>
             </div>
             <ul class="products-grid">
@@ -147,7 +111,7 @@ $model = new CustomModel();
                   <? $subcategories = $model->getChaildCategories($category->slug);?>  
                   <ul class="level0_415" style="display:block">
                         <? foreach ($subcategories as $subcategory): ?>
-                            <li> <a href="/grid/subcategory/<?=$subcategory->slug?>">
+                            <li> <a href="/grid/category/<?=$subcategory->slug?>">
                             <?=$subcategory->title?></a> 
                                
                             </li>
@@ -169,8 +133,7 @@ $model = new CustomModel();
        
     
      
-          <div class="block block-banner"><a href="#"><img src="images/block-banner.png" alt="block-banner"></a></div>
-        </aside>
+         </aside>
       </div>
     </div>
   </section>

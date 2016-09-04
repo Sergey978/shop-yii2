@@ -355,12 +355,21 @@ a.block-currency:focus {
 	padding: 6px 0 3px 0px;
 }
 .toplinks .links {
-	text-align: right;
+	text-align: justify;
+        
 }
-.toplinks .links div {
-	display: inline-block;
-	text-align: right;
+
+.links div{
+     display: inline-block;
 }
+
+.links:after {
+  display: inline-block;
+  content: "";
+  width: 100%;
+}
+
+
 .toplinks div.links div a {
 	color: black;
 	display: inline-block;
@@ -368,6 +377,7 @@ a.block-currency:focus {
 	color: #a6a6a6;
 	font-size: 18px;
 	padding-left: 20px;
+        padding-top: 20px;
 }
 .toplinks div.links div a:hover {
 	color: #7bbd42;

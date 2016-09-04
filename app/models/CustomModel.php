@@ -109,7 +109,7 @@ class CustomModel  {
        // делаем копию выборки
       $countQuery = clone $query;
       // подключаем класс Pagination, выводим по 9 пунктов на страницу
-      $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 3]);
+      $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 6]);
       $pages->pageSizeParam = false;
     
        // производим выборку элементов уже для конкретной страницы

@@ -35,24 +35,16 @@ $goodsCount = count($goods);
 			<div class="header-top"> 
 				
                             <div class="row">  
-					   <div class="col-xs-4">
-						<div class="dropdown block-language-wrapper"> <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#"> <img src="<?= $asset->baseUrl ?>/images/english.png" alt="language"> English <span class="caret"></span> </a>
-						  <ul class="dropdown-menu" role="menu">
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="<?= $asset->baseUrl ?>/images/english.png" alt="language"> English </a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="<?= $asset->baseUrl ?>/images/francais.png" alt="language"> French </a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="<?= $asset->baseUrl ?>/images/german.png" alt="language"> German </a></li>
-						  </ul>
-						</div>
-					  </div> 
+					  
 					
-					<div class="col-xs-8"> 
+					<div class="col-xs-12"> 
 						<!-- Header Top Links -->
-						<div class="toplinks">
+                                                <div class="toplinks">
 						  <div class="links">
-							<div class="myaccount"><a title="My Account" href="#login.html"><span class="hidden-xs">My Account</span></a></div>
-							<div class="wishlist"><a title="My Wishlist" href="#wishlist.html"><span class="hidden-xs">Wishlist</span></a></div>
-							<div class="check"><a title="Checkout" href="#checkout.html"><span class="hidden-xs">Checkout</span></a></div>
-							<div class="phone hidden-xs">1 800 123 1234</div>
+							<div class="myaccount"><a title="О проекте" href="#login.html"><span class="hidden-xs">О проекте</span></a></div>
+							<div class="wishlist"><a title="Доставка" href="#wishlist.html"><span class="hidden-xs">Доставка</span></a></div>
+							<div class="check"><a title="Контакты" href="#checkout.html"><span class="hidden-xs">Контакты</span></a></div>
+							<div class="check"><a title="Магазины" href="#checkout.html"><span class="hidden-xs">Магазины</span></a></div>
 						  </div>
 						</div>
 						<!-- End Header Top Links --> 
@@ -188,7 +180,8 @@ $goodsCount = count($goods);
                            
                             <div class="top-subtotal">Всего: <span class="price"><?=$summCostAllIngredients?> грн.</span></div>
                             <div class="actions">
-                              <button class="btn-checkout" type="button"><span>Оформить заказ</span></button>
+                             
+                              <?= Html::a('Оформить заказ', ['/shopcart'], ['class'=>'btn-checkout']) ?>
                               <?= Html::a('Корзина', ['/shopcart'], ['class'=>'view-cart']) ?>
                           
                             </div>
@@ -222,7 +215,7 @@ $goodsCount = count($goods);
               <ul style="display:none;" class="submenu">
                 <li>
                   <ul class="topnav">
-                      <li class="level0 nav-7 level-top parent"> <a class="level-top" href="/index"> <span>Главная</span> </a>
+                      <li class="level0 nav-7 level-top parent"> <a class="level-top" href="/"> <span>Главная</span> </a>
                     
                     </li>
                     <li class="level0 nav-6 level-top parent"> <a class="level-top" href="#"> <span>Pages</span> </a>
@@ -245,13 +238,13 @@ $goodsCount = count($goods);
        
         <a class="logo-small" title="Lerox" href="/index"><img alt="Lerox" src="<?= $asset->baseUrl ?>/images/logo-small.png"></a>
         <ul id="nav" class="hidden-xs">
-            <li class="level0 parent drop-menu"><a href="/index" class="active"><span>Главная</span> </a>
+            <li class="level0 parent drop-menu"><a href="/" class="active"><span>Главная</span> </a>
             
           </li>
           <li class="level0 nav-7 level-top parent"><a href="#"><span>Pages</span> </a>
     
           </li>
-          <li class="level0 nav-7 level-top parent"> <a href="grid" class="level-top "> <span>Готовые средства</span> </a>
+          <li class="level0 nav-7 level-top parent"> <a href="/grid" class="level-top "> <span>Готовые средства</span> </a>
             <div class="level0-wrapper dropdown-6col" style="display:none;">
               <div class="level0-wrapper2">
                 <div class="nav-block nav-block-center grid12-8 itemgrid itemgrid-4col">

@@ -39,6 +39,25 @@ class ShopcartController extends \yii\web\Controller
 
         return $this->redirect(Yii::$app->request->referrer.'?'.AddToCartForm::SUCCESS_VAR.'='.$success);
     }
+    
+    
+    public function actionAddGoods($id)
+    {
+        $item = Catalog::get($id);
+
+        if(!$item){
+            throw new NotFoundHttpException('Item not found');
+        }
+
+        $success = 0;
+        $response = Shopcart::add($item->id,  1 );
+        $success = $response['result'] == 'success' ? 1 : 0;
+        if ($success){
+            Yii::$app->session->setFlash('success', "Your message to display");
+        }
+        
+        return $this->redirect(Yii::$app->request->referrer);
+    }
 
     public function actionRemove($id)
     {

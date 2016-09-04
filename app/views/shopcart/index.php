@@ -22,9 +22,9 @@ $this->params['breadcrumbs'][] = $page->model->title;
                 <thead>
                 <tr>
                     <th>Item</th>
-                    <th width="100">Quantity</th>
-                    <th width="120">Unit Price</th>
-                    <th width="100">Total</th>
+                    <th width="100">Количество</th>
+                    <th width="120">Цена за 1 шт.</th>
+                    <th width="100">Всего</th>
                     <th width="30"></th>
                 </tr>
                 </thead>
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
                             <?= $good->price  + $summCostIngredients?>
                         </td>
                         <td><?= ($good->price + $summCostIngredients)* $good->count ?></td>
-                        <th><?= Html::a('<i class="glyphicon glyphicon-trash text-danger"></i>', ['/shopcart/remove', 'id' => $good->id], ['title' => 'Remove item']) ?></th>
+                        <th><?= Html::a('<i class="glyphicon glyphicon-trash text-danger"></i>', ['/shopcart/remove', 'id' => $good->id], ['title' => 'Удалить товар']) ?></th>
                     </tr>
                      <? $summCostAllIngredients += $summCostIngredients * $good->count; ?>
                 <?php endforeach; ?>
@@ -75,16 +75,16 @@ $this->params['breadcrumbs'][] = $page->model->title;
                 </tr>
                 </tbody>
             </table>
-            <?= Html::submitButton('<i class="glyphicon glyphicon-refresh"></i> Update', ['class' => 'btn btn-default pull-right']) ?>
+            <?= Html::submitButton('<i class="glyphicon glyphicon-refresh"></i> Пересчитать', ['class' => 'btn btn-default pull-right']) ?>
             <?= Html::endForm()?>
         </div>
         <div class="col-md-4 col-md-offset-2">
-            <h4>Checkout</h4>
+            <h4>Оформление заказа:</h4>
             <div class="well well">
                 <?= Shopcart::form(['successUrl' => Url::to('/shopcart/success')])?>
             </div>
         </div>
     </div>
 <?php else : ?>
-    <p>Shopping cart is empty</p>
+    <p>Корзина пуста</p>
 <?php endif; ?>

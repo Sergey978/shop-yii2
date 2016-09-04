@@ -5,6 +5,7 @@ use yii\easyii\modules\page\api\Page;
 use yii\helpers\Html;
 use app\models\CustomModel;
 use yii\widgets\LinkPager;
+use app\models\AddToCartForm;
 
 
 
@@ -22,30 +23,38 @@ $model = new CustomModel();
           
           <div class="category-products">
             <div class="toolbar">
-              
+                <?=Yii::$app->params['msg']?>
+                <?php if (Yii::$app->session->hasFlash('success')) : ?>
+                    <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Товар добавлен в корзину</h4>
+                <? endif;?>
         
               <div class="pager">
-               
-                 <?   echo LinkPager::widget([
-                                'pagination' => $pages,
-                                'registerLinkTags' => true
-                            ]);
-                  
-                 
-                 ?>
-             
+                <div class="pages">
+                 <? if ($pages->totalCount > $pages->pageSize ):?>
+                    <label>Страницы:</label> 
+                <? endif;?>    
+                    <?   echo LinkPager::widget([
+                                   'pagination' => $pages,
+                                   'registerLinkTags' => true,
+                                    'prevPageLabel' => '<span class="glyphicon glyphicon-chevron-left"></span>',
+                                    'nextPageLabel' => '<span class="glyphicon glyphicon-chevron-right"></span>',
+                                   
+                               ]);
+
+                    ?>
+                </div>
               </div>
             </div>
             <ul class="products-grid">
         
                 <? foreach($items as $item):?>
-                    <? $good = Catalog::get($item['slug']);?> 
+                    <? $goods = Catalog::get($item['slug']);?> 
                     <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6">
                       <div class="col-item">
 
                         <div class="images-container"> 
-                            <a class="product-image" title="<?=$good->title?>" href="product_detail.html"> 
-                                <img src="<?=$good->image?>" class="img-responsive" alt="<?=$good->title?>"> 
+                            <a class="product-image" title="<?=$goods->title?>" href="product_detail.html"> 
+                                <img src="<?=$goods->image?>" class="img-responsive" alt="<?=$goods->title?>"> 
                             </a>
                           
                           
@@ -53,7 +62,7 @@ $model = new CustomModel();
                               <div class="qv-e-button">
 
                                <?=  Html::a(  '<span><span>Quick View</span></span>',
-                                   ['/custom/ingridients/', 'slug' => $item->slug]);?> 
+                                   ['/shopcart/add-goods', 'id' => $goods->id]);?> 
 
                               </div> 
                          </div>
@@ -62,7 +71,7 @@ $model = new CustomModel();
                         </div>
                         <div class="info">
                           <div class="info-inner">
-                            <div class="item-title"> <a title=" <?=$good->title?>" href="product_detail.html"> <?=$good->title?> </a> </div>
+                            <div class="item-title"> <a title=" <?=$goods->title?>" href="product_detail.html"> <?=$goods->title?> </a> </div>
                             <!--item-title-->
                             <div class="item-content">
                               <div class="ratings">
@@ -71,7 +80,7 @@ $model = new CustomModel();
                                 </div>
                               </div>
                               <div class="price-box">
-                                <p class="special-price"> <span class="price"> <?=$good->price.' грн.'?> </span> </p>
+                                <p class="special-price"> <span class="price"> <?=$goods->price.' грн.'?> </span> </p>
                                 
                               </div>
                             </div>

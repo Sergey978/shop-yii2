@@ -8,6 +8,7 @@ use yii\widgets\LinkPager;
 use app\models\AddToCartForm;
 
 
+$page = Page::get('page-grid');
 
 $this->params['breadcrumbs'][] = ['label' => 'Готовые средства', 'url' => ['/grid/index']];
 $this->params['breadcrumbs'][] = $cat->model->title;
@@ -146,3 +147,7 @@ $model = new CustomModel();
       </div>
     </div>
   </section>
+
+<?= $cat->seo('description'); ?>
+           
+  

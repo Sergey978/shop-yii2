@@ -67,7 +67,7 @@ $goodsCount = count($goods);
 					   <div class="col-xs-6  hidden-xs hidden-sm hidden-md">
 					   <!-- Header Top Phone 1-->
 						
-							<div class="phone">1 800 123 2222</div>
+							<div class="phone">(067) <span> 123 2222</span></div>
 						
 						<!-- End Header Top Phone 1--> 
 						
@@ -76,7 +76,7 @@ $goodsCount = count($goods);
 					<div class="col-xs-6  hidden-xs hidden-sm hidden-md"> 
 						<!-- Header Top Phone 2-->
 						
-							<div class="phone">1 800 123 3333</div>
+                                                <div class="phone">(067)<span> 123 2222</span></div>
 						
 						
 						<!-- End Header Top Phone 2--> 
@@ -84,7 +84,7 @@ $goodsCount = count($goods);
 				  <div class="col-xs-10 hidden-xs hidden-sm hidden-lg"> 
 						<!-- Header Top Phone 3-->
 						
-							<div class="phone">1 800 123 4444</div>
+							<div class="phone">(067) <span> 123 2222</span></div>
 						
 						<!-- End Header Top Phone 3--> 
 				  </div>
@@ -218,9 +218,7 @@ $goodsCount = count($goods);
                       <li class="level0 nav-7 level-top parent"> <a class="level-top" href="/"> <span>Главная</span> </a>
                     
                     </li>
-                    <li class="level0 nav-6 level-top parent"> <a class="level-top" href="#"> <span>Pages</span> </a>
-                     
-                    </li>
+                    
                     <li class="level0 nav-7 level-top parent"> <a class="level-top" href="#grid.html"> <span>Fashion</span> </a> </li>
                     <li class="level0 nav-8 level-top parent"> <a class="level-top" href="#grid.html"> <span>Women</span> </a> </li>
                     <li class="level0 parent drop-menu"><a href="#blog.html"><span>Blog</span> </a><em>+</em>
@@ -241,9 +239,11 @@ $goodsCount = count($goods);
             <li class="level0 parent drop-menu"><a href="/" class="active"><span>Главная</span> </a>
             
           </li>
-          <li class="level0 nav-7 level-top parent"><a href="#"><span>Pages</span> </a>
-    
+          
+           <li class="level0 parent drop-menu"> <a class="level-top" href="/custom"><span>Новости и новинки</span></a>
+       
           </li>
+          
           <li class="level0 nav-7 level-top parent"> <a href="/grid" class="level-top "> <span>Готовые средства</span> </a>
             <div class="level0-wrapper dropdown-6col" style="display:none;">
               <div class="level0-wrapper2">
@@ -297,20 +297,18 @@ $goodsCount = count($goods);
             </div>
           </li>
        
-
-          <li class="level0 nav-7 level-top parent"> <a href="#grid.html" class="level-top"> <span>Men</span> </a>
-           
-          </li>
-          <li class="level0 nav-5 level-top first"> <a class="level-top" href="#grid.html"> <span>Electronics</span> </a>
-          
-          </li>
-          <li class="level0 nav-5 level-top parent"><a href="#grid.html"><span>Furniture </span> </a>
-           
-          </li>
-          
           <li class="level0 parent drop-menu"> <a class="level-top" href="/custom"><span>Создать средство</span></a>
        
           </li>
+          
+          <li class="level0 nav-5 level-top parent"><a href="/shopcart"><span>Полезное </span> </a>
+           
+          </li>
+          
+          <li class="level0 nav-5 level-top parent"><a href="/guestbook"><span>Отзывы </span> </a>
+           
+          </li>
+          
         </ul>
       </div>
     </div>
@@ -338,7 +336,7 @@ $goodsCount = count($goods);
  
     <div class="footer-middle container">
       <div class="col-md-3 col-sm-4">
-        <div class="footer-logo"><a href="index.html" title="Logo"><img src="<?= $asset->baseUrl ?>/images/footer-logo.png" alt="logo"></a></div>
+        <div class="footer-logo"><a href="/" title="Logo"><img src="<?= $asset->baseUrl ?>/images/footer-logo.png" alt="logo"></a></div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus diam arcu. </p>
         <div class="payment-accept">
           <div><img src="<?= $asset->baseUrl ?>/images/payment-1.png" alt="payment"> <img src="<?= $asset->baseUrl ?>/images/payment-2.png" alt="payment"> <img src="<?= $asset->baseUrl ?>/images/payment-3.png" alt="payment"> <img src="<?= $asset->baseUrl ?>/images/payment-4.png" alt="payment"></div>

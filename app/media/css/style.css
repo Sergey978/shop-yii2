@@ -203,7 +203,7 @@ legend {
 }
 .header-container .signup {
 	float: right;
-	margin-top: 28px;
+	
 	font-family: 'Roboto', sans-serif;
 	font-size: 13px;
 }
@@ -827,22 +827,39 @@ a.glyphicon-remove:hover, a.glyphicon-pencil:hover {
 
 /* 3.b Top phones */
 
-div.col-xs-6 .phone {
-	font-weight: bold;
-	font-size: 34px;
+div.col-xs-6  .phone {
+	
+	font-size: 24px;
 	margin-left: 8px;
 	color: #a6a6a6;
-	padding-top: 15%;
+	padding-top: 5%;
+}
+
+div.col-xs-6 .phone span {
+	
+	font-size: 40px;
+	margin-left: 8px;
+	color: #a6a6a6;
+	padding-top: 10%;
 }
 
 div.col-xs-10 .phone {
-	font-weight: bold;
-	font-size: 34px;
+	
+	font-size: 24px;
 	margin-left: 16px;
 	padding-left: 16px;
 	color: #a6a6a6;
 	padding-top: 10%;
 }
+
+div.col-xs-10 .phone span {
+	
+	font-size: 38px;
+	margin-left: 8px;
+	color: #a6a6a6;
+	padding-top: 15%;
+}
+
 
 div.col-xs-6 .phone::before {
     content: "\f095";

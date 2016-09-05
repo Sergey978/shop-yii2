@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
 <div class="row">
     <div class="col-md-8">
         <br>
-        <?php foreach(Guestbook::items(['pagination' => ['pageSize' => 2]]) as $item) : ?>
+        <?php foreach(Guestbook::items(['pagination' => ['pageSize' => 6]]) as $item) : ?>
             <div class="guestbook-item">
                 <b><?= $item->name ?></b>
                 <small class="text-muted"><?= $item->date ?></small>
@@ -29,9 +29,9 @@ $this->params['breadcrumbs'][] = $page->model->title;
     </div>
     <div class="col-md-4">
         <?php if(Yii::$app->request->get(Guestbook::SENT_VAR)) : ?>
-            <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Message successfully added</h4>
+            <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Ваш отзыв добавлен.</h4>
         <?php else : ?>
-            <h4>Leave message</h4>
+            <h4>Оставить отзыв</h4>
             <div class="well well-sm">
                 <?= Guestbook::form() ?>
             </div>

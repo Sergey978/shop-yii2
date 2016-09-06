@@ -75,14 +75,25 @@ body{
       
   }
 
-  
+ //каталог изменнеие размеров картинок 
 .cat {text-align: center;}
 .cat  img{width:174px;height:auto;margin:auto;}
 .cat:hover {overflow:visible;text-align: center;}
 .cat:hover img{visibility:visible;z-index:150;margin:auto;}
 
 
-  
+/*SEARCH FORM*/
+.search-form {
+    border-radius: 30px 0px 0px 30px;
+    margin-top: 3px;
+    /*border-radius:Top-left, Top-right, Bottom-right, Bottom-left;*/
+}
+/*to cange only one form and not all give unique class name like  class="search-form" */
+ .search-btn {
+    border-radius: 0px 30px 30px 0px;
+    margin-top: 3px;
+    cursor:pointer;
+}
 
 /*Form Wizard*/
 .bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}

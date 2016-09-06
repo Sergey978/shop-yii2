@@ -309,6 +309,15 @@ $goodsCount = count($goods);
            
           </li>
           
+          <li class="level0 nav-5 level-top parent">
+              
+               
+              
+             <?=$this->render('_search_form', ['text' => $text]) ?>
+          </li>
+        
+          
+          
         </ul>
       </div>
     </div>

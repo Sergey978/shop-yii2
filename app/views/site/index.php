@@ -24,7 +24,7 @@ $this->title = $page->seo('title', $page->model->title);
 <hr/>
 
 <div class="text-center">
-    <h2>Last photos</h2>
+    <h2>Наши фото</h2>
     <br/>
     <?php foreach(Gallery::last(6) as $photo) : ?>
         <?= $photo->box(180, 135) ?>
@@ -36,12 +36,28 @@ $this->title = $page->seo('title', $page->model->title);
 <hr/>
 
 <div class="text-center">
-    <h2>Last news</h2>
-    <blockquote class="text-left">
-        <?= Html::a(News::last()->title, ['news/view', 'slug' => News::last()->slug]) ?>
-        <br/>
-        <?= News::last()->short ?>
-    </blockquote>
+    <h2>Последние новости</h2>
+     <? $news = News::last(3);?>
+    <?     foreach ($news as $new): ?>
+        <div class="row text-left">
+            <div class="col-md-2">
+                <?= Html::img($new->image,[
+                 'class' => 'img-rounded',
+                 'width'=>'160px',
+                 'height'=>'auto',
+                 ]) 
+                ?>
+            </div>
+            <div class="col-md-10">
+                 <blockquote class="text-left"> 
+                    <?= Html::a($new->title, ['news/view', 'slug' => $new->slug]) ?>
+                    </br>
+                    <?= $new->short ?>
+                 </blockquote>
+            </div>   
+        </div> 
+    </br>
+   <? endforeach;?> 
 </div>
 
 <br/>
@@ -49,26 +65,36 @@ $this->title = $page->seo('title', $page->model->title);
 
 
 <div class="text-center">
-    <h2>Last article from category #1</h2>
+    <h2>Новинки </h2>
     <br/>
-    <div class="row text-left">
-        <?php $article = Article::last(1, ['category_id' => 1]); ?>
-        <div class="col-md-2">
-            <?= Html::img($article->thumb(160, 120)) ?>
-        </div>
-        <div class="col-md-10 text-left">
-            <?= Html::a($article->title, ['articles/view', 'slug' => $article->slug]) ?>
-            <br/>
-            <?= $article->short ?>
-        </div>
-    </div>
+    <? $newArticles = Article::last(3, ['category_id' => '1']);?>
+    <? foreach ($newArticles as $newArt): ?>
+        <div class="row text-left">
+            <div class="col-md-2">
+                <?= Html::img($newArt->image,[
+                 'class' => 'img-rounded',
+                 'width'=>'160px',
+                 'height'=>'auto',
+                 ]) 
+                ?>
+            </div>
+            <div class="col-md-10">
+                 <blockquote class="text-left"> 
+                    <?= Html::a($newArt->title, ['news/view', 'slug' => $newArt->slug]) ?>
+                    </br>
+                    <?= $newArt->short ?>
+                 </blockquote>
+            </div>   
+        </div> 
+    </br>
+   <? endforeach;?> 
 </div>
 
 <br/>
 <hr/>
 
 <div class="text-center">
-    <h2>Last reviews</h2>
+    <h2>Отзывы наших пользователей</h2>
     <br/>
     <div class="row text-left">
         <?php foreach(Guestbook::last(2) as $post) : ?>

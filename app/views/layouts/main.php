@@ -25,7 +25,7 @@ $goodsCount = count($goods);
       <div class="row">
         <div class="col-lg-2 col-sm-3 col-md-2 col-xs-12"> 
           <!-- Header Logo --> 
-          <a class="logo" title="Lerox" href="#"><img alt="Lerox" src="<?= $asset->baseUrl ?>/images/Lerox_logo.jpg"></a> 
+          <a class="logo" title="Lerox" href="/"><img alt="Lerox" src="<?= $asset->baseUrl ?>/images/Lerox_logo.jpg"></a> 
           <!-- End Header Logo --> 
         </div>
         

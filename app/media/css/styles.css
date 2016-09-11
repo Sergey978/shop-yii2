@@ -7,6 +7,13 @@ html, body{
 body{
     font-family: 'Open Sans', sans-serif;
 }
+
+p{
+    font-size: 15px;
+}
+blockquote{
+    font-size: 15px;
+}
 #wrapper {
     min-height: 100%;
     height: auto !important;
@@ -20,7 +27,6 @@ body{
 .push {
     height: 52px; /* .push must be the same height as .footer */
 }
-
 
 .small-muted {
     font-size: 12px;
@@ -77,7 +83,7 @@ body{
 
  //каталог изменнеие размеров картинок 
 .cat {text-align: center;}
-.cat  img{width:174px;height:auto;margin:auto;}
+.cat  img{width:240px;height:auto;margin:auto;}
 .cat:hover {overflow:visible;text-align: center;}
 .cat:hover img{visibility:visible;z-index:150;margin:auto;}
 
@@ -94,6 +100,20 @@ body{
     margin-top: 3px;
     cursor:pointer;
 }
+
+
+
+
+#top {
+	background-color: #ccc;
+	padding: 1em
+}
+
+.intro {
+	color: red;
+	font-weight: bold;
+}
+
 
 /*Form Wizard*/
 .bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}

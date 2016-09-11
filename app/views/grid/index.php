@@ -29,7 +29,7 @@ $model = new CustomModel();
                     <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Товар добавлен в корзину</h4>
                 <? endif;?>
         
-              <div class="pager">
+              
                 <div class="pages">
                  <? if ($pages->totalCount > $pages->pageSize ):?>
                     <label>Страницы:</label> 
@@ -37,14 +37,13 @@ $model = new CustomModel();
                     <?   echo LinkPager::widget([
                                    'pagination' => $pages,
                                    'registerLinkTags' => true,
-                                    'prevPageLabel' => '<span class="glyphicon glyphicon-chevron-left"></span>',
-                                    'nextPageLabel' => '<span class="glyphicon glyphicon-chevron-right"></span>',
+                                    
                                    
                                ]);
 
                     ?>
                 </div>
-              </div>
+             
             </div>
             <ul class="products-grid">
         
@@ -55,7 +54,8 @@ $model = new CustomModel();
 
                         <div class="images-container"> 
                             <a class="product-image" title="<?=$goods->title?>" href="product_detail.html"> 
-                                <img src="<?=$goods->image?>" class="img-responsive" alt="<?=$goods->title?>"> 
+                                <img src="<?=$goods->image?>" class="img-responsive img-thumbnail" 
+                                     alt="<?=$goods->title?>"> 
                             </a>
                           
                           

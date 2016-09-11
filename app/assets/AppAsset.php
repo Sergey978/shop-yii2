@@ -6,10 +6,12 @@ class AppAsset extends \yii\web\AssetBundle
     public $sourcePath = '@app/media';
     
     public $css = [
-        'css/styles.css',
+        
         'css/css.css',
         'css/font-awesome.css',
-        'css/style.css'
+        'css/style.css',
+        'css/bootstrap_col_15.css',
+       'css/styles.css',
          
     ];
     

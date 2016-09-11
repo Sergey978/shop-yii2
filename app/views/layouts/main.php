@@ -41,10 +41,10 @@ $goodsCount = count($goods);
 						<!-- Header Top Links -->
                                                 <div class="toplinks">
 						  <div class="links">
-							<div class="myaccount"><a title="О проекте" href="#login.html"><span class="hidden-xs">О проекте</span></a></div>
-							<div class="wishlist"><a title="Доставка" href="#wishlist.html"><span class="hidden-xs">Доставка</span></a></div>
-							<div class="check"><a title="Контакты" href="#checkout.html"><span class="hidden-xs">Контакты</span></a></div>
-							<div class="check"><a title="Магазины" href="#checkout.html"><span class="hidden-xs">Магазины</span></a></div>
+							<div class="myaccount"><a title="О проекте" href="/page/about"><span class="hidden-xs">О проекте</span></a></div>
+							<div class="wishlist"><a title="Доставка" href="/page/delivery"><span class="hidden-xs">Доставка</span></a></div>
+							<div class="check"><a title="Контакты" href="/page/contacts"><span class="hidden-xs">Контакты</span></a></div>
+							<div class="check"><a title="Магазины" href="/page/shops"><span class="hidden-xs">Магазины</span></a></div>
 						  </div>
 						</div>
 						<!-- End Header Top Links --> 
@@ -236,7 +236,7 @@ $goodsCount = count($goods);
        
         <a class="logo-small" title="Lerox" href="/index"><img alt="Lerox" src="<?= $asset->baseUrl ?>/images/logo-small.png"></a>
         <ul id="nav" class="hidden-xs">
-            <li class="level0 parent drop-menu"><a href="/" class="active"><span>Главная</span> </a>
+            <li class="level0 parent drop-menu"><a href="/" class="level-top"><span>Главная</span> </a>
             
           </li>
           
@@ -309,7 +309,7 @@ $goodsCount = count($goods);
            
           </li>
           
-          <li class="level0 nav-5 level-top parent">
+          <li class="nav-custom-link level0 level-top parent">
               
                
               

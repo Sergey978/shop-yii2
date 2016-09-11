@@ -1014,7 +1014,7 @@ nav {
 }
 #nav .nav-custom-link {
 	position: static;
-	float: left;
+	float: right;
 }
 #nav .nav-custom-link .header-nav-dropdown-wrapper {
 	padding: 10px 0px;

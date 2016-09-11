@@ -56,13 +56,43 @@ $(document).ready(function(){
 }); 
 
 //увеличение размеров картинок на выборе категории
-$(document).ready(function(){
-    $('.images-container .cat ').hover(function(){
+
+  $(document).ready(function(){
       
+   obj = $('.images-container .cat').children('a').children('img')  ;
+      obj.hover(function(){
+          width = $(this).width();
+     $(this).stop().animate({width: width * 1.2 + "px",height:"auto"}, 400);
+    }, function(){ $(this).stop().animate({width: width + "px",height:"auto"}, 400);
+        });
+      
+   });
+  
+  //скачущие картинки 
+  
+  // Begin jQuery
+ 
+$(document).ready(function() {
+ 
+/* =Shadow Nav
+-------------------------------------------------------------------------- */
+ 
+    // Animate buttons, shrink and fade shadow
+ 
+    $("#nav-shadow a img").hover(function() {
+    	var e = this;
+        $(e).stop().animate({ marginTop: "-14px" }, 250, function() {
+        	$(e).animate({ marginTop: "-10px" }, 250);
+        });
+        
+    },function(){
+    	var e = this;
+        $(e).stop().animate({ marginTop: "4px" }, 250, function() {
+        	$(e).animate({ marginTop: "0px" }, 250);
+        });
        
-     $(this).children('a').children('img').stop().animate({width:"200px",height:"200px"}, 400);
-     $(this).children('h4').css({'font-size':'22px'});
-    }, function(){ $(this).children('a').children('img').stop().animate({width:"174px",height:"174px"}, 400);
-    $(this).children('h4').css({'font-size':'18px'});
+    });
+ 
+// End jQuery
+ 
 });
-  });

@@ -8,6 +8,8 @@ use yii\easyii\modules\page\api\Page;
 use yii\easyii\modules\text\api\Text;
 use yii\helpers\Html;
 
+Yii::$app->formatter->locale = 'ru-RU';
+
 $page = Page::get('page-index');
 
 $this->title = $page->seo('title', $page->model->title);
@@ -26,9 +28,9 @@ $this->title = $page->seo('title', $page->model->title);
 
 
 <div class="text-center">
-    <h2>Скачущие картинки</h2>
+    <h2>5 преимуществ Lerox Cosmetics:</h2>
     </br>
-    <ul  class = "row" id="nav-shadow" style="min-height: 160px"  >
+    <ul  class = "row" id="nav-shadow" style="min-height: 180px"  >
          
        <?php foreach(Gallery::last(5) as $photo) : ?>
         
@@ -52,13 +54,13 @@ $this->title = $page->seo('title', $page->model->title);
          
         </ul>
     
-    
 
 </div>
 
-
+<hr/>
 <div class="text-center">
     <h2>Последние новости</h2>
+     
      <? $news = News::last(3);?>
     <?     foreach ($news as $new): ?>
         <div class="row text-left">
@@ -71,12 +73,15 @@ $this->title = $page->seo('title', $page->model->title);
                 ?>
             </div>
             <div class="col-md-10 col-sm-10 col-xs-8">
-                 <blockquote class="text-left"> 
-                    <b><?= Html::a($new->title, ['news/view', 'slug' => $new->slug]) ?></b>
-                   
+                 <blockquote class="text-left">
+                     
+                    <?=Yii::$app->formatter->asDate($new->model->time,'php:m.d. Y');?>
+                      </br>
+                     <b><?= Html::a($new->title, ['news/view', 'slug' => $new->slug]) ?></b>
+                   <br/>
                     <?= $new->short ?>
-                     </br> </br>
-                    <?='Дата: '.$new->date?>
+                   
+                    
                  </blockquote>
             </div>   
         </div> 

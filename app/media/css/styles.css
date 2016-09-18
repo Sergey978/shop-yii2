@@ -24,6 +24,17 @@ blockquote{
     margin-bottom: 0;
     border-radius: 0;
 }
+
+.text-center h2 {
+    font-weight: bold;
+    
+ 
+}
+
+.text-center blockquote {
+    color: dimgrey;
+ 
+}
 .push {
     height: 52px; /* .push must be the same height as .footer */
 }

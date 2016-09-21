@@ -11,6 +11,7 @@ use app\models\CustomModel;
 use app\models\CompositeGoods;
 use yii\easyii\modules\shopcart\api\Shopcart;
 
+
 class CustomController extends \yii\web\Controller
 { 
     
@@ -52,10 +53,11 @@ class CustomController extends \yii\web\Controller
         $compositeGoods->setBaseItem($slug);
         $summ = $compositeGoods->getSumm();
         
-        return $this->render('ingridients',['baseItem'=>$baseItem, 
+        return $this->render('ingredients2',['baseItem'=>$baseItem, 
             'compositeGoods'=>$compositeGoods,
             'ingridients'=>$ingridients,
-            'summ' => $summ]);
+            'summ' => $summ,
+            'noingr' => Catalog::get('no-ingredient')]);
     }
 
     public function actionMove($slug){
@@ -69,11 +71,17 @@ class CustomController extends \yii\web\Controller
         }
         $priceBaseItem = Catalog::get($compositeGoods->getBaseItem())->model->price;
         
+        /*
+         * Для отображения пустых ячеек ингредиентов , создать пустой товар
+         * с меткой slug 'no-ingredient' картинка - знак вопроса
+         */
+        
+        
         if (Yii::$app->request->isAjax) {
-          
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             return ['ingridients' =>$selectedIngridients,
-                    'summ' => $summ];
+                    'summ' => $summ,
+                    'noingr' => Catalog::get('no-ingredient') ];
         }
 
         

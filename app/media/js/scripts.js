@@ -14,7 +14,11 @@ $(document).ready(function(){
 // получение списка ингридиентов с помощью AJAX 
 function getIngridients(url){
         $.get(url, function(data){
-      console.log(data);
+      
+      console.log(data.ingridients.length);
+       
+      
+      
             $('#summ').empty();
             $('#summ').append('Общая цена '+ data.summ +' грн.');
             
@@ -23,18 +27,34 @@ function getIngridients(url){
             
             
             $.each(data.ingridients, function(){
-                var ingridient = '<p>'+ 
-                        '<img class="img-rounded" width="60" height="auto" alt="' + 
-                        this.model.title + '" src="'+ this.model.image + '">'+
-                        this.model.title + '<br>' +
-                        '<span class="label label-warning">'+ this.model.price +'грн.</span>'+
-                        '</p>';
+                                
+                 var ingredient = '<div class="col-md-2">'+     
+                    '<img class="img-rounded img-responsive"'+ 
+                        'src="'+ this.model.image + '"'+ 
+                        'alt="' + this.model.title + '">' +                                
+                    '<div class="info-grid">'+
+                        this.model.title + '<br>'+
+                        '<span class="label label-warning">' +
+                        this.model.price + 'грн.</span>'+
+                    '</div>'+
+                '</div>';
                 
-                $('#ingridients').append(ingridient);
+                $('#ingridients').append(ingredient);
+                 })
+     // дополнение до 6 вопросами           
+                length = 6 - data.ingridients.length;
+                for (i = 0;  i< length; i++ ){
+                    
+                     var ingredient = '<div class="col-md-2">'+     
+                    '<img class="img-rounded img-responsive"'+ 
+                        'src="' + data.noingr.image +'"'+ 
+                         '">' +                                
+                    
+                    '</div>';
                 
-            
-            })
-               
+                $('#ingridients').append(ingredient);
+                    
+                }
             
         }
         else {

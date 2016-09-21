@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `easyii_article_categories` (
 DELETE FROM `easyii_article_categories`;
 /*!40000 ALTER TABLE `easyii_article_categories` DISABLE KEYS */;
 INSERT INTO `easyii_article_categories` (`category_id`, `title`, `image`, `order_num`, `slug`, `tree`, `lft`, `rgt`, `depth`, `status`) VALUES
-	(1, 'Articles category 1', NULL, 2, 'articles-category-1', 1, 1, 2, 0, 1),
+	(1, 'Novinki', NULL, 2, 'novinki', 1, 1, 2, 0, 1),
 	(2, 'Articles category 2', NULL, 1, 'articles-category-2', 2, 1, 6, 0, 1),
 	(3, 'Subcategory 1', NULL, 1, 'subcategory-1', 2, 2, 3, 1, 1),
 	(4, 'Subcategory 1', NULL, 1, 'subcategory-1-2', 2, 4, 5, 1, 1);
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `easyii_article_items` (
 DELETE FROM `easyii_article_items`;
 /*!40000 ALTER TABLE `easyii_article_items` DISABLE KEYS */;
 INSERT INTO `easyii_article_items` (`item_id`, `category_id`, `title`, `image`, `short`, `text`, `slug`, `time`, `views`, `status`) VALUES
-	(1, 1, 'First article title', '/uploads/article/article-1.jpg', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt molliti', '<p><strong>Sed ut perspiciatis</strong>, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.&nbsp;</p><ul><li>item 1</li><li>item 2</li><li>item 3</li></ul><p>ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>', 'first-article-title', 1468832913, 0, 1),
+	(1, 1, 'Новинка! Суфле-скраб "Кокос"!', '/uploads/article/79a1ceaa78.jpg', 'Суфле - скраб для душа с разными обалденно вкусными запахами! Нежно очищает и скрабирует кожу...особенно нравится деткам', '<p>dfggffg</p>', NULL, 1473239280, 0, 1),
 	(2, 1, 'Second article title', '/uploads/article/article-2.jpg', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p><ol> <li>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </li><li>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</li></ol>', 'second-article-title', 1468746513, 0, 1),
 	(3, 1, 'Third article title', '/uploads/article/article-3.jpg', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt molliti', '<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>', 'third-article-title', 1468660113, 0, 1);
 /*!40000 ALTER TABLE `easyii_article_items` ENABLE KEYS */;
@@ -105,7 +105,7 @@ DELETE FROM `easyii_carousel`;
 INSERT INTO `easyii_carousel` (`carousel_id`, `image`, `link`, `title`, `text`, `order_num`, `status`) VALUES
 	(4, '/uploads/carousel/karusel1-4a5a062217.jpg', '', '', '', 4, 1),
 	(5, '/uploads/carousel/karusel2-ed26bf3020.jpg', '', '', '', 5, 1),
-	(6, '/uploads/carousel/karusel3-12bcd658ef.jpg', '', 'Заголовок', 'text text text texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext texttext text', 6, 1);
+	(6, '/uploads/carousel/8hkqstxunja-a3463daf63.jpg', 'http://shop-yii2.loc/grid', '<b>ПОДАРОЧНЫЙ НАБОР ЗА ПОЛ ЦЕНЫ!</b>', 'Успей купить до 1 октября!', 6, 1);
 /*!40000 ALTER TABLE `easyii_carousel` ENABLE KEYS */;
 
 
@@ -124,9 +124,9 @@ CREATE TABLE IF NOT EXISTS `easyii_catalog_categories` (
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`category_id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_catalog_categories: 28 rows
+-- Дамп данных таблицы shop-yii2.easyii_catalog_categories: 31 rows
 DELETE FROM `easyii_catalog_categories`;
 /*!40000 ALTER TABLE `easyii_catalog_categories` DISABLE KEYS */;
 INSERT INTO `easyii_catalog_categories` (`category_id`, `title`, `image`, `fields`, `slug`, `tree`, `lft`, `rgt`, `depth`, `order_num`, `status`) VALUES
@@ -134,27 +134,30 @@ INSERT INTO `easyii_catalog_categories` (`category_id`, `title`, `image`, `field
 	(2, 'Smartphones', NULL, '[{"name":"brand","title":"Brand","type":"select","options":["Samsung","Apple","Nokia"]},{"name":"storage","title":"Storage","type":"string","options":""},{"name":"touchscreen","title":"Touchscreen","type":"boolean","options":""},{"name":"cpu","title":"CPU cores","type":"select","options":["1","2","4","8"]},{"name":"features","title":"Features","type":"checkbox","options":["Wi-fi","4G","GPS"]},{"name":"color","title":"Color","type":"checkbox","options":["White","Black","Red","Blue"]}]', 'smartphones', 1, 2, 3, 1, NULL, 1),
 	(3, 'Tablets', NULL, '[{"name":"brand","title":"Brand","type":"select","options":["Samsung","Apple","Nokia"]},{"name":"storage","title":"Storage","type":"string","options":""},{"name":"touchscreen","title":"Touchscreen","type":"boolean","options":""},{"name":"cpu","title":"CPU cores","type":"select","options":["1","2","4","8"]},{"name":"features","title":"Features","type":"checkbox","options":["Wi-fi","4G","GPS"]},{"name":"color","title":"Color","type":"checkbox","options":["White","Black","Red","Blue"]}]', 'tablets', 1, 4, 5, 1, NULL, 1),
 	(4, 'Category', '', '[]', 'category', 4, 1, 22, 0, 1, 1),
-	(5, 'Лицо', '/uploads/catalog/face-norm-e3ccd20199.jpg', '[]', 'face', 4, 2, 11, 1, 1, 1),
-	(6, 'Тело', '/uploads/catalog/body-norm-e884ee2068.jpg', '[]', 'body', 4, 12, 19, 1, 1, 1),
-	(7, 'Волосы', '/uploads/catalog/hair-norm-45e7f4b7b7.jpg', '[]', 'hair', 4, 20, 21, 1, 1, 1),
+	(5, 'Лицо', '/uploads/catalog/face1-ef05c1d21d.jpg', '[]', 'face', 4, 2, 11, 1, 1, 1),
+	(32, 'Для детей', '', '[]', 'dlya-detej', 16, 26, 29, 1, 4, 1),
+	(33, 'Детское мыло', '', '[]', 'detskoe-mylo', 16, 27, 28, 2, 4, 1),
+	(37, 'NoIngredient', '', '[]', 'noingredient', 37, 1, 2, 0, 5, 1),
+	(6, 'Тело', '/uploads/catalog/body-663fd3c514.jpg', '[]', 'body', 4, 12, 19, 1, 1, 1),
+	(7, 'Волосы', '/uploads/catalog/hair1-ae8fec2f69.jpg', '[]', 'hair', 4, 20, 21, 1, 1, 1),
 	(8, 'Ingridients', '', '[{"name":"type","title":"Type","type":"select","options":["\\u042d\\u043a\\u0441\\u0442\\u0440\\u0430\\u043a\\u0442\\u044b","\\u0410\\u043a\\u0442\\u0438\\u0432\\u044b","\\u042d\\u0444\\u0438\\u0440\\u043d\\u044b\\u0435 \\u043c\\u0430\\u0441\\u043b\\u0430","\\u0412\\u0438\\u0442\\u0430\\u043c\\u0438\\u043d\\u044b","\\u0412\\u0441\\u0435"]}]', 'ingridients', 8, 1, 2, 0, 2, 1),
 	(9, 'Скраб', '', '[]', 'scrab-face', 4, 5, 6, 2, 1, 1),
 	(10, 'Мыло', '', '[]', 'soap-face', 4, 7, 8, 2, 1, 1),
-	(29, 'Мыло', '', '[]', 'mylo-mug', 16, 23, 24, 2, 3, 1),
+	(29, 'Мыло', '', '[]', 'mylo-mug', 16, 23, 24, 2, 4, 1),
 	(11, 'Маска', '', '[]', 'mask-face', 4, 9, 10, 2, 1, 1),
-	(22, 'Маски', '', '[]', 'maski', 16, 7, 8, 2, 3, 1),
-	(23, 'Кремы и бальзамы', '', '[]', 'kremy-i-bal-zamy', 16, 11, 12, 2, 3, 1),
-	(25, 'Гели для душа', '', '[]', 'geli-dlya-dusha', 16, 13, 14, 2, 3, 1),
-	(26, 'Мыло', '', '[]', 'mylo-telo', 16, 15, 16, 2, 3, 1),
-	(27, 'Бальзамы', '', '[]', 'bal-zamy', 16, 19, 20, 2, 3, 1),
-	(28, 'Кремы', '', '[]', 'kremy-mug', 16, 21, 22, 2, 3, 1),
-	(12, 'Крем', '', '[]', 'krem-face', 4, 3, 4, 2, 1, 1),
-	(16, 'Готовая продукция', '', '[]', 'gotovaya-produkciya', 16, 1, 26, 0, 3, 1),
-	(17, 'Для лица', '', '[]', 'dlya-lica', 16, 2, 9, 1, 3, 1),
-	(18, 'Для тела', '', '[]', 'dlya-tela', 16, 10, 17, 1, 3, 1),
-	(19, 'Для мужчин', '', '[]', 'dlya-muzhchin', 16, 18, 25, 1, 3, 1),
-	(20, 'Кремы', '', '[]', 'kremy', 16, 3, 4, 2, 3, 1),
-	(21, 'Мыло', '', '[]', 'mylo', 16, 5, 6, 2, 3, 1),
+	(22, 'Маски', '', '[]', 'maski', 16, 7, 8, 2, 4, 1),
+	(23, 'Кремы и бальзамы', '', '[]', 'kremy-i-bal-zamy', 16, 11, 12, 2, 4, 1),
+	(25, 'Гели для душа', '', '[]', 'geli-dlya-dusha', 16, 13, 14, 2, 4, 1),
+	(26, 'Мыло', '', '[]', 'mylo-telo', 16, 15, 16, 2, 4, 1),
+	(27, 'Бальзамы', '', '[]', 'bal-zamy', 16, 19, 20, 2, 4, 1),
+	(28, 'Кремы', '', '[]', 'kremy-mug', 16, 21, 22, 2, 4, 1),
+	(12, 'Крем', '/uploads/catalog/dff1749a36.jpg', '[]', 'krem-face', 4, 3, 4, 2, 1, 1),
+	(16, 'Готовая продукция', '', '[]', 'gotovaya-produkciya', 16, 1, 30, 0, 4, 1),
+	(17, 'Для лица', '/uploads/catalog/face1-67e235e7f2.jpg', '[]', 'dlya-lica', 16, 2, 9, 1, 4, 1),
+	(18, 'Для тела', '/uploads/catalog/body-92b4f19a07.jpg', '[]', 'dlya-tela', 16, 10, 17, 1, 4, 1),
+	(19, 'Для мужчин', '/uploads/catalog/hair-92a0e7a415.jpg', '[]', 'dlya-muzhchin', 16, 18, 25, 1, 4, 1),
+	(20, 'Кремы', '', '[]', 'kremy', 16, 3, 4, 2, 4, 1),
+	(21, 'Мыло', '', '[]', 'mylo', 16, 5, 6, 2, 4, 1),
 	(13, 'Гель для душа', '', '[]', 'gel-body', 4, 13, 14, 2, 1, 1),
 	(14, 'Скраб', '', '[]', 'scrab-body', 4, 15, 16, 2, 1, 1),
 	(15, 'Бальзам', '', '[]', 'balm-body', 4, 17, 18, 2, 1, 1);
@@ -177,9 +180,9 @@ CREATE TABLE IF NOT EXISTS `easyii_catalog_items` (
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`item_id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_catalog_items: 39 rows
+-- Дамп данных таблицы shop-yii2.easyii_catalog_items: 40 rows
 DELETE FROM `easyii_catalog_items`;
 /*!40000 ALTER TABLE `easyii_catalog_items` DISABLE KEYS */;
 INSERT INTO `easyii_catalog_items` (`item_id`, `category_id`, `title`, `description`, `available`, `price`, `discount`, `data`, `image`, `slug`, `time`, `status`) VALUES
@@ -221,7 +224,8 @@ INSERT INTO `easyii_catalog_items` (`item_id`, `category_id`, `title`, `descript
 	(36, 22, 'Trendy Fruit Mask', '<p>Непосредственно перед применением 10 г порошка (около трети пакета)  развести в 30 мл (примерно 2-3 ст.л.) прохладной воды (не более 20°С).  Тщательно перемешать маску до состояния однородной густой сметаны и  нанести слоем толщиной 2-3 мм. Маска начинает загустевать уже через  несколько минут после разведения, поэтому действовать нужно быстро.  Через 30 мин снять маску одним движением снизу вверх. Для  дополнительного эффекта</p>', 100, 45, NULL, '{}', '/uploads/catalog/20c34ebab4f35f317484b4f8176c0401-933390dbc3.jpg', 'trendy-fruit-mask', 1472056212, 1),
 	(37, 23, 'Супер бальзам', '<p>супер пупер бальзам для лица</p>', 100, 23, NULL, '{}', '/uploads/catalog/11f6d88a8f4bb38677b9b4932bc7c88c-7c44f8b5ab.png', 'super-bal-zam', 1472126026, 1),
 	(38, 26, 'Мыло', '<p>Мыло мыльное&nbsp;</p>', 45, 46, 0, '{}', '/uploads/catalog/8457fe3d78a0d8224c0f307c6974ea43-600c273011.jpg', 'mylo', 1472141143, 1),
-	(39, 26, 'Мыло', '', 100, 34, 0, '{}', '', 'mylo3', 1472141239, 1);
+	(39, 26, 'Мыло', '', 100, 34, 0, '{}', '', 'mylo3', 1472141239, 1),
+	(40, 37, 'No ingredient', '', NULL, NULL, 0, '{}', '/uploads/catalog/vopros-5763abe87e.jpg', 'no-ingredient', 1474481479, 1);
 /*!40000 ALTER TABLE `easyii_catalog_items` ENABLE KEYS */;
 
 
@@ -375,15 +379,18 @@ CREATE TABLE IF NOT EXISTS `easyii_guestbook` (
   `new` tinyint(1) DEFAULT '0',
   `status` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`guestbook_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_guestbook: 3 rows
+-- Дамп данных таблицы shop-yii2.easyii_guestbook: 6 rows
 DELETE FROM `easyii_guestbook`;
 /*!40000 ALTER TABLE `easyii_guestbook` DISABLE KEYS */;
 INSERT INTO `easyii_guestbook` (`guestbook_id`, `name`, `title`, `text`, `answer`, `email`, `time`, `ip`, `new`, `status`) VALUES
 	(1, 'First user', '', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.', NULL, NULL, 1468832914, '127.0.0.1', 1, 1),
 	(2, 'Second user', '', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.', NULL, 1468832916, '127.0.0.1', 0, 1),
-	(3, 'Third user', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', NULL, NULL, 1468832917, '127.0.0.1', 1, 1);
+	(3, 'Third user', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', NULL, NULL, 1468832917, '127.0.0.1', 0, 1),
+	(4, 'Sergey', '', 'Классный магазин', NULL, 'qweer@mail.ru', 1473097384, '127.0.0.1', 1, 1),
+	(5, 'Сергей', '', 'Супер пупер дупер', NULL, 'qweer@mail.ru', 1473618255, '127.0.0.1', 1, 1),
+	(6, 'fddf', '', 'dssgg', NULL, 'fdgdg@SWDSA.ER', 1473618679, '127.0.0.1', 1, 1);
 /*!40000 ALTER TABLE `easyii_guestbook` ENABLE KEYS */;
 
 
@@ -397,9 +404,9 @@ CREATE TABLE IF NOT EXISTS `easyii_loginform` (
   `time` int(11) DEFAULT '0',
   `success` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`log_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_loginform: 20 rows
+-- Дамп данных таблицы shop-yii2.easyii_loginform: 26 rows
 DELETE FROM `easyii_loginform`;
 /*!40000 ALTER TABLE `easyii_loginform` DISABLE KEYS */;
 INSERT INTO `easyii_loginform` (`log_id`, `username`, `password`, `ip`, `user_agent`, `time`, `success`) VALUES
@@ -422,7 +429,13 @@ INSERT INTO `easyii_loginform` (`log_id`, `username`, `password`, `ip`, `user_ag
 	(17, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1472125016, 1),
 	(18, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1472125950, 1),
 	(19, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1472141048, 1),
-	(20, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1472492562, 1);
+	(20, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1472492562, 1),
+	(21, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1473008423, 1),
+	(22, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1473008509, 1),
+	(23, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1473015426, 1),
+	(24, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1473015541, 1),
+	(25, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1474188628, 1),
+	(26, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1474481290, 1);
 /*!40000 ALTER TABLE `easyii_loginform` ENABLE KEYS */;
 
 
@@ -468,7 +481,7 @@ INSERT INTO `easyii_modules` (`module_id`, `name`, `class`, `title`, `icon`, `se
 	(5, 'feedback', 'yii\\easyii\\modules\\feedback\\FeedbackModule', 'Обратная связь', 'earphone', '{"mailAdminOnNewFeedback":true,"subjectOnNewFeedback":"New feedback","templateOnNewFeedback":"@easyii\\/modules\\/feedback\\/mail\\/en\\/new_feedback","answerTemplate":"@easyii\\/modules\\/feedback\\/mail\\/en\\/answer","answerSubject":"Answer on your feedback message","answerHeader":"Hello,","answerFooter":"Best regards.","enableTitle":false,"enablePhone":true,"enableCaptcha":false}', 0, 60, 1),
 	(6, 'file', 'yii\\easyii\\modules\\file\\FileModule', 'Файлы', 'floppy-disk', '[]', 0, 30, 1),
 	(7, 'gallery', 'yii\\easyii\\modules\\gallery\\GalleryModule', 'Фотогалерея', 'camera', '{"categoryThumb":true,"itemsInFolder":false}', 0, 90, 1),
-	(8, 'guestbook', 'yii\\easyii\\modules\\guestbook\\GuestbookModule', 'Гостевая книга', 'book', '{"enableTitle":false,"enableEmail":true,"preModerate":false,"enableCaptcha":false,"mailAdminOnNewPost":true,"subjectOnNewPost":"New message in the guestbook.","templateOnNewPost":"@easyii\\/modules\\/guestbook\\/mail\\/en\\/new_post","frontendGuestbookRoute":"\\/guestbook","subjectNotifyUser":"Your post in the guestbook answered","templateNotifyUser":"@easyii\\/modules\\/guestbook\\/mail\\/en\\/notify_user"}', 2, 80, 1),
+	(8, 'guestbook', 'yii\\easyii\\modules\\guestbook\\GuestbookModule', 'Гостевая книга', 'book', '{"enableTitle":false,"enableEmail":true,"preModerate":false,"enableCaptcha":false,"mailAdminOnNewPost":true,"subjectOnNewPost":"New message in the guestbook.","templateOnNewPost":"@easyii\\/modules\\/guestbook\\/mail\\/en\\/new_post","frontendGuestbookRoute":"\\/guestbook","subjectNotifyUser":"Your post in the guestbook answered","templateNotifyUser":"@easyii\\/modules\\/guestbook\\/mail\\/en\\/notify_user"}', 4, 80, 1),
 	(9, 'news', 'yii\\easyii\\modules\\news\\NewsModule', 'Новости', 'bullhorn', '{"enableThumb":true,"enablePhotos":true,"enableShort":true,"shortMaxLength":256,"enableTags":true}', 0, 70, 1),
 	(10, 'page', 'yii\\easyii\\modules\\page\\PageModule', 'Страницы', 'file', '[]', 0, 50, 1),
 	(11, 'shopcart', 'yii\\easyii\\modules\\shopcart\\ShopcartModule', 'Заказы', 'shopping-cart', '{"mailAdminOnNewOrder":true,"subjectOnNewOrder":"New order","templateOnNewOrder":"@easyii\\/modules\\/shopcart\\/mail\\/en\\/new_order","subjectNotifyUser":"Your order status changed","templateNotifyUser":"@easyii\\/modules\\/shopcart\\/mail\\/en\\/notify_user","frontendShopcartRoute":"\\/shopcart\\/order","enablePhone":true,"enableEmail":true}', 0, 120, 1),
@@ -496,9 +509,9 @@ CREATE TABLE IF NOT EXISTS `easyii_news` (
 DELETE FROM `easyii_news`;
 /*!40000 ALTER TABLE `easyii_news` DISABLE KEYS */;
 INSERT INTO `easyii_news` (`news_id`, `title`, `image`, `short`, `text`, `slug`, `time`, `views`, `status`) VALUES
-	(1, 'First news title', '/uploads/news/news-1.jpg', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt molliti', '<p><strong>Sed ut perspiciatis</strong>, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.&nbsp;</p><ul><li>item 1</li><li>item 2</li><li>item 3</li></ul><p>ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>', 'first-news-title', 1468832912, 0, 1),
-	(2, 'Second news title', '/uploads/news/news-2.jpg', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p><ol> <li>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </li><li>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</li></ol>', 'second-news-title', 1468746512, 0, 1),
-	(3, 'Third news title', '/uploads/news/news-3.jpg', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt molliti', '<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>', 'third-news-title', 1468660112, 0, 1);
+	(1, '<b>Заработал наш сайт!</b>', '/uploads/news/s7j5nssnsmc-fd675b153e.jpg', '1 октября 2016 года заработал наш сайт! Ура! Теперь наши любимые клиенты могут быстро получать новую информацию о новинках и делать заказы.', '<p><strong>Sed ut perspiciatis</strong>, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.&nbsp;</p><ul><li>item 1</li><li>item 2</li><li>item 3</li></ul><p>ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>', 'b-b', 1473239280, 1, 1),
+	(2, '<b>Настала осень, холода не за горами!</b>', '/uploads/news/n2b29ful1bq-e7d12fcc90.jpg', 'Не только в зимнеее время нужно баловать ваши губы! Горячий, сухой воздух летом может легко высушить ваши губы, а может и хлорка из плавательных бассейнов. Чтобы сохранить ваши губы красивыми круглый год, мы разработали для вас скраб "Ягодный"!', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p><ol> <li>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </li><li>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</li></ol>', 'b-b-2', 1473325680, 0, 1),
+	(3, 'Third news title', '/uploads/news/news-3.jpg', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt molliti', '<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>', 'third-news-title', 1468660112, 1, 1);
 /*!40000 ALTER TABLE `easyii_news` ENABLE KEYS */;
 
 
@@ -510,16 +523,16 @@ CREATE TABLE IF NOT EXISTS `easyii_pages` (
   `slug` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`page_id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_pages: 14 rows
+-- Дамп данных таблицы shop-yii2.easyii_pages: 19 rows
 DELETE FROM `easyii_pages`;
 /*!40000 ALTER TABLE `easyii_pages` DISABLE KEYS */;
 INSERT INTO `easyii_pages` (`page_id`, `title`, `text`, `slug`) VALUES
-	(1, 'Index', '<p><strong>All elements are live-editable, switch on Live Edit button to see this feature.</strong>&nbsp;</p><p>Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&nbsp;Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'page-index'),
+	(1, 'Index', '<p><strong>Мы рады приветствовать всех на нашем сайте!</strong>&nbsp;</p><p>У нас вы сможете приобрести для себя или же для других членов вашей семьи готовую косметику, в основе которой содержатся исключительно натуральные ингредиенты. А также заказать индивидуальное средство, содержащее в себе набор ваших любимых ароматов. Кроме того, на нашем сайте вы найдете множество полезных советов по уходу за кожей, телом и волосами. Сделав заказ в нашем интернет-магазине, не забудьте потом оставить свой отзыв - так вы сможете поделиться своими впечатлениями о нашей продукции с другими покупателями и дать нам обратную. Следите за новинками - мы постоянно экспериментируем и создаем праздничные косметические средства. Будьте с нами!    </p>', 'page-index'),
 	(2, 'Shop', '', 'page-shop'),
 	(3, 'Shop search', '', 'page-shop-search'),
-	(4, 'Shopping cart', '', 'page-shopcart'),
+	(4, 'Корзина', '', 'page-shopcart'),
 	(5, 'Order created', '<p>Your order successfully created. Our manager will contact you as soon as possible.</p>', 'page-shopcart-success'),
 	(6, 'News', '', 'page-news'),
 	(7, 'Articles', '', 'page-articles'),
@@ -527,9 +540,14 @@ INSERT INTO `easyii_pages` (`page_id`, `title`, `text`, `slug`) VALUES
 	(9, 'Guestbook', '', 'page-guestbook'),
 	(10, 'FAQ', '', 'page-faq'),
 	(11, 'Contact', '<p><strong>Address</strong>: Dominican republic, Santo Domingo, Some street 123</p><p><strong>ZIP</strong>: 123456</p><p><strong>Phone</strong>: +1 234 56-78</p><p><strong>E-mail</strong>: demo@example.com</p>', 'page-contact'),
-	(12, 'Выбор категории', '', 'page-custom'),
-	(13, 'Выбор основы', '', 'page-base'),
-	(14, 'Выбор ингредиентов', '', 'page-ingridients');
+	(12, 'Создайте свое индивидуальное косметическое средство!', '<p>Если в ассортименте нашей готовой продукции вы не нашли нужное косметическое средство с необходимым вам ароматом или нашли, но в его составе имеются ингредиенты, вызывающие у вас аллергическую реакцию, мы можем изготовить для вас средство с индивидуальным для вас составом.  Свяжитесь с любым из мастеров и закажите изготовление индивидуального средства. Это реально, недорого и удобно. Подобным образом можно заказывать индивидуальные косметические наборы в подарок.</p><p>Лучшая органическая декоративная косметика в Украине собрана на нашем сайте. Проверенные специалисты, качественная продукция, большой выбор – здесь есть все для вашего идеального внешнего вида. Покупайте и возвращайтесь к нам снова: ассортимент постоянно расширяется.</p><p>Если в ассортименте нашей готовой продукции вы не нашли  необходимое косметическое средство с необходимым вам ароматом или нашли,  но в его составе имеются ингредиенты, вызывающие у вас аллергическую  реакцию, мы можем изготовить для вас средство с индивидуальным для вас  составом.  Свяжитесь с любым из мастеров и закажите изготовление  индивидуального средства. Это реально, недорого и удобно. Подобным  образом можно заказывать индивидуальные косметические наборы в подарок.</p><p>Лучшая  органическая декоративная косметика в Украине собрана на нашем сайте.  Проверенные специалисты, качественная продукция, большой выбор – здесь  есть все для вашего идеального внешнего вида. Покупайте и возвращайтесь к  нам снова: ассортимент постоянно расширяется.</p>', 'page-custom'),
+	(13, 'Выберите основу для Вашего средства:', '<p>тра ля ля</p>', 'page-base'),
+	(14, 'Выберите ингрединеты для Вашего средства:', '', 'page-ingridients'),
+	(15, 'Страниц готовые средства', '<p>Страниц готовые средства Страниц готовые средства Страниц готовые средства Страниц готовые средства</p><p>Страниц готовые средства&nbsp; Страниц готовые средства Страниц готовые средства Страниц готовые средства</p>', 'page-grid'),
+	(16, 'О проекте', '<p>\r\n	Своим появлением на свет косметика Lerox обязана не команде высококвалифицированных химиков-лаборантов, не суперсовременному центру исследований, а симпатичной девчушке Арише - доченьке одной из основательниц компании, Оксане. Все началось</p><p style="text-align: center;">\r\n	<img src="/uploads/pages/1-e407c91a02.jpg"></p><p>\r\n	с того, что...</p><p>\r\n	Наши приоритеты - экологически чистая продукция, максимальная польза здоровью, борьба с возрастными изменениями кожи. <br>\r\n	Для  нашего мыла, мы не используем мыльную основу, все наше мыло является  полностью натуральным, !!!сваренным "с нуля"!!!  только из натуральных  природных ингредиентов и добавок, как по старинным рецептурам, так и с  использованием современных разработок в области косметологии и  дерматологии.<br>\r\n	Натуральное мыло ручной работы  – это замечательный  продукт, дар от природы, поддерживающий здоровье и красоту Вашей кожи,  разработанный и созданный с любовью, знаниями и наилучшими пожеланиями  красоты и здоровья специально для Вас!</p><p>\r\n	Мы  любим все настоящее и экологическое: косметику, еду, ткани, моющие  средства, а также отношения между людьми и отношение к делу.<br>\r\n	Будьте  уверены - покупая нашу продукцию, будь то натуральное мыло "с нуля" или  косметика из натуральных компонентов, в неё будет вложено знания и  чувство ответственности за то, что мы делаем. <br>\r\n	Побалуйте себя натуральным мылом и косметикой ручной работы!</p><hr><p>\r\n	<br>\r\n	<strong>Немного о хранении нашей продукции. </strong></p><p>\r\n	Натуральное  мыло со временем только набирает плюсов. Трехмесячной выдержки мыло  лучше по свойствам, чем свежесваренное, полугодичное - лучше, чем  трехмесячное. Единственный минус - со временем аромат и цвет станет  менее выраженным. <br>\r\n	Натуральное мыло с нуля хранится в сухом  проветриваемом помещении до начала использования, от года до трех лет со  дня изготовления, в зависимости от вида мыла. Натуральное мыло лучше  хранить без упаковки, или приоткрыв упаковку, чтобы мыло "дышало".<br>\r\n	Натуральная косметика ручной работы хранится только в холодильнике, согласно указанному сроку хранения.</p><p>\r\n	Внимательно  читайте описание продукции перед заказом, обращая внимание на  ингредиенты. Обязательно оговорите, если у вас есть аллергия. <br>\r\n	Смело обращайтесь, если у Вас есть вопросы, пожелания, замечания. <br>\r\n	Перед заказом лучше списаться, чтобы оговорить ваши пожелания. Мы будем стараться максимально точно им следовать.</p><p style="text-align: center;">\r\n	<img src="/uploads/pages/123-5694b3b8e6.jpg"></p>', 'page-about'),
+	(17, 'Доставка', '<li><strong> Курьерская доставка по городу Киеву. </strong></li>\r\n<p>\r\nИнтернет-магазин компьютеров, офисной и бытовой техники «USB» располагает собственной транспортной службой, сотрудники которой осуществят доставку товара к вашему дому, месту работы или отдыха месту в пределах города Одессы. Если этот вариант получения товара для вас наиболее удобен, выберите его в списке при оформлении заказа. Наш менеджер при обработке заказа свяжется по указанному вами номеру телефона и уточнит удобные для вас время и место получения товара. Доставка осуществляется непосредственно до дверей здания местонахождения покупателя.\r\n</p>\r\n<p>\r\n		График доставок:\r\n	ежедневно с ПН по ПТ- с 10.00 до 19.00\r\n</p>\r\n<p>\r\n		Доставка заказов, оформленых до 15:00, будет произведена в тот же день при наличии товара на складе.\r\n</p>\r\n<p>\r\n		Расценки на доставку:\r\n</p>\r\n<p>\r\n		  40 грн, если сумма заказа от 2500 грн. и выше;\r\n	  60 грн., если общая сумма заказа составляет менее 2500 грн.\r\n</p>\r\n<hr>\r\n<li><strong>Курьерская доставка по городу Одессе. </strong></li>\r\nИнтернет-магазин компьютеров, офисной и бытовой техники «USB» располагает собственной транспортной службой, сотрудники которой осуществят доставку товара к вашему дому, месту работы или отдыха месту в пределах города Одессы. Если этот вариант получения товара для вас наиболее удобен, выберите его в списке при оформлении заказа. Наш менеджер при обработке заказа свяжется по указанному вами номеру телефона и уточнит удобные для вас время и место получения товара. Доставка осуществляется непосредственно до дверей здания местонахождения покупателя.\r\n<p>\r\n		График доставок:\r\n	ежедневно с ПН по ПТ- с 10.00 до 19.00\r\n</p>\r\n<p>\r\n		Доставка заказов, оформленых до 15:00, будет произведена в тот же день при наличии товара на складе.\r\n	Расценки на доставку:\r\n</p>\r\n<p>\r\n		  40 грн, если сумма заказа от 2500 грн. и выше;\r\n	  60 грн., если общая сумма заказа составляет менее 2500 грн.\r\n</p>\r\n<hr>\r\n<br>\r\n<li><strong>Доставка по Украине</strong></li>\r\n	Интернет-магазин компьютеров, офисной и  бытовой техники «USB» для жителей Украины осуществляет доставку с  помощью любой почтовой службы, службы доставки, или перевозчика,  располагающих представительством в городе или населенном пункте  получателя.\r\n<p>\r\n	<img src="http://shop-yii2.loc/uploads/pages/content305799-d1dc383594.png">\r\n</p>\r\n<p>\r\n		 	Список наиболее популярных служб доставки товаров по Украине:\r\n	 	- ИнТайм\r\n	 	- Новая Почта\r\n	<img src="/uploads/pages/3-45a042358c.jpg">\r\n</p>\r\n<p>\r\n		 	Оплату доставки и страховки осуществляет получатель согласно тарифам избранной службы доставки.\r\n</p>\r\n<p>\r\n		 	Ежедневно Львов, Ивано-франковск, Мукачево  и остальные населенные пункты западной украины, Черкассы, Хмельницкий и  другие города центральной и восточной Украины получают грузы от  интернет-магазина "USB".\r\n</p>', 'page-delivery'),
+	(18, 'Контакты', '<p style="margin-left: 40px;"><img src="/uploads/pages/tel-7a5200e5e9.jpg"> &nbsp;<strong>+38 (093) 4221010<br></strong></p><p style="margin-left: 20px;"><strong></strong></p><p style="margin-left: 40px;"><img src="/uploads/pages/tel-7cb5e67dcb.jpg"> <strong> &nbsp;+38 (093) 4221010<br></strong></p><hr><br><p style="margin-left: 40px;"><img src="/uploads/pages/mail-3914109deb.jpg"> <strong>lerox@gmail.com<br></strong></p><hr><p style="margin-left: 20px;"><br><strong></strong></p><p style="margin-left: 20px;"><strong></strong></p><p><strong></strong></p><p style="margin-left: 40px;"><img src="/uploads/pages/vk-2b52541089.jpg"><strong> <a href="https://vk.com/lerox.cosmetics"> https://vk.com/lerox.cosmetics<br></a></strong></p><p style="margin-left: 40px;"><img src="/uploads/pages/fb-38811c5285.jpg"><a href="https://www.facebook.com/lerox_cosmetics"><strong>https://www.facebook.com/lerox_cosmetics</strong></a></p><p style="margin-left: 20px;"><a href="https://www.facebook.com/lerox_cosmetics"><strong></strong></a></p><p style="margin-left: 40px;"><img src="/uploads/pages/ig-6db812399d.jpg"> <strong></strong><a href="https://www.instagram.com/lerox_cosmetics"><strong>https://www.instagram.com/lerox_cosmetics</strong></a></p><p><cite></cite></p><p style="margin-left: 20px;"> </p><p style="margin-left: 20px;"><a href="https://www.facebook.com/lerox_cosmetics"><strong></strong></a></p><p style="text-align: center;"><img src="/uploads/pages/slajjdshou-2-glavnaya-df543abd11.jpg"></p><p style="margin-left: 20px;"><br><a href="https://www.facebook.com/lerox_cosmetics"><strong></strong></a></p><p style="margin-left: 20px;"><strong><a href="https://vk.com/lerox.cosmetics"></a></strong></p><p style="margin-left: 20px;"><strong></strong></p>', 'page-contacts'),
+	(19, 'Магазины', '', 'page-shops');
 /*!40000 ALTER TABLE `easyii_pages` ENABLE KEYS */;
 
 
@@ -543,9 +561,9 @@ CREATE TABLE IF NOT EXISTS `easyii_photos` (
   `order_num` int(11) NOT NULL,
   PRIMARY KEY (`photo_id`),
   KEY `model_item` (`class`,`item_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_photos: 27 rows
+-- Дамп данных таблицы shop-yii2.easyii_photos: 21 rows
 DELETE FROM `easyii_photos`;
 /*!40000 ALTER TABLE `easyii_photos` DISABLE KEYS */;
 INSERT INTO `easyii_photos` (`photo_id`, `class`, `item_id`, `image`, `description`, `order_num`) VALUES
@@ -559,23 +577,17 @@ INSERT INTO `easyii_photos` (`photo_id`, `class`, `item_id`, `image`, `descripti
 	(8, 'yii\\easyii\\modules\\catalog\\models\\Item', 3, '/uploads/photos/iphone-2.jpg', '', 8),
 	(9, 'yii\\easyii\\modules\\catalog\\models\\Item', 3, '/uploads/photos/iphone-3.jpg', '', 9),
 	(10, 'yii\\easyii\\modules\\catalog\\models\\Item', 3, '/uploads/photos/iphone-4.jpg', '', 10),
-	(11, 'yii\\easyii\\modules\\news\\models\\News', 1, '/uploads/photos/news-1-1.jpg', '', 11),
-	(12, 'yii\\easyii\\modules\\news\\models\\News', 1, '/uploads/photos/news-1-2.jpg', '', 12),
-	(13, 'yii\\easyii\\modules\\news\\models\\News', 1, '/uploads/photos/news-1-3.jpg', '', 13),
-	(14, 'yii\\easyii\\modules\\news\\models\\News', 1, '/uploads/photos/news-1-4.jpg', '', 14),
+	(28, 'yii\\easyii\\modules\\news\\models\\News', 1, '/uploads/photos/s7j5nssnsmc-585eb4127a.jpg', '', 28),
+	(29, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/del1-19e12b394e.jpg', 'Мы доставляем косметику во все города и населенные пункты Украины с помощью перевозчиков.', 24),
+	(14, 'yii\\easyii\\modules\\news\\models\\News', 1, '/uploads/photos/s7j5nssnsmc-e89cc78c23.jpg', '', 14),
 	(15, 'yii\\easyii\\modules\\article\\models\\Item', 1, '/uploads/photos/article-1-1.jpg', '', 15),
 	(16, 'yii\\easyii\\modules\\article\\models\\Item', 1, '/uploads/photos/article-1-2.jpg', '', 16),
 	(17, 'yii\\easyii\\modules\\article\\models\\Item', 1, '/uploads/photos/article-1-3.jpg', '', 17),
 	(18, 'yii\\easyii\\modules\\article\\models\\Item', 1, '/uploads/photos/news-1-4.jpg', '', 18),
-	(19, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/album-1-9.jpg', '', 19),
-	(20, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/album-1-8.jpg', '', 20),
-	(21, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/album-1-7.jpg', '', 21),
-	(22, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/album-1-6.jpg', '', 22),
-	(23, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/album-1-5.jpg', '', 23),
-	(24, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/album-1-4.jpg', '', 24),
-	(25, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/album-1-3.jpg', '', 25),
-	(26, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/album-1-2.jpg', '', 26),
-	(27, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/album-1-1.jpg', '', 27);
+	(30, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/nat-91db811b08.jpg', 'Органическая косметика из Германии Topfer – это нежнейшие средства на основе ценных масел холодного отжима, молочной сыворотки и пшеничных отрубей. Вся линия имеет немецкий органический сертификат и рекомендована малышам с первого дня жизни.Особой любовью среди клиентов пользуется сухая смесь для ванн на основе отрубей и сухого молока. Одна крышечка этого средства превращает воду в ванной в увлажняющее молочко, которое смягчает кожу и не оставляет жирных следов. Ваш малыш останется довольным приятным ароматом и нежным прикосновением воды к коже.', 30),
+	(24, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/family-6fdb8f7d90.jpg', 'Уникальная рецептура - универсального крема "для всех" быть просто не может, так как каждый человек уникален! Мы уверены, что именно такой подход гарантирует результат - отзывы наших дорогих клиенток это подтверждают! \n    Активный состав и гарантированно высокое качество. Состав производства нашей косметики включает в себя около 2000 ингредиентов. Используются только лучшие, современные активные вещества. \n    Максимум натуральных компонентов! Мы не используем в производстве косметики вытяжки - в лабораториях индивидуальной косметики I.C.Lab применяются только живые клетки растений. Их эффективность работы проверена и доказана многими учеными. \n    Накопительный эффект и пролонгированное действие. Живые клетки воздействуют на клеточном уровне, и кожа, получив такую подпитку, сохраняется молодой довольно долго, а процесс увядания тормозится.', 27),
+	(25, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/vibor-43e2009346.jpg', 'Уникальная рецептура - универсального крема "для всех" быть просто не может, так как каждый человек уникален! Мы уверены, что именно такой подход гарантирует результат - отзывы наших дорогих клиенток это подтверждают! \n    Активный состав и гарантированно высокое качество. Состав производства нашей косметики включает в себя около 2000 ингредиентов. Используются только лучшие, современные активные вещества. \n    Максимум натуральных компонентов! Мы не используем в производстве косметики вытяжки - в лабораториях индивидуальной косметики I.C.Lab применяются только живые клетки растений. Их эффективность работы проверена и доказана многими учеными. \n    Накопительный эффект и пролонгированное действие. Живые клетки воздействуют на клеточном уровне, и кожа, получив такую подпитку, сохраняется молодой довольно долго, а процесс увядания тормозится.', 25),
+	(27, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/hand-dc0439caeb.jpg', 'В разработке рецептур принимают участие косметологи и химики-технологи с многолетним опытом работы. В нашем ассортименте фито-минеральные средства для очищения и ухода за кожей лица и тела (литобиочистки, литобиомаски, литобиоскраб), солевые скрабы для тела, мягкое мыло Бельди.\n\nФито-минеральная косметика производится на основе уникального по своим характеристикам минерала вулканического происхождения – цеолита с добавлением каолина, сухих растительных экстрактов. Продукция не содержит искусственных консервантов, ароматизаторов, синтетических витаминов, загустителей и прочих вредных для здоровья модификаций. Производится и хранится в виде порошка, комбинируется с водой, маслами, душистыми водами, разнообразными активами. Разводится непосредственно перед применением и наносится на кожу. После нанесения начинает активно работать, отдавая коже полезные микроэлементы, витамины и помогает сохранить природную естественную красоту Вашей кожи.\n\nСолевые скрабы для тела изготовлены из натуральных компонетов, обладают н', 29);
 /*!40000 ALTER TABLE `easyii_photos` ENABLE KEYS */;
 
 
@@ -590,16 +602,16 @@ CREATE TABLE IF NOT EXISTS `easyii_seotext` (
   `description` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`seotext_id`),
   UNIQUE KEY `model_item` (`class`,`item_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_seotext: 31 rows
+-- Дамп данных таблицы shop-yii2.easyii_seotext: 33 rows
 DELETE FROM `easyii_seotext`;
 /*!40000 ALTER TABLE `easyii_seotext` DISABLE KEYS */;
 INSERT INTO `easyii_seotext` (`seotext_id`, `class`, `item_id`, `h1`, `title`, `keywords`, `description`) VALUES
 	(1, 'yii\\easyii\\modules\\page\\models\\Page', 1, '', 'EasyiiCMS demo', '', 'yii2, easyii, admin'),
 	(2, 'yii\\easyii\\modules\\page\\models\\Page', 2, 'Shop categories', 'Extended shop title', '', ''),
 	(3, 'yii\\easyii\\modules\\page\\models\\Page', 3, 'Shop search results', 'Extended shop search title', '', ''),
-	(4, 'yii\\easyii\\modules\\page\\models\\Page', 4, 'Shopping cart H1', 'Extended shopping cart title', '', ''),
+	(4, 'yii\\easyii\\modules\\page\\models\\Page', 4, 'Ваша корзина', '', '', ''),
 	(5, 'yii\\easyii\\modules\\page\\models\\Page', 5, 'Success', 'Extended order success title', '', ''),
 	(6, 'yii\\easyii\\modules\\page\\models\\Page', 6, 'News H1', 'Extended news title', '', ''),
 	(7, 'yii\\easyii\\modules\\page\\models\\Page', 7, 'Articles H1', 'Extended articles title', '', ''),
@@ -623,10 +635,12 @@ INSERT INTO `easyii_seotext` (`seotext_id`, `class`, `item_id`, `h1`, `title`, `
 	(25, 'yii\\easyii\\modules\\article\\models\\Item', 3, 'Third article H1', '', '', ''),
 	(26, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, 'Album 1 H1', 'Extended Album 1 title', '', ''),
 	(27, 'yii\\easyii\\modules\\gallery\\models\\Category', 2, 'Album 2 H1', 'Extended Album 2 title', '', ''),
-	(28, 'yii\\easyii\\modules\\page\\models\\Page', 12, 'Страница выбора категории', '', '', ''),
+	(28, 'yii\\easyii\\modules\\page\\models\\Page', 12, 'Выберите нужную категорию:', '', '', ''),
 	(29, 'yii\\easyii\\modules\\catalog\\models\\Category', 5, 'Уход за лицом', 'Уход за лицом', '', 'Крема, маски, лосьоны'),
 	(30, 'yii\\easyii\\modules\\catalog\\models\\Category', 6, '', 'Уход за телом', '', 'Лосьоны, крема, и тд'),
-	(31, 'yii\\easyii\\modules\\catalog\\models\\Category', 7, '', 'Уход за волосами', '', 'Шампуни, бальзамы.');
+	(31, 'yii\\easyii\\modules\\catalog\\models\\Category', 7, '', 'Уход за волосами', '', 'Шампуни, бальзамы.'),
+	(32, 'yii\\easyii\\modules\\catalog\\models\\Category', 16, '', 'готовые средства', '', 'Страниц готовые средства\r\n\r\nСтраниц готовые средства Страниц готовые средства Страниц готовые средства Страниц готовые средства'),
+	(33, 'yii\\easyii\\modules\\catalog\\models\\Category', 20, '', '', '', 'текст кремы');
 /*!40000 ALTER TABLE `easyii_seotext` ENABLE KEYS */;
 
 
@@ -668,9 +682,9 @@ CREATE TABLE IF NOT EXISTS `easyii_shopcart_goods` (
   `price` float DEFAULT '0',
   `discount` int(11) DEFAULT '0',
   PRIMARY KEY (`good_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_shopcart_goods: 33 rows
+-- Дамп данных таблицы shop-yii2.easyii_shopcart_goods: 42 rows
 DELETE FROM `easyii_shopcart_goods`;
 /*!40000 ALTER TABLE `easyii_shopcart_goods` DISABLE KEYS */;
 INSERT INTO `easyii_shopcart_goods` (`good_id`, `order_id`, `item_id`, `count`, `options`, `price`, `discount`) VALUES
@@ -706,7 +720,16 @@ INSERT INTO `easyii_shopcart_goods` (`good_id`, `order_id`, `item_id`, `count`, 
 	(33, 15, 10, 3, 'active-scvalan|active-mentol|active-aloe', 21, 0),
 	(34, 15, 5, 1, 'extr-jenshen|extr-koraduba|active-scvalan', 35, 0),
 	(37, 15, 5, 1, 'vitamin-f', 35, 0),
-	(39, 16, 13, 1, 'active-scvalan|active-mentol', 23, 0);
+	(39, 16, 13, 1, 'active-scvalan|active-mentol', 23, 0),
+	(40, 17, 5, 1, 'active-scvalan|active-mentol|active-aloe', 35, 0),
+	(58, 18, 13, 2, 'vitamin-f|active-mentol|extr-koraduba', 23, 0),
+	(61, 21, 31, 1, '', 65, 0),
+	(60, 20, 27, 1, '', 56, 0),
+	(59, 19, 31, 1, '', 65, 0),
+	(62, 21, 7, 1, 'active-mentol|extr-koraduba', 42, 0),
+	(63, 22, 27, 1, '', 56, 0),
+	(64, 23, 37, 1, '', 23, 0),
+	(65, 24, 29, 1, '', 45, 0);
 /*!40000 ALTER TABLE `easyii_shopcart_goods` ENABLE KEYS */;
 
 
@@ -725,9 +748,9 @@ CREATE TABLE IF NOT EXISTS `easyii_shopcart_orders` (
   `new` tinyint(1) DEFAULT '0',
   `status` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`order_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_shopcart_orders: 16 rows
+-- Дамп данных таблицы shop-yii2.easyii_shopcart_orders: 24 rows
 DELETE FROM `easyii_shopcart_orders`;
 /*!40000 ALTER TABLE `easyii_shopcart_orders` DISABLE KEYS */;
 INSERT INTO `easyii_shopcart_orders` (`order_id`, `name`, `address`, `phone`, `email`, `comment`, `remark`, `access_token`, `ip`, `time`, `new`, `status`) VALUES
@@ -746,7 +769,15 @@ INSERT INTO `easyii_shopcart_orders` (`order_id`, `name`, `address`, `phone`, `e
 	(13, '', '', '', '', '', '', 'OAxQ86yraT7CqMJx5CXQM0i-pN4Ps4IA', '127.0.0.1', 1471784343, 0, 0),
 	(14, '', '', '', '', '', '', 'TFLtc_lkJjXGyxbjUslE15FMwwdkdII4', '127.0.0.1', 1471799769, 0, 0),
 	(15, '', '', '', '', '', '', 'vINzAe0YZkdV7fnjSUBXR6CnIvsyKmZT', '127.0.0.1', 1471884442, 0, 0),
-	(16, '', '', '', '', '', '', 'eNiQ5FK0e0DdDAd5RQv7HSgMijp4RUXb', '127.0.0.1', 1471975843, 0, 0);
+	(16, '', '', '', '', '', '', 'eNiQ5FK0e0DdDAd5RQv7HSgMijp4RUXb', '127.0.0.1', 1471975843, 0, 0),
+	(17, '', '', '', '', '', '', 'Ozxw3bwPLvYYcviQ2eewo8enuCbo65zo', '127.0.0.1', 1472840328, 0, 0),
+	(18, '', '', '', '', '', '', 'WsIbqp7q1z0TNVl6KVmDde5e7eTVKlQy', '127.0.0.1', 1472985374, 0, 0),
+	(19, '', '', '', '', '', '', 'jeFUwMk5AXeFRDJ2oJ6Y4EURqob2Zt9H', '127.0.0.1', 1473008594, 0, 0),
+	(20, '', '', '', '', '', '', 'qi9kAii-thwNcxU-feaBlWDNt_DzAj3z', '127.0.0.1', 1473094079, 0, 0),
+	(21, '', '', '', '', '', '', 'RHdMM7z5CUMQwcpka1_BtWZoI_zVk2tn', '127.0.0.1', 1473191489, 0, 0),
+	(22, '', '', '', '', '', '', '3LkQR_C4tr2n_Tk9dz264mB9i2mXMV6h', '127.0.0.1', 1473353164, 0, 0),
+	(23, 'juytuyt', 'oiuoiu', '876798', 'hgfhgf@mcff.ty', 'lkjlkj', '', 'hTR5abU9D1gLnlJ4A7JeCEduO0tTNcNx', '127.0.0.1', 1473595314, 0, 2),
+	(24, '', '', '', '', '', '', '_7-weMlr3CT1G8BaygoswJO3Iz5yXBef', '127.0.0.1', 1473783409, 0, 0);
 /*!40000 ALTER TABLE `easyii_shopcart_orders` ENABLE KEYS */;
 
 
@@ -789,7 +820,7 @@ CREATE TABLE IF NOT EXISTS `easyii_tags` (
   `frequency` int(11) DEFAULT '0',
   PRIMARY KEY (`tag_id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_tags: 7 rows
 DELETE FROM `easyii_tags`;
@@ -798,9 +829,9 @@ INSERT INTO `easyii_tags` (`tag_id`, `name`, `frequency`) VALUES
 	(1, 'php', 2),
 	(2, 'yii2', 3),
 	(3, 'jquery', 3),
-	(4, 'html', 1),
-	(5, 'css', 1),
-	(6, 'bootstrap', 1),
+	(18, 'html', 1),
+	(22, 'css', 1),
+	(21, 'bootstrap', 1),
 	(7, 'ajax', 1);
 /*!40000 ALTER TABLE `easyii_tags` ENABLE KEYS */;
 
@@ -818,15 +849,15 @@ CREATE TABLE IF NOT EXISTS `easyii_tags_assign` (
 DELETE FROM `easyii_tags_assign`;
 /*!40000 ALTER TABLE `easyii_tags_assign` DISABLE KEYS */;
 INSERT INTO `easyii_tags_assign` (`class`, `item_id`, `tag_id`) VALUES
-	('yii\\easyii\\modules\\news\\models\\News', 1, 1),
-	('yii\\easyii\\modules\\news\\models\\News', 1, 2),
 	('yii\\easyii\\modules\\news\\models\\News', 1, 3),
-	('yii\\easyii\\modules\\news\\models\\News', 2, 2),
+	('yii\\easyii\\modules\\news\\models\\News', 1, 2),
+	('yii\\easyii\\modules\\news\\models\\News', 1, 1),
+	('yii\\easyii\\modules\\news\\models\\News', 2, 18),
 	('yii\\easyii\\modules\\news\\models\\News', 2, 3),
-	('yii\\easyii\\modules\\news\\models\\News', 2, 4),
+	('yii\\easyii\\modules\\news\\models\\News', 2, 2),
+	('yii\\easyii\\modules\\article\\models\\Item', 1, 22),
+	('yii\\easyii\\modules\\article\\models\\Item', 1, 21),
 	('yii\\easyii\\modules\\article\\models\\Item', 1, 1),
-	('yii\\easyii\\modules\\article\\models\\Item', 1, 5),
-	('yii\\easyii\\modules\\article\\models\\Item', 1, 6),
 	('yii\\easyii\\modules\\article\\models\\Item', 2, 2),
 	('yii\\easyii\\modules\\article\\models\\Item', 2, 3),
 	('yii\\easyii\\modules\\article\\models\\Item', 2, 7);
@@ -840,13 +871,13 @@ CREATE TABLE IF NOT EXISTS `easyii_texts` (
   `slug` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`text_id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_texts: 1 rows
 DELETE FROM `easyii_texts`;
 /*!40000 ALTER TABLE `easyii_texts` DISABLE KEYS */;
 INSERT INTO `easyii_texts` (`text_id`, `text`, `slug`) VALUES
-	(1, 'Welcome on EasyiiCMS demo website', 'index-welcome-title');
+	(1, 'Добро пожаловать на сайт Lerox!', 'index-welcome-title');
 /*!40000 ALTER TABLE `easyii_texts` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

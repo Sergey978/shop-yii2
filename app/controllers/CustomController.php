@@ -53,7 +53,7 @@ class CustomController extends \yii\web\Controller
         $compositeGoods->setBaseItem($slug);
         $summ = $compositeGoods->getSumm();
         
-        return $this->render('ingredients2',['baseItem'=>$baseItem, 
+        return $this->render('ingredients',['baseItem'=>$baseItem, 
             'compositeGoods'=>$compositeGoods,
             'ingridients'=>$ingridients,
             'summ' => $summ,

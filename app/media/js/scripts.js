@@ -15,20 +15,16 @@ $(document).ready(function(){
 function getIngridients(url){
         $.get(url, function(data){
       
-      console.log(data.ingridients.length);
+      //console.log(data.ingridients.length);
        
-      
-      
             $('#summ').empty();
-            $('#summ').append('Общая цена '+ data.summ +' грн.');
+            $('#summ').append( data.summ +' грн.');
             
             if(!(data.ingridients === null) && data.ingridients.length > 0 ){
-            $('#ingridients').empty();
-            
-            
+            $('#ingredients').empty();
             $.each(data.ingridients, function(){
                                 
-                 var ingredient = '<div class="col-md-2">'+     
+                 var ingredient = '<div class="col-md-2 col-sm-2 col-xs-2">'+     
                     '<img class="img-rounded img-responsive"'+ 
                         'src="'+ this.model.image + '"'+ 
                         'alt="' + this.model.title + '">' +                                
@@ -39,27 +35,36 @@ function getIngridients(url){
                     '</div>'+
                 '</div>';
                 
-                $('#ingridients').append(ingredient);
+                $('#ingredients').append(ingredient);
                  })
-     // дополнение до 6 вопросами           
-                length = 6 - data.ingridients.length;
+     
+            
+        }
+        else {
+              $('#ingredients').empty();
+        }
+        
+        
+        // дополнение до 5 вопросами           
+                
+           if(!(data.ingridients === null) && data.ingridients.length > 0 ){
+               console.log(data.ingridients.length);
+               length = 5 - data.ingridients.length;
+           }
+           else length = 5;
+            
                 for (i = 0;  i< length; i++ ){
                     
-                     var ingredient = '<div class="col-md-2">'+     
+                     var ingredient = '<div class="col-md-2 col-sm-2 col-xs-2">'+     
                     '<img class="img-rounded img-responsive"'+ 
                         'src="' + data.noingr.image +'"'+ 
                          '">' +                                
                     
                     '</div>';
                 
-                $('#ingridients').append(ingredient);
+                $('#ingredients').append(ingredient);
                     
                 }
-            
-        }
-        else {
-              $('#ingridients').empty();
-        }
       
 });
     
@@ -89,9 +94,6 @@ $(document).ready(function(){
    });
   
   //скачущие картинки 
-  
-  // Begin jQuery
- 
 $(document).ready(function() {
  
 /* =Shadow Nav

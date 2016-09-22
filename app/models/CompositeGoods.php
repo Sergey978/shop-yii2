@@ -57,7 +57,7 @@ class CompositeGoods{
             unset($this->ingridients[$i]);
             $result =  -1;
         }
-        else if (count($this->ingridients) < 6 ){
+        else if (count($this->ingridients) < 5 ){
             $this->ingridients[] = $slug;
             $result = 1;
         }

@@ -95,6 +95,13 @@ class ComposerStaticInit9bad291cf632d11343b65a8f49c73787
     );
 
     public static $prefixesPsr0 = array (
+        'd' => 
+        array (
+            'dosamigos\\yii\\helpers\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/2amigos/transliterator-helper/src',
+            ),
+        ),
         'H' => 
         array (
             'HTMLPurifier' => 

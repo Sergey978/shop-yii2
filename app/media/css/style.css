@@ -3017,6 +3017,43 @@ margin-right: 10px;
 	color: #ea3a3c;
 	font-weight: 900;
 }
+
+.custom-price  {
+	font-size: 24px;
+	color: #7BBD42;
+	font-weight: 900;
+        float: right;
+        margin-right: 10%;
+}
+
+i.custom{
+    font-size: 40px;
+    color: #7BBD42;
+    margin: 5px;
+}
+
+hr.custom-price{
+    width: 90%;
+}
+div.sel-ingr{
+    font-size: 14px;
+	
+	font-weight: 600;
+        margin-left: 10%;
+}
+
+
+div.sel-ingr span{
+    color: #7BBD42;
+}
+.custom-price .price {
+	font-size: 36px;
+	color: #FF6C00;
+	font-weight: 900;
+        margin-left: 50px;
+        
+}
+
 .special-price .price-label {
 	font-size: 13px;
 	font-weight: 900;

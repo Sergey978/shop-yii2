@@ -26,12 +26,13 @@ $this->params['breadcrumbs'][] = $page->title;
     
     
     <!-- Вывод композитного товара -->                
+    <div class="panel panel-default">
     <div class="row">
         <div class="col-lg-3 col-md-3">
             <div class="row">
               <div class="col-lg-12  col-md-12">
                    <div align = 'center'>
-                    <h4><?=$baseItem->title?></h4>
+                    
                     <?= Html::img($baseItem->image,[
                                             'alt' =>$baseItem->title,
                                             'class' => 'img-responsive center-block img-thumbnail',
@@ -48,10 +49,22 @@ $this->params['breadcrumbs'][] = $page->title;
             </div>
         </div>    
             <div class="col-lg-9 col-md-9">
-                <div class="row"  id="ingridients">
+                <div class="row">
+                    <div class="sel-ingr">
+                    <h4><?=$baseItem->title?></h4>
+                    <span>Выбранные ингредиенты:</span>
+                    </div>
                       
+                       <div>
+                           
+                          <div class="col-md-1">
+                              <br><br>
+                              <i class="icon-plus custom"></i>
+                          </div>
+                           <section id="ingredients">
                         <?php foreach($compositeGoods->getIngridients() as $slug) : ?>
-                            <div class="col-md-2"> 
+                      
+                            <div class="col-md-2 col-sm-2 col-xs-2"> 
                                
                                 <?php $item  =   Catalog::get( $slug ); ?>
                                         <?= Html::img($item->image,[
@@ -63,38 +76,37 @@ $this->params['breadcrumbs'][] = $page->title;
                                  <?= $item->title ?><br/>
                                  <span class="label label-warning"><?= $item->price ?>грн.</span>
                                 </div>
-                            </div>       
+                            </div>   
                         <?php endforeach; ?>
-                    <?php   $dop = 6 - count($compositeGoods->getIngridients());for ($j = 0; $j < $dop; $j++ ):?>
-                        
-                        <div class="col-md-2"> 
-                                                             
+        <!-- Вывод знаков вопроса в пустых ячейках -->              
+                    <?php $dop = 5 - count($compositeGoods->getIngridients());for ($j = 0; $j < $dop; $j++ ):?>
+                        <div class="col-md-2 col-sm-2 col-xs-2">             
                                         <?= Html::img( $noingr->image,[
                                                         
                                                         'class' => 'img-rounded img-responsive',
                                                         
                                                         ]) ?>
                                 <div class="info-grid">
-                               
-                                 
                                 </div>
-                            </div>       
+                            </div>
+                    <? endfor; ?>
+                    </section> 
+                    </div>
                     
-                    
-                   <? endfor; ?>
-                   
-                   
-                </div>    
+                </div>  
+                <hr class="custom-price">
+                
+                 <p class="custom-price"> 
+                    Итого:<span class="price" id="summ"><?= $summ ?> грн.</span> 
+                </p>
             </div>
       </div> 
    
-        
+    </div>    
        <?php endif; ?> 
-                    <hr>
+                   
     
-          <p class="special-price"> 
-                    <span class="price" id="summ">Общая цена <?= $summ ?> грн.</span> 
-                </p>
+         
                  <br>  <br> 
           
            <?= Html::a('Очистить', ['/custom/clear'], ['class'=>'btn btn-primary']) ?>

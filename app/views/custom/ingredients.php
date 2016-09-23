@@ -28,9 +28,9 @@ $this->params['breadcrumbs'][] = $page->title;
     <!-- Вывод композитного товара -->                
     <div class="panel panel-default">
     <div class="row">
-        <div class="col-lg-3 col-md-3">
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3  ">
             <div class="row">
-              <div class="col-lg-12  col-md-12">
+              <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12">
                    <div align = 'center'>
                     
                     <?= Html::img($baseItem->image,[
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $page->title;
                                             'data-toggle'=>'tooltip',
                                             ]) ?>
                     
-                    <span class="price"> <?=$baseItem->price ?> грн.</span> 
+                       <p class="special-price"> <span class="price"> <?=$baseItem->price ?> грн.</span></p> 
                    
                     </div>
                 
@@ -48,43 +48,61 @@ $this->params['breadcrumbs'][] = $page->title;
               </div>
             </div>
         </div>    
-            <div class="col-lg-9 col-md-9">
+            <div class="col-lg-9 col-md-9  col-sm-9 col-xs-9">
                 <div class="row">
                     <div class="sel-ingr">
                     <h4><?=$baseItem->title?></h4>
                     <span>Выбранные ингредиенты:</span>
                     </div>
                       
-                       <div>
+                       <div class="products-grid">
                            
-                          <div class="col-md-1">
+                          <div class="col-md-1 col-sm-1 hidden-xs">
                               <br><br>
                               <i class="icon-plus custom"></i>
                           </div>
                            <section id="ingredients">
                         <?php foreach($compositeGoods->getIngridients() as $slug) : ?>
-                      
-                            <div class="col-md-2 col-sm-2 col-xs-2"> 
-                               
-                                <?php $item  =   Catalog::get( $slug ); ?>
-                                        <?= Html::img($item->image,[
-                                                        'alt' =>$item->title,
-                                                        'class' => 'img-rounded img-responsive',
-                                                        
-                                                        ]) ?>
-                                <div class="info-grid">
-                                 <?= $item->title ?><br/>
-                                 <span class="label label-warning"><?= $item->price ?>грн.</span>
-                                </div>
-                            </div>   
+                            
+                            <div class="col-item col-md-2 col-sm-2 col-xs-2">
+                                <div class="images-container" >
+                                
+                                    <?php $item  =   Catalog::get( $slug ); ?>
+                                             <?= Html::a(Html::img($item->image,[
+                                            'alt' =>$item->title,
+                                            'class' => 'product-image center-block img-thumbnail',
+                                            
+                                            ]), 
+                                             ['/custom/move', 'slug' => $item->slug]);
+
+                                             ?>
+                                    
+                                  <div class="qv-button-container-mn"> 
+                                    <div class="qv-e-button">
+                                     <?=  Html::a(  '<span><span>Quick View</span></span>',
+                                      ['/custom/move/', 'slug' => $item->slug]);?> 
+                                    </div> 
+                                  </div>  
+                                    
+                                </div> 
+                                
+                                
+                                
+                                 <div class="info-grid">
+                                     <?= $item->title ?><br/>
+                                     <span class="label label-warning"><?= $item->price ?>грн.</span>
+                                 </div>
+                                
+                                
+                            </div>     
+                                    
+                             
                         <?php endforeach; ?>
         <!-- Вывод знаков вопроса в пустых ячейках -->              
                     <?php $dop = 5 - count($compositeGoods->getIngridients());for ($j = 0; $j < $dop; $j++ ):?>
                         <div class="col-md-2 col-sm-2 col-xs-2">             
                                         <?= Html::img( $noingr->image,[
-                                                        
                                                         'class' => 'img-rounded img-responsive',
-                                                        
                                                         ]) ?>
                                 <div class="info-grid">
                                 </div>
@@ -98,20 +116,15 @@ $this->params['breadcrumbs'][] = $page->title;
                 
                  <p class="custom-price"> 
                     Итого:<span class="price" id="summ"><?= $summ ?> грн.</span> 
+                     <?= Html::a('Добавить в корзину', ['/custom/shop-cart-add'], ['class'=>'btn btn-success']) ?>    
                 </p>
+               
             </div>
       </div> 
    
     </div>    
        <?php endif; ?> 
-                   
-    
-         
-                 <br>  <br> 
-          
-           <?= Html::a('Очистить', ['/custom/clear'], ['class'=>'btn btn-primary']) ?>
-            <?= Html::a('Добавить в корзину', ['/custom/shop-cart-add'], ['class'=>'btn btn-success']) ?>           
-                    
+                  
     <div class="row">   
         <div class="col-main col-sm-12  wow">    
             

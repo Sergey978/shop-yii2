@@ -216,7 +216,7 @@ legend {
 }
 .header-top {
 	height: 28px;
-//	background: #f8f8f8;
+/*	background: #f8f8f8; */
 }
 .header .logo {
 	vertical-align: middle;
@@ -3037,9 +3037,9 @@ hr.custom-price{
 }
 div.sel-ingr{
     font-size: 14px;
-	
-	font-weight: 600;
-        margin-left: 10%;
+    font-weight: 600;
+    margin-left: 10%;
+    margin-bottom: 10px;
 }
 
 
@@ -3051,6 +3051,8 @@ div.sel-ingr span{
 	color: #FF6C00;
 	font-weight: 900;
         margin-left: 50px;
+        margin-right: 20px;
+        
         
 }
 
@@ -8974,6 +8976,7 @@ button.subscribe:before {
 	background: #fe4669;
 	border-radius: 100%;
 }
+
 .qv-button-container {
 	position: absolute;
 	top: 0;
@@ -8993,43 +8996,60 @@ button.subscribe:before {
 	line-height: 10px;
 	text-align: center;
 }
-.qv-button-container:hover {
-	background: #5b9726;
-}
-.qv-button-container a {
-	border: 0;
-	background: none;
-}
+
+
 .qv-button-container a span span {
 	font-size: 0;
 	cursor: pointer;
 }
 
-
-.qv-button-container a span span:before {
-	content: "\f06e";
-	font-size: 19px;
-	font-family: FontAwesome;
-	color: #fff;
-	width: 38px;
-	text-align: center;
-}
-//added
-
-.qv-button-container div span span {
-	font-size: 0;
-	cursor: pointer;
-}
-
-.qv-button-container div span span:before {
+/* Отвечает за появление символа на картинке*/
+.qv-button-container   span span:before {
 	content: "\f046";
 	font-size: 72px;
 	font-family: FontAwesome;
 	color: #7bbd42;
-	width: 60px;
+	width: 38px;
 	text-align: center;
 }
-//----end added
+/* символ минус на ингоедиентах */
+.qv-button-container-mn {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+	width: 90px;
+	height: 0px;
+	display: block;
+	transform: scale(0);
+	opacity: 0;
+	transition: all 0.3s ease-out;
+	border: 0;
+	font-size: 0;
+	background: #7bbd42;
+	line-height: 10px;
+	text-align: center;
+}
+
+
+.qv-button-container-mn a span span {
+	font-size: 0;
+	cursor: pointer;
+}
+
+/* Отвечает за появление символа на картинке*/
+.qv-button-container-mn   span span:before {
+	content: "\f046";
+	font-size: 72px;
+	font-family: FontAwesome;
+	color: #7bbd42;
+	width: 38px;
+	text-align: center;
+}
+
+
 
 .small-pr-slider .a-qv-close:before {
 	width: 20px;
@@ -9094,6 +9114,11 @@ button.subscribe:before {
 	transform: scale(1);
 	opacity: 1;
 }
+.col-item:hover .mn-button-container {
+	transform: scale(1);
+	opacity: 1;
+}
+
 /* 37. Compare Table*/
 
 .compare-table .price-box {

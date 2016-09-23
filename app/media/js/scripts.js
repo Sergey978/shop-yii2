@@ -1,6 +1,3 @@
-$(function(){
-    console.log('Hello world!');
-});
 
 
 //Всплывающие подсказки jquery tooltip

@@ -20,22 +20,32 @@ function getIngridients(url){
             if(!(data.ingridients === null) && data.ingridients.length > 0 ){
             $('#ingredients').empty();
             $.each(data.ingridients, function(){
-                                
-                 var ingredient = '<div class="col-md-2 col-sm-2 col-xs-2">'+     
-                    '<img class="img-rounded img-responsive"'+ 
-                        'src="'+ this.model.image + '"'+ 
-                        'alt="' + this.model.title + '">' +                                
-                    '<div class="info-grid">'+
-                        this.model.title + '<br>'+
-                        '<span class="label label-warning">' +
-                        this.model.price + 'грн.</span>'+
-                    '</div>'+
-                '</div>';
-                
+                       
+                var ingredient = '<div class="col-item col-md-2 col-sm-2 col-xs-2">'+
+                               ' <div class="images-container" >'+
+                                '<div class="ingridient" >' +
+                                    ' <a href="/custom/move/' + this.model.slug +'">'+
+                                    '<img class="product-image center-block img-thumbnail" src="'+ this.model.image + '" alt="' + this.model.title + '"></a>'+                                    
+                                     ' <div class="qv-button-container-mn">'+ 
+                                        '<div class="qv-e-button">'+
+                                         '<a href="/custom/move/' + this.model.slug +'"><span><span>Удалить</span></span></a>' +
+                                        '</div>' +
+                                      '</div>'+      
+                                   ' </div> '+
+                                     '<div class="info-grid">'+
+                                         this.model.title + '<br/>' +
+                                        ' <span class="label label-warning">' + this.model.price + 'грн.</span>'+
+                                     '</div>'+
+                                '</div>' +
+                            '</div> ';   
+        
                 $('#ingredients').append(ingredient);
+                
+                
                  })
+                 
+          
      
-            
         }
         else {
               $('#ingredients').empty();
@@ -45,7 +55,7 @@ function getIngridients(url){
         // дополнение до 5 вопросами           
                 
            if(!(data.ingridients === null) && data.ingridients.length > 0 ){
-               console.log(data.ingridients.length);
+              
                length = 5 - data.ingridients.length;
            }
            else length = 5;
@@ -62,8 +72,15 @@ function getIngridients(url){
                 $('#ingredients').append(ingredient);
                     
                 }
+                
+               
       
 });
+
+$("div.ingridient  a").click(function(){
+                    getIngridients(this.href);
+                    return false;
+                });  
     
 };
      

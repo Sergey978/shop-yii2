@@ -9003,7 +9003,7 @@ button.subscribe:before {
 	cursor: pointer;
 }
 
-/* Отвечает за появление символа на картинке*/
+
 .qv-button-container   span span:before {
 	content: "\f046";
 	font-size: 72px;
@@ -9012,41 +9012,40 @@ button.subscribe:before {
 	width: 38px;
 	text-align: center;
 }
-/* символ минус на ингоедиентах */
+
+/* минус на выбраных ингредиентах*/
 .qv-button-container-mn {
 	position: absolute;
 	top: 0;
-	bottom: 0;
+	bottom: 50%;
 	right: 0;
 	left: 0;
 	margin: auto;
-	width: 90px;
-	height: 0px;
+	width: 40px;
+	height: 40px;
 	display: block;
 	transform: scale(0);
 	opacity: 0;
 	transition: all 0.3s ease-out;
 	border: 0;
 	font-size: 0;
-	background: #7bbd42;
-	line-height: 10px;
+	line-height: 40px;
 	text-align: center;
 }
 
 
-.qv-button-container-mn a span span {
-	font-size: 0;
-	cursor: pointer;
-}
-
-/* Отвечает за появление символа на картинке*/
-.qv-button-container-mn   span span:before {
-	content: "\f046";
-	font-size: 72px;
+.qv-button-container-mn a span span:before {
+	content: "\f056";
+	font-size: 42px;
 	font-family: FontAwesome;
-	color: #7bbd42;
+	color: #eaa43a;
 	width: 38px;
 	text-align: center;
+}
+
+.col-item:hover .qv-button-container-mn {
+	transform: scale(1);
+	opacity: 1;
 }
 
 

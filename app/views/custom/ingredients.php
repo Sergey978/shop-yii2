@@ -61,39 +61,37 @@ $this->params['breadcrumbs'][] = $page->title;
                               <br><br>
                               <i class="icon-plus custom"></i>
                           </div>
-                           <section id="ingredients">
+                        <section id="ingredients">
                         <?php foreach($compositeGoods->getIngridients() as $slug) : ?>
                             
                             <div class="col-item col-md-2 col-sm-2 col-xs-2">
                                 <div class="images-container" >
-                                
-                                    <?php $item  =   Catalog::get( $slug ); ?>
-                                             <?= Html::a(Html::img($item->image,[
-                                            'alt' =>$item->title,
-                                            'class' => 'product-image center-block img-thumbnail',
-                                            
-                                            ]), 
-                                             ['/custom/move', 'slug' => $item->slug]);
+                                    <div class="ingridient">
+                                            <?php $item  =   Catalog::get( $slug ); ?>
+                                                     <?= Html::a(Html::img($item->image,[
+                                                    'alt' =>$item->title,
+                                                    'class' => 'product-image center-block img-thumbnail',
 
-                                             ?>
-                                    
-                                  <div class="qv-button-container-mn"> 
-                                    <div class="qv-e-button">
-                                     <?=  Html::a(  '<span><span>Quick View</span></span>',
-                                      ['/custom/move/', 'slug' => $item->slug]);?> 
-                                    </div> 
-                                  </div>  
+                                                    ]), 
+                                                     ['/custom/move', 'slug' => $item->slug]);
+
+                                                     ?>
+
+                                          <div class="qv-button-container-mn"> 
+                                            <div class="qv-e-button">
+                                             <?=  Html::a(  '<span><span>Quick View</span></span>',
+                                              ['/custom/move/', 'slug' => $item->slug]);?> 
+                                            </div> 
+                                          </div>  
                                     
                                 </div> 
-                                
-                                
                                 
                                  <div class="info-grid">
                                      <?= $item->title ?><br/>
                                      <span class="label label-warning"><?= $item->price ?>грн.</span>
                                  </div>
                                 
-                                
+                                </div>
                             </div>     
                                     
                              

@@ -76,8 +76,11 @@ $this->params['breadcrumbs'][] = $page->model->title;
                 </tbody>
             </table>
             <?= Html::submitButton('<i class="glyphicon glyphicon-refresh"></i> Пересчитать', ['class' => 'btn btn-default pull-right']) ?>
+           
             <?= Html::endForm()?>
+           
         </div>
+         
         <div class="col-md-4 col-md-offset-2">
             <h4>Оформление заказа:</h4>
             <div class="well well">
@@ -85,6 +88,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
             </div>
         </div>
     </div>
+<hr>
 <?php else : ?>
     <p>Корзина пуста</p>
 <?php endif; ?>

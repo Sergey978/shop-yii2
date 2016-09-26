@@ -61,4 +61,9 @@ class ShopController extends \yii\web\Controller
             'addToCartForm' => new \app\models\AddToCartForm()
         ]);
     }
+    
+    public function actionList()
+    {
+        return $this->render('list');
+    }
 }

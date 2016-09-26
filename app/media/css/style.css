@@ -1531,6 +1531,7 @@ a.btn-button-st:hover {
 }
 #nav .level0-wrapper .nav-add .push_item1 .push_img {
 	position: relative;
+        
 }
 #nav .level0-wrapper .nav-add .push_item1 .push_img a {
 	display: block;
@@ -2642,7 +2643,7 @@ ul.topnav em:hover {
 }
 .col-item {
 	position: relative;
-         min-height: 240px;
+         
 }
 .col-item .photo img {
 	margin: 0 auto;
@@ -5163,6 +5164,7 @@ button.button span {
 .products-grid li.item {
 	margin-bottom: 15px;
 	margin-top: 10px;
+        min-height: 240px;
 }
 .col-main .category-products .products-grid {
 	margin-left: -15px;
@@ -9017,7 +9019,7 @@ button.subscribe:before {
 .qv-button-container-mn {
 	position: absolute;
 	top: 0;
-	bottom: 50%;
+	bottom: 30%;
 	right: 0;
 	left: 0;
 	margin: auto;

@@ -18,12 +18,12 @@ $this->params['breadcrumbs'][] = $page->title;
 
 ?>
 
- <h1>  <?= $page->seo('h1', $page->title) ?> </h1>
+ 
  
  <?php if(Yii::$app->request->get(AddToCartForm::SUCCESS_VAR)) : ?>
                     <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Товар добавлен в корзину</h4>
  <?php else : ?>  
-    
+    <h1>  <?= $page->seo('h1', $page->title) ?> </h1>
     
     <!-- Вывод композитного товара -->                
     <div class="panel panel-default">

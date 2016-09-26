@@ -38,14 +38,11 @@ function getIngridients(url){
                                      '</div>'+
                                 '</div>' +
                             '</div> ';   
-        
+                    
                 $('#ingredients').append(ingredient);
                 
-                
-                 })
+                 });
                  
-          
-     
         }
         else {
               $('#ingredients').empty();
@@ -77,23 +74,26 @@ function getIngridients(url){
       
 });
 
-$("div.ingridient  a").click(function(){
-                    getIngridients(this.href);
-                    return false;
-                });  
+
     
 };
      
      
      
-// при клике на ссылку ингридиента      
+// при клике на ссылку ингридиента     
+
+jQuery("body").on("click","div.ingridient a",  function(event){
+     getIngridients(this.href);
+        return false;
+});
+/*
 $(document).ready(function(){
     $("div.ingridient  a").click(function(){
         getIngridients(this.href);
         return false;
     });
 }); 
-
+*/
 //увеличение размеров картинок на выборе категории
 
   $(document).ready(function(){

@@ -85,7 +85,7 @@ blockquote{
       
   }
 
- //каталог изменнеие размеров картинок 
+ /*каталог изменнеие размеров картинок */ 
 .cat {text-align: center;}
 .cat  img{width:240px;height:auto;margin:auto;}
 .cat:hover {overflow:visible;text-align: center;}
@@ -118,6 +118,11 @@ blockquote{
 	font-weight: bold;
 }
 
+
+.panel-default {
+   
+    padding: 20px;
+}
 
 /*Form Wizard*/
 .bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}

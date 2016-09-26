@@ -181,8 +181,8 @@ $goodsCount = count($goods);
                             <div class="top-subtotal">Всего: <span class="price"><?=$summCostAllIngredients?> грн.</span></div>
                             <div class="actions">
                              
-                              <?= Html::a('Оформить заказ', ['/shopcart'], ['class'=>'btn-checkout']) ?>
-                              <?= Html::a('Корзина', ['/shopcart'], ['class'=>'view-cart']) ?>
+                              <?= Html::a('Оформить заказ', ['/shopcart'], ['class'=>'view-cart']) ?>
+                              
                           
                             </div>
                           </div>
@@ -276,22 +276,70 @@ $goodsCount = count($goods);
                     
                   </ul>
                   <div class="nav-add">
+                      <? $item1 = Catalog::get('podarok-1');?>
+                     <? if ($item1): ?> 
                     <div class="push_item1">
-                      <div class="push_img"> <a href="#"> <img  alt="women jwellery" src="<?= $asset->baseUrl ?>/images/women-cate-banner.jpg"> </a> </div>
+                      <div class="push_img"> 
+                          <a href="/shop/view/<?= $item1->slug?>">
+                                <img  alt="<?= $item1->title?> " 
+                                      src="<?= $item1->image?>"
+                                      width="254px" 
+                                      height="150px">
+                          </a> 
+                      </div>
                     </div>
+                     <?  endif;?>
+                      
+                    <? $item2 = Catalog::get('podarok-2');?>  
+                    <? if ($item2): ?> 
                     <div class="push_item1">
-                      <div class="push_img"> <a href="#"> <img  alt="women_jwellery" src="<?= $asset->baseUrl ?>/images/women-cate-banner1.jpg"> </a> </div>
+                      <div class="push_img"> 
+                           <a href="/shop/view/<?= $item2->slug?>">
+                                <img  alt="<?= $item2->title?> " 
+                                      src="<?= $item2->image?>"
+                                      width="254px" 
+                                      height="150px">
+                          </a> 
+                      </div>
                     </div>
-                    <div class="push_item1 push_item1_last">
-                      <div class="push_img"> <a href="#"> <img  alt="women_bag" src="<?= $asset->baseUrl ?>/images/women-cate-banner2.jpg"> </a> </div>
+                    <?  endif;?>  
+                      
+                   <? $item3 = Catalog::get('podarok-3');?>  
+                    <? if ($item3): ?> 
+                    <div class="push_item1">
+                      <div class="push_img"> 
+                           <a href="/shop/view/<?= $item3->slug?>">
+                                <img  alt="<?= $item3->title?> " 
+                                      src="<?= $item3->image?>"
+                                      width="254px" 
+                                      height="150px">
+                          </a> 
+                      </div>
                     </div>
+                    <?  endif;?>  
                     <br class="clear">
                   </div>
                 </div>
                 <!--nav-block nav-block-center-->
-                <div class="nav-block nav-block-right std grid12-4">
-                  <p><a href="#"><img class="fade-on-hover" src="<?= $asset->baseUrl ?>/images/nav-women-banner.jpg" alt="nav img"></a></p>
-                </div>
+               
+                <? $item4 = Catalog::get('podarok-4');?>  
+                    <? if ($item4): ?> 
+                    <div class="nav-block nav-block-right std grid12-4">
+                     <p>
+                      
+                           <a href="/shop/view/<?=$item4->slug?>">
+                                <img  class="fade-on-hover"
+                                      alt="<?= $item4->title?> " 
+                                      src="<?= $item4->image?>" >
+                                      
+                          </a> 
+                      
+                     </p>   
+                    </div>
+                    <?  endif;?>  
+                
+                
+                
                 <!--nav-block nav-block-right std grid12-4--> 
               </div>
             </div>

@@ -6,6 +6,7 @@ use app\models\GadgetsFilterForm;
 use Yii;
 use yii\easyii\modules\catalog\api\Catalog;
 use yii\web\NotFoundHttpException;
+use yii\data\Pagination;
 
 class ShopController extends \yii\web\Controller
 {
@@ -41,11 +42,14 @@ class ShopController extends \yii\web\Controller
     {
         $text = filter_var($text, FILTER_SANITIZE_STRING);
 
-        return $this->render('search', [
+        return $this->render('list', [
             'text' => $text,
             'items' => Catalog::items([
                 'where' => ['or', ['like', 'title', $text], ['like', 'description', $text]],
-            ])
+                
+            ]),
+            'pages' => new Pagination([ 'totalCount' => 10, 'pageSize' => 5, ]),
+            
         ]);
     }
 

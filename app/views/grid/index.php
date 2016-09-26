@@ -29,21 +29,19 @@ $model = new CustomModel();
                     <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Товар добавлен в корзину</h4>
                 <? endif;?>
         
-              
-                <div class="pages">
-                 <? if ($pages->totalCount > $pages->pageSize ):?>
-                    <label>Страницы:</label> 
-                <? endif;?>    
-                    <?   echo LinkPager::widget([
-                                   'pagination' => $pages,
-                                   'registerLinkTags' => true,
-                                    
-                                   
-                               ]);
+                    <div class="pager">
+                        <div class="pages">
+                         <? if ($pages->totalCount > $pages->pageSize ):?>
+                            <label>Страницы:</label> 
+                        <? endif;?>    
+                            <?   echo LinkPager::widget([
+                                           'pagination' => $pages,
+                                           'registerLinkTags' => true,
 
-                    ?>
-                </div>
-             
+                                       ]);
+                            ?>
+                        </div>
+                    </div>
             </div>
             <ul class="products-grid">
         

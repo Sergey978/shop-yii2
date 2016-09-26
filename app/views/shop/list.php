@@ -21,10 +21,13 @@ $this->params['breadcrumbs'][] = $page->model->title;
           <div class="category-products">
             <div class="toolbar">
              
-            
-              <div class="pager">
-                  <?= Catalog::pages()?>
-              </div>
+             <div class="pager">
+                <div class="pages">
+                    <label>Страницы:</label>
+                    <?= Catalog::pages()?>
+                    
+                </div>
+             </div> 
             </div>
             <ul id="products-list" class="products-list">
                 

@@ -45,7 +45,7 @@ class ShopController extends \yii\web\Controller
 
         $items = Catalog::items([
                 'where' => ['or', ['like', 'title', $text], ['like', 'description', $text]],
-                'pagination' => ['pageSize' => 5],
+                'pagination' => ['pageSize' => 5,],
             ]);
         
         $pages = new Pagination([ 'totalCount' => count($items), 'pageSize' => 5, ]);

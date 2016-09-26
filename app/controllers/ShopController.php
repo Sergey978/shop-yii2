@@ -41,14 +41,18 @@ class ShopController extends \yii\web\Controller
     public function actionSearch($text)
     {
         $text = filter_var($text, FILTER_SANITIZE_STRING);
+        
 
+        $items = Catalog::items([
+                'where' => ['or', ['like', 'title', $text], ['like', 'description', $text]],
+                'pagination' => ['pageSize' => 5],
+            ]);
+        
+        $pages = new Pagination([ 'totalCount' => count($items), 'pageSize' => 5, ]);
         return $this->render('list', [
             'text' => $text,
-            'items' => Catalog::items([
-                'where' => ['or', ['like', 'title', $text], ['like', 'description', $text]],
-                
-            ]),
-            'pages' => new Pagination([ 'totalCount' => 10, 'pageSize' => 5, ]),
+            'items' => $items,
+            'pages' => $pages ,
             
         ]);
     }

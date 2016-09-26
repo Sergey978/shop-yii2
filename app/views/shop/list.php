@@ -23,13 +23,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
              
             
               <div class="pager">
-                  <?   echo LinkPager::widget([
-                                   'pagination' => $pages,
-                                   
-                                   
-                               ]);
-
-                    ?>
+                  <?= Catalog::pages()?>
               </div>
             </div>
             <ul id="products-list" class="products-list">

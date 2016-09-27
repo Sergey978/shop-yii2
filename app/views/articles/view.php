@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $article->model->title;
 
 <?php if(count($article->photos)) : ?>
     <div>
-        <h4>Photos</h4>
+        <h4>Фото</h4>
         <?php foreach($article->photos as $photo) : ?>
             <?= $photo->box(100, 100) ?>
         <?php endforeach;?>
@@ -27,4 +27,4 @@ $this->params['breadcrumbs'][] = $article->model->title;
     <?php endforeach; ?>
 </p>
 
-<small class="text-muted">Views: <?= $article->views?></small>
+<small class="text-muted">Просмотров: <?= $article->views?></small>

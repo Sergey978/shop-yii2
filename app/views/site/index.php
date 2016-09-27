@@ -109,7 +109,7 @@ $this->title = $page->seo('title', $page->model->title);
             </div>
             <div class="col-md-10 col-sm-10 col-xs-8">
                  <blockquote class="text-left"> 
-                   <b> <?= Html::a($newArt->title, ['news/view', 'slug' => $newArt->slug]) ?></b>
+                   <b> <?= Html::a($newArt->title, ['articles/view', 'slug' => $newArt->slug]) ?></b>
                     </br>
                     <?= $newArt->short ?>
                  </blockquote>

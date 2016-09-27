@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
             <?= Html::img($item->thumb(160, 120)) ?>
         </div>
         <div class="col-md-10">
-            <?= Html::a($item->title, ['news/view', 'slug' => $item->slug]) ?>
+            <h4><?= Html::a($item->title, ['news/view', 'slug' => $item->slug]) ?></h4>
             <div class="small-muted"><?= $item->date ?></div>
             <p><?= $item->short ?></p>
             <p>

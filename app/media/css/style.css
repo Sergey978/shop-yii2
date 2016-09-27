@@ -2834,7 +2834,7 @@ margin-right: 10px;
 
 
 .item .col-item .images-container .product-image:before {
-	background: rgba(0,0,0,0.19);
+	
 	content: "";
 	position: absolute;
 	top: 0;

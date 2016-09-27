@@ -70,7 +70,7 @@ $model = new CustomModel();
                         </div>
                         <div class="info">
                           <div class="info-inner">
-                            <div class="item-title"> <a title=" <?=$goods->title?>" href="product_detail.html"> <?=$goods->title?> </a> </div>
+                            <div class="item-title"> <a title=" <?=$goods->title?>" href="/shop/view/<?=$goods->slug?>"> <?=$goods->title?> </a> </div>
                             <!--item-title-->
                             <div class="item-content">
                               <div class="ratings">

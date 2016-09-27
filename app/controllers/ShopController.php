@@ -49,7 +49,7 @@ class ShopController extends \yii\web\Controller
             ]);
         
         $pages = new Pagination([ 'totalCount' => count($items), 'pageSize' => 5, ]);
-        return $this->render('list', [
+        return $this->render('search', [
             'text' => $text,
             'items' => $items,
             'pages' => $pages ,
@@ -64,7 +64,7 @@ class ShopController extends \yii\web\Controller
             throw new NotFoundHttpException('Item not found.');
         }
 
-        return $this->render('view', [
+        return $this->render('view2', [
             'item' => $item,
             'addToCartForm' => new \app\models\AddToCartForm()
         ]);

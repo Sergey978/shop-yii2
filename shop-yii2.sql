@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Хост:                         127.0.0.1
--- Версия сервера:               5.5.41-log - MySQL Community Server (GPL)
+-- Версия сервера:               5.5.48 - MySQL Community Server (GPL)
 -- ОС Сервера:                   Win32
 -- HeidiSQL Версия:              9.2.0.4947
 -- --------------------------------------------------------
@@ -124,9 +124,9 @@ CREATE TABLE IF NOT EXISTS `easyii_catalog_categories` (
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`category_id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_catalog_categories: 31 rows
+-- Дамп данных таблицы shop-yii2.easyii_catalog_categories: 32 rows
 DELETE FROM `easyii_catalog_categories`;
 /*!40000 ALTER TABLE `easyii_catalog_categories` DISABLE KEYS */;
 INSERT INTO `easyii_catalog_categories` (`category_id`, `title`, `image`, `fields`, `slug`, `tree`, `lft`, `rgt`, `depth`, `order_num`, `status`) VALUES
@@ -160,7 +160,8 @@ INSERT INTO `easyii_catalog_categories` (`category_id`, `title`, `image`, `field
 	(21, 'Мыло', '', '[]', 'mylo', 16, 5, 6, 2, 4, 1),
 	(13, 'Гель для душа', '', '[]', 'gel-body', 4, 13, 14, 2, 1, 1),
 	(14, 'Скраб', '', '[]', 'scrab-body', 4, 15, 16, 2, 1, 1),
-	(15, 'Бальзам', '', '[]', 'balm-body', 4, 17, 18, 2, 1, 1);
+	(15, 'Бальзам', '', '[]', 'balm-body', 4, 17, 18, 2, 1, 1),
+	(38, 'Подарочная категория', '', '[]', 'podarochnaya-kategoriya', 38, 1, 2, 0, 6, 1);
 /*!40000 ALTER TABLE `easyii_catalog_categories` ENABLE KEYS */;
 
 
@@ -180,9 +181,9 @@ CREATE TABLE IF NOT EXISTS `easyii_catalog_items` (
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`item_id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_catalog_items: 40 rows
+-- Дамп данных таблицы shop-yii2.easyii_catalog_items: 44 rows
 DELETE FROM `easyii_catalog_items`;
 /*!40000 ALTER TABLE `easyii_catalog_items` DISABLE KEYS */;
 INSERT INTO `easyii_catalog_items` (`item_id`, `category_id`, `title`, `description`, `available`, `price`, `discount`, `data`, `image`, `slug`, `time`, `status`) VALUES
@@ -225,7 +226,11 @@ INSERT INTO `easyii_catalog_items` (`item_id`, `category_id`, `title`, `descript
 	(37, 23, 'Супер бальзам', '<p>супер пупер бальзам для лица</p>', 100, 23, NULL, '{}', '/uploads/catalog/11f6d88a8f4bb38677b9b4932bc7c88c-7c44f8b5ab.png', 'super-bal-zam', 1472126026, 1),
 	(38, 26, 'Мыло', '<p>Мыло мыльное&nbsp;</p>', 45, 46, 0, '{}', '/uploads/catalog/8457fe3d78a0d8224c0f307c6974ea43-600c273011.jpg', 'mylo', 1472141143, 1),
 	(39, 26, 'Мыло', '', 100, 34, 0, '{}', '', 'mylo3', 1472141239, 1),
-	(40, 37, 'No ingredient', '', NULL, NULL, 0, '{}', '/uploads/catalog/vopros-5763abe87e.jpg', 'no-ingredient', 1474481479, 1);
+	(40, 37, 'No ingredient', '', NULL, NULL, 0, '{}', '/uploads/catalog/vopros-5763abe87e.jpg', 'no-ingredient', 1474481479, 1),
+	(44, 38, 'Подарок 1', '<p>&nbsp;Подарок 1Подарок 1 Подарок 1 Подарок 1Подарок 1Подарок 1 Подарок 1 Подарок 1Подарок 1Подарок 1 Подарок 1 Подарок 1Подарок 1Подарок 1 Подарок 1 Подарок 1Подарок 1Подарок 1 Подарок 1 Подарок 1Подарок 1Подарок 1 Подарок 1 Подарок 1</p>', 100, 200, 0, '{}', '/uploads/catalog/product18-885fd739d3.jpg', 'podarok-1', 1474884411, 1),
+	(45, 38, 'Подарок 2', '', 100, 236, 0, '{}', '/uploads/catalog/blog-img3-124243dcc4.jpg', 'podarok-2', 1474884542, 1),
+	(46, 38, 'Подарок 3', '', 2121, 450, 0, '{}', '/uploads/catalog/blog-img4-f6556dfe94.jpg', 'podarok-3', 1474884654, 1),
+	(47, 38, 'Подарок 4', '<p>вапрварварва &nbsp;ывкпрвапаывпвыап &nbsp;ывапывапывапывп &nbsp;ывпывпывп</p>', 344, 410, 0, '{}', '/uploads/catalog/newsletter-bg-0c3d19d60c.jpg', 'podarok-4', 1474884745, 1);
 /*!40000 ALTER TABLE `easyii_catalog_items` ENABLE KEYS */;
 
 
@@ -404,9 +409,9 @@ CREATE TABLE IF NOT EXISTS `easyii_loginform` (
   `time` int(11) DEFAULT '0',
   `success` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`log_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_loginform: 26 rows
+-- Дамп данных таблицы shop-yii2.easyii_loginform: 28 rows
 DELETE FROM `easyii_loginform`;
 /*!40000 ALTER TABLE `easyii_loginform` DISABLE KEYS */;
 INSERT INTO `easyii_loginform` (`log_id`, `username`, `password`, `ip`, `user_agent`, `time`, `success`) VALUES
@@ -435,7 +440,9 @@ INSERT INTO `easyii_loginform` (`log_id`, `username`, `password`, `ip`, `user_ag
 	(23, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1473015426, 1),
 	(24, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1473015541, 1),
 	(25, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1474188628, 1),
-	(26, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1474481290, 1);
+	(26, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1474481290, 1),
+	(27, 'root', '56xbast', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1474884293, 0),
+	(28, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1474884308, 1);
 /*!40000 ALTER TABLE `easyii_loginform` ENABLE KEYS */;
 
 
@@ -531,7 +538,7 @@ DELETE FROM `easyii_pages`;
 INSERT INTO `easyii_pages` (`page_id`, `title`, `text`, `slug`) VALUES
 	(1, 'Index', '<p><strong>Мы рады приветствовать всех на нашем сайте!</strong>&nbsp;</p><p>У нас вы сможете приобрести для себя или же для других членов вашей семьи готовую косметику, в основе которой содержатся исключительно натуральные ингредиенты. А также заказать индивидуальное средство, содержащее в себе набор ваших любимых ароматов. Кроме того, на нашем сайте вы найдете множество полезных советов по уходу за кожей, телом и волосами. Сделав заказ в нашем интернет-магазине, не забудьте потом оставить свой отзыв - так вы сможете поделиться своими впечатлениями о нашей продукции с другими покупателями и дать нам обратную. Следите за новинками - мы постоянно экспериментируем и создаем праздничные косметические средства. Будьте с нами!    </p>', 'page-index'),
 	(2, 'Shop', '', 'page-shop'),
-	(3, 'Shop search', '', 'page-shop-search'),
+	(3, 'Результаты поиска', '', 'page-shop-search'),
 	(4, 'Корзина', '', 'page-shopcart'),
 	(5, 'Order created', '<p>Your order successfully created. Our manager will contact you as soon as possible.</p>', 'page-shopcart-success'),
 	(6, 'News', '', 'page-news'),
@@ -682,9 +689,9 @@ CREATE TABLE IF NOT EXISTS `easyii_shopcart_goods` (
   `price` float DEFAULT '0',
   `discount` int(11) DEFAULT '0',
   PRIMARY KEY (`good_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_shopcart_goods: 42 rows
+-- Дамп данных таблицы shop-yii2.easyii_shopcart_goods: 49 rows
 DELETE FROM `easyii_shopcart_goods`;
 /*!40000 ALTER TABLE `easyii_shopcart_goods` DISABLE KEYS */;
 INSERT INTO `easyii_shopcart_goods` (`good_id`, `order_id`, `item_id`, `count`, `options`, `price`, `discount`) VALUES
@@ -729,7 +736,14 @@ INSERT INTO `easyii_shopcart_goods` (`good_id`, `order_id`, `item_id`, `count`, 
 	(62, 21, 7, 1, 'active-mentol|extr-koraduba', 42, 0),
 	(63, 22, 27, 1, '', 56, 0),
 	(64, 23, 37, 1, '', 23, 0),
-	(65, 24, 29, 1, '', 45, 0);
+	(65, 24, 29, 1, '', 45, 0),
+	(66, 25, 4, 1, 'efir-apelsin', 20, 0),
+	(67, 26, 4, 1, 'vitamin-f|active-aloe|efir-apelsin', 20, 0),
+	(68, 26, 7, 1, 'efir-apelsin|active-scvalan|extr-jenshen', 42, 0),
+	(69, 26, 6, 1, 'efir-gvozd|vitamin-f', 26, 0),
+	(70, 26, 37, 1, '', 23, 0),
+	(71, 27, 28, 1, '', 43, 0),
+	(72, 27, 13, 1, '', 23, 0);
 /*!40000 ALTER TABLE `easyii_shopcart_goods` ENABLE KEYS */;
 
 
@@ -748,9 +762,9 @@ CREATE TABLE IF NOT EXISTS `easyii_shopcart_orders` (
   `new` tinyint(1) DEFAULT '0',
   `status` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`order_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_shopcart_orders: 24 rows
+-- Дамп данных таблицы shop-yii2.easyii_shopcart_orders: 27 rows
 DELETE FROM `easyii_shopcart_orders`;
 /*!40000 ALTER TABLE `easyii_shopcart_orders` DISABLE KEYS */;
 INSERT INTO `easyii_shopcart_orders` (`order_id`, `name`, `address`, `phone`, `email`, `comment`, `remark`, `access_token`, `ip`, `time`, `new`, `status`) VALUES
@@ -777,7 +791,10 @@ INSERT INTO `easyii_shopcart_orders` (`order_id`, `name`, `address`, `phone`, `e
 	(21, '', '', '', '', '', '', 'RHdMM7z5CUMQwcpka1_BtWZoI_zVk2tn', '127.0.0.1', 1473191489, 0, 0),
 	(22, '', '', '', '', '', '', '3LkQR_C4tr2n_Tk9dz264mB9i2mXMV6h', '127.0.0.1', 1473353164, 0, 0),
 	(23, 'juytuyt', 'oiuoiu', '876798', 'hgfhgf@mcff.ty', 'lkjlkj', '', 'hTR5abU9D1gLnlJ4A7JeCEduO0tTNcNx', '127.0.0.1', 1473595314, 0, 2),
-	(24, '', '', '', '', '', '', '_7-weMlr3CT1G8BaygoswJO3Iz5yXBef', '127.0.0.1', 1473783409, 0, 0);
+	(24, '', '', '', '', '', '', '_7-weMlr3CT1G8BaygoswJO3Iz5yXBef', '127.0.0.1', 1473783409, 0, 0),
+	(25, '', '', '', '', '', '', 'UIsYnOwjybJaMvyYw3Y0hpbaQsNLVI9M', '127.0.0.1', 1474554986, 0, 0),
+	(26, '', '', '', '', '', '', 'tsZr4KcOAqUZI9Tqlrp8Qt9vToQlWRYL', '127.0.0.1', 1474883408, 0, 0),
+	(27, '', '', '', '', '', '', '_RsdFHo8VmPsPU8Svw7EzSM_NT0Jkmc4', '127.0.0.1', 1474968074, 0, 0);
 /*!40000 ALTER TABLE `easyii_shopcart_orders` ENABLE KEYS */;
 
 
@@ -871,7 +888,7 @@ CREATE TABLE IF NOT EXISTS `easyii_texts` (
   `slug` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`text_id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_texts: 1 rows
 DELETE FROM `easyii_texts`;

@@ -621,7 +621,7 @@ i.icon-cart {
 .top-cart-contain {
 	color: #333;
 	display: block;
-	float: center;
+	float: none;
 	margin: 0px 0px 0px 0px;
 	padding: 0;
 	right: 0;
@@ -759,6 +759,7 @@ ul#cart-sidebar {
 	font-weight: 500;
 	text-transform: uppercase;
 	line-height: normal;
+        border-radius: .40em;
 }
 .mini-cart .actions .view-cart:hover {
 	background: #222;
@@ -807,6 +808,79 @@ ul#cart-sidebar {
 	box-shadow: none;
 	background: none;
 }
+
+
+ .custom-price .actions .btn-checkout:before {
+	content: "\e013";
+	font-family: 'Glyphicons Halflings';
+	font-size: 11px;
+	padding-right: 8px;
+	font-weight: normal;
+}
+ .custom-price .actions .btn-checkout {
+	background: #ff6c00;
+	color: #fff;
+	font-size: 12px;
+	padding: 6px 12px;
+	font-family: 'Roboto', sans-serif;
+	text-align: left;
+	cursor: pointer;
+	text-decoration: none;
+	float: right;
+	transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
+	border: 1px solid #ff6c00;
+	font-weight: 500;
+	text-transform: uppercase;
+	line-height: normal;
+}
+  .custom-price .actions .btn-checkout:hover {
+	background: #222;
+	border: 1px solid #222;
+	color: #fff;
+}
+  .custom-price .actions .view-cart {
+	background: #7bbd42;
+	color: #fff;
+	font-size: 12px;
+	padding: 6px 12px;
+	font-family: 'Roboto', sans-serif;
+	text-align: left;
+	cursor: pointer;
+	text-decoration: none;
+        vertical-align: super;
+        border-radius: .40em;
+	
+	transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
+	border: 1px solid #7bbd42;
+	font-weight: 500;
+	text-transform: uppercase;
+	line-height: normal;
+}
+  .custom-price .actions .view-cart:hover {
+	background: #222;
+	border: 1px solid #222;
+	color: #fff;
+}
+ .custom-price .actions .view-cart:before {
+	content: '\e116';
+	font-family: 'Glyphicons Halflings';
+	font-size: 11px;
+	padding-right: 8px;
+	font-weight: normal;
+}
+ .custom-price  .actions .button {
+	display: inline-block;
+	width: 100px;
+	text-align: center;
+	margin-bottom: 3px;
+	padding: 8px 10px 6px;
+	text-transform: none;
+	border: none;
+	font-size: 12px;
+}
+ 
+
+
 .glyphicon-remove {
 	position: absolute;
 	right: -10px;
@@ -3990,6 +4064,7 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
 }
 .price, .breadcrumbs li strong, .product-details span.price, #recently-viewed-items .price-box .special-price .price, #recently-viewed-items .price-box .regular-price .price, .availability.out-of-stock span {
 	color: #FF4C4C;
+        
 }
 .btn-remove1 {
 	background-image: url(../images/btn_remove.png);

@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
 
 
 <div class="row">
-<section class="col-main col-sm-9 col-xs-12 ">
+<section class="col-main col-sm-9 col-xs-12 wow">
           <div class="category-title">
             <h1>Заголовок</h1>
           </div>
@@ -23,7 +23,9 @@ $this->params['breadcrumbs'][] = $page->model->title;
              
              <div class="pager">
                 <div class="pages">
-                    <label>Страницы:</label>
+                    <? if ($pages->totalCount >= $pages->pageSize ):?>
+                            <label>Страницы:</label> 
+                        <? endif;?>  
                     <?= Catalog::pages()?>
                     
                 </div>
@@ -38,7 +40,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
                                     <div class="col-item">
                                         <div class="product_image">
                                             <div class="images-container">
-                                                <a class="product-image" title="<?= $item->title?>" href="/shop/view/<?= $item->title?>"> 
+                                                <a class="product-image" title="<?= $item->title?>" href="/shop/view/<?= $item->slug?>"> 
                                                     <img src="<?= $item->image?>" class="img-responsive" alt="<?= $item->title?>">
                                                 </a>
                                                 
@@ -46,7 +48,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
                                             </div>
                                             
                                         </div>
-                                        
+                                 
                                         <div class="product-shop">
                                         <h2 class="product-name"><a title="<?= $item->title?>" href="/shop/view/<?= $item->slug?>"><?= $item->title?> </a></h2>
                                         <div class="price-box">
@@ -58,14 +60,13 @@ $this->params['breadcrumbs'][] = $page->model->title;
                                             <?= $item->description?>
                                           
                                         </div>
-                                        <div class="actions">
-                                          <button class="button btn-cart ajx-cart" title="Добавить в корзину" type="button"><span>Добавить в корзину</span></button>
-                                          
-                                              
-                                      </div>
-                                        
+                                        <? if ($item->category_id != 8):?>
+                                            <div class="actions">
+                                              <button class="button btn-cart ajx-cart" title="Добавить в корзину" type="button"><span>Добавить в корзину</span></button>
+                                            </div>
+                                        <?  endif;?>
                                     </div>
-
+                                   </div>
                                 </li>
                                
                             <?php endforeach; ?>

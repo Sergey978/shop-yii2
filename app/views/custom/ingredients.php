@@ -112,10 +112,14 @@ $this->params['breadcrumbs'][] = $page->title;
                 </div>  
                 <hr class="custom-price">
                 
-                 <p class="custom-price"> 
+                 <div class="custom-price"> 
                     Итого:<span class="price" id="summ"><?= $summ ?> грн.</span> 
-                     <?= Html::a('Добавить в корзину', ['/custom/shop-cart-add'], ['class'=>'btn btn-success']) ?>    
-                </p>
+                     
+                    <span class="actions">
+                             
+                              <?= Html::a('В корзину', ['/custom/shop-cart-add'], ['class'=>'view-cart']) ?>
+                    </span>
+                </div>
                
             </div>
       </div> 

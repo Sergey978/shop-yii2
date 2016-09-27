@@ -86,7 +86,9 @@ blockquote{
   }
 
  /*каталог изменнеие размеров картинок */ 
-.cat {text-align: center;}
+.cat {text-align: center;
+     min-height: 180px;
+}
 .cat  img{width:240px;height:auto;margin:auto;}
 .cat:hover {overflow:visible;text-align: center;}
 .cat:hover img{visibility:visible;z-index:150;margin:auto;}

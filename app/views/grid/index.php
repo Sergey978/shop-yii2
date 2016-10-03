@@ -51,16 +51,21 @@ $model = new CustomModel();
                       <div class="col-item">
 
                         <div class="images-container"> 
-                            <a class="product-image" title="<?=$goods->title?>" href="product_detail.html"> 
-                                <img src="<?=$goods->image?>" class="img-responsive img-thumbnail" 
-                                     alt="<?=$goods->title?>"> 
-                            </a>
+                             <?=  Html::a(Html::img($goods->image,[
+                                          'alt' =>$goods->title,
+                                          'class' => 'img-responsive center-block img-thumbnail',
+                                          'title' => $goods->description,
+                                          'overflow'=>'visible',
+                                          'data-toggle'=>'tooltip',
+                                          'data-placement'=>'auto left',
+                                          ]),
+                         ['/shopcart/add-goods', 'id' => $goods->id]);?>
                           
                           
                              <div class="qv-button-container"> 
                               <div class="qv-e-button">
 
-                               <?=  Html::a(  '<span><span>Quick View</span></span>',
+                               <?=  Html::a(  '<span><span></span></span>',
                                    ['/shopcart/add-goods', 'id' => $goods->id]);?> 
 
                               </div> 
@@ -73,11 +78,9 @@ $model = new CustomModel();
                             <div class="item-title"> <a title=" <?=$goods->title?>" href="/shop/view/<?=$goods->slug?>"> <?=$goods->title?> </a> </div>
                             <!--item-title-->
                             <div class="item-content">
-                              <div class="ratings">
-                                <div class="rating-box">
-                                  <div style="width:60%" class="rating"></div>
+                                <div>
+                                    артикул:<?= " ".$goods->id?>
                                 </div>
-                              </div>
                               <div class="price-box">
                                 <p class="special-price"> <span class="price"> <?=$goods->price.' грн.'?> </span> </p>
                                 
@@ -97,12 +100,16 @@ $model = new CustomModel();
                  <? endforeach; ?>
               
           
-               
-              
-           
-             
             </ul>
+            
           </div>
+            <div>
+                    
+                <hr>
+                <h3><?= $cat->seo('title'); ?></h3>
+                <?= $cat->seo('description'); ?>
+              
+            </div>   
         </section>
         <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9 wow">
           <div class="side-nav-categories">
@@ -137,15 +144,11 @@ $model = new CustomModel();
             <!--box-content box-category--> 
           </div>
         
-          
-       
-    
-     
          </aside>
       </div>
     </div>
   </section>
 
-<?= $cat->seo('description'); ?>
+
            
   

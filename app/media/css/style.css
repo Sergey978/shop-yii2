@@ -1037,7 +1037,7 @@ nav {
 }
 #nav > li > a > span {
 	display: inline-block;
-	padding: 0px 15px;
+	padding: 0px 12px;
 }
 #nav .level0-wrapper {
 	position: absolute;
@@ -3089,7 +3089,7 @@ margin-right: 10px;
 }
 .special-price .price {
 	font-size: 12px;
-	color: #ea3a3c;
+	color: #ff6c00;
 	font-weight: 900;
 }
 

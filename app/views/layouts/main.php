@@ -240,7 +240,7 @@ $goodsCount = count($goods);
             
           </li>
           
-           <li class="level0 parent drop-menu"> <a class="level-top" href="/custom"><span>Новости и новинки</span></a>
+           <li class="level0 parent drop-menu"> <a class="level-top" href="/news"><span>Новости и новинки</span></a>
        
           </li>
           
@@ -399,41 +399,29 @@ $goodsCount = count($goods);
           <div><img src="<?= $asset->baseUrl ?>/images/payment-1.png" alt="payment"> <img src="<?= $asset->baseUrl ?>/images/payment-2.png" alt="payment"> <img src="<?= $asset->baseUrl ?>/images/payment-3.png" alt="payment"> <img src="<?= $asset->baseUrl ?>/images/payment-4.png" alt="payment"></div>
         </div>
       </div>
-      <div class="col-md-2 col-sm-4">
-        <h4>Shopping Guide</h4>
+      <div class="col-md-3 col-sm-4">
+        <h4>Руководство покупателя</h4>
         <ul class="links">
-          <li class="first"><a href="#" title="How to buy">How to buy</a></li>
-          <li><a href="faq.html" title="FAQs">FAQs</a></li>
-          <li><a href="#" title="Payment">Payment</a></li>
-          <li><a href="#" title="Shipment&lt;/a&gt;">Shipment</a></li>
-          <li><a href="delivery.html" title="delivery">Delivery</a></li>
-          <li class="last"><a href="#" title="Return policy">Return policy</a></li>
+          <li class="first"><a href="/page/delivery" title="Доставка">Доставка</a></li>
+          <li><a href="/grid" title="Каталог готовых средств">Каталог готовых средств</a></li>
+          <li><a href="/custom" title="Создание собственных средств">Создание собственных средств</a></li>
+          
         </ul>
       </div>
-      <div class="col-md-2 col-sm-4">
-        <h4>Style Advisor</h4>
+      
+      <div class="col-md-3 col-sm-4">
+        <h4>Информация</h4>
         <ul class="links">
-          <li class="first"><a title="Your Account" href="login.html">Your Account</a></li>
-          <li><a title="Information" href="#">Information</a></li>
-          <li><a title="Addresses" href="#">Addresses</a></li>
-          <li><a title="Addresses" href="#">Discount</a></li>
-          <li><a title="Orders History" href="#">Orders History</a></li>
-          <li class="last"><a title=" Additional Information" href="#">Additional Information</a></li>
-        </ul>
-      </div>
-      <div class="col-md-2 col-sm-4">
-        <h4>Information</h4>
-        <ul class="links">
-          <li class="first"><a href="sitemap.html" title="Site Map">Site Map</a></li>
-          <li><a href="#/" title="Search Terms">Search Terms</a></li>
-          <li><a href="#" title="Advanced Search">Advanced Search</a></li>
-          <li><a href="contact_us.html" title="Contact Us">Contact Us</a></li>
-          <li><a href="#" title="Suppliers">Suppliers</a></li>
-          <li class=" last"><a href="#" title="Our stores" class="link-rss">Our stores</a></li>
+          <li class="first"><a href="/page/about" title="О проекте">О проекте</a></li>
+          <li><a href="/page/shops" title="Магазин">Магазин</a></li>
+          <li><a href="/news" title="Новости и новинки">Новости и новинки</a></li>
+          <li><a href="/page/poleznoe" title="Полезное">Полезное</a></li>
+          <li><a href="/guestbook" title="Отзывы">Отзывы</a></li>
+          <li class=" last"><a href="/sitemap" title="Карта сайта" >карта сайта</a></li>
         </ul>
       </div>
       <div class="col-md-3 col-sm-4">
-        <h4>Contact us</h4>
+        <h4>Контакты</h4>
         <div class="contacts-info">
           <address>
           <i class="add-icon">&nbsp;</i>123 Main Street, Anytown, <br>
@@ -445,13 +433,10 @@ $goodsCount = count($goods);
       </div>
     </div>
     <div class="footer-bottom container">
-      <div class="col-sm-5 col-xs-12 coppyright"> &copy; 2015 Magikcommerce. All Rights Reserved.</div>
+      <div class="col-sm-5 col-xs-12 coppyright"> &copy; 2016 V & V Studio. </div>
       <div class="col-sm-7 col-xs-12 company-links">
         <ul class="links">
-          <li><a href="#" title="Magento Themes">Magento Themes</a></li>
-          <li><a href="#" title="Premium Themes">Premium Themes</a></li>
-          <li><a href="#" title="Responsive Themes">Responsive Themes</a></li>
-          <li class="last"><a href="#" title="Magento Extensions">Magento Extensions</a></li>
+          <li class="last"><a href="#" title="Created by YII2">Created by YII2 .</a></li>
         </ul>
       </div>
     </div>

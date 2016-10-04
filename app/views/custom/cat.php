@@ -42,11 +42,25 @@ $this->params['breadcrumbs'][] = $cat->model->title;
       
         <div class="panel <?=$classPanelName?>">
              <div class="panel-heading"> <!-- panel-heading -->
-                 <h3 class="panel-title"> <!-- title 1 -->
+                 <div class="panel-title"> <!-- title 1 -->
                      <a data-toggle="collapse" data-parent="#accordion" href="#<?=$category->slug?>">
-                    <?=$category->title.': Выберите основу';?> 
+                         <div class="row">
+                              <div class="col-md-2 col-sm-2 col-xs-4">
+                            <?=  Html::img($category->image,[
+                                                'alt' =>$category->title,
+                                                'class' => 'img-responsive img-rounded',
+                                                'style' =>'width: 60px',
+
+                                                ]);?>
+                                  
+                              </div>
+                             <div class="col-md-10 col-sm-10 col-xs-8">
+                                  <h2> <?=$category->title.': Выберите основу';?></h2>
+                             </div>
+                        </div> 
+                         
                   </a>
-                 </h3>
+                 </div>
              </div>
             
             <!-- panel body -->

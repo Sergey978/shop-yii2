@@ -43,7 +43,7 @@ $goodsCount = count($goods);
 						  <div class="links">
 							<div class="myaccount"><a title="О проекте" href="/page/about"><span class="hidden-xs">О проекте</span></a></div>
 							<div class="wishlist"><a title="Доставка" href="/page/delivery"><span class="hidden-xs">Доставка</span></a></div>
-							<div class="check"><a title="Контакты" href="/page/contacts"><span class="hidden-xs">Контакты</span></a></div>
+							<div class="check"><a title="Контакты" href="/contact"><span class="hidden-xs">Контакты</span></a></div>
 							<div class="check"><a title="Магазины" href="/page/shops"><span class="hidden-xs">Магазины</span></a></div>
 						  </div>
 						</div>

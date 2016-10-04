@@ -2,7 +2,7 @@
 use yii\easyii\modules\feedback\api\Feedback;
 use yii\easyii\modules\page\api\Page;
 
-$page = Page::get('page-contact');
+$page = Page::get('page-contacts');
 
 $this->title = $page->seo('title', $page->model->title);
 $this->params['breadcrumbs'][] = $page->model->title;
@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
             <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Message successfully sent</h4>
         <?php else : ?>
             <div class="well well-sm">
+                <H2>Задать вопрос.</H2>
                 <?= Feedback::form() ?>
             </div>
         <?php endif; ?>

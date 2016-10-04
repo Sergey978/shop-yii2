@@ -6,6 +6,8 @@ use yii\easyii\modules\catalog\api\Catalog;
 use yii\easyii\modules\page\api\Page;
 
 $asset = \app\assets\AppAsset::register($this);
+
+//
 $page = Page::get('page-custom');
 
 $this->title = $cat->seo('title', $cat->model->title);

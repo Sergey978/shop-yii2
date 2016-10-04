@@ -19,7 +19,10 @@ $this->params['breadcrumbs'][] = $page->title;
 
 ?>
 
- <img alt="Шаг 3" src="<?= $asset->baseUrl ?>/images/steps/step3.jpg"></a> 
+ <?=  Html::img($asset->baseUrl."/images/steps/step3.jpg",[
+                                                'alt' => 'Шаг 3',
+                                                'style' =>'width: 60%',
+                                                ]);?>
 
  
  <?php if(Yii::$app->request->get(AddToCartForm::SUCCESS_VAR)) : ?>

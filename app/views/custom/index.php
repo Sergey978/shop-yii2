@@ -16,7 +16,13 @@ $this->params['breadcrumbs'][] = $page->model->title;
 
 
 ?>
-<img alt="Шаг 1" src="<?= $asset->baseUrl ?>/images/steps/step1.jpg"></a> 
+
+
+<?=  Html::img($asset->baseUrl."/images/steps/step1.jpg",[
+                                                'alt' => 'Шаг 1',
+                                                'style' =>'width: 60%',
+                                                ]);?>
+
 
         <h1>
             <?= $page->seo('h1', $page->title) ?>

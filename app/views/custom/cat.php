@@ -11,7 +11,10 @@ $this->params['breadcrumbs'][] = ['label' => 'Выбор Категории', 'u
 $this->params['breadcrumbs'][] = $cat->model->title;
 ?>
 
-<img alt="Шаг 2" src="<?= $asset->baseUrl ?>/images/steps/step2.jpg"></a> 
+<?=  Html::img($asset->baseUrl."/images/steps/step2.jpg",[
+                                                'alt' => 'Шаг 2',
+                                                'style' =>'width: 60%',
+                                                ]);?>
 
      
   <div class="panel-group" id="accordion"> <!-- accordion 1 --> 

@@ -15,7 +15,7 @@ function getIngridients(url){
       //console.log(data.ingridients.length);
        
             $('#summ').empty();
-            $('#summ').append( data.summ +' грн.');
+            $('#summ').append( data.summ.toFixed(2).replace('.', ',') +' грн.');
             
             if(!(data.ingridients === null) && data.ingridients.length > 0 ){
             $('#ingredients').empty();
@@ -34,7 +34,7 @@ function getIngridients(url){
                                    ' </div> '+
                                      '<div class="info-grid">'+
                                          this.model.title + '<br/>' +
-                                        ' <span class="label label-warning">' + this.model.price + 'грн.</span>'+
+                                        ' <span class="label label-warning">' + this.model.price.toFixed(2).replace('.', ',') + 'грн.</span>'+
                                      '</div>'+
                                 '</div>' +
                             '</div> ';   

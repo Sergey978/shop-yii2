@@ -4,6 +4,8 @@ use yii\easyii\modules\file\api\File;
 use yii\easyii\modules\page\api\Page;
 use yii\helpers\Html;
 
+$asset = \app\assets\AppAsset::register($this);
+
 
 
 
@@ -14,7 +16,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
 
 
 ?>
-
+<img alt="Шаг 1" src="<?= $asset->baseUrl ?>/images/steps/step1.jpg"></a> 
 
         <h1>
             <?= $page->seo('h1', $page->title) ?>

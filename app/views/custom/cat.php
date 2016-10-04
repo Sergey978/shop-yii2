@@ -4,13 +4,14 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use yii\easyii\modules\catalog\api\Catalog;
 
-
+$asset = \app\assets\AppAsset::register($this);
 
 $this->title = $cat->seo('title', $cat->model->title);
 $this->params['breadcrumbs'][] = ['label' => 'Выбор Категории', 'url' => ['custom/index']];
 $this->params['breadcrumbs'][] = $cat->model->title;
 ?>
 
+<img alt="Шаг 2" src="<?= $asset->baseUrl ?>/images/steps/step2.jpg"></a> 
 
      
   <div class="panel-group" id="accordion"> <!-- accordion 1 --> 

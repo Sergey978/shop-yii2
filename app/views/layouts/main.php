@@ -163,7 +163,7 @@ $goodsCount = count($goods);
                                                     <? $summCostIngredients += $good->price ?>
                                                     <div class="product-details-bottom"> 
                                                         <span class="price">
-                                                            <?= $summCostIngredients  * $good->count.'  грн.'; ?>  
+                                                            <?= number_format($summCostIngredients  * $good->count, 2, ',', '').'  грн.'; ?>  
                                                         </span> 
                                                         <span class="title-desc">Количество:</span> 
                                                         <strong> <?= $good->count; ?></strong> 
@@ -178,7 +178,7 @@ $goodsCount = count($goods);
                                         </ul>
                             
                            
-                            <div class="top-subtotal">Всего: <span class="price"><?=$summCostAllIngredients?> грн.</span></div>
+                            <div class="top-subtotal">Всего: <span class="price"><?=number_format($summCostAllIngredients, 2, ',', '')?> грн.</span></div>
                             <div class="actions">
                              
                               <?= Html::a('Оформить заказ', ['/shopcart'], ['class'=>'view-cart']) ?>
@@ -349,7 +349,7 @@ $goodsCount = count($goods);
        
           </li>
           
-          <li class="level0 nav-5 level-top parent"><a href="/shopcart"><span>Полезное </span> </a>
+          <li class="level0 nav-5 level-top parent"><a href="/useful"><span>Полезное </span> </a>
            
           </li>
           

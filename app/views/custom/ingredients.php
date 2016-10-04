@@ -5,6 +5,7 @@ use yii\easyii\modules\page\api\Page;
 use yii\helpers\Html;
 use app\models\AddToCartForm;
 
+$asset = \app\assets\AppAsset::register($this);
 
 $asset = \app\assets\AppAsset::register($this);
 $page = Page::get('page-ingridients');
@@ -18,7 +19,8 @@ $this->params['breadcrumbs'][] = $page->title;
 
 ?>
 
- 
+ <img alt="Шаг 3" src="<?= $asset->baseUrl ?>/images/steps/step3.jpg"></a> 
+
  
  <?php if(Yii::$app->request->get(AddToCartForm::SUCCESS_VAR)) : ?>
                     <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Товар добавлен в корзину</h4>
@@ -40,7 +42,7 @@ $this->params['breadcrumbs'][] = $page->title;
                                             'data-toggle'=>'tooltip',
                                             ]) ?>
                     
-                       <p class="special-price"> <span class="price"> <?=$baseItem->price ?> грн.</span></p> 
+                       <p class="special-price"> <span class="price"> <?=number_format($baseItem->price, 2, ',', '') ?> грн.</span></p> 
                    
                     </div>
                 
@@ -88,7 +90,7 @@ $this->params['breadcrumbs'][] = $page->title;
                                 
                                  <div class="info-grid">
                                      <?= $item->title ?><br/>
-                                     <span class="label label-warning"><?= $item->price ?>грн.</span>
+                                     <span class="label label-warning"><?= number_format($item->price, 2, ',', '') ?>грн.</span>
                                  </div>
                                 
                                 </div>
@@ -113,7 +115,7 @@ $this->params['breadcrumbs'][] = $page->title;
                 <hr class="custom-price">
                 
                  <div class="custom-price"> 
-                    Итого:<span class="price" id="summ"><?= $summ ?> грн.</span> 
+                    Итого:<span class="price" id="summ"><?= number_format($summ, 2, ',', '') ?> грн.</span> 
                      
                     <span class="actions">
                              
@@ -172,7 +174,7 @@ $this->params['breadcrumbs'][] = $page->title;
                          <div class="ratings"> 
                          </div>
                          <div class="price-box">
-                           <p class="special-price"> <span class="price"> <?=$ingridient->price ?> грн.</span> </p>
+                           <p class="special-price"> <span class="price"> <?=number_format($ingridient->price, 2, ',', '')?> грн.</span> </p>
                            <p class="old-price"> <span class="price-sep">-</span> 
                                <span class="price"> 
                                      <? /*$ingridient->oldPrice */?>

@@ -44,7 +44,7 @@ use yii\easyii\modules\catalog\api\Catalog;
                           
                         </div>
                         <div class="price-box">
-                          <p class="special-price"> <span class="price"> <?=$item->price ?> грн.</span> </p>
+                          <p class="special-price"> <span class="price"> <?=number_format($item->price, 2, ',', '')?> грн.</span> </p>
                            <p class="old-price"> <span class="price-sep">-</span> 
                                <span class="price"> 
                                      <? /*$ingridient->oldPrice */?>

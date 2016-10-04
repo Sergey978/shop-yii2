@@ -82,7 +82,7 @@ $model = new CustomModel();
                                     артикул:<?= " ".$goods->id?>
                                 </div>
                               <div class="price-box">
-                                <p class="special-price"> <span class="price"> <?=$goods->price.' грн.'?> </span> </p>
+                                <p class="special-price"> <span class="price"> <?=number_format($goods->price, 2, ',', '').' грн.'?> </span> </p>
                                 
                               </div>
                             </div>

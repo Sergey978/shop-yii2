@@ -38,12 +38,12 @@ $this->params['breadcrumbs'][] = $page->model->title;
                               <? $ingridients = explode ('|',$good->options)?>
                             <?  $summCostIngredients = 0;?>     
                           <? if (Catalog::get($ingridients [0])):?>  
-                          <?=' Цена ...'. $good->price. 'грн.'?> 
+                          <?=' Цена '. number_format($good->price, 2, ',', ''). 'грн.'?> 
                             <h5>Ингредиенты</h5>
                                 <? foreach ($ingridients as $ingridient) :?>
                                 <? $component = yii\easyii\modules\catalog\api\Catalog::get($ingridient); ?>
                               
-                                        <?= '&emsp;'.$component->title.' <br> '.'&emsp;.....  цена - '.$component->price.' грн.' ?><br>
+                                        <?= '&emsp;'.$component->title.' <br> '.'цена - '.number_format($component->price, 2, ',', '').' грн.' ?><br>
                                         <? $summCostIngredients+=$component->price; ?>
                                
                               <? endforeach;?>
@@ -61,16 +61,16 @@ $this->params['breadcrumbs'][] = $page->model->title;
                             <?php if($good->discount) : ?>
                                 <del class="text-muted "><small><?= $good->item->oldPrice ?></small></del>
                             <?php endif; ?>
-                            <?= $good->price  + $summCostIngredients?>
+                            <?= number_format($good->price  + $summCostIngredients, 2, ',', '')?>
                         </td>
-                        <td><?= ($good->price + $summCostIngredients)* $good->count ?></td>
+                        <td><?= number_format(($good->price + $summCostIngredients)* $good->count, 2, ',', '') ?></td>
                         <th><?= Html::a('<i class="glyphicon glyphicon-trash text-danger"></i>', ['/shopcart/remove', 'id' => $good->id], ['title' => 'Удалить товар']) ?></th>
                     </tr>
-                     <? $summCostAllIngredients += $summCostIngredients * $good->count; ?>
+                     <? number_format($summCostAllIngredients += $summCostIngredients * $good->count, 2, ',', ''); ?>
                 <?php endforeach; ?>
                 <tr>
                     <td colspan="5" class="text-right">
-                        <h3>Всего: <?= Shopcart::cost() + $summCostAllIngredients.' '?>грн.</h3>
+                        <h3>Всего: <?=number_format(Shopcart::cost() + $summCostAllIngredients, 2, ',', '') .' '?>грн.</h3>
                     </td>
                 </tr>
                 </tbody>

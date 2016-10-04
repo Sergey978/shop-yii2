@@ -5,7 +5,7 @@ use yii\easyii\modules\page\api\Page;
 use yii\helpers\Html;
 use app\models\AddToCartForm;
 
-$asset = \app\assets\AppAsset::register($this);
+
 
 $asset = \app\assets\AppAsset::register($this);
 $page = Page::get('page-ingridients');

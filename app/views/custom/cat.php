@@ -3,8 +3,10 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use yii\easyii\modules\catalog\api\Catalog;
+use yii\easyii\modules\page\api\Page;
 
 $asset = \app\assets\AppAsset::register($this);
+$page = Page::get('page-custom');
 
 $this->title = $cat->seo('title', $cat->model->title);
 $this->params['breadcrumbs'][] = ['label' => 'Выбор Категории', 'url' => ['custom/index']];
@@ -95,11 +97,10 @@ $this->params['breadcrumbs'][] = $cat->model->title;
 <?php endif; ?>
       
   
-   
-    
    </div>
 
-    
+    <h1><?= $page->title ?></h1>
+    <p><?= $page->text ?></p>
     
  
        

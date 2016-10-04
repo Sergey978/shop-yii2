@@ -6,9 +6,6 @@ use yii\helpers\Html;
 
 $asset = \app\assets\AppAsset::register($this);
 
-
-
-
 $page = Page::get('page-custom');
 
 $this->title = $page->seo('title', $page->model->title);

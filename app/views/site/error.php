@@ -1,16 +1,16 @@
 <?php
 use yii\helpers\Html;
-$this->title = $name;
+$asset = \app\assets\AppAsset::register($this);
+
 ?>
-<h1><?= Html::encode($this->title) ?></h1>
-
-<div class="alert alert-danger">
-    <?= nl2br(Html::encode($message)) ?>
-</div>
-
-<p>
-    The above error occurred while the Web server was processing your request.
-</p>
-<p>
-    Please contact us if you think this is a server error. Thank you.
-</p>
+<section class="content-wrapper">
+    <div class="container">
+      <div class="std">
+        <div class="page-not-found">
+          <h2>404</h2>
+          <h3><img src="<?= $asset->baseUrl ?>/images/signal.png">Ой всё ! Запрошенная страница не найдена!</h3>
+          <div><a href="/index" type="button" class="btn-home"><span>Вернуться на главную</span></a></div>
+        </div>
+      </div>
+    </div>
+  </section>

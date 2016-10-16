@@ -67,7 +67,7 @@ $goodsCount = count($goods);
 					   <div class="col-xs-6  hidden-xs hidden-sm hidden-md">
 					   <!-- Header Top Phone 1-->
 						
-							<div class="phone">(067) <span> 123 2222</span></div>
+							<div class="phone">(067) <span>4813446</span></div>
 						
 						<!-- End Header Top Phone 1--> 
 						
@@ -76,7 +76,7 @@ $goodsCount = count($goods);
 					<div class="col-xs-6  hidden-xs hidden-sm hidden-md"> 
 						<!-- Header Top Phone 2-->
 						
-                                                <div class="phone">(067)<span> 123 2222</span></div>
+                                                <div class="phone">(093)<span>4221010</span></div>
 						
 						
 						<!-- End Header Top Phone 2--> 
@@ -84,7 +84,7 @@ $goodsCount = count($goods);
 				  <div class="col-xs-10 hidden-xs hidden-sm hidden-lg"> 
 						<!-- Header Top Phone 3-->
 						
-							<div class="phone">(067) <span> 123 2222</span></div>
+							<div class="phone">(093) <span>4221010</span></div>
 						
 						<!-- End Header Top Phone 3--> 
 				  </div>
@@ -349,7 +349,7 @@ $goodsCount = count($goods);
        
           </li>
           
-          <li class="level0 nav-5 level-top parent"><a href="/useful"><span>Полезное </span> </a>
+          <li class="level0 nav-5 level-top parent"><a href="/blog"><span>Блог </span> </a>
            
           </li>
           
@@ -424,11 +424,11 @@ $goodsCount = count($goods);
         <h4>Контакты</h4>
         <div class="contacts-info">
           <address>
-          <i class="add-icon">&nbsp;</i>123 Main Street, Anytown, <br>
-          &nbsp;CA 12345  USA
+          <i class="add-icon">&nbsp;</i>Киев, ул. Нагорная 25-27, <br>
+          &nbsp; каб. 29
           </address>
-          <div class="phone-footer"><i class="phone-icon">&nbsp;</i> +1 800 123 1234</div>
-          <div class="email-footer"><i class="email-icon">&nbsp;</i> <a href="mailto:support@magikcommerce.com">support@magikcommerce.com</a> </div>
+          <div class="phone-footer"><i class="phone-icon">&nbsp;</i>(093)4221010, &nbsp; (067)4813446</div>
+          <div class="email-footer"><i class="email-icon">&nbsp;</i> <a href="mailto:lerox.cosmetics@gmail.com">lerox.cosmetics@gmail.com</a> </div>
         </div>
       </div>
     </div>

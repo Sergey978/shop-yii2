@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = $cat->model->title;
 ?>
 
 <?=  Html::img($asset->baseUrl."/images/steps/step2.jpg",[
+                                                'class'=>'center-block',
                                                 'alt' => 'Шаг 2',
                                                 'style' =>'width: 60%',
                                                 ]);?>

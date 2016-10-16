@@ -7,6 +7,7 @@ use yii\easyii\modules\news\api\News;
 use yii\easyii\modules\page\api\Page;
 use yii\easyii\modules\text\api\Text;
 use yii\helpers\Html;
+use yii\easyii\modules\subscribe\api\Subscribe;
 
 Yii::$app->formatter->locale = 'ru-RU';
 
@@ -94,9 +95,9 @@ $this->title = $page->seo('title', $page->model->title);
 
 
 <div class="text-center">
-    <h2>Новинки </h2>
+    <h2>Блог </h2>
     <br/>
-    <? $newArticles = Article::last(3, ['category_id' => '1']);?>
+    <? $newArticles = Article::last(3, ['category_id' => '5']);?>
     <? foreach ($newArticles as $newArt): ?>
         <div class="row text-left">
             <div class="col-md-2 col-sm-2 col-xs-4">
@@ -122,6 +123,16 @@ $this->title = $page->seo('title', $page->model->title);
 <br/>
 <hr/>
 
-
+<div class="text-center">
+    <?php if(Yii::$app->request->get(Subscribe::SENT_VAR)) : ?>
+            <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Вы подписаны</h4>
+        <?php else : ?>
+            <div class="well subscribe">
+                <H3>Будьте с нами!</H3>
+                <?= Subscribe::form() ?>
+            </div>
+        <?php endif; ?>
+    
+</div>
 
 <br/>

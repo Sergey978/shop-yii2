@@ -4,11 +4,11 @@ namespace app\controllers;
 
 use yii\easyii\modules\article\api\Article;
 
-class UsefulController extends \yii\web\Controller
+class BlogController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        $cat = Article::cat('poleznoe');
+        $cat = Article::cat('blog');
         
         if(!$cat){
             throw new \yii\web\NotFoundHttpException('Article category not found.');
@@ -19,7 +19,8 @@ class UsefulController extends \yii\web\Controller
             'items' => $cat->items(['tags' => $tag, 'pagination' => ['pageSize' => 10]])
         ]);
     }
-
+    
+    
     
     public function actionView($slug)
     {

@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = $page->title;
 ?>
 
  <?=  Html::img($asset->baseUrl."/images/steps/step3.jpg",[
+                                                'class'=>'center-block',
                                                 'alt' => 'Шаг 3',
                                                 'style' =>'width: 60%',
                                                 ]);?>

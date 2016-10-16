@@ -129,6 +129,17 @@ blockquote{
     border: none;
 }
 
+.custom-cat{
+    width: 100%;
+    text-align: center;
+   
+}
+
+.custom-cat li{
+    float: none;
+    display: inline-block;
+}
+
 /*Form Wizard*/
 .bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
 .bs-wizard > .bs-wizard-step {padding: 0; position: relative;}

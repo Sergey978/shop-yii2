@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
 
 
 <?=  Html::img($asset->baseUrl."/images/steps/step1.jpg",[
+                                                'class'=>'center-block',
                                                 'alt' => 'Шаг 1',
                                                 'style' =>'width: 60%',
                                                 ]);?>
@@ -26,35 +27,35 @@ $this->params['breadcrumbs'][] = $page->model->title;
            
         </h1>
         <br/>
-        <ul class = 'row'>
-         
-        <?php     foreach ($categories as $cat) : ?>
-            <? $category =  Catalog::cat( $cat->slug ); ?> 
-            <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
-                <div class="col-item">
-               
-                  <div class="images-container"> 
-                      <div class="cat">
-                            
-                            <?= Html::a(Html::img($category->image,[
-                                'alt' =>$category->title,
-                                'class' => 'img-rounded img-responsive',
-                                'title' => $category->seo('description'),
-                                'data-toggle'=>'tooltip',
-                                'data-placement' => 'bottom',
-                               
+      
+        
+            <ul class = 'row custom-cat'>
+                <?php     foreach ($categories as $cat) : ?>
+                    <? $category =  Catalog::cat( $cat->slug ); ?> 
+                    <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                        <div class="col-item">
 
-                                ]), ['/custom/cat', 'slug' => $category->slug]);
-                            ?>
-       
-                     </div>
-                   </div>
-                </div>   
-            </li>   
-         <?php endforeach; ?>
-         
-        </ul>
-   
+                          <div class="images-container"> 
+                              <div class="cat">
+
+                                    <?= Html::a(Html::img($category->image,[
+                                        'alt' =>$category->title,
+                                        'class' => 'img-rounded img-responsive',
+                                        'title' => $category->seo('description'),
+                                        'data-toggle'=>'tooltip',
+                                        'data-placement' => 'bottom',
+
+
+                                        ]), ['/custom/cat', 'slug' => $category->slug]);
+                                    ?>
+
+                             </div>
+                           </div>
+                        </div>   
+                    </li>   
+                 <?php endforeach; ?>
+            </ul>
+        
     <hr/>
         
     

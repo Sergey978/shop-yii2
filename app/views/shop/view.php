@@ -10,19 +10,27 @@ $this->params['breadcrumbs'][] = ['label' => 'Shop', 'url' => ['shop/index']];
 $this->params['breadcrumbs'][] = ['label' => $item->cat->title, 'url' => ['shop/cat', 'slug' => $item->cat->slug]];
 $this->params['breadcrumbs'][] = $item->model->title;
 
-$colors = [];
-if(!empty($item->data->color) && is_array($item->data->color)) {
-    foreach ($item->data->color as $color) {
-        $colors[$color] = $color;
-    }
-}
+
 ?>
 <h1><?= $item->seo('h1', $item->title) ?></h1>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="item col-lg-4 col-md-4 col-sm-6 col-xs-6">
         <br/>
-        <?= Html::img($item->thumb(120, 240)) ?>
+        
+        
+                      <div class="col-item">
+
+                        <div class="images-container"> 
+                             <?=  Html::img($item->image,[
+                                          'alt' =>$item->title,
+                                          'class' => 'img-responsive center-block img-thumbnail',
+                                          'overflow'=>'visible',
+                                          ]);?>
+                           
+                        </div>
+                      </div>
+             
         <?php if(count($item->photos)) : ?>
             <br/><br/>
             <div>
@@ -37,21 +45,14 @@ if(!empty($item->data->color) && is_array($item->data->color)) {
         <div class="row">
             <div class="col-md-8">
                 <h2>
-                    <span class="label label-warning"><?= $item->price ?>$</span>
+                    <span class="label label-warning"><?= number_format($item->price, 2, ',', '') ?>грн.</span>
                     <?php if($item->discount) : ?>
                         <del class="small"><?= $item->oldPrice ?></del>
                     <?php endif; ?>
                 </h2>
-                <h3>Characteristics</h3>
-                <span class="text-muted">Brand:</span> <?= $item->data->brand ?>
-                <br/>
-                <span class="text-muted">Storage:</span> <?= $item->data->storage ?> GB
-                <br/>
-                <span class="text-muted">Touchscreen:</span> <?= $item->data->touchscreen ? 'Yes' : 'No' ?>
-                <br/>
-                <span class="text-muted">CPU cores:</span> <?= $item->data->cpu ?>
-                <br/>
-                <span class="text-muted">Availability:</span> <?= $item->available ? $item->available : 'Out of stock' ?>
+                <h3>Описание </h3>
+                  <?= $item->description ?>
+                
                 <?php if(!empty($item->data->features)) : ?>
                     <br/>
                     <span class="text-muted">Features:</span> <?= implode(', ', $item->data->features) ?>
@@ -59,21 +60,19 @@ if(!empty($item->data->color) && is_array($item->data->color)) {
             </div>
             <div class="col-md-4">
                 <?php if(Yii::$app->request->get(AddToCartForm::SUCCESS_VAR)) : ?>
-                    <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Added to cart</h4>
+                    <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Товар в корзине</h4>
                 <?php elseif($item->available) : ?>
                     <br/>
                     <div class="well well-sm">
                         <?php $form = ActiveForm::begin(['action' => Url::to(['/shopcart/add', 'id' => $item->id])]); ?>
-                        <?php if(count($colors)) : ?>
-                            <?= $form->field($addToCartForm, 'color')->dropDownList($colors) ?>
-                        <?php endif; ?>
+                       
                         <?= $form->field($addToCartForm, 'count') ?>
-                        <?= Html::submitButton('Add to cart', ['class' => 'btn btn-warning']) ?>
+                        <?= Html::submitButton('В корзину', ['class' => 'btn btn-warning']) ?>
                         <?php ActiveForm::end(); ?>
                     </div>
                 <?php endif; ?>
             </div>
         </div>
-        <?= $item->description ?>
+      
     </div>
 </div>

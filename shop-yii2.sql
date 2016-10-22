@@ -1,20 +1,52 @@
 -- --------------------------------------------------------
 -- Хост:                         127.0.0.1
--- Версия сервера:               5.5.48 - MySQL Community Server (GPL)
+-- Версия сервера:               5.5.41-log - MySQL Community Server (GPL)
 -- ОС Сервера:                   Win32
--- HeidiSQL Версия:              9.3.0.4984
+-- HeidiSQL Версия:              9.2.0.4947
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_admins
+CREATE TABLE IF NOT EXISTS `easyii_admins` (
+  `admin_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(32) NOT NULL,
+  `password` varchar(64) NOT NULL,
+  `auth_key` varchar(128) NOT NULL,
+  `access_token` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`admin_id`),
+  UNIQUE KEY `access_token` (`access_token`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
 -- Дамп данных таблицы shop-yii2.easyii_admins: 1 rows
 DELETE FROM `easyii_admins`;
 /*!40000 ALTER TABLE `easyii_admins` DISABLE KEYS */;
 INSERT INTO `easyii_admins` (`admin_id`, `username`, `password`, `auth_key`, `access_token`) VALUES
 	(1, 'admin', 'b06e404179e3c1a4f8ebfbe176b27bf4c464e6ed', 'FrVrhdiX8WjHKEOqd4xFvMLASJ535M-J', NULL);
 /*!40000 ALTER TABLE `easyii_admins` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_article_categories
+CREATE TABLE IF NOT EXISTS `easyii_article_categories` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(128) NOT NULL,
+  `image` varchar(128) DEFAULT NULL,
+  `order_num` int(11) DEFAULT NULL,
+  `slug` varchar(128) DEFAULT NULL,
+  `tree` int(11) DEFAULT NULL,
+  `lft` int(11) DEFAULT NULL,
+  `rgt` int(11) DEFAULT NULL,
+  `depth` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`category_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_article_categories: 5 rows
 DELETE FROM `easyii_article_categories`;
@@ -24,8 +56,25 @@ INSERT INTO `easyii_article_categories` (`category_id`, `title`, `image`, `order
 	(2, 'Articles category 2', NULL, 1, 'articles-category-2', 2, 1, 6, 0, 1),
 	(3, 'Subcategory 1', NULL, 1, 'subcategory-1', 2, 2, 3, 1, 1),
 	(4, 'Subcategory 1', NULL, 1, 'subcategory-1-2', 2, 4, 5, 1, 1),
-	(5, 'Полезное', '', 3, 'poleznoe', 5, 1, 2, 0, 1);
+	(5, 'Блог', '', 3, 'blog', 5, 1, 2, 0, 1);
 /*!40000 ALTER TABLE `easyii_article_categories` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_article_items
+CREATE TABLE IF NOT EXISTS `easyii_article_items` (
+  `item_id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) DEFAULT NULL,
+  `title` varchar(128) NOT NULL,
+  `image` varchar(128) DEFAULT NULL,
+  `short` varchar(1024) DEFAULT NULL,
+  `text` text NOT NULL,
+  `slug` varchar(128) DEFAULT NULL,
+  `time` int(11) DEFAULT '0',
+  `views` int(11) DEFAULT '0',
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`item_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_article_items: 5 rows
 DELETE FROM `easyii_article_items`;
@@ -34,9 +83,22 @@ INSERT INTO `easyii_article_items` (`item_id`, `category_id`, `title`, `image`, 
 	(1, 1, 'Новинка! Суфле-скраб "Кокос"!', '/uploads/article/79a1ceaa78.jpg', 'Суфле - скраб для душа с разными обалденно вкусными запахами! Нежно очищает и скрабирует кожу...особенно нравится деткам', '<p>Суфле - скраб для душа с разными обалденно вкусными запахами! Нежно очищает и скрабирует кожу...особенно нравится деткам</p><p>Суфле - скраб для душа с разными обалденно вкусными запахами! Нежно очищает и скрабирует кожу...особенно нравится деткам</p><p>Суфле - скраб для душа с разными обалденно вкусными запахами! Нежно очищает и скрабирует кожу...особенно нравится деткам</p>', 'novinka-sufle-skrab-kokos', 1473239280, 6, 1),
 	(2, 1, 'Second article title', '/uploads/article/article-2.jpg', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p><ol> <li>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </li><li>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</li></ol>', 'second-article-title', 1468746513, 0, 1),
 	(3, 1, 'Third article title', '/uploads/article/article-3.jpg', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt molliti', '<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>', 'third-article-title', 1468660113, 0, 1),
-	(4, 5, 'Немного о косметических консервантах', '/uploads/article/krem-b8599b9343.jpeg', 'Сегодня буду рассказывать о том, какие бывают консерванты в магазинной и натуральной косметике.️Что такое вообще консерванты? Это вещества, которые останавливают развитие микроорганизмов и предохраняют косметику от микробного заражения.', '<p>Всем привет! Сегодня буду рассказывать о том, какие бывают консерванты в магазинной и натуральной косметике.️Что такое вообще консерванты? Это вещества, которые останавливают развитие микроорганизмов и предохраняют косметику от микробного заражения. Если крем бактериально заражен - поверьте, он принесет вам намного больше вреда, чем пользы (покроетесь прыщами, начнутся раздражения и пр. ). Если косметика сделана вообще без консервантов - она хранится в холодильнике не более 5 дней! (как суп - Вы же не будете есть несвежий суп??). Но все консерванты разные, и если в магазинных кремах добавлены консерванты парабеновой и формальдегидной группы (с которыми средство хранится до 3 лет ️, и действие которых может быть токсично), то в натуральную домашнюю косметику мастера добавляют мягкие "зеленые" консерванты, безвредные для здоровья и сертифицированные Ecosert для использования в органической косметике. Это могут быть Cosguard, Leucidal и прочие. С ними Ваша косметика будет храниться на полочке в ванной около 3 месяцев . Есть еще натуральные консерванты и антиоксиданты - эфирные масла, экстракт косточек грейпфрута, воски и прочие. Они также обладают противомикробным действием, но намного менее активным. С ними косметика хранится также в холодильнике не более 3х недель. Кто-то хранит такие средства и в ванной, но я считаю, что мазать лицо кремом с плесенью и грибком - ни разу не полезно . Поэтому лучше перестраховаться и все-таки хранить такую баночку в холодильнике. ️️️ Мораль: консервант консерванту рознь :))) Завтра расскажу вам о натуральных твердых маслах (баттерах) и их использовании в домашней косметике. P.S.!!! Мой совет - не лазайте в баночки с кремом (тем более с натуральным) пальцами! ️ Пользуйтесь стеклянным или пластиковым стиком, это более гигиенично и продлит жизнь Вашему кремику.</p>', 'emnogo-o-kosmeticheskih-konservantah', 1475575060, 2, 1),
-	(5, 5, 'Консерванты2', '/uploads/article/krem-110e71dd8e.jpeg', 'Если крем бактериально заражен - поверьте, он принесет вам намного больше вреда, чем пользы (покроетесь прыщами, начнутся раздражения и пр. ). Если косметика сделана вообще без консервантов - она хранится в холодильнике не более 5 дней!', '<p>Всем привет! Сегодня буду рассказывать о том, какие бывают консерванты в магазинной и натуральной косметике.️Что такое вообще консерванты? Это вещества, которые останавливают развитие микроорганизмов и предохраняют косметику от микробного заражения. Если крем бактериально заражен - поверьте, он принесет вам намного больше вреда, чем пользы (покроетесь прыщами, начнутся раздражения и пр. ). Если косметика сделана вообще без консервантов - она хранится в холодильнике не более 5 дней! (как суп - Вы же не будете есть несвежий суп??). Но все консерванты разные, и если в магазинных кремах добавлены консерванты парабеновой и формальдегидной группы (с которыми средство хранится до 3 лет ️, и действие которых может быть токсично), то в натуральную домашнюю косметику мастера добавляют мягкие "зеленые" консерванты, безвредные для здоровья и сертифицированные Ecosert для использования в органической косметике. Это могут быть Cosguard, Leucidal и прочие. С ними Ваша косметика будет храниться на полочке в ванной около 3 месяцев . Есть еще натуральные консерванты и антиоксиданты - эфирные масла, экстракт косточек грейпфрута, воски и прочие. Они также обладают противомикробным действием, но намного менее активным. С ними косметика хранится также в холодильнике не более 3х недель. Кто-то хранит такие средства и в ванной, но я считаю, что мазать лицо кремом с плесенью и грибком - ни разу не полезно . Поэтому лучше перестраховаться и все-таки хранить такую баночку в холодильнике. ️️️ Мораль: консервант консерванту рознь :))) Завтра расскажу вам о натуральных твердых маслах (баттерах) и их использовании в домашней косметике. P.S.!!! Мой совет - не лазайте в баночки с кремом (тем более с натуральным) пальцами! ️ Пользуйтесь стеклянным или пластиковым стиком, это более гигиенично и продлит жизнь Вашему кремику</p>', 'onservanty2', 1475575312, 2, 1);
+	(4, 5, 'Немного о косметических консервантах', '/uploads/article/krem-b8599b9343.jpeg', 'Сегодня буду рассказывать о том, какие бывают консерванты в магазинной и натуральной косметике.️Что такое вообще консерванты? Это вещества, которые останавливают развитие микроорганизмов и предохраняют косметику от микробного заражения.', '<p>Всем привет! Сегодня буду рассказывать о том, какие бывают консерванты в магазинной и натуральной косметике.️Что такое вообще консерванты? Это вещества, которые останавливают развитие микроорганизмов и предохраняют косметику от микробного заражения. Если крем бактериально заражен - поверьте, он принесет вам намного больше вреда, чем пользы (покроетесь прыщами, начнутся раздражения и пр. ). Если косметика сделана вообще без консервантов - она хранится в холодильнике не более 5 дней! (как суп - Вы же не будете есть несвежий суп??). Но все консерванты разные, и если в магазинных кремах добавлены консерванты парабеновой и формальдегидной группы (с которыми средство хранится до 3 лет ️, и действие которых может быть токсично), то в натуральную домашнюю косметику мастера добавляют мягкие "зеленые" консерванты, безвредные для здоровья и сертифицированные Ecosert для использования в органической косметике. Это могут быть Cosguard, Leucidal и прочие. С ними Ваша косметика будет храниться на полочке в ванной около 3 месяцев . Есть еще натуральные консерванты и антиоксиданты - эфирные масла, экстракт косточек грейпфрута, воски и прочие. Они также обладают противомикробным действием, но намного менее активным. С ними косметика хранится также в холодильнике не более 3х недель. Кто-то хранит такие средства и в ванной, но я считаю, что мазать лицо кремом с плесенью и грибком - ни разу не полезно . Поэтому лучше перестраховаться и все-таки хранить такую баночку в холодильнике. ️️️ Мораль: консервант консерванту рознь :))) Завтра расскажу вам о натуральных твердых маслах (баттерах) и их использовании в домашней косметике. P.S.!!! Мой совет - не лазайте в баночки с кремом (тем более с натуральным) пальцами! ️ Пользуйтесь стеклянным или пластиковым стиком, это более гигиенично и продлит жизнь Вашему кремику.</p>', 'emnogo-o-kosmeticheskih-konservantah', 1475575060, 4, 1),
+	(5, 5, 'Консерванты2', '/uploads/article/krem-110e71dd8e.jpeg', 'Если крем бактериально заражен - поверьте, он принесет вам намного больше вреда, чем пользы (покроетесь прыщами, начнутся раздражения и пр. ). Если косметика сделана вообще без консервантов - она хранится в холодильнике не более 5 дней!', '<p>Всем привет! Сегодня буду рассказывать о том, какие бывают консерванты в магазинной и натуральной косметике.️Что такое вообще консерванты? Это вещества, которые останавливают развитие микроорганизмов и предохраняют косметику от микробного заражения. Если крем бактериально заражен - поверьте, он принесет вам намного больше вреда, чем пользы (покроетесь прыщами, начнутся раздражения и пр. ). Если косметика сделана вообще без консервантов - она хранится в холодильнике не более 5 дней! (как суп - Вы же не будете есть несвежий суп??). Но все консерванты разные, и если в магазинных кремах добавлены консерванты парабеновой и формальдегидной группы (с которыми средство хранится до 3 лет ️, и действие которых может быть токсично), то в натуральную домашнюю косметику мастера добавляют мягкие "зеленые" консерванты, безвредные для здоровья и сертифицированные Ecosert для использования в органической косметике. Это могут быть Cosguard, Leucidal и прочие. С ними Ваша косметика будет храниться на полочке в ванной около 3 месяцев . Есть еще натуральные консерванты и антиоксиданты - эфирные масла, экстракт косточек грейпфрута, воски и прочие. Они также обладают противомикробным действием, но намного менее активным. С ними косметика хранится также в холодильнике не более 3х недель. Кто-то хранит такие средства и в ванной, но я считаю, что мазать лицо кремом с плесенью и грибком - ни разу не полезно . Поэтому лучше перестраховаться и все-таки хранить такую баночку в холодильнике. ️️️ Мораль: консервант консерванту рознь :))) Завтра расскажу вам о натуральных твердых маслах (баттерах) и их использовании в домашней косметике. P.S.!!! Мой совет - не лазайте в баночки с кремом (тем более с натуральным) пальцами! ️ Пользуйтесь стеклянным или пластиковым стиком, это более гигиенично и продлит жизнь Вашему кремику</p>', 'onservanty2', 1475575312, 19, 1);
 /*!40000 ALTER TABLE `easyii_article_items` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_carousel
+CREATE TABLE IF NOT EXISTS `easyii_carousel` (
+  `carousel_id` int(11) NOT NULL AUTO_INCREMENT,
+  `image` varchar(128) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `title` varchar(128) DEFAULT NULL,
+  `text` text,
+  `order_num` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`carousel_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_carousel: 3 rows
 DELETE FROM `easyii_carousel`;
@@ -46,6 +108,24 @@ INSERT INTO `easyii_carousel` (`carousel_id`, `image`, `link`, `title`, `text`, 
 	(5, '/uploads/carousel/karusel2-ed26bf3020.jpg', '', '', '', 5, 1),
 	(6, '/uploads/carousel/8hkqstxunja-a3463daf63.jpg', 'http://shop-yii2.loc/grid', '<b>ПОДАРОЧНЫЙ НАБОР ЗА ПОЛ ЦЕНЫ!</b>', 'Успей купить до 1 октября!', 6, 1);
 /*!40000 ALTER TABLE `easyii_carousel` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_catalog_categories
+CREATE TABLE IF NOT EXISTS `easyii_catalog_categories` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(128) NOT NULL,
+  `image` varchar(128) DEFAULT NULL,
+  `fields` text NOT NULL,
+  `slug` varchar(128) DEFAULT NULL,
+  `tree` int(11) DEFAULT NULL,
+  `lft` int(11) DEFAULT NULL,
+  `rgt` int(11) DEFAULT NULL,
+  `depth` int(11) DEFAULT NULL,
+  `order_num` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`category_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_catalog_categories: 32 rows
 DELETE FROM `easyii_catalog_categories`;
@@ -84,6 +164,25 @@ INSERT INTO `easyii_catalog_categories` (`category_id`, `title`, `image`, `field
 	(15, 'Бальзам', '/uploads/catalog/2c64be033e.jpg', '[]', 'balm-body', 4, 17, 18, 2, 1, 1),
 	(38, 'Подарочная категория', '', '[]', 'podarochnaya-kategoriya', 38, 1, 2, 0, 6, 1);
 /*!40000 ALTER TABLE `easyii_catalog_categories` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_catalog_items
+CREATE TABLE IF NOT EXISTS `easyii_catalog_items` (
+  `item_id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) DEFAULT NULL,
+  `title` varchar(128) NOT NULL,
+  `description` text,
+  `available` int(11) DEFAULT '1',
+  `price` float DEFAULT '0',
+  `discount` int(11) DEFAULT '0',
+  `data` text NOT NULL,
+  `image` varchar(128) DEFAULT NULL,
+  `slug` varchar(128) DEFAULT NULL,
+  `time` int(11) DEFAULT '0',
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`item_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_catalog_items: 44 rows
 DELETE FROM `easyii_catalog_items`;
@@ -135,6 +234,18 @@ INSERT INTO `easyii_catalog_items` (`item_id`, `category_id`, `title`, `descript
 	(47, 38, 'Подарок 4', '<p>вапрварварва &nbsp;ывкпрвапаывпвыап &nbsp;ывапывапывапывп &nbsp;ывпывпывп</p>', 344, 410, 0, '{}', '/uploads/catalog/newsletter-bg-0c3d19d60c.jpg', 'podarok-4', 1474884745, 1);
 /*!40000 ALTER TABLE `easyii_catalog_items` ENABLE KEYS */;
 
+
+-- Дамп структуры для таблица shop-yii2.easyii_catalog_item_data
+CREATE TABLE IF NOT EXISTS `easyii_catalog_item_data` (
+  `data_id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_id` int(11) DEFAULT NULL,
+  `name` varchar(128) NOT NULL,
+  `value` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`data_id`),
+  KEY `item_id_name` (`item_id`,`name`),
+  KEY `value` (`value`(300))
+) ENGINE=MyISAM AUTO_INCREMENT=226 DEFAULT CHARSET=utf8;
+
 -- Дамп данных таблицы shop-yii2.easyii_catalog_item_data: 30 rows
 DELETE FROM `easyii_catalog_item_data`;
 /*!40000 ALTER TABLE `easyii_catalog_item_data` DISABLE KEYS */;
@@ -171,6 +282,17 @@ INSERT INTO `easyii_catalog_item_data` (`data_id`, `item_id`, `name`, `value`) V
 	(215, 26, 'ingridient6', '');
 /*!40000 ALTER TABLE `easyii_catalog_item_data` ENABLE KEYS */;
 
+
+-- Дамп структуры для таблица shop-yii2.easyii_faq
+CREATE TABLE IF NOT EXISTS `easyii_faq` (
+  `faq_id` int(11) NOT NULL AUTO_INCREMENT,
+  `question` text NOT NULL,
+  `answer` text NOT NULL,
+  `order_num` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`faq_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
 -- Дамп данных таблицы shop-yii2.easyii_faq: 3 rows
 DELETE FROM `easyii_faq`;
 /*!40000 ALTER TABLE `easyii_faq` DISABLE KEYS */;
@@ -180,12 +302,44 @@ INSERT INTO `easyii_faq` (`faq_id`, `question`, `answer`, `order_num`, `status`)
 	(3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 't enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 3, 1);
 /*!40000 ALTER TABLE `easyii_faq` ENABLE KEYS */;
 
+
+-- Дамп структуры для таблица shop-yii2.easyii_feedback
+CREATE TABLE IF NOT EXISTS `easyii_feedback` (
+  `feedback_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `phone` varchar(64) DEFAULT NULL,
+  `title` varchar(128) DEFAULT NULL,
+  `text` text NOT NULL,
+  `answer_subject` varchar(128) DEFAULT NULL,
+  `answer_text` text,
+  `time` int(11) DEFAULT '0',
+  `ip` varchar(16) NOT NULL,
+  `status` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`feedback_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
 -- Дамп данных таблицы shop-yii2.easyii_feedback: 1 rows
 DELETE FROM `easyii_feedback`;
 /*!40000 ALTER TABLE `easyii_feedback` DISABLE KEYS */;
 INSERT INTO `easyii_feedback` (`feedback_id`, `name`, `email`, `phone`, `title`, `text`, `answer_subject`, `answer_text`, `time`, `ip`, `status`) VALUES
 	(1, 'serg', 'qw@mail.ru', '32323', '', 'asdads', NULL, NULL, 1475503010, '127.0.0.1', 0);
 /*!40000 ALTER TABLE `easyii_feedback` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_files
+CREATE TABLE IF NOT EXISTS `easyii_files` (
+  `file_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(128) NOT NULL,
+  `file` varchar(255) NOT NULL,
+  `size` int(11) NOT NULL,
+  `slug` varchar(128) DEFAULT NULL,
+  `downloads` int(11) DEFAULT '0',
+  `time` int(11) DEFAULT '0',
+  `order_num` int(11) DEFAULT NULL,
+  PRIMARY KEY (`file_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_files: 1 rows
 DELETE FROM `easyii_files`;
@@ -194,6 +348,23 @@ INSERT INTO `easyii_files` (`file_id`, `title`, `file`, `size`, `slug`, `downloa
 	(1, 'Price list', '/uploads/files/example.csv', 104, 'price-list', 0, 1468832918, 1);
 /*!40000 ALTER TABLE `easyii_files` ENABLE KEYS */;
 
+
+-- Дамп структуры для таблица shop-yii2.easyii_gallery_categories
+CREATE TABLE IF NOT EXISTS `easyii_gallery_categories` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(128) NOT NULL,
+  `image` varchar(128) DEFAULT NULL,
+  `slug` varchar(128) DEFAULT NULL,
+  `tree` int(11) DEFAULT NULL,
+  `lft` int(11) DEFAULT NULL,
+  `rgt` int(11) DEFAULT NULL,
+  `depth` int(11) DEFAULT NULL,
+  `order_num` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`category_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
 -- Дамп данных таблицы shop-yii2.easyii_gallery_categories: 2 rows
 DELETE FROM `easyii_gallery_categories`;
 /*!40000 ALTER TABLE `easyii_gallery_categories` DISABLE KEYS */;
@@ -201,6 +372,22 @@ INSERT INTO `easyii_gallery_categories` (`category_id`, `title`, `image`, `slug`
 	(1, 'Album 1', '/uploads/gallery/album-1.jpg', 'album-1', 1, 1, 2, 0, 2, 1),
 	(2, 'Album 2', '/uploads/gallery/album-2.jpg', 'album-2', 2, 1, 2, 0, 1, 1);
 /*!40000 ALTER TABLE `easyii_gallery_categories` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_guestbook
+CREATE TABLE IF NOT EXISTS `easyii_guestbook` (
+  `guestbook_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) NOT NULL,
+  `title` varchar(128) DEFAULT NULL,
+  `text` text NOT NULL,
+  `answer` text,
+  `email` varchar(128) DEFAULT NULL,
+  `time` int(11) DEFAULT '0',
+  `ip` varchar(16) NOT NULL,
+  `new` tinyint(1) DEFAULT '0',
+  `status` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`guestbook_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_guestbook: 17 rows
 DELETE FROM `easyii_guestbook`;
@@ -225,7 +412,20 @@ INSERT INTO `easyii_guestbook` (`guestbook_id`, `name`, `title`, `text`, `answer
 	(21, 'сергей', '', 'qww', NULL, 'qwee@ddd.fg', 1475507903, '127.0.0.1', 1, 1);
 /*!40000 ALTER TABLE `easyii_guestbook` ENABLE KEYS */;
 
--- Дамп данных таблицы shop-yii2.easyii_loginform: 34 rows
+
+-- Дамп структуры для таблица shop-yii2.easyii_loginform
+CREATE TABLE IF NOT EXISTS `easyii_loginform` (
+  `log_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(128) NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `ip` varchar(16) NOT NULL,
+  `user_agent` varchar(1024) NOT NULL,
+  `time` int(11) DEFAULT '0',
+  `success` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`log_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы shop-yii2.easyii_loginform: 36 rows
 DELETE FROM `easyii_loginform`;
 /*!40000 ALTER TABLE `easyii_loginform` DISABLE KEYS */;
 INSERT INTO `easyii_loginform` (`log_id`, `username`, `password`, `ip`, `user_agent`, `time`, `success`) VALUES
@@ -262,8 +462,18 @@ INSERT INTO `easyii_loginform` (`log_id`, `username`, `password`, `ip`, `user_ag
 	(31, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475318264, 1),
 	(32, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475320287, 1),
 	(33, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475342580, 1),
-	(34, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.2; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1475572040, 1);
+	(34, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.2; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1475572040, 1),
+	(35, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475591990, 1),
+	(36, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1476619554, 1);
 /*!40000 ALTER TABLE `easyii_loginform` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_migration
+CREATE TABLE IF NOT EXISTS `easyii_migration` (
+  `version` varchar(180) NOT NULL,
+  `apply_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_migration: ~2 rows (приблизительно)
 DELETE FROM `easyii_migration`;
@@ -272,6 +482,22 @@ INSERT INTO `easyii_migration` (`version`, `apply_time`) VALUES
 	('m000000_000000_base', 1468832904),
 	('m000000_000000_install', 1468832909);
 /*!40000 ALTER TABLE `easyii_migration` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_modules
+CREATE TABLE IF NOT EXISTS `easyii_modules` (
+  `module_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  `class` varchar(128) NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `icon` varchar(32) NOT NULL,
+  `settings` text NOT NULL,
+  `notice` int(11) DEFAULT '0',
+  `order_num` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`module_id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_modules: 13 rows
 DELETE FROM `easyii_modules`;
@@ -292,6 +518,22 @@ INSERT INTO `easyii_modules` (`module_id`, `name`, `class`, `title`, `icon`, `se
 	(13, 'text', 'yii\\easyii\\modules\\text\\TextModule', 'Текстовые блоки', 'font', '[]', 0, 20, 1);
 /*!40000 ALTER TABLE `easyii_modules` ENABLE KEYS */;
 
+
+-- Дамп структуры для таблица shop-yii2.easyii_news
+CREATE TABLE IF NOT EXISTS `easyii_news` (
+  `news_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(128) NOT NULL,
+  `image` varchar(128) DEFAULT NULL,
+  `short` varchar(1024) DEFAULT NULL,
+  `text` text NOT NULL,
+  `slug` varchar(128) DEFAULT NULL,
+  `time` int(11) DEFAULT '0',
+  `views` int(11) DEFAULT '0',
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`news_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
 -- Дамп данных таблицы shop-yii2.easyii_news: 3 rows
 DELETE FROM `easyii_news`;
 /*!40000 ALTER TABLE `easyii_news` DISABLE KEYS */;
@@ -300,6 +542,17 @@ INSERT INTO `easyii_news` (`news_id`, `title`, `image`, `short`, `text`, `slug`,
 	(2, 'Настала осень, холода не за горами!', '/uploads/news/n2b29ful1bq-e7d12fcc90.jpg', 'Не только в зимнеее время нужно баловать ваши губы! Горячий, сухой воздух летом может легко высушить ваши губы, а может и хлорка из плавательных бассейнов. Чтобы сохранить ваши губы красивыми круглый год, мы разработали для вас скраб "Ягодный"!', '<p>Не только в зимнеее время нужно баловать ваши губы! Горячий, сухой воздух летом может легко высушить ваши губы, а может и хлорка из плавательных бассейнов. Чтобы сохранить ваши губы красивыми круглый год, мы разработали для вас скраб "Ягодный"!</p>', 'nastala-osen-holoda-ne-za-gorami', 1473325680, 13, 1),
 	(3, 'Third news title', '/uploads/news/news-3.jpg', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt molliti', '<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>', 'third-news-title', 1468660112, 2, 1);
 /*!40000 ALTER TABLE `easyii_news` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_pages
+CREATE TABLE IF NOT EXISTS `easyii_pages` (
+  `page_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(128) NOT NULL,
+  `text` text NOT NULL,
+  `slug` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`page_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_pages: 19 rows
 DELETE FROM `easyii_pages`;
@@ -318,13 +571,26 @@ INSERT INTO `easyii_pages` (`page_id`, `title`, `text`, `slug`) VALUES
 	(11, 'Contact', '<p><strong>Address</strong>: Dominican republic, Santo Domingo, Some street 123</p><p><strong>ZIP</strong>: 123456</p><p><strong>Phone</strong>: +1 234 56-78</p><p><strong>E-mail</strong>: demo@example.com</p>', 'page-contact'),
 	(12, 'Создайте свое индивидуальное косметическое средство!', '<p>Если в ассортименте нашей готовой продукции вы не нашли нужное косметическое средство с необходимым вам ароматом или нашли, но в его составе имеются ингредиенты, вызывающие у вас аллергическую реакцию, мы можем изготовить для вас средство с индивидуальным для вас составом.  Свяжитесь с любым из мастеров и закажите изготовление индивидуального средства. Это реально, недорого и удобно. Подобным образом можно заказывать индивидуальные косметические наборы в подарок.</p><p>Лучшая органическая декоративная косметика в Украине собрана на нашем сайте. Проверенные специалисты, качественная продукция, большой выбор – здесь есть все для вашего идеального внешнего вида. Покупайте и возвращайтесь к нам снова: ассортимент постоянно расширяется.</p><p>Если в ассортименте нашей готовой продукции вы не нашли  необходимое косметическое средство с необходимым вам ароматом или нашли,  но в его составе имеются ингредиенты, вызывающие у вас аллергическую  реакцию, мы можем изготовить для вас средство с индивидуальным для вас  составом.  Свяжитесь с любым из мастеров и закажите изготовление  индивидуального средства. Это реально, недорого и удобно. Подобным  образом можно заказывать индивидуальные косметические наборы в подарок.</p><p>Лучшая  органическая декоративная косметика в Украине собрана на нашем сайте.  Проверенные специалисты, качественная продукция, большой выбор – здесь  есть все для вашего идеального внешнего вида. Покупайте и возвращайтесь к  нам снова: ассортимент постоянно расширяется.</p>', 'page-custom'),
 	(13, 'Выберите основу для Вашего средства:', '<p>тра ля ля</p>', 'page-base'),
-	(14, 'Выберите ингрединеты для Вашего средства:', '', 'page-ingridients'),
+	(14, 'Выберите ингредиенты для Вашего средства:', '', 'page-ingridients'),
 	(15, 'Готовые средства', '<hr>\r\n<p>Свежая косметика ручной работы традиционно наносится утром и вечеров. Большинство такой косметики используют смешивая с теплой водой для умывания. Если Вы в течении длительного времени будете наносить крем на кожу 2 раза в день, то это поспособствует очищению и омоложению кожи. Для того, чтобы крем или тоник тщательно и равномерно впитывался - используйте ватные диски и круговыми движениями разглаживайте смесь по коже.</p><p><strong>Свойства косметики ручной работы</strong></p><p>  Благодаря природным компонентам данная косметика при использовании придает коже омолаживающий эффект, гладкость, подтянутость и упругость;<br>  Предотвращает пигментацию кожи и образование морщин, угрей на теле;<br>  При использовании не возникает аллергическая реакция на кожу, а также не вызывает привыкания от частого использования;<br>  Косметика при нанесении на кожу действует как отличный релаксант, способствуя быстрому восстановлению клеток кожи и расслаблению организма в целом;</p><p>Косметика ручной работы - купить в интернет магазине в Украине</p><p>Если Вы ищете магазин, где могли бы приобрести косметику для кожи лица и тела из натуральных компонентов, то Вы зашли по адресу. У нас Вы найдете отличную косметику для умывания высокого качества, которая реально действует. Мы уверены в своей продукции, поскольку сотрудничаем только с проверенными поставщиками из различных стран. Косметика ручной работы в интернет магазине Мыло-опт.com.ua - это качественные товары по доступной для Вас цене, которая не ударит по карману.</p>', 'gotovye-sredstva'),
 	(16, 'О проекте', '<p>\r\n	Своим появлением на свет косметика Lerox обязана не команде высококвалифицированных химиков-лаборантов, не суперсовременному центру исследований, а симпатичной девчушке Арише - доченьке одной из основательниц компании, Оксане. Все началось</p><p style="text-align: center;">\r\n	<img src="/uploads/pages/1-e407c91a02.jpg"></p><p>\r\n	с того, что...</p><p>\r\n	Наши приоритеты - экологически чистая продукция, максимальная польза здоровью, борьба с возрастными изменениями кожи. <br>\r\n	Для  нашего мыла, мы не используем мыльную основу, все наше мыло является  полностью натуральным, !!!сваренным "с нуля"!!!  только из натуральных  природных ингредиентов и добавок, как по старинным рецептурам, так и с  использованием современных разработок в области косметологии и  дерматологии.<br>\r\n	Натуральное мыло ручной работы  – это замечательный  продукт, дар от природы, поддерживающий здоровье и красоту Вашей кожи,  разработанный и созданный с любовью, знаниями и наилучшими пожеланиями  красоты и здоровья специально для Вас!</p><p>\r\n	Мы  любим все настоящее и экологическое: косметику, еду, ткани, моющие  средства, а также отношения между людьми и отношение к делу.<br>\r\n	Будьте  уверены - покупая нашу продукцию, будь то натуральное мыло "с нуля" или  косметика из натуральных компонентов, в неё будет вложено знания и  чувство ответственности за то, что мы делаем. <br>\r\n	Побалуйте себя натуральным мылом и косметикой ручной работы!</p><hr><p>\r\n	<br>\r\n	<strong>Немного о хранении нашей продукции. </strong></p><p>\r\n	Натуральное  мыло со временем только набирает плюсов. Трехмесячной выдержки мыло  лучше по свойствам, чем свежесваренное, полугодичное - лучше, чем  трехмесячное. Единственный минус - со временем аромат и цвет станет  менее выраженным. <br>\r\n	Натуральное мыло с нуля хранится в сухом  проветриваемом помещении до начала использования, от года до трех лет со  дня изготовления, в зависимости от вида мыла. Натуральное мыло лучше  хранить без упаковки, или приоткрыв упаковку, чтобы мыло "дышало".<br>\r\n	Натуральная косметика ручной работы хранится только в холодильнике, согласно указанному сроку хранения.</p><p>\r\n	Внимательно  читайте описание продукции перед заказом, обращая внимание на  ингредиенты. Обязательно оговорите, если у вас есть аллергия. <br>\r\n	Смело обращайтесь, если у Вас есть вопросы, пожелания, замечания. <br>\r\n	Перед заказом лучше списаться, чтобы оговорить ваши пожелания. Мы будем стараться максимально точно им следовать.</p><p style="text-align: center;">\r\n	<img src="/uploads/pages/123-5694b3b8e6.jpg"></p>', 'page-about'),
 	(17, 'Доставка', '<li><strong> Курьерская доставка по городу Киеву. </strong></li>\r\n<p>\r\nИнтернет-магазин компьютеров, офисной и бытовой техники «USB» располагает собственной транспортной службой, сотрудники которой осуществят доставку товара к вашему дому, месту работы или отдыха месту в пределах города Одессы. Если этот вариант получения товара для вас наиболее удобен, выберите его в списке при оформлении заказа. Наш менеджер при обработке заказа свяжется по указанному вами номеру телефона и уточнит удобные для вас время и место получения товара. Доставка осуществляется непосредственно до дверей здания местонахождения покупателя.\r\n</p>\r\n<p>\r\n		График доставок:\r\n	ежедневно с ПН по ПТ- с 10.00 до 19.00\r\n</p>\r\n<p>\r\n		Доставка заказов, оформленых до 15:00, будет произведена в тот же день при наличии товара на складе.\r\n</p>\r\n<p>\r\n		Расценки на доставку:\r\n</p>\r\n<p>\r\n		  40 грн, если сумма заказа от 2500 грн. и выше;\r\n	  60 грн., если общая сумма заказа составляет менее 2500 грн.\r\n</p>\r\n<hr>\r\n<li><strong>Курьерская доставка по городу Одессе. </strong></li>\r\nИнтернет-магазин компьютеров, офисной и бытовой техники «USB» располагает собственной транспортной службой, сотрудники которой осуществят доставку товара к вашему дому, месту работы или отдыха месту в пределах города Одессы. Если этот вариант получения товара для вас наиболее удобен, выберите его в списке при оформлении заказа. Наш менеджер при обработке заказа свяжется по указанному вами номеру телефона и уточнит удобные для вас время и место получения товара. Доставка осуществляется непосредственно до дверей здания местонахождения покупателя.\r\n<p>\r\n		График доставок:\r\n	ежедневно с ПН по ПТ- с 10.00 до 19.00\r\n</p>\r\n<p>\r\n		Доставка заказов, оформленых до 15:00, будет произведена в тот же день при наличии товара на складе.\r\n	Расценки на доставку:\r\n</p>\r\n<p>\r\n		  40 грн, если сумма заказа от 2500 грн. и выше;\r\n	  60 грн., если общая сумма заказа составляет менее 2500 грн.\r\n</p>\r\n<hr>\r\n<br>\r\n<li><strong>Доставка по Украине</strong></li>\r\n	Интернет-магазин компьютеров, офисной и  бытовой техники «USB» для жителей Украины осуществляет доставку с  помощью любой почтовой службы, службы доставки, или перевозчика,  располагающих представительством в городе или населенном пункте  получателя.\r\n<p>\r\n	<img src="http://shop-yii2.loc/uploads/pages/content305799-d1dc383594.png">\r\n</p>\r\n<p>\r\n		 	Список наиболее популярных служб доставки товаров по Украине:\r\n	 	- ИнТайм\r\n	 	- Новая Почта\r\n	<img src="/uploads/pages/3-45a042358c.jpg">\r\n</p>\r\n<p>\r\n		 	Оплату доставки и страховки осуществляет получатель согласно тарифам избранной службы доставки.\r\n</p>\r\n<p>\r\n		 	Ежедневно Львов, Ивано-франковск, Мукачево  и остальные населенные пункты западной украины, Черкассы, Хмельницкий и  другие города центральной и восточной Украины получают грузы от  интернет-магазина "USB".\r\n</p>', 'page-delivery'),
 	(18, 'Контакты', '<p style="margin-left: 40px;"><img src="/uploads/pages/tel-7a5200e5e9.jpg"> &nbsp;<strong>+38 (093) 4221010<br></strong></p><p style="margin-left: 20px;"><strong></strong></p><p style="margin-left: 40px;"><img src="/uploads/pages/tel-7cb5e67dcb.jpg"> <strong> &nbsp;+38 (093) 4221010<br></strong></p><hr><br><p style="margin-left: 40px;"><img src="/uploads/pages/mail-3914109deb.jpg"> <strong>lerox@gmail.com<br></strong></p><hr><p style="margin-left: 20px;"><br><strong></strong></p><p style="margin-left: 20px;"><strong></strong></p><p><strong></strong></p><p style="margin-left: 40px;"><img src="/uploads/pages/vk-2b52541089.jpg"><strong> <a href="https://vk.com/lerox.cosmetics"> https://vk.com/lerox.cosmetics<br></a></strong></p><p style="margin-left: 40px;"><img src="/uploads/pages/fb-38811c5285.jpg"><a href="https://www.facebook.com/lerox_cosmetics"><strong>https://www.facebook.com/lerox_cosmetics</strong></a></p><p style="margin-left: 20px;"><a href="https://www.facebook.com/lerox_cosmetics"><strong></strong></a></p><p style="margin-left: 40px;"><img src="/uploads/pages/ig-6db812399d.jpg"> <strong></strong><a href="https://www.instagram.com/lerox_cosmetics"><strong>https://www.instagram.com/lerox_cosmetics</strong></a></p><p><cite></cite></p><p style="margin-left: 20px;"> </p><p style="margin-left: 20px;"><a href="https://www.facebook.com/lerox_cosmetics"><strong></strong></a></p><p style="text-align: center;"><img src="/uploads/pages/slajjdshou-2-glavnaya-df543abd11.jpg"></p><p style="margin-left: 20px;"><br><a href="https://www.facebook.com/lerox_cosmetics"><strong></strong></a></p><p style="margin-left: 20px;"><strong><a href="https://vk.com/lerox.cosmetics"></a></strong></p><p style="margin-left: 20px;"><strong></strong></p>', 'page-contacts'),
 	(19, 'Магазины', '', 'page-shops');
 /*!40000 ALTER TABLE `easyii_pages` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_photos
+CREATE TABLE IF NOT EXISTS `easyii_photos` (
+  `photo_id` int(11) NOT NULL AUTO_INCREMENT,
+  `class` varchar(128) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `image` varchar(128) NOT NULL,
+  `description` varchar(1024) NOT NULL,
+  `order_num` int(11) NOT NULL,
+  PRIMARY KEY (`photo_id`),
+  KEY `model_item` (`class`,`item_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_photos: 20 rows
 DELETE FROM `easyii_photos`;
@@ -351,6 +617,20 @@ INSERT INTO `easyii_photos` (`photo_id`, `class`, `item_id`, `image`, `descripti
 	(25, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/vibor-43e2009346.jpg', 'Уникальная рецептура - универсального крема "для всех" быть просто не может, так как каждый человек уникален! Мы уверены, что именно такой подход гарантирует результат - отзывы наших дорогих клиенток это подтверждают! \n    Активный состав и гарантированно высокое качество. Состав производства нашей косметики включает в себя около 2000 ингредиентов. Используются только лучшие, современные активные вещества. \n    Максимум натуральных компонентов! Мы не используем в производстве косметики вытяжки - в лабораториях индивидуальной косметики I.C.Lab применяются только живые клетки растений. Их эффективность работы проверена и доказана многими учеными. \n    Накопительный эффект и пролонгированное действие. Живые клетки воздействуют на клеточном уровне, и кожа, получив такую подпитку, сохраняется молодой довольно долго, а процесс увядания тормозится.', 25),
 	(27, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/hand-dc0439caeb.jpg', 'В разработке рецептур принимают участие косметологи и химики-технологи с многолетним опытом работы. В нашем ассортименте фито-минеральные средства для очищения и ухода за кожей лица и тела (литобиочистки, литобиомаски, литобиоскраб), солевые скрабы для тела, мягкое мыло Бельди.\n\nФито-минеральная косметика производится на основе уникального по своим характеристикам минерала вулканического происхождения – цеолита с добавлением каолина, сухих растительных экстрактов. Продукция не содержит искусственных консервантов, ароматизаторов, синтетических витаминов, загустителей и прочих вредных для здоровья модификаций. Производится и хранится в виде порошка, комбинируется с водой, маслами, душистыми водами, разнообразными активами. Разводится непосредственно перед применением и наносится на кожу. После нанесения начинает активно работать, отдавая коже полезные микроэлементы, витамины и помогает сохранить природную естественную красоту Вашей кожи.\n\nСолевые скрабы для тела изготовлены из натуральных компонетов, обладают н', 29);
 /*!40000 ALTER TABLE `easyii_photos` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_seotext
+CREATE TABLE IF NOT EXISTS `easyii_seotext` (
+  `seotext_id` int(11) NOT NULL AUTO_INCREMENT,
+  `class` varchar(128) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `h1` varchar(128) DEFAULT NULL,
+  `title` varchar(128) DEFAULT NULL,
+  `keywords` varchar(128) DEFAULT NULL,
+  `description` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`seotext_id`),
+  UNIQUE KEY `model_item` (`class`,`item_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_seotext: 31 rows
 DELETE FROM `easyii_seotext`;
@@ -389,6 +669,18 @@ INSERT INTO `easyii_seotext` (`seotext_id`, `class`, `item_id`, `h1`, `title`, `
 	(33, 'yii\\easyii\\modules\\catalog\\models\\Category', 20, '', '', '', 'текст кремы для Лица');
 /*!40000 ALTER TABLE `easyii_seotext` ENABLE KEYS */;
 
+
+-- Дамп структуры для таблица shop-yii2.easyii_settings
+CREATE TABLE IF NOT EXISTS `easyii_settings` (
+  `setting_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `value` varchar(1024) NOT NULL,
+  `visibility` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`setting_id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
 -- Дамп данных таблицы shop-yii2.easyii_settings: 10 rows
 DELETE FROM `easyii_settings`;
 /*!40000 ALTER TABLE `easyii_settings` DISABLE KEYS */;
@@ -405,7 +697,20 @@ INSERT INTO `easyii_settings` (`setting_id`, `name`, `title`, `value`, `visibili
 	(10, 'toolbar_position', 'Позиция панели на сайте ("top" or "bottom")', 'top', 1);
 /*!40000 ALTER TABLE `easyii_settings` ENABLE KEYS */;
 
--- Дамп данных таблицы shop-yii2.easyii_shopcart_goods: 58 rows
+
+-- Дамп структуры для таблица shop-yii2.easyii_shopcart_goods
+CREATE TABLE IF NOT EXISTS `easyii_shopcart_goods` (
+  `good_id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) DEFAULT NULL,
+  `item_id` int(11) DEFAULT NULL,
+  `count` int(11) DEFAULT NULL,
+  `options` varchar(255) NOT NULL,
+  `price` float DEFAULT '0',
+  `discount` int(11) DEFAULT '0',
+  PRIMARY KEY (`good_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы shop-yii2.easyii_shopcart_goods: 60 rows
 DELETE FROM `easyii_shopcart_goods`;
 /*!40000 ALTER TABLE `easyii_shopcart_goods` DISABLE KEYS */;
 INSERT INTO `easyii_shopcart_goods` (`good_id`, `order_id`, `item_id`, `count`, `options`, `price`, `discount`) VALUES
@@ -466,10 +771,30 @@ INSERT INTO `easyii_shopcart_goods` (`good_id`, `order_id`, `item_id`, `count`, 
 	(78, 31, 28, 1, '', 43, 0),
 	(79, 32, 10, 1, 'efir-gvozd|efir-apelsin|active-scvalan', 21, 0),
 	(80, 32, 29, 1, '', 45.23, 0),
-	(81, 33, 14, 1, 'efir-apelsin|active-scvalan|vitamin-f', 36, 0);
+	(81, 33, 14, 1, 'efir-apelsin|active-scvalan|vitamin-f', 36, 0),
+	(82, 34, 29, 1, '', 45.23, 0),
+	(83, 34, 5, 1, 'efir-apelsin|efir-gvozd|active-scvalan', 35, 0);
 /*!40000 ALTER TABLE `easyii_shopcart_goods` ENABLE KEYS */;
 
--- Дамп данных таблицы shop-yii2.easyii_shopcart_orders: 33 rows
+
+-- Дамп структуры для таблица shop-yii2.easyii_shopcart_orders
+CREATE TABLE IF NOT EXISTS `easyii_shopcart_orders` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `phone` varchar(64) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `comment` varchar(1024) NOT NULL,
+  `remark` varchar(1024) NOT NULL,
+  `access_token` varchar(32) NOT NULL,
+  `ip` varchar(16) NOT NULL,
+  `time` int(11) DEFAULT '0',
+  `new` tinyint(1) DEFAULT '0',
+  `status` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`order_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы shop-yii2.easyii_shopcart_orders: 34 rows
 DELETE FROM `easyii_shopcart_orders`;
 /*!40000 ALTER TABLE `easyii_shopcart_orders` DISABLE KEYS */;
 INSERT INTO `easyii_shopcart_orders` (`order_id`, `name`, `address`, `phone`, `email`, `comment`, `remark`, `access_token`, `ip`, `time`, `new`, `status`) VALUES
@@ -505,18 +830,53 @@ INSERT INTO `easyii_shopcart_orders` (`order_id`, `name`, `address`, `phone`, `e
 	(30, '', '', '', '', '', '', 'QLaq7r5CHY_F2yxgFzD5H5LvvW2Alkoh', '127.0.0.1', 1475327722, 0, 0),
 	(31, '', '', '', '', '', '', 'lP_bEK-fbl9ZK9EHXp-p8Z84u2WDlKgQ', '127.0.0.1', 1475344072, 0, 0),
 	(32, '', '', '', '', '', '', '-vQCP7ySbdKp7GpnsA4Pk7Gnbcb7__v-', '127.0.0.1', 1475574027, 0, 0),
-	(33, '', '', '', '', '', '', '67QlVTuld7XhdGNAbM1pSmKPJYyc53W3', '127.0.0.1', 1475587326, 0, 0);
+	(33, '', '', '', '', '', '', '67QlVTuld7XhdGNAbM1pSmKPJYyc53W3', '127.0.0.1', 1475587326, 0, 0),
+	(34, '', '', '', '', '', '', 'KW3wvaldMkOVCOF7mGUr4nFDDwwpAr9b', '127.0.0.1', 1475591210, 0, 0);
 /*!40000 ALTER TABLE `easyii_shopcart_orders` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_subscribe_history
+CREATE TABLE IF NOT EXISTS `easyii_subscribe_history` (
+  `history_id` int(11) NOT NULL AUTO_INCREMENT,
+  `subject` varchar(128) NOT NULL,
+  `body` text NOT NULL,
+  `sent` int(11) DEFAULT '0',
+  `time` int(11) DEFAULT '0',
+  PRIMARY KEY (`history_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_subscribe_history: 0 rows
 DELETE FROM `easyii_subscribe_history`;
 /*!40000 ALTER TABLE `easyii_subscribe_history` DISABLE KEYS */;
 /*!40000 ALTER TABLE `easyii_subscribe_history` ENABLE KEYS */;
 
--- Дамп данных таблицы shop-yii2.easyii_subscribe_subscribers: 0 rows
+
+-- Дамп структуры для таблица shop-yii2.easyii_subscribe_subscribers
+CREATE TABLE IF NOT EXISTS `easyii_subscribe_subscribers` (
+  `subscriber_id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(128) NOT NULL,
+  `ip` varchar(16) NOT NULL,
+  `time` int(11) DEFAULT '0',
+  PRIMARY KEY (`subscriber_id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы shop-yii2.easyii_subscribe_subscribers: 1 rows
 DELETE FROM `easyii_subscribe_subscribers`;
 /*!40000 ALTER TABLE `easyii_subscribe_subscribers` DISABLE KEYS */;
+INSERT INTO `easyii_subscribe_subscribers` (`subscriber_id`, `email`, `ip`, `time`) VALUES
+	(1, 'wasilewsky@mail.ru', '127.0.0.1', 1476627568);
 /*!40000 ALTER TABLE `easyii_subscribe_subscribers` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_tags
+CREATE TABLE IF NOT EXISTS `easyii_tags` (
+  `tag_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) NOT NULL,
+  `frequency` int(11) DEFAULT '0',
+  PRIMARY KEY (`tag_id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_tags: 3 rows
 DELETE FROM `easyii_tags`;
@@ -527,6 +887,16 @@ INSERT INTO `easyii_tags` (`tag_id`, `name`, `frequency`) VALUES
 	(7, 'ajax', 1);
 /*!40000 ALTER TABLE `easyii_tags` ENABLE KEYS */;
 
+
+-- Дамп структуры для таблица shop-yii2.easyii_tags_assign
+CREATE TABLE IF NOT EXISTS `easyii_tags_assign` (
+  `class` varchar(128) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL,
+  KEY `class` (`class`),
+  KEY `item_tag` (`item_id`,`tag_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 -- Дамп данных таблицы shop-yii2.easyii_tags_assign: 3 rows
 DELETE FROM `easyii_tags_assign`;
 /*!40000 ALTER TABLE `easyii_tags_assign` DISABLE KEYS */;
@@ -535,6 +905,16 @@ INSERT INTO `easyii_tags_assign` (`class`, `item_id`, `tag_id`) VALUES
 	('yii\\easyii\\modules\\article\\models\\Item', 2, 3),
 	('yii\\easyii\\modules\\article\\models\\Item', 2, 7);
 /*!40000 ALTER TABLE `easyii_tags_assign` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_texts
+CREATE TABLE IF NOT EXISTS `easyii_texts` (
+  `text_id` int(11) NOT NULL AUTO_INCREMENT,
+  `text` text NOT NULL,
+  `slug` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`text_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_texts: 1 rows
 DELETE FROM `easyii_texts`;

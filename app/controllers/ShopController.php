@@ -64,7 +64,7 @@ class ShopController extends \yii\web\Controller
             throw new NotFoundHttpException('Item not found.');
         }
 
-        return $this->render('view2', [
+        return $this->render('view', [
             'item' => $item,
             'addToCartForm' => new \app\models\AddToCartForm()
         ]);

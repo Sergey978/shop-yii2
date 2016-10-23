@@ -6,8 +6,8 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 $this->title = $item->seo('title', $item->model->title);
-$this->params['breadcrumbs'][] = ['label' => 'Shop', 'url' => ['shop/index']];
-$this->params['breadcrumbs'][] = ['label' => $item->cat->title, 'url' => ['shop/cat', 'slug' => $item->cat->slug]];
+$this->params['breadcrumbs'][] = ['label' => 'Готовая продукция', 'url' => ['/grid']];
+$this->params['breadcrumbs'][] = ['label' => $item->cat->title, 'url' => ['grid/category', 'slug' => $item->cat->slug]];
 $this->params['breadcrumbs'][] = $item->model->title;
 
 

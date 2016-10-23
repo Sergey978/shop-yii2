@@ -21,105 +21,71 @@ $goodsCount = count($goods);
   <!-- Header -->
   <header class="header-container">
    
-    <div class="header container">
-      <div class="row">
-        <div class="col-lg-2 col-sm-3 col-md-2 col-xs-12"> 
-          <!-- Header Logo --> 
-          <a class="logo" title="Lerox" href="/"><img alt="Lerox" src="<?= $asset->baseUrl ?>/images/Lerox_logo.png"></a> 
-          <!-- End Header Logo --> 
+      <div class="section ">
+      <div class="container ">
+        <div class="row ">
+          <div class="col-xs-12 ">
+            <!-- Header Top Links -->
+            <div class="toplinks ">
+              <div class="links ">
+                <div>
+                  <a title="О проекте " href="page/about">
+                      <span class="hidden-xs ">О проекте</span>
+                  </a>
+                </div>
+                <div>
+                  <a title="Доставка " href="page/delivery">
+                      <span class="hidden-xs">Доставка</span>
+                  </a>
+                </div>
+                <div>
+                  <a title="Контакты " href="contact ">
+                      <span class="hidden-xs ">Контакты</span>
+                  </a>
+                </div>
+                <div>
+                  <a title="Магазины " href="page/shops">
+                      <span class="hidden-xs">Магазины</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- End Header Top Links -->
+          </div>
         </div>
-        
-		<div class="col-lg-7 col-sm-4 col-md-6 col-xs-12"> 
-          <!-- Search-col -->
-				 
-			<div class="header-top"> 
-				
-                            <div class="row">  
-					  
-					
-					<div class="col-xs-12"> 
-						<!-- Header Top Links -->
-                                                <div class="toplinks">
-						  <div class="links">
-							<div class="myaccount"><a title="О проекте" href="/page/about"><span class="hidden-xs">О проекте</span></a></div>
-							<div class="wishlist"><a title="Доставка" href="/page/delivery"><span class="hidden-xs">Доставка</span></a></div>
-							<div class="check"><a title="Контакты" href="/contact"><span class="hidden-xs">Контакты</span></a></div>
-							<div class="check"><a title="Магазины" href="/page/shops"><span class="hidden-xs">Магазины</span></a></div>
-						  </div>
-						</div>
-						<!-- End Header Top Links --> 
-                                        </div>
-                                </div> 
-				
-
-			</div> 
-		  <!-- End Search-col --> 
-       
-
-                    </div>
-        
-		<div class="col-lg-7 col-sm-4 col-md-6 col-xs-12"> 
-          <!-- Phone-col -->
-				 
-			<div class="header-top"> 
-				
-					<div class="row">  
-					   <div class="col-xs-6  hidden-xs hidden-sm hidden-md">
-					   <!-- Header Top Phone 1-->
-						
-							<div class="phone">(067) <span>4813446</span></div>
-						
-						<!-- End Header Top Phone 1--> 
-						
-					  </div> 
-					
-					<div class="col-xs-6  hidden-xs hidden-sm hidden-md"> 
-						<!-- Header Top Phone 2-->
-						
-                                                <div class="phone">(093)<span>4221010</span></div>
-						
-						
-						<!-- End Header Top Phone 2--> 
-				  </div>
-				  <div class="col-xs-10 hidden-xs hidden-sm hidden-lg"> 
-						<!-- Header Top Phone 3-->
-						
-							<div class="phone">(093) <span>4221010</span></div>
-						
-						<!-- End Header Top Phone 3--> 
-				  </div>
-					
-					
-					
-					</div> 
-				
-
-			</div> 
-		  <!-- End Phone-col --> 
-       
-
-	   </div>
-        
-		
-		<!-- Top Cart -->
-        <div class="col-lg-3 col-sm-5 col-md-4 col-xs-12">
-            <div class="top-cart-contain">
-            <div class="mini-cart">
-             <i class="icon-cart hidden-xs "></i>
-             
-			<div  data-hover="dropdown" class="basket"> 
-                             <a href="/shopcart"><i class="icon-cart-sm hidden-sm  hidden-md hidden-lg"></i>
+        <div class="row">
+          <div class="col-md-4 col-xs-6 text-center">
+            <div class="phone">
+                (067)<span>4813446</span>
+            </div>
+            <div class="phone">
+                (093)<span>4221010</span>
+            </div>
+          </div>
+          <div class="col-md-4  text-center">
+            <!-- Header Logo -->
+            <img alt="Lerox" src="<?= $asset->baseUrl ?>/images/Lerox_logo.png"  width="230px" >
+            <!-- End Header Logo -->
+          </div>
+          <div class="col-md-4 ">
+            
+              <div class="top-cart-contain ">
+                <div class="mini-cart ">
+                  <i class="icon-cart hidden-xs "></i>
+                  <div data-hover="dropdown " class="basket ">
+                    <a href="shopcart ">
+                        <i class="icon-cart-sm hidden-sm hidden-md hidden-lg"></i>
                                    <div class="cart-box">
                                        <span class="title">Корзина</span>
-                                       <span id="cart-total"> <?= $goodsCount ?>  </span>
+                                       <span id="cart-total"><?= $goodsCount ?></span>
                                    </div>
 
                             </a>
-			</div>
-                        <div>
-                          <div style="display: none;" class="top-cart-content arrow_box">
-                            <div class="block-subtitle">Добавленные товары</div>
-                            <?php if(count($goods)) : ?>
+                  </div>
+                  <div>
+                    <div style="display: none; " class="top-cart-content arrow_box ">
+                      <div class="block-subtitle ">Добавленные товары</div>
+                      <?php if(count($goods)) : ?>
                                         <ul id="cart-sidebar" class="mini-products-list">
                                             <? $summCostAllIngredients = 0; ?>
                                             <?php foreach($goods as $good) : ?>   
@@ -190,13 +156,16 @@ $goodsCount = count($goods);
                       </div>
 		<?php else : ?>
                     <div class="top-subtotal">Корзина пуста</div>
-                <?php endif; ?>		
-            </div>
-          <div class="signup"> &nbsp</div>
-        </div> 
-        <!-- End Top Cart --> 
-     </div>
-    </div>
+                <?php endif; ?>	
+                    </div>
+                  </div>
+                  <!-- End Top Cart -->
+                
+           
+          
+        </div>
+      </div>
+      </div>
   </header>
   <!-- end header --> 
   <!-- Navbar -->

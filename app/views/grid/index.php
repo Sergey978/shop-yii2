@@ -10,7 +10,7 @@ use app\models\AddToCartForm;
 
 $page = Page::get('page-grid');
 
-$this->params['breadcrumbs'][] = ['label' => 'Готовые средства', 'url' => ['/grid/index']];
+$this->params['breadcrumbs'][] = ['label' => 'Готовая продукция', 'url' => ['/grid']];
 $this->params['breadcrumbs'][] = $cat->model->title;
 $model = new CustomModel(); 
 ?>
@@ -57,7 +57,7 @@ $model = new CustomModel();
                                           'title' => $goods->description,
                                           'overflow'=>'visible',
                                           'data-toggle'=>'tooltip',
-                                          'data-placement'=>'auto left',
+                                          'data-placement'=>'auto',
                                           ]),
                          ['/shopcart/add-goods', 'id' => $goods->id]);?>
                           

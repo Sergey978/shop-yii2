@@ -24,7 +24,7 @@ $goodsCount = count($goods);
       <div class="section ">
       <div class="container ">
         <div class="row ">
-          <div class="col-xs-12 ">
+          <div class="col-xs-offset-2 col-xs-8 ">
             <!-- Header Top Links -->
             <div class="toplinks ">
               <div class="links ">
@@ -52,9 +52,43 @@ $goodsCount = count($goods);
             </div>
             <!-- End Header Top Links -->
           </div>
+          <div class="col-xs-2 hidden-xs">
+              <div class="toplinks ">
+                 <div class="social-icon">
+                     <?=  Html::a(Html::img($asset->baseUrl.'/images/vk.jpg',[
+                                          'alt' =>'Lerox ВКонтакте',
+                                          'title'=>'Lerox ВКонтакте',
+                                          'data-toggle'=>'tooltip',
+                                          'data-placement'=>'bottom',
+                                          ]),
+                         Url::to('https://vk.com/lerox.cosmetics', true));?>
+                     
+                     
+                      <?=Html::a(Html::img($asset->baseUrl.'/images/fb.jpg',[
+                                          'alt' =>'Lerox Facebook',
+                                          'title'=>'Lerox Facebook',
+                                          'data-toggle'=>'tooltip',
+                                          'data-placement'=>'bottom',
+                                          ]),
+                          Url::to('https://www.facebook.com/lerox.cosmetics/', true));?>
+                     
+                      <?=Html::a(Html::img($asset->baseUrl.'/images/ig.jpg',[
+                                          'alt' =>'Lerox Instagram',
+                                          'title'=>'Lerox Instagram',
+                                          'data-toggle'=>'tooltip',
+                                          'data-placement'=>'bottom',
+                                          
+                                          ]),
+                         Url::to('https://www.instagram.com/lerox.cosmetics/', true));?>
+                     
+                
+                 </div>
+               </div> 
+            </div>
+            
         </div>
         <div class="row">
-          <div class="col-md-4 col-xs-6 text-center">
+          <div class="col-md-4 col-xs-6 text-center hidden-xs">
             <div class="phone">
                 (067)<span>4813446</span>
             </div>
@@ -160,9 +194,6 @@ $goodsCount = count($goods);
                     </div>
                   </div>
                   <!-- End Top Cart -->
-                
-           
-          
         </div>
       </div>
       </div>

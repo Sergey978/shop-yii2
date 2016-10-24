@@ -356,9 +356,6 @@ a.block-currency:focus {
 }
 .toplinks .links {
 	text-align: justify;
-        margin-left: 20%;
-        margin-right: 20%;
-        
 }
 
 .links div{
@@ -904,14 +901,14 @@ div.col-xs-6  .phone {
 	
 	font-size: 24px;
 	margin-left: 8px;
-	color: #767676;
+	color: #090909;
 }
 
 div.col-xs-6 .phone span {
 	
 	font-size: 40px;
 	margin-left: 8px;
-	color: #767676;
+	color: #090909;
 	padding-top: 10%;
 }
 
@@ -920,7 +917,7 @@ div.col-xs-10 .phone {
 	font-size: 24px;
 	margin-left: 16px;
 	padding-left: 16px;
-	color: #a6a6a6;
+	color: #090909;
 	padding-top: 10%;
 }
 
@@ -928,7 +925,7 @@ div.col-xs-10 .phone span {
 	
 	font-size: 38px;
 	margin-left: 8px;
-	color: #a6a6a6;
+	color: #090909;
 	padding-top: 15%;
 }
 

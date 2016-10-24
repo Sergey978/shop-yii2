@@ -88,7 +88,7 @@ $goodsCount = count($goods);
             
         </div>
         <div class="row">
-          <div class="col-md-4 col-xs-6 text-center hidden-xs">
+          <div class="col-md-4 col-xs-6 text-center ">
             <div class="phone">
                 (067)<span>4813446</span>
             </div>

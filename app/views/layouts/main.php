@@ -98,7 +98,9 @@ $goodsCount = count($goods);
           </div>
           <div class="col-md-4  text-center">
             <!-- Header Logo -->
-            <img alt="Lerox" src="<?= $asset->baseUrl ?>/images/Lerox_logo.png"  width="230px" >
+            <a  title="Lerox" href="/index">
+                <img alt="Lerox" src="<?= $asset->baseUrl ?>/images/Lerox_logo.png"  width="230px" >
+            </a>
             <!-- End Header Logo -->
           </div>
           <div class="col-md-4 ">

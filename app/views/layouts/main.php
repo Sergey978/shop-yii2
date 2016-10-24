@@ -98,7 +98,7 @@ $goodsCount = count($goods);
           </div>
           <div class="col-md-4  text-center">
             <!-- Header Logo -->
-            <a  title="Lerox" href="/index">
+            <a  title="Lerox" href="/">
                 <img alt="Lerox" src="<?= $asset->baseUrl ?>/images/Lerox_logo.png"  width="230px" >
             </a>
             <!-- End Header Logo -->
@@ -236,7 +236,7 @@ $goodsCount = count($goods);
         </div>
         <!--End mobile-menu --> 
        
-        <a class="logo-small" title="Lerox" href="/index"><img alt="Lerox" src="<?= $asset->baseUrl ?>/images/logo-small.png"></a>
+        <a class="logo-small" title="Lerox" href="/"><img alt="Lerox" src="<?= $asset->baseUrl ?>/images/logo-small.png"></a>
         <ul id="nav" class="hidden-xs">
             <li class="level0 parent drop-menu"><a href="/" class="level-top"><span>Главная</span> </a>
             

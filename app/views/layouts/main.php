@@ -29,22 +29,22 @@ $goodsCount = count($goods);
             <div class="toplinks ">
               <div class="links ">
                 <div>
-                  <a title="О проекте " href="page/about">
+                  <a title="О проекте"  href="/page/about">
                       <span class="hidden-xs ">О проекте</span>
                   </a>
                 </div>
                 <div>
-                  <a title="Доставка " href="page/delivery">
+                  <a title="Доставка " href="/page/delivery">
                       <span class="hidden-xs">Доставка</span>
                   </a>
                 </div>
                 <div>
-                  <a title="Контакты " href="contact ">
+                  <a title="Контакты " href="/contact">
                       <span class="hidden-xs ">Контакты</span>
                   </a>
                 </div>
                 <div>
-                  <a title="Магазины " href="page/shops">
+                  <a title="Магазины " href="/page/shops">
                       <span class="hidden-xs">Магазины</span>
                   </a>
                 </div>
@@ -85,7 +85,6 @@ $goodsCount = count($goods);
                  </div>
                </div> 
             </div>
-            
         </div>
         <div class="row">
           <div class="col-md-4 col-xs-6 text-center ">
@@ -242,11 +241,7 @@ $goodsCount = count($goods);
             
           </li>
           
-           <li class="level0 parent drop-menu"> <a class="level-top" href="/news"><span>Новости и новинки</span></a>
-       
-          </li>
-          
-          <li class="level0 nav-7 level-top parent"> <a href="/grid" class="level-top "> <span>Готовые средства</span> </a>
+           <li class="level0 nav-7 level-top parent"> <a href="/grid" class="level-top "> <span>Готовая продукция</span> </a>
             <div class="level0-wrapper dropdown-6col" style="display:none;">
               <div class="level0-wrapper2">
                 <div class="nav-block nav-block-center grid12-8 itemgrid itemgrid-4col">
@@ -346,13 +341,13 @@ $goodsCount = count($goods);
               </div>
             </div>
           </li>
-       
-          <li class="level0 parent drop-menu"> <a class="level-top" href="/custom"><span>Создать средство</span></a>
+          
+           <li class="level0 parent drop-menu"> <a class="level-top" href="/custom"><span>Создать средство</span></a>
        
           </li>
           
-          <li class="level0 nav-5 level-top parent"><a href="/blog"><span>Блог </span> </a>
-           
+          <li class="level0 parent drop-menu"> <a class="level-top" href="/news"><span>Новости и новинки</span></a>
+       
           </li>
           
           <li class="level0 nav-5 level-top parent"><a href="/guestbook"><span>Отзывы </span> </a>

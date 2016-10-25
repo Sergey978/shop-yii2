@@ -92,36 +92,6 @@ $this->title = $page->seo('title', $page->model->title);
 <br/>
 <hr/>
 
-
-<div class="text-center">
-    <h2>Блог </h2>
-    <br/>
-    <? $newArticles = Article::last(3, ['category_id' => '5']);?>
-    <? foreach ($newArticles as $newArt): ?>
-        <div class="row text-left">
-            <div class="col-md-2 col-sm-2 col-xs-4">
-                <?= Html::img($newArt->image,[
-                 'class' => 'img-rounded img-responsive',
-                 'width'=>'160px',
-                 'height'=>'auto',
-                 ]) 
-                ?>
-            </div>
-            <div class="col-md-10 col-sm-10 col-xs-8">
-                 <blockquote class="text-left"> 
-                   <b> <?= Html::a($newArt->title, ['articles/view', 'slug' => $newArt->slug]) ?></b>
-                    </br>
-                    <?= $newArt->short ?>
-                 </blockquote>
-            </div>   
-        </div> 
-    </br>
-   <? endforeach;?> 
-</div>
-
-<br/>
-<hr/>
-
 <div class="text-center">
     <?php if(Yii::$app->request->get(Subscribe::SENT_VAR)) : ?>
             <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Вы подписаны</h4>

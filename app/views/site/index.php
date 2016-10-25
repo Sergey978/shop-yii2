@@ -43,6 +43,7 @@ $this->title = $page->seo('title', $page->model->title);
                                 'title' => $photo->description,
                                 'data-toggle'=>'tooltip',
                                 'data-placement' => 'bottom',
+                                
                                 ]), 
                                 ['/page/about', ]);
                             ?>

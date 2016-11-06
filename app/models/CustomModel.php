@@ -12,8 +12,6 @@ use yii\data\Pagination;
 
 
 class CustomModel  {
-  
- 
   // return array   Child Categories as ObjectCategories
   public function getChaildCategories($slug){
       $_parentCategory =  Catalog::cat($slug);
@@ -25,21 +23,13 @@ class CustomModel  {
       $categories = $_parentCategory->model->find()->
                where(['and',"tree=$_tree","depth=$_level",'status = 1',"lft >= $_lft","rgt <= $_rgt"])->
               OrderBy('lft')->all();
-             
-      
-           
       return $categories;
 }
 
-
-  
-  
-  
   //return arrays of objects items in categories
   public function getItems($categories){
      $items =[];
      $item =  Catalog::get( 0 );
-     $i=0;
     if(count($categories)){
         foreach ($categories as $category){
         $items[$category->slug] =  $item->model->find()->
@@ -52,18 +42,42 @@ class CustomModel  {
          
      }
     }
-     
-        
+       
       return $items;
   }  
+  // get catalog ingredients from fields 
+  public function getCatalogIngredients($category_id){
+       $catalogIngredients =[];
+       $catalog =  Catalog::cat( $category_id )->fieldOptions('ingredients');
+      
+      if(count($catalog)){
+        foreach ($catalog as $category){
+        $catalogIngredients[] = Catalog::cat( $category ) ;
+            
+     }
+    }
+    return   $catalogIngredients;
+  }
   
-  public  function getIngridients(){
+  public  function getIngredients($categories){
+      $ingredients =[];
+     $item =  Catalog::get( 0 );
+    if(count($categories)){
+        foreach ($categories as $category){
+        $ingredients[$category->slug] =  $item->model->find()->
+                  where(['category_id'=>$category->model->category_id])->all();
+            
+         
+            // It does not work because of the cache
+           //   $items[$category->slug] = Catalog::items( ['where' =>['category_id'=>
+         //           $category->model->category_id]] );
+         
+     }
+    }
+       
       
-      $categoryId = Catalog::cat(Yii::$app->params['ingridients'])->model->category_id;
-      $ingridients = Catalog::items(  ['where' =>['category_id'=>$categoryId]]);
-                 
       
-      return $ingridients;
+      return $ingredients;
   }
   
   public  function getItemsInTree($slug){
@@ -72,8 +86,6 @@ class CustomModel  {
           ->from('easyii_catalog_categories')
           ->where(['slug' => $slug])
           ->one();
-      
-     
       
       $items = (new \yii\db\Query())
               ->select('easyii_catalog_items.slug')
@@ -93,8 +105,6 @@ class CustomModel  {
       $_lft = $_parentCategory->model->lft;
       $_rgt = $_parentCategory->model->rgt;
     
-     
-      
       // выполняем запрос
       $query  = (new \yii\db\Query())
               ->select('easyii_catalog_items.slug')
@@ -117,7 +127,7 @@ class CustomModel  {
             ->limit($pages->limit)
             ->all();
             
-        // Передаем данные в представление
+        // Передаем данные 
         return  [
              'items' => $items,
              'pages' => $pages,

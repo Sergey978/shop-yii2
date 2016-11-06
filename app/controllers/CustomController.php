@@ -28,7 +28,8 @@ class CustomController extends \yii\web\Controller
        
        $categories = $model->getChaildCategories(Yii::$app->params['category']);
       
-        return $this->render('index',['categories'=>$categories] );
+        return $this->render('index',['categories'=>$categories
+                ] );
     }
 
    
@@ -48,14 +49,17 @@ class CustomController extends \yii\web\Controller
     public function actionIngridients($slug){
         $model =  new CustomModel;
         $baseItem =  Catalog::get( $slug );
-        $ingridients = $model->getIngridients();
+        
+        $catalogIngredients = $model->getCatalogIngredients($baseItem->category_id);
+        $ingredients = $model->getIngredients($catalogIngredients);
         $compositeGoods = CompositeGoods::getInstance();
         $compositeGoods->setBaseItem($slug);
         $summ = $compositeGoods->getSumm();
         
         return $this->render('ingredients',['baseItem'=>$baseItem, 
             'compositeGoods'=>$compositeGoods,
-            'ingridients'=>$ingridients,
+            'catalogIngredients' => $catalogIngredients,
+            'ingredients' => $ingredients,
             'summ' => $summ,
             'noingr' => Catalog::get('no-ingredient')]);
     }

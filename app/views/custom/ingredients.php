@@ -132,78 +132,85 @@ $this->params['breadcrumbs'][] = $page->title;
    
     </div>    
        <?php endif; ?> 
-                  
-    <div class="row">   
-        <div class="col-main col-sm-12  wow">    
-            
-            <ul class="products-grid">
-           
-                <?php   foreach ($ingridients as $ingridient) : ?>
-               
-                <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                  <div class="col-item" >
-
-                     <div class="images-container" > 
-                        <div class="ingridient">
-                             <?= Html::a(Html::img($ingridient->image,[
-                                            'alt' =>$ingridient->title,
-                                            'class' => 'product-image center-block img-thumbnail',
-                                            'title' => $ingridient->description,
-                                            'data-toggle'=>'tooltip',
-                                            'data-placement' => 'auto'
-                                 
-                                            ]), 
-                                             ['/custom/move', 'slug' => $ingridient->slug]);
-
-                              ?>
-
-                            <div class="qv-button-container"> 
-                                  <div class="qv-e-button">
-                                   <?=  Html::a(  '<span><span>Quick View</span></span>',
-                             ['/custom/move/', 'slug' => $ingridient->slug]);?> 
-                                  </div> 
-                             </div>
-                        </div>        
-                     </div>
-                 
-
-
-                   <div class="info">
-                     <div class="info-inner">
-                       <div class="h5"> 
-                             <?= $ingridient->title ?> 
-                       </div>
-                       <!--item-title-->
-                       <div class="item-content">
-                         <div class="ratings"> 
-                         </div>
-                         <div class="price-box">
-                           <p class="special-price"> <span class="price"> <?=number_format($ingridient->price, 2, ',', '')?> грн.</span> </p>
-                           <p class="old-price"> <span class="price-sep">-</span> 
-                               <span class="price"> 
-                                     <? /*$ingridient->oldPrice */?>
-                               </span> </p>
-                         </div>
-                       </div>
-                       <!--item-content--> 
-                     </div>
-                     <!--info-inner--> 
-
-                     <!--actions-->
-
-
-                   </div>
-                 </div>
-
-
-                 </li>
-         
-                <?php endforeach; ?>
-        
-            </ul>
       
-         </div>
-  </div>                
+       <? foreach ($catalogIngredients as $catalog) :?> 
+            <div class="panel panel-warning">
+            <div class="panel-heading"> <h3><?= $catalog->title ?></h3></div>
+            <div class="panel-body">
+                     <div class="col-main col-sm-12  wow">    
+
+                <ul class="products-grid">
+
+                    <?php   foreach ($ingredients[$catalog->slug] as $ingredient) : ?>
+
+                    <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                      <div class="col-item" >
+
+                         <div class="images-container" > 
+                            <div class="ingridient">
+                                 <?= Html::a(Html::img($ingredient->image,[
+                                                'alt' =>$ingredient->title,
+                                                'class' => ' center-block img-thumbnail',
+                                                'title' => $ingredient->description,
+                                                'data-toggle'=>'tooltip',
+                                                'data-placement' => 'auto',
+                                                'width' => '156px',
+                                                'height' => '156px',
+
+                                                ]), 
+                                                 ['/custom/move', 'slug' => $ingredient->slug]);
+
+                                  ?>
+
+                                <div class="qv-button-container"> 
+                                      <div class="qv-e-button">
+                                       <?=  Html::a(  '<span><span>Quick View</span></span>',
+                                 ['/custom/move/', 'slug' => $ingredient->slug]);?> 
+                                      </div> 
+                                 </div>
+                            </div>        
+                         </div>
+
+
+
+                       <div class="info">
+                         <div class="info-inner">
+                           <div class="h5"> 
+                                 <?= $ingredient->title ?> 
+                           </div>
+                           <!--item-title-->
+                           <div class="item-content">
+                             <div class="ratings"> 
+                             </div>
+                             <div class="price-box">
+                               <p class="special-price"> <span class="price"> <?=number_format($ingredient->price, 2, ',', '')?> грн.</span> </p>
+                               <p class="old-price"> <span class="price-sep">-</span> 
+                                   <span class="price"> 
+                                         <? /*$ingridient->oldPrice */?>
+                                   </span> </p>
+                             </div>
+                           </div>
+                           <!--item-content--> 
+                         </div>
+
+
+                       </div>
+                     </div>
+
+
+                     </li>
+
+                    <?php endforeach; ?>
+
+                </ul>
+
+             </div>
+            </div>
+          </div>
+        
+      
+      <? endforeach; ?>
+                 
                 
         
            

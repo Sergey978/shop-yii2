@@ -31,7 +31,7 @@ $this->title = $page->seo('title', $page->model->title);
 <div class="text-center">
     <h2>5 преимуществ Lerox Cosmetics:</h2>
     </br>
-    <ul  class = "row" id="nav-shadow" style="min-height: 180px"  >
+    <ul  class = "row" id="nav-shadow" style="min-height: 240px"  >
          
        <?php foreach(Gallery::last(5) as $photo) : ?>
         
@@ -39,11 +39,11 @@ $this->title = $page->seo('title', $page->model->title);
                       
                             <?= Html::a(Html::img($photo->image,[
                                 
-                                'class' => 'img-rounded img-responsive',
+                                'class' => 'img-rounded ',
                                 'title' => $photo->description,
                                 'data-toggle'=>'tooltip',
                                 'data-placement' => 'bottom',
-                                
+                                'width' =>'160px',
                                 ]), 
                                 ['/page/about', ]);
                             ?>

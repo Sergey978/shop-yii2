@@ -1,55 +1,42 @@
--- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
---
--- Хост: 127.0.0.1:3306
--- Время создания: Ноя 06 2016 г., 11:11
--- Версия сервера: 10.0.28-MariaDB-1.cba
--- Версия PHP: 7.0.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- База данных: `sergey978`
---
-
-
+-- --------------------------------------------------------
+-- Хост:                         127.0.0.1
+-- Версия сервера:               5.5.41-log - MySQL Community Server (GPL)
+-- ОС Сервера:                   Win32
+-- HeidiSQL Версия:              9.2.0.4947
 -- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_admins`
---
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-CREATE TABLE `easyii_admins` (
-  `admin_id` int(11) NOT NULL,
+-- Дамп структуры базы данных shop-yii2
+CREATE DATABASE IF NOT EXISTS `shop-yii2` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `shop-yii2`;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_admins
+CREATE TABLE IF NOT EXISTS `easyii_admins` (
+  `admin_id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(32) NOT NULL,
   `password` varchar(64) NOT NULL,
   `auth_key` varchar(128) NOT NULL,
-  `access_token` varchar(128) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `access_token` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`admin_id`),
+  UNIQUE KEY `access_token` (`access_token`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_admins`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_admins: 1 rows
+DELETE FROM `easyii_admins`;
+/*!40000 ALTER TABLE `easyii_admins` DISABLE KEYS */;
 INSERT INTO `easyii_admins` (`admin_id`, `username`, `password`, `auth_key`, `access_token`) VALUES
-(1, 'admin', 'b06e404179e3c1a4f8ebfbe176b27bf4c464e6ed', 'FrVrhdiX8WjHKEOqd4xFvMLASJ535M-J', NULL);
+	(1, 'admin', 'b06e404179e3c1a4f8ebfbe176b27bf4c464e6ed', 'FrVrhdiX8WjHKEOqd4xFvMLASJ535M-J', NULL);
+/*!40000 ALTER TABLE `easyii_admins` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_article_categories`
---
-
-CREATE TABLE `easyii_article_categories` (
-  `category_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_article_categories
+CREATE TABLE IF NOT EXISTS `easyii_article_categories` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(128) NOT NULL,
   `image` varchar(128) DEFAULT NULL,
   `order_num` int(11) DEFAULT NULL,
@@ -58,28 +45,26 @@ CREATE TABLE `easyii_article_categories` (
   `lft` int(11) DEFAULT NULL,
   `rgt` int(11) DEFAULT NULL,
   `depth` int(11) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`category_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_article_categories`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_article_categories: 5 rows
+DELETE FROM `easyii_article_categories`;
+/*!40000 ALTER TABLE `easyii_article_categories` DISABLE KEYS */;
 INSERT INTO `easyii_article_categories` (`category_id`, `title`, `image`, `order_num`, `slug`, `tree`, `lft`, `rgt`, `depth`, `status`) VALUES
-(1, 'Novinki', NULL, 2, 'novinki', 1, 1, 2, 0, 1),
-(2, 'Articles category 2', NULL, 1, 'articles-category-2', 2, 1, 6, 0, 1),
-(3, 'Subcategory 1', NULL, 1, 'subcategory-1', 2, 2, 3, 1, 1),
-(4, 'Subcategory 1', NULL, 1, 'subcategory-1-2', 2, 4, 5, 1, 1),
-(5, 'Блог', '', 3, 'blog', 5, 1, 2, 0, 1);
+	(1, 'Novinki', NULL, 2, 'novinki', 1, 1, 2, 0, 1),
+	(2, 'Articles category 2', NULL, 1, 'articles-category-2', 2, 1, 6, 0, 1),
+	(3, 'Subcategory 1', NULL, 1, 'subcategory-1', 2, 2, 3, 1, 1),
+	(4, 'Subcategory 1', NULL, 1, 'subcategory-1-2', 2, 4, 5, 1, 1),
+	(5, 'Блог', '', 3, 'blog', 5, 1, 2, 0, 1);
+/*!40000 ALTER TABLE `easyii_article_categories` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_article_items`
---
-
-CREATE TABLE `easyii_article_items` (
-  `item_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_article_items
+CREATE TABLE IF NOT EXISTS `easyii_article_items` (
+  `item_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) DEFAULT NULL,
   `title` varchar(128) NOT NULL,
   `image` varchar(128) DEFAULT NULL,
@@ -88,53 +73,48 @@ CREATE TABLE `easyii_article_items` (
   `slug` varchar(128) DEFAULT NULL,
   `time` int(11) DEFAULT '0',
   `views` int(11) DEFAULT '0',
-  `status` tinyint(1) DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`item_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_article_items`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_article_items: 5 rows
+DELETE FROM `easyii_article_items`;
+/*!40000 ALTER TABLE `easyii_article_items` DISABLE KEYS */;
 INSERT INTO `easyii_article_items` (`item_id`, `category_id`, `title`, `image`, `short`, `text`, `slug`, `time`, `views`, `status`) VALUES
-(1, 1, 'Новинка! Суфле-скраб "Кокос"!', '/uploads/article/79a1ceaa78.jpg', 'Суфле - скраб для душа с разными обалденно вкусными запахами! Нежно очищает и скрабирует кожу...особенно нравится деткам', '<p>Суфле - скраб для душа с разными обалденно вкусными запахами! Нежно очищает и скрабирует кожу...особенно нравится деткам</p><p>Суфле - скраб для душа с разными обалденно вкусными запахами! Нежно очищает и скрабирует кожу...особенно нравится деткам</p><p>Суфле - скраб для душа с разными обалденно вкусными запахами! Нежно очищает и скрабирует кожу...особенно нравится деткам</p>', 'novinka-sufle-skrab-kokos', 1473239280, 6, 1),
-(2, 1, 'Second article title', '/uploads/article/article-2.jpg', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p><ol> <li>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </li><li>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</li></ol>', 'second-article-title', 1468746513, 0, 1),
-(3, 1, 'Third article title', '/uploads/article/article-3.jpg', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt molliti', '<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>', 'third-article-title', 1468660113, 0, 1),
-(4, 5, 'Немного о косметических консервантах', '/uploads/article/krem-b8599b9343.jpeg', 'Сегодня буду рассказывать о том, какие бывают консерванты в магазинной и натуральной косметике.️Что такое вообще консерванты? Это вещества, которые останавливают развитие микроорганизмов и предохраняют косметику от микробного заражения.', '<p>Всем привет! Сегодня буду рассказывать о том, какие бывают консерванты в магазинной и натуральной косметике.️Что такое вообще консерванты? Это вещества, которые останавливают развитие микроорганизмов и предохраняют косметику от микробного заражения. Если крем бактериально заражен - поверьте, он принесет вам намного больше вреда, чем пользы (покроетесь прыщами, начнутся раздражения и пр. ). Если косметика сделана вообще без консервантов - она хранится в холодильнике не более 5 дней! (как суп - Вы же не будете есть несвежий суп??). Но все консерванты разные, и если в магазинных кремах добавлены консерванты парабеновой и формальдегидной группы (с которыми средство хранится до 3 лет ️, и действие которых может быть токсично), то в натуральную домашнюю косметику мастера добавляют мягкие "зеленые" консерванты, безвредные для здоровья и сертифицированные Ecosert для использования в органической косметике. Это могут быть Cosguard, Leucidal и прочие. С ними Ваша косметика будет храниться на полочке в ванной около 3 месяцев . Есть еще натуральные консерванты и антиоксиданты - эфирные масла, экстракт косточек грейпфрута, воски и прочие. Они также обладают противомикробным действием, но намного менее активным. С ними косметика хранится также в холодильнике не более 3х недель. Кто-то хранит такие средства и в ванной, но я считаю, что мазать лицо кремом с плесенью и грибком - ни разу не полезно . Поэтому лучше перестраховаться и все-таки хранить такую баночку в холодильнике. ️️️ Мораль: консервант консерванту рознь :))) Завтра расскажу вам о натуральных твердых маслах (баттерах) и их использовании в домашней косметике. P.S.!!! Мой совет - не лазайте в баночки с кремом (тем более с натуральным) пальцами! ️ Пользуйтесь стеклянным или пластиковым стиком, это более гигиенично и продлит жизнь Вашему кремику.</p>', 'emnogo-o-kosmeticheskih-konservantah', 1475575060, 5, 1),
-(5, 5, 'Консерванты2', '/uploads/article/krem-110e71dd8e.jpeg', 'Если крем бактериально заражен - поверьте, он принесет вам намного больше вреда, чем пользы (покроетесь прыщами, начнутся раздражения и пр. ). Если косметика сделана вообще без консервантов - она хранится в холодильнике не более 5 дней!', '<p>Всем привет! Сегодня буду рассказывать о том, какие бывают консерванты в магазинной и натуральной косметике.️Что такое вообще консерванты? Это вещества, которые останавливают развитие микроорганизмов и предохраняют косметику от микробного заражения. Если крем бактериально заражен - поверьте, он принесет вам намного больше вреда, чем пользы (покроетесь прыщами, начнутся раздражения и пр. ). Если косметика сделана вообще без консервантов - она хранится в холодильнике не более 5 дней! (как суп - Вы же не будете есть несвежий суп??). Но все консерванты разные, и если в магазинных кремах добавлены консерванты парабеновой и формальдегидной группы (с которыми средство хранится до 3 лет ️, и действие которых может быть токсично), то в натуральную домашнюю косметику мастера добавляют мягкие "зеленые" консерванты, безвредные для здоровья и сертифицированные Ecosert для использования в органической косметике. Это могут быть Cosguard, Leucidal и прочие. С ними Ваша косметика будет храниться на полочке в ванной около 3 месяцев . Есть еще натуральные консерванты и антиоксиданты - эфирные масла, экстракт косточек грейпфрута, воски и прочие. Они также обладают противомикробным действием, но намного менее активным. С ними косметика хранится также в холодильнике не более 3х недель. Кто-то хранит такие средства и в ванной, но я считаю, что мазать лицо кремом с плесенью и грибком - ни разу не полезно . Поэтому лучше перестраховаться и все-таки хранить такую баночку в холодильнике. ️️️ Мораль: консервант консерванту рознь :))) Завтра расскажу вам о натуральных твердых маслах (баттерах) и их использовании в домашней косметике. P.S.!!! Мой совет - не лазайте в баночки с кремом (тем более с натуральным) пальцами! ️ Пользуйтесь стеклянным или пластиковым стиком, это более гигиенично и продлит жизнь Вашему кремику</p>', 'onservanty2', 1475575312, 19, 1);
+	(1, 1, 'Новинка! Суфле-скраб "Кокос"!', '/uploads/article/79a1ceaa78.jpg', 'Суфле - скраб для душа с разными обалденно вкусными запахами! Нежно очищает и скрабирует кожу...особенно нравится деткам', '<p>Суфле - скраб для душа с разными обалденно вкусными запахами! Нежно очищает и скрабирует кожу...особенно нравится деткам</p><p>Суфле - скраб для душа с разными обалденно вкусными запахами! Нежно очищает и скрабирует кожу...особенно нравится деткам</p><p>Суфле - скраб для душа с разными обалденно вкусными запахами! Нежно очищает и скрабирует кожу...особенно нравится деткам</p>', 'novinka-sufle-skrab-kokos', 1473239280, 6, 1),
+	(2, 1, 'Second article title', '/uploads/article/article-2.jpg', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p><ol> <li>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </li><li>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</li></ol>', 'second-article-title', 1468746513, 0, 1),
+	(3, 1, 'Third article title', '/uploads/article/article-3.jpg', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt molliti', '<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>', 'third-article-title', 1468660113, 0, 1),
+	(4, 5, 'Немного о косметических консервантах', '/uploads/article/krem-b8599b9343.jpeg', 'Сегодня буду рассказывать о том, какие бывают консерванты в магазинной и натуральной косметике.️Что такое вообще консерванты? Это вещества, которые останавливают развитие микроорганизмов и предохраняют косметику от микробного заражения.', '<p>Всем привет! Сегодня буду рассказывать о том, какие бывают консерванты в магазинной и натуральной косметике.️Что такое вообще консерванты? Это вещества, которые останавливают развитие микроорганизмов и предохраняют косметику от микробного заражения. Если крем бактериально заражен - поверьте, он принесет вам намного больше вреда, чем пользы (покроетесь прыщами, начнутся раздражения и пр. ). Если косметика сделана вообще без консервантов - она хранится в холодильнике не более 5 дней! (как суп - Вы же не будете есть несвежий суп??). Но все консерванты разные, и если в магазинных кремах добавлены консерванты парабеновой и формальдегидной группы (с которыми средство хранится до 3 лет ️, и действие которых может быть токсично), то в натуральную домашнюю косметику мастера добавляют мягкие "зеленые" консерванты, безвредные для здоровья и сертифицированные Ecosert для использования в органической косметике. Это могут быть Cosguard, Leucidal и прочие. С ними Ваша косметика будет храниться на полочке в ванной около 3 месяцев . Есть еще натуральные консерванты и антиоксиданты - эфирные масла, экстракт косточек грейпфрута, воски и прочие. Они также обладают противомикробным действием, но намного менее активным. С ними косметика хранится также в холодильнике не более 3х недель. Кто-то хранит такие средства и в ванной, но я считаю, что мазать лицо кремом с плесенью и грибком - ни разу не полезно . Поэтому лучше перестраховаться и все-таки хранить такую баночку в холодильнике. ️️️ Мораль: консервант консерванту рознь :))) Завтра расскажу вам о натуральных твердых маслах (баттерах) и их использовании в домашней косметике. P.S.!!! Мой совет - не лазайте в баночки с кремом (тем более с натуральным) пальцами! ️ Пользуйтесь стеклянным или пластиковым стиком, это более гигиенично и продлит жизнь Вашему кремику.</p>', 'emnogo-o-kosmeticheskih-konservantah', 1475575060, 5, 1),
+	(5, 5, 'Консерванты2', '/uploads/article/krem-110e71dd8e.jpeg', 'Если крем бактериально заражен - поверьте, он принесет вам намного больше вреда, чем пользы (покроетесь прыщами, начнутся раздражения и пр. ). Если косметика сделана вообще без консервантов - она хранится в холодильнике не более 5 дней!', '<p>Всем привет! Сегодня буду рассказывать о том, какие бывают консерванты в магазинной и натуральной косметике.️Что такое вообще консерванты? Это вещества, которые останавливают развитие микроорганизмов и предохраняют косметику от микробного заражения. Если крем бактериально заражен - поверьте, он принесет вам намного больше вреда, чем пользы (покроетесь прыщами, начнутся раздражения и пр. ). Если косметика сделана вообще без консервантов - она хранится в холодильнике не более 5 дней! (как суп - Вы же не будете есть несвежий суп??). Но все консерванты разные, и если в магазинных кремах добавлены консерванты парабеновой и формальдегидной группы (с которыми средство хранится до 3 лет ️, и действие которых может быть токсично), то в натуральную домашнюю косметику мастера добавляют мягкие "зеленые" консерванты, безвредные для здоровья и сертифицированные Ecosert для использования в органической косметике. Это могут быть Cosguard, Leucidal и прочие. С ними Ваша косметика будет храниться на полочке в ванной около 3 месяцев . Есть еще натуральные консерванты и антиоксиданты - эфирные масла, экстракт косточек грейпфрута, воски и прочие. Они также обладают противомикробным действием, но намного менее активным. С ними косметика хранится также в холодильнике не более 3х недель. Кто-то хранит такие средства и в ванной, но я считаю, что мазать лицо кремом с плесенью и грибком - ни разу не полезно . Поэтому лучше перестраховаться и все-таки хранить такую баночку в холодильнике. ️️️ Мораль: консервант консерванту рознь :))) Завтра расскажу вам о натуральных твердых маслах (баттерах) и их использовании в домашней косметике. P.S.!!! Мой совет - не лазайте в баночки с кремом (тем более с натуральным) пальцами! ️ Пользуйтесь стеклянным или пластиковым стиком, это более гигиенично и продлит жизнь Вашему кремику</p>', 'onservanty2', 1475575312, 19, 1);
+/*!40000 ALTER TABLE `easyii_article_items` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_carousel`
---
-
-CREATE TABLE `easyii_carousel` (
-  `carousel_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_carousel
+CREATE TABLE IF NOT EXISTS `easyii_carousel` (
+  `carousel_id` int(11) NOT NULL AUTO_INCREMENT,
   `image` varchar(128) NOT NULL,
   `link` varchar(255) NOT NULL,
   `title` varchar(128) DEFAULT NULL,
   `text` text,
   `order_num` int(11) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`carousel_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_carousel`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_carousel: 3 rows
+DELETE FROM `easyii_carousel`;
+/*!40000 ALTER TABLE `easyii_carousel` DISABLE KEYS */;
 INSERT INTO `easyii_carousel` (`carousel_id`, `image`, `link`, `title`, `text`, `order_num`, `status`) VALUES
-(7, '/uploads/carousel/img7727-26649fc366.jpg', '', '', '', 7, 1),
-(8, '/uploads/carousel/img8110-1808d7d6c7.jpg', 'http://lerox.zzz.com.ua/grid/category/mylo', '', '', 8, 1),
-(6, '/uploads/carousel/8hkqstxunja-a3463daf63.jpg', 'http://shop-yii2.loc/grid', '<b>ПОДАРОЧНЫЙ НАБОР ЗА ПОЛ ЦЕНЫ!</b>', 'Успей купить до 1 октября!', 6, 1);
+	(7, '/uploads/carousel/img7727-26649fc366.jpg', '', '', '', 7, 1),
+	(8, '/uploads/carousel/img8110-1808d7d6c7.jpg', 'http://lerox.zzz.com.ua/grid/category/mylo', '', '', 8, 1),
+	(6, '/uploads/carousel/8hkqstxunja-a3463daf63.jpg', 'http://shop-yii2.loc/grid', '<b>ПОДАРОЧНЫЙ НАБОР ЗА ПОЛ ЦЕНЫ!</b>', 'Успей купить до 1 октября!', 6, 1);
+/*!40000 ALTER TABLE `easyii_carousel` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_catalog_categories`
---
-
-CREATE TABLE `easyii_catalog_categories` (
-  `category_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_catalog_categories
+CREATE TABLE IF NOT EXISTS `easyii_catalog_categories` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(128) NOT NULL,
   `image` varchar(128) DEFAULT NULL,
   `fields` text NOT NULL,
@@ -144,103 +124,69 @@ CREATE TABLE `easyii_catalog_categories` (
   `rgt` int(11) DEFAULT NULL,
   `depth` int(11) DEFAULT NULL,
   `order_num` int(11) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`category_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_catalog_categories`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_catalog_categories: 49 rows
+DELETE FROM `easyii_catalog_categories`;
+/*!40000 ALTER TABLE `easyii_catalog_categories` DISABLE KEYS */;
 INSERT INTO `easyii_catalog_categories` (`category_id`, `title`, `image`, `fields`, `slug`, `tree`, `lft`, `rgt`, `depth`, `order_num`, `status`) VALUES
-(63, 'Уход за ногами', '', '[]', 'uhod-za-nogami', 16, 39, 40, 2, 5, 1),
-(64, 'Антицеллюлитные средства', '', '[]', 'anticellulitnye-sredstva', 16, 41, 42, 2, 5, 1),
-(65, 'Мыло', '', '[]', 'mylo', 16, 43, 44, 2, 5, 1),
-(66, 'Крема', '', '[]', 'krema-2', 16, 59, 60, 2, 5, 1),
-(67, 'Для блеска', '/uploads/catalog/screenshot1-e644943ea7.jpg', '[]', 'dla-bleska', 4, 4, 5, 3, 1, 1),
-(59, 'Уход за губами', '', '[]', 'uhod-za-gubami', 16, 25, 26, 2, 5, 1),
-(60, 'Крем для лица', '', '[]', 'krem-dla-lica', 16, 53, 54, 2, 5, 1),
-(61, 'Интимная гигиена', '', '[]', 'intimnaa-gigiena', 16, 35, 36, 2, 5, 1),
-(62, 'Уход за руками', '', '[]', 'uhod-za-rukami', 16, 37, 38, 2, 5, 1),
-(49, 'Бальзамы', '', '[]', 'balzamy', 16, 5, 6, 2, 5, 1),
-(50, 'Масла для волос', '', '[]', 'masla-dla-volos', 16, 7, 8, 2, 5, 1),
-(51, 'Маски для волос', '', '[]', 'maski-dla-volos', 16, 9, 10, 2, 5, 1),
-(52, 'Очищение', '', '[]', 'ocisenie', 16, 13, 14, 2, 5, 1),
-(54, 'Крема', '', '[]', 'krema', 16, 17, 18, 2, 5, 1),
-(56, 'Сыворотки', '', '[]', 'syvorotki', 16, 19, 20, 2, 5, 1),
-(57, 'Скрабы и пилинги', '', '[]', 'skraby-i-pilingi', 16, 21, 22, 2, 5, 1),
-(4, 'Category', '', '[]', 'category', 4, 1, 24, 0, 1, 1),
-(5, 'Лицо', '/uploads/catalog/face1-ef05c1d21d.jpg', '[]', 'face', 4, 2, 13, 1, 1, 1),
-(32, 'Для детей', '', '[]', 'dlya-detej', 16, 56, 61, 1, 5, 1),
-(33, 'Средства для купания', '', '[]', 'sredstva-dla-kupania', 16, 57, 58, 2, 5, 1),
-(37, 'NoIngredient', '', '[]', 'noingredient', 37, 1, 2, 0, 6, 1),
-(6, 'Тело', '/uploads/catalog/body-663fd3c514.jpg', '[]', 'body', 4, 14, 21, 1, 1, 1),
-(7, 'Волосы', '/uploads/catalog/hair1-ae8fec2f69.jpg', '[]', 'hair', 4, 22, 23, 1, 1, 1),
-(8, 'Ingridients', '', '[{"name":"type","title":"Type","type":"select","options":["\\u042d\\u043a\\u0441\\u0442\\u0440\\u0430\\u043a\\u0442\\u044b","\\u0410\\u043a\\u0442\\u0438\\u0432\\u044b","\\u042d\\u0444\\u0438\\u0440\\u043d\\u044b\\u0435 \\u043c\\u0430\\u0441\\u043b\\u0430","\\u0412\\u0438\\u0442\\u0430\\u043c\\u0438\\u043d\\u044b","\\u0412\\u0441\\u0435"]}]', 'ingridients', 8, 1, 2, 0, 2, 1),
-(9, 'Скраб', '/uploads/catalog/959ab9a069.jpg', '[]', 'scrab-face', 4, 7, 8, 2, 1, 1),
-(10, 'Мыло', '/uploads/catalog/ee2689a415.jpg', '[]', 'soap-face', 4, 9, 10, 2, 1, 1),
-(29, 'Средства для бритья', '', '[]', 'sredstva-dla-brita', 16, 51, 52, 2, 5, 1),
-(11, 'Маска', '/uploads/catalog/24aa17e766.jpg', '[]', 'mask-face', 4, 11, 12, 2, 1, 1),
-(58, 'Уход за глазами', '', '[]', 'uhod-za-glazami', 16, 23, 24, 2, 5, 1),
-(23, 'Для душа', '', '[]', 'dla-dusa-2', 16, 29, 30, 2, 5, 1),
-(25, 'Для ванны', '', '[]', 'dla-vanny', 16, 31, 32, 2, 5, 1),
-(26, 'Крема, бальзамы и масла', '', '[]', 'krema-balzamy-i-masla', 16, 33, 34, 2, 5, 1),
-(27, 'Шампуни', '', '[]', 'sampuni-2', 16, 47, 48, 2, 5, 1),
-(28, 'Гели для душа', '', '[]', 'geli-dla-dusa', 16, 49, 50, 2, 5, 1),
-(12, 'Крем', '/uploads/catalog/7caf5e22ea.jpg', '[]', 'krem-face', 4, 3, 6, 2, 1, 1),
-(16, 'Готовая продукция', '', '[]', 'gotovaya-produkciya', 16, 1, 62, 0, 5, 1),
-(17, 'Для лица', '/uploads/catalog/face1-67e235e7f2.jpg', '[]', 'dlya-lica', 16, 12, 27, 1, 5, 1),
-(18, 'Для тела', '/uploads/catalog/body-92b4f19a07.jpg', '[]', 'dlya-tela', 16, 28, 45, 1, 5, 1),
-(19, 'Для мужчин', '/uploads/catalog/hair-92a0e7a415.jpg', '[]', 'dlya-muzhchin', 16, 46, 55, 1, 5, 1),
-(13, 'Гель для душа', '/uploads/catalog/8e269c86c8.jpg', '[]', 'gel-body', 4, 15, 16, 2, 1, 1),
-(14, 'Скраб', '/uploads/catalog/6a7c8b3c6b.jpg', '[]', 'scrab-body', 4, 17, 18, 2, 1, 1),
-(15, 'Бальзам', '/uploads/catalog/2c64be033e.jpg', '[]', 'balm-body', 4, 19, 20, 2, 1, 1),
-(38, 'Подарочная категория', '', '[]', 'podarochnaya-kategoriya', 38, 1, 2, 0, 7, 1),
-(53, 'Тоники', '', '[]', 'toniki', 16, 15, 16, 2, 5, 1),
-(47, 'Для волос', '', '[]', 'dla-volos', 16, 2, 11, 1, 5, 1),
-(48, 'Шампуни', '', '[]', 'sampuni', 16, 3, 4, 2, 5, 1),
-(69, 'Ингредиенты', '', '[]', 'ingredienty', 69, 1, 8, 0, 8, 1),
-(70, 'Для блеска', '', '[]', 'dla-bleska-2', 69, 2, 3, 1, 8, 1),
-(71, 'Увлажнение', '', '[]', 'uvlaznenie', 69, 4, 5, 1, 8, 1),
-(72, 'Лицо', '', '[]', 'lico', 69, 6, 7, 1, 8, 1);
+	(63, 'Уход за ногами', '', '[]', 'uhod-za-nogami', 16, 39, 40, 2, 5, 1),
+	(64, 'Антицеллюлитные средства', '', '[]', 'anticellulitnye-sredstva', 16, 41, 42, 2, 5, 1),
+	(65, 'Мыло', '', '[]', 'mylo', 16, 43, 44, 2, 5, 1),
+	(66, 'Крема', '', '[]', 'krema-2', 16, 59, 60, 2, 5, 1),
+	(59, 'Уход за губами', '', '[]', 'uhod-za-gubami', 16, 25, 26, 2, 5, 1),
+	(60, 'Крем для лица', '', '[]', 'krem-dla-lica', 16, 53, 54, 2, 5, 1),
+	(61, 'Интимная гигиена', '', '[]', 'intimnaa-gigiena', 16, 35, 36, 2, 5, 1),
+	(62, 'Уход за руками', '', '[]', 'uhod-za-rukami', 16, 37, 38, 2, 5, 1),
+	(49, 'Бальзамы', '', '[]', 'balzamy', 16, 5, 6, 2, 5, 1),
+	(50, 'Масла для волос', '', '[]', 'masla-dla-volos', 16, 7, 8, 2, 5, 1),
+	(51, 'Маски для волос', '', '[]', 'maski-dla-volos', 16, 9, 10, 2, 5, 1),
+	(52, 'Очищение', '', '[]', 'ocisenie', 16, 13, 14, 2, 5, 1),
+	(54, 'Крема', '', '[]', 'krema', 16, 17, 18, 2, 5, 1),
+	(56, 'Сыворотки', '', '[]', 'syvorotki', 16, 19, 20, 2, 5, 1),
+	(57, 'Скрабы и пилинги', '', '[]', 'skraby-i-pilingi', 16, 21, 22, 2, 5, 1),
+	(4, 'Category', '', '[]', 'category', 4, 1, 22, 0, 1, 1),
+	(5, 'Лицо', '/uploads/catalog/face1-ef05c1d21d.jpg', '[]', 'face', 4, 2, 11, 1, 1, 1),
+	(32, 'Для детей', '', '[]', 'dlya-detej', 16, 56, 61, 1, 5, 1),
+	(33, 'Средства для купания', '', '[]', 'sredstva-dla-kupania', 16, 57, 58, 2, 5, 1),
+	(37, 'NoIngredient', '', '[]', 'noingredient', 37, 1, 2, 0, 6, 1),
+	(6, 'Тело', '/uploads/catalog/body-663fd3c514.jpg', '[]', 'body', 4, 12, 19, 1, 1, 1),
+	(7, 'Волосы', '/uploads/catalog/hair1-ae8fec2f69.jpg', '[]', 'hair', 4, 20, 21, 1, 1, 1),
+	(9, 'Скраб', '/uploads/catalog/959ab9a069.jpg', '[{"name":"ingredients","title":"\\u0418\\u043d\\u0433\\u0440\\u0435\\u0434\\u0438\\u0435\\u043d\\u0442\\u044b","type":"select","options":["71","72"]}]', 'scrab-face', 4, 5, 6, 2, 1, 1),
+	(10, 'Мыло', '/uploads/catalog/ee2689a415.jpg', '[{"name":"ingredients","title":"\\u0418\\u043d\\u0433\\u0440\\u0435\\u0434\\u0438\\u0435\\u043d\\u0442\\u044b","type":"checkbox","options":["72"]}]', 'soap-face', 4, 7, 8, 2, 1, 1),
+	(29, 'Средства для бритья', '', '[]', 'sredstva-dla-brita', 16, 51, 52, 2, 5, 1),
+	(11, 'Маска', '/uploads/catalog/24aa17e766.jpg', '[]', 'mask-face', 4, 9, 10, 2, 1, 1),
+	(58, 'Уход за глазами', '', '[]', 'uhod-za-glazami', 16, 23, 24, 2, 5, 1),
+	(23, 'Для душа', '', '[]', 'dla-dusa-2', 16, 29, 30, 2, 5, 1),
+	(25, 'Для ванны', '', '[]', 'dla-vanny', 16, 31, 32, 2, 5, 1),
+	(26, 'Крема, бальзамы и масла', '', '[]', 'krema-balzamy-i-masla', 16, 33, 34, 2, 5, 1),
+	(27, 'Шампуни', '', '[]', 'sampuni-2', 16, 47, 48, 2, 5, 1),
+	(28, 'Гели для душа', '', '[]', 'geli-dla-dusa', 16, 49, 50, 2, 5, 1),
+	(12, 'Крем', '/uploads/catalog/7caf5e22ea.jpg', '[{"name":"ingredients","title":"\\u0418\\u043d\\u0433\\u0440\\u0435\\u0434\\u0438\\u0435\\u043d\\u0442\\u044b","type":"select","options":["70","71","72"]}]', 'krem-face', 4, 3, 4, 2, 1, 1),
+	(16, 'Готовая продукция', '', '[]', 'gotovaya-produkciya', 16, 1, 62, 0, 5, 1),
+	(17, 'Для лица', '/uploads/catalog/face1-67e235e7f2.jpg', '[]', 'dlya-lica', 16, 12, 27, 1, 5, 1),
+	(18, 'Для тела', '/uploads/catalog/body-92b4f19a07.jpg', '[]', 'dlya-tela', 16, 28, 45, 1, 5, 1),
+	(19, 'Для мужчин', '/uploads/catalog/hair-92a0e7a415.jpg', '[]', 'dlya-muzhchin', 16, 46, 55, 1, 5, 1),
+	(13, 'Гель для душа', '/uploads/catalog/8e269c86c8.jpg', '[{"name":"ingredients","title":"\\u0418\\u0433\\u0440\\u0435\\u0434\\u0438\\u0435\\u043d\\u0442\\u044b","type":"checkbox","options":["71"]}]', 'gel-body', 4, 13, 14, 2, 1, 1),
+	(14, 'Скраб', '/uploads/catalog/6a7c8b3c6b.jpg', '[]', 'scrab-body', 4, 15, 16, 2, 1, 1),
+	(15, 'Бальзам', '/uploads/catalog/2c64be033e.jpg', '[]', 'balm-body', 4, 17, 18, 2, 1, 1),
+	(38, 'Подарочная категория', '', '[]', 'podarochnaya-kategoriya', 38, 1, 2, 0, 7, 1),
+	(53, 'Тоники', '', '[]', 'toniki', 16, 15, 16, 2, 5, 1),
+	(47, 'Для волос', '', '[]', 'dla-volos', 16, 2, 11, 1, 5, 1),
+	(48, 'Шампуни', '', '[]', 'sampuni', 16, 3, 4, 2, 5, 1),
+	(69, 'Ингредиенты', '', '[]', 'ingredienty', 69, 1, 8, 0, 8, 1),
+	(70, 'Для блеска', '', '[]', 'dla-bleska-2', 69, 2, 3, 1, 8, 1),
+	(71, 'Увлажнение', '', '[]', 'uvlaznenie', 69, 4, 5, 1, 8, 1),
+	(72, 'Лицо', '', '[]', 'lico', 69, 6, 7, 1, 8, 1);
+/*!40000 ALTER TABLE `easyii_catalog_categories` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_catalog_item_data`
---
-
-CREATE TABLE `easyii_catalog_item_data` (
-  `data_id` int(11) NOT NULL,
-  `item_id` int(11) DEFAULT NULL,
-  `name` varchar(128) NOT NULL,
-  `value` varchar(1024) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `easyii_catalog_item_data`
---
-
-INSERT INTO `easyii_catalog_item_data` (`data_id`, `item_id`, `name`, `value`) VALUES
-(228, 72, 'type', 'Экстракты'),
-(188, 16, 'type', 'Экстракты'),
-(187, 17, 'type', 'Экстракты'),
-(186, 18, 'type', 'Экстракты'),
-(194, 19, 'type', 'Активы'),
-(223, 20, 'type', 'Активы'),
-(222, 21, 'type', 'Активы'),
-(225, 23, 'type', 'Эфирные масла'),
-(199, 22, 'type', 'Эфирные масла'),
-(224, 24, 'type', 'Витамины'),
-(215, 26, 'ingridient6', '');
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `easyii_catalog_items`
---
-
-CREATE TABLE `easyii_catalog_items` (
-  `item_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_catalog_items
+CREATE TABLE IF NOT EXISTS `easyii_catalog_items` (
+  `item_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) DEFAULT NULL,
   `title` varchar(128) NOT NULL,
   `description` text,
@@ -251,111 +197,135 @@ CREATE TABLE `easyii_catalog_items` (
   `image` varchar(128) DEFAULT NULL,
   `slug` varchar(128) DEFAULT NULL,
   `time` int(11) DEFAULT '0',
-  `status` tinyint(1) DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`item_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=85 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_catalog_items`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_catalog_items: 65 rows
+DELETE FROM `easyii_catalog_items`;
+/*!40000 ALTER TABLE `easyii_catalog_items` DISABLE KEYS */;
 INSERT INTO `easyii_catalog_items` (`item_id`, `category_id`, `title`, `description`, `available`, `price`, `discount`, `data`, `image`, `slug`, `time`, `status`) VALUES
-(52, 48, '"Chilly" шампунь для стимулирования роста волос', '<p><em>Стимулирование роста и профилактика&nbsp;выпадения волос, основанные на&nbsp;природной силе красного перца и трав.&nbsp;Усиление притока крови к волосяным&nbsp;луковицам, благодаря чему&nbsp;активизируется рост новых волос.&nbsp;Стимуляция подкожного кровообращения,&nbsp;снабжение волосяных фолликулов&nbsp;большим количеством витаминов и&nbsp;минералов.</em></p><ul>\r\n<li>Состав: гидрогенизированное масло кокоса, масло&nbsp;авокадо, кофеин, кетон малины, экстракт перца&nbsp;стручкового, гидролат корня лопуха, экстракт&nbsp;ламинарии, экстракт лотоса, алоэ-вера, провитамин В5,&nbsp;эфирные масла - грейпфрута, вербены тропической,&nbsp;чабреца, лимона.</li></ul>', 50, 135, 0, '{}', '/uploads/catalog/screenshot5-50ef753d8a.jpg', 'chilly-sampun-dla-stimulirovania-rosta-volos', 1476963512, 1),
-(51, 48, '"Herbal" шампунь против перхоти', '<p style="margin-left: 20px;"><em>Оздоравливающие  растительные&nbsp;компоненты (крапива, шалфей, череда и&nbsp;можжевельник) деликатно очищают&nbsp;волосы, устраняя перхоть и препятствуя&nbsp;её повторному появлению.&nbsp;Входящие в состав кетон малины и&nbsp;кофеин укрепляют волосы, питая корни&nbsp;и кожу головы.</em></p><ul><li>Состав:отвары крапивы, череды, экстракты крапивы,&nbsp;репейника, шалфея, пептиды ржи, овса, пшеницы,&nbsp;молочная кислота, гидрогенизированное касторовое&nbsp;масло, эфирные масла чайного дерева, можжевельника,&nbsp;мяты перечной&nbsp;</li></ul>', 50, 135, 0, '{}', '/uploads/catalog/screenshot4-9e45f860f3.jpg', 'herbal-sampun-protiv-perhoti', 1476962593, 1),
-(4, 13, 'Гель для душа для нормальной и комбинированной кожи с маслом фисташки', '<h6>Гель для душа для нормальной и комбинированной кожи с маслом фисташки</h6><p>Объем: 250 мл</p><p>состав основы: вода, мягкие биоразлагаемые ПАВ  растительного происхождения (кокамидопропил бетаин - вырабатывается из  жирных кислот кокосового масла, лауроил метилизетионат натрия - наиболее  мягкая кокосовая альтернатива сульфатам, кокоглюкозид - на основе  кокоса и фруктовых сахаров, натрия кокоил яблочных аминокислот - на  основе кокосового масла и экстракта яблочного сока), растительные масла  оливковое, фисташки, экстракт календулы, лимонная кислота, молочная  кислота, эуксил (безопасный консервант и антиоксидант на основе  этилгексилглицерина и токоферола).</p>', 100, 20, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/gel1-aeb66737d3.jpg', 'gel-fist-body', 1468838313, 1),
-(5, 13, 'Гель для душа для сухой или возрастной кожи с маслом пшеницы', '<h5></h5><h6>Гель для душа для сухой или возрастной кожи с маслом пшеницы</h6><p>Объем: 250 мл</p><p>состав основы: вода, мягкие биоразлагаемые ПАВ  растительного происхождения (кокамидопропил бетаин - вырабатывается из  жирных кислот кокосового масла, лауроил метилизетионат натрия - наиболее  мягкая кокосовая альтернатива сульфатам, кокоглюкозид - на основе  кокоса и фруктовых сахаров, натрия кокоил яблочных аминокислот - на  основе кокосового масла и экстракта яблочного сока), растительные масла  оливковое, зерен пшеницы, авокадо, лимонная кислота, молочная кислота,  эуксил (безопасный консервант и антиоксидант на основе  этилгексилглицерина и токоферола).</p><h5></h5>', 100, 35, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/gel2-426281d734.jpg', 'gel-pshen-body', 1468838418, 1),
-(6, 14, 'Скраб сахарный для нормальной и комбинированной кожи', '<h6>Скраб сахарный для нормальной и комбинированной кожи</h6><p>Объем: 150 мл</p><p>состав основы: растительные масла миндальное,  макадамского ореха, сои, очищенный тростниковый сахар, экстракт  розмарина (антиоксидант), сорбитан монолаурат (пищевая добавка, повышает  вязкость, получают из кокоса и листьев лаврового дерева).</p>', 100, 26, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/scrab1-5a18b2b3a6.jpg', 'scrab-sugar-body', 1468839017, 1),
-(7, 14, 'Скраб солевой для нормальной и комбинированной кожи', '<h6>Скраб солевой для нормальной и комбинированной кожи</h6><p>Объем: 150 мл</p><p>состав основы: растительные масла миндальное, виноградной  косточки, сои, морская соль, экстракт розмарина (антиоксидант),  сорбитан монолаурат (пищевая добавка, повышает вязкость, получают из  кокоса и листьев лаврового дерева).</p>', 100, 42, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/scrab2-8fec94f6dd.jpg', 'scrab-sol-body', 1468839881, 1),
-(8, 15, 'Бальзам для тела для нормальной и комбинированной кожи с маслом ши', '<h6>Бальзам для тела для нормальной и комбинированной кожи с маслом ши</h6><p>Объем: 150 мл</p><p>состав основы: растительные масла ши, миндальное, рисовых  отрубей, сои, пчелиный воск, глицерил стеарат (мягкий эмульгатор,  вырабатывается на основе глицерина и стеариновой кислоты кокосового  масла), экстракт розмарина (антиоксидант), эуксил (безопасный консервант  и антиоксидант на основе этилгексилглицерина и токоферола).</p>', 100, 41, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/bal1-6c7cd90412.jpg', 'bal-shi-body', 1468840117, 1),
-(9, 15, 'Бальзам для тела для сухой или возрастной кожи с маслом какао', '<h6>Бальзам для тела для сухой или возрастной кожи с маслом какао</h6><p>Объем: 150 мл</p><p>состав основы: растительные масла какао, ши, миндальное,  облепиховое, сои, пчелиный воск, глицерил стеарат (мягкий эмульгатор,  вырабатывается на основе глицерина и стеариновой кислоты кокосового  масла), экстракт розмарина (антиоксидант), эуксил (безопасный консервант  и антиоксидант на основе этилгексилглицерина и токоферола).</p>', 100, 23, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/bal2-00411460f7.jpg', 'bal-kakao-body', 1468840459, 1),
-(10, 12, 'Крем для возрастной кожи с гиалуроновой кислотой', '<h6></h6><p>Крем антивозрастной лифтинг-эффект, может применяться с 30 лет. Крем хорошо увлажняет и подтягивает кожу, делает ее более эластичной, убирает дряблость.&nbsp;Гиалуроновая кислота, входящая в состав крема, позволяет не только увлажнить кожу и предохранить ее от внешних негативных факторов, но и действительно помогает предупредить образование морщин, способствует выравниванию поверхности кожи, улучшению ее тона, удалению синяков под глазами и неприятных мешков.В состав этого кремс&nbsp;также входят&nbsp;экстракт плаценты,&nbsp;ценные масла виноградной косточки, льна и кунжута.</p>', 100, 100, NULL, '{}', '/uploads/catalog/screenshot12-6be5e8c2f6.jpg', 'krem-dla-vozrastnoj-kozi-s-gialuronovoj-kislotoj', 1468840675, 1),
-(11, 12, 'Крем для жирной кожи с кофеином и зеленым чаем', '<p>Крем&nbsp;для проблемной кожи на основе специального фитокомплекса, оценят те, чья&nbsp;кожа вырабатывает излишек себума (кожного сала). &nbsp;Надежным помощником в деле донесения активных веществ до глубоких слоев эпидермиса выступает зеленый чай: его полифенолы способствуют проникновению биологически активных веществ в кожу. Содержащийся в экстракте кофеин усиливает микроциркуляцию крови и питание тканей, сужает поры,&nbsp;танины придают коже упругость, а&nbsp;сульфат цинка - подсушивает и матирует кожу.</p>', 100, 100, NULL, '{}', '/uploads/catalog/screenshot10-f2e75d31d6.jpg', 'krem-dla-zirnoj-kozi-s-kofeinom-i-zelenym-caem', 1468840961, 1),
-(12, 12, 'Крем для нормальной и комбинированной кожи с маслом жожоба', '<h6></h6><p>Крем для комбинированной и нормальной&nbsp;кожи питает ее живительной влагой, выравнивает тон кожи, матирует и эффективно снимает покраснения и воспалительные процессы. Благодаря входящим в состав маслам жожоба и лавра, экстрактам лотоса, водорослей и ивы, протеинам шелка, крем обладает антиоксидантными свойствами, увлажняет, балансирует, тонизирует кожу, делает ее упругой и бархатистой.&nbsp;</p>', 100, 100, NULL, '{}', '/uploads/catalog/screenshot11-dbd21c7174.jpg', 'krem-dla-normalnoj-i-kombinirovannoj-kozi-s-maslom-zozoba', 1468841030, 1),
-(72, 8, '​Экстракт облепихи', '<p><strong>Экстракт облепихи</strong></p><ul><li>Питает кожу всеми жизненно важными витаминами и микроэлементами, эффективно предотвращает ранние признаки старения. Имеет уникальное увлажняющее действие и вспомогательные средства омоложения кожи. Обладает противовоспалительными и укрепляющие свойства, уменьшает покраснение и предотвращает появление прыщей.&nbsp;Питает, смягчает и повышает эластичность кожи.</li></ul>', 60, 25, 0, '{"type":"\\u042d\\u043a\\u0441\\u0442\\u0440\\u0430\\u043a\\u0442\\u044b"}', '/uploads/catalog/screenshot14-73afdf7f08.jpg', 'ekstrakt-oblepihi', 1477474971, 1),
-(13, 9, 'Скраб для возрастной кожи с маслом жожоба', '<h6>Скраб для возрастной кожи с маслом жожоба</h6><p>Объем: 50 мл</p><p>состав основы: вода, растительные масла ши, жожоба, рисовых  отрубей, миндальное, сои, гранулы масла жожоба и подсолнечника,  глицерил стеарат (мягкий эмульгатор, вырабатывается на основе глицерина и  стеариновой кислоты кокосового масла), цетеариловый спирт (мягкий  эмульгатор, вырабатывается из кокосового масла), альгинат натрия (мягкий  загуститель, вырабатывается из водорослей), экстракт розмарина, эуксил  (безопасный консервант и антиоксидант на основе этилгексилглицерина и  токоферола)</p>', 100, 23, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/scrab1-370abbc7e1.jpg', 'scrab-gogoba-face', 1468849524, 1),
-(14, 9, 'Скраб для жирной кожи с маслом сладкого миндаля', '<h6>Скраб для жирной кожи с маслом сладкого миндаля</h6><p>Объем: 50 мл</p><p>состав основы: вода, растительные масла ши, миндальное,  зверобоя, сои, гранулы кедрового ореха, глицерил стеарат (мягкий  эмульгатор, вырабатывается на основе глицерина и стеариновой кислоты  кокосового масла), цетеариловый спирт (мягкий эмульгатор, вырабатывается  из кокосового масла), альгинат натрия (мягкий загуститель,  вырабатывается из водорослей), экстракт розмарина, эуксил (безопасный  консервант и антиоксидант на основе этилгексилглицерина и токоферола)</p>', 100, 36, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/scrab2-2963dbc550.jpg', 'scrab-mindale-face', 1468849625, 1),
-(15, 9, 'Скраб для нормальной и комбинированной кожи с маслом ши', '<h6>Скраб для нормальной и комбинированной кожи с маслом ши</h6><p>Объем: 50 мл</p><p>состав основы: вода, растительные масла ши, макадамского  ореха, зерен пшеницы, сои, гранулы скорлумина (специально обработанная  яичная скорлупа), глицерил стеарат (мягкий эмульгатор, вырабатывается на  основе глицерина и стеариновой кислоты кокосового масла), цетеариловый  спирт (мягкий эмульгатор, вырабатывается из кокосового масла), альгинат  натрия (мягкий загуститель, вырабатывается из водорослей), экстракт  розмарина, эуксил (безопасный консервант и антиоксидант на основе  этилгексилглицерина и токоферола)</p>', 100, 42, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/scrab1-67e8858b4f.jpg', 'scrab-shi-face', 1468849659, 1),
-(16, 8, 'Экстракт арники', '<h6>Экстракт арники</h6><p>"Arnica  montana L.". С давних лет "иванов цвет" считается тайным оружием для  сохранения молодости и красоты усталой кожи. Арника - мощный  антиоксидант, активизирует кровообращение, способствует выводу токсинов,  ускоряет внутрикожный метаболизм, существенно сокращает отеки.</p>', 100, 12, NULL, '{"type":"\\u042d\\u043a\\u0441\\u0442\\u0440\\u0430\\u043a\\u0442\\u044b"}', '/uploads/catalog/extr1-d3ddedd999.jpg', 'extr-arniki', 1468850276, 1),
-(17, 8, 'Экстракт коры дуба', '<h6>Экстракт коры дуба</h6>', 100, 13, NULL, '{"type":"\\u042d\\u043a\\u0441\\u0442\\u0440\\u0430\\u043a\\u0442\\u044b"}', '/uploads/catalog/extr2-6b34ebfac7.jpg', 'extr-koraduba', 1468851048, 1),
-(18, 8, 'Экстракт женьшеня', '<h6>Экстракт женьшеня</h6><p>"Panax  ginseng". Биоактивный антиоксидант, стимулятор и адаптоген, помогающий  девушкам на протяжении веков сохранять юность и чистоту линий. Обогащает  кожу микроэлементами, защищает от УФ-лучей, стимулирует выработку  коллагена. Тонизирует, помогает победить усталость и дряблость кожи,  усиливая ее жизнеспособность.</p>', 100, 16, NULL, '{"type":"\\u042d\\u043a\\u0441\\u0442\\u0440\\u0430\\u043a\\u0442\\u044b"}', '/uploads/catalog/extr3-d31d9686d3.jpg', 'extr-jenshen', 1468851103, 1),
-(19, 8, 'Актив гель алоэ вера', '<h6>Актив гель алоэ вера</h6><p>"Aloe  Barbadensis". Актив Алоэ гель обладает мощным регенерирующим действием и  содержит большое количество витаминов и микроэлементов, исключительно  полезных для возрастной кожи. Гель снимает отечность, нормализует цвет  лица, обладает успокаивающим эффектом. Глубоко проникает в кожу,  увлажняя ее "изнутри".</p>', 100, 17, NULL, '{"type":"\\u0410\\u043a\\u0442\\u0438\\u0432\\u044b"}', '/uploads/catalog/active1-f40abf6242.jpg', 'active-aloe', 1468851234, 1),
-(20, 8, 'Актив сквалан оливковый', '<h6>Актив сквалан оливковый</h6><p>"Squalane".  Оливковый сквалан является агентом 007 в области смягчения и увлажнения  кожи, по своему составу очень напоминает собственный кожный жир  человека. Сквалан помогает проникать глубже другим полезным компонентам,  придает коже ощущение мягкости и шелковистости. Образует легкую  проницаемую защитную пленку на поверхности кожи, не создавая излишней  липкости.</p>', 100, 14, NULL, '{"type":"\\u0410\\u043a\\u0442\\u0438\\u0432\\u044b"}', '/uploads/catalog/active2-e8aeb83cae.jpg', 'active-scvalan', 1468851398, 1),
-(21, 8, 'Актив ментол', '<h6>Актив ментол</h6><p>"Menthol".  Ментол подарит восхитительную прохладу и поможет проснуться. Обладает  выраженными анестезирующими и антисептическими свойствами. Снижает зуд,  раздражение, уменьшает воспаления и красноту. Хорошо тонизирует кожу,  снимает отечность, улучшает микроциркуляцию, повышает всасывающую  способность кожи.</p>', 100, 9, NULL, '{"type":"\\u0410\\u043a\\u0442\\u0438\\u0432\\u044b"}', '/uploads/catalog/active3-918c664336.jpg', 'active-mentol', 1468851285, 1),
-(22, 8, 'Эфирное масло апельсина', '<h6>Эфирное масло апельсина</h6><p>"Сitrus  sinensis". Прекрасное масло, решающее многие проблемы. Твой выбор, если  планируешь составить средство для жирной кожи. Способно балансировать  процесс производства себума, укрепляет эпидермис, восстанавливает общую  эластичность и упругость кожи.</p>', 100, 16, NULL, '{"type":"\\u042d\\u0444\\u0438\\u0440\\u043d\\u044b\\u0435 \\u043c\\u0430\\u0441\\u043b\\u0430"}', '/uploads/catalog/efir1-631e9c01c1.jpg', 'efir-apelsin', 1468851619, 1),
-(23, 8, 'Эфирное масло гвоздики', '<h6>Эфирное масло гвоздики</h6>', 100, 20.34, NULL, '{"type":"\\u042d\\u0444\\u0438\\u0440\\u043d\\u044b\\u0435 \\u043c\\u0430\\u0441\\u043b\\u0430"}', '/uploads/catalog/efir2-2c442f7c89.jpg', 'efir-gvozd', 1468851667, 1),
-(24, 8, 'Витамин F', '<h6>Витамин F</h6><p>"Linoleic  and linolenic acids". Этот комплекс незаменимых жирных кислот не  синтезируется в нашем организме, но играет важнейшую роль в строительном  деле липидных пластов кожи. Они поддерживают правильную проницаемость  липидного барьера кожи, регулируют уровень увлажненности кожи,  "скрепляют" клетки эпидермиса. Уменьшают шелушения, "выравнивают" кожу.</p>', 100, 10.35, NULL, '{"type":"\\u0412\\u0438\\u0442\\u0430\\u043c\\u0438\\u043d\\u044b"}', '/uploads/catalog/vitamine1-8b9a21934e.jpg', 'vitamin-f', 1468851814, 1),
-(25, 14, 'Скраб сахарный для сухой или возрастной кожи', '<p> 			Скраб сахарный для сухой или возрастной кожи</p><p> 				150 г			</p><p>состав основы:  растительные масла миндальное, зерен пшеницы, сои, очищенный  тростниковый сахар, экстракт розмарина (антиоксидант), сорбитан  монолаурат (пищевая добавка, повышает вязкость, получают из кокоса и  листьев лаврового дерева).</p>', 100, 25, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/e3c28ec476b7307d1d6bfb2ce09a7fae-c04819b070.png', NULL, 1470672448, 1),
-(26, 14, 'Скраб солевой для сухой или возрастной кожи', '<p> 			Скраб солевой для сухой или возрастной кожи</p> 			<p> 				150 г			</p> 			<p>состав основы:  растительные масла миндальное, жожоба, сои, морская соль, экстракт  розмарина (антиоксидант), сорбитан монолаурат (пищевая добавка, повышает  вязкость, получают из кокоса и листьев лаврового дерева).</p> 		', 100, 26, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/db3d4c63640b0a4697ce4ba1fb3b805a-bd70364a8f.png', NULL, 1470672527, 1),
-(66, 53, '"MINT" тоник для жирной кожи', '<p style="margin-left: 20px;">Тоник для лица приятно охлаждает и освежает кожу. Растительные компоненты в составе способствуют нежному очищению кожи, укрепляют сосуды, придают им тонус. Проявляя антисептическое и противовоспалительное действие, тоник сужает поры, уменьшает жирность кожи, препятствует образованию угревой сыпи.</p><p>Состав: гидролат полыни, гидролат мяты, гидролат зеленого чая , экстракт сои, экстракт ламинарии, экстракт хмеля, алоэ-вера концентрат, д-пантенол, магнезия, таурин, гидрованс,  бетаин, аскорбиновая кислота, витамин РР</p>', 50, 90, 0, '{}', '', 'mint-tonik-dla-zirnoj-kozi', 1476985572, 1),
-(31, 21, 'Cake Soap', '<p>Мыло косметическое для сухой кожи</p><p>Если у тебя сухая кожа, стоит быть особенно внимательной в выборе  средств для ухода. Специально для тебя наши специалисты создали нежное  классическое мыло с тонким ароматом ванили. Cake Soap составлено таким  образом, чтобы учесть все потребности твоей кожи и максимально защитить  ее как во время мытья, так и после него. Мыло содержит экстракт ромашки,  который продезинфицирует невидимые глазу</p>', 100, 65, NULL, '{}', '/uploads/catalog/70b9beede0eb4e0ecd1ac7ad5bdb6f63-391177aa48.jpg', 'cake-soap', 1472055709, 1),
-(32, 21, 'Castile Soap', '<p>Мыло косметическое для сухой кожи</p><p>Если у тебя сухая кожа, стоит быть особенно внимательной в выборе  средств для ухода. Специально для тебя наши специалисты создали нежное  классическое мыло с тонким ароматом ванили. Cake Soap составлено таким  образом, чтобы учесть все потребности твоей кожи и максимально защитить  ее как во время мытья, так и после него. Мыло содержит экстракт ромашки,  который продезинфицирует невидимые глазу трещинки, и витамин Е, который  поможет заживлению и сделает кожу более эластичной. Ты быстро заметишь  разницу!</p>', 1000, 32, NULL, '{}', '/uploads/catalog/8457fe3d78a0d8224c0f307c6974ea43-9bfbb9bee4.jpg', 'castile-soap', 1472055876, 1),
-(33, 21, 'Breakfast Scrub Soap', '<p>Мыло косметическое для сухой кожи</p><h1>Cake Soap</h1><p>Если у тебя сухая кожа, стоит быть особенно внимательной в выборе  средств для ухода. Специально для тебя наши специалисты создали нежное  классическое мыло с тонким ароматом ванили. Cake Soap составлено таким  образом, чтобы учесть все потребности твоей кожи и максимально защитить  ее как во время мытья, так и после него. Мыло содержит экстракт ромашки,  который продезинфицирует невидимые глазу</p>', NULL, 46, NULL, '{}', '/uploads/catalog/0dca0a918bd0eadf91b56bf11c2282fd-88c040adb3.jpg', 'breakfast-scrub-soap', 1472055951, 1),
-(34, 21, 'Red Soap', '<p>Если у тебя сухая кожа, стоит быть особенно внимательной в выборе  средств для ухода. Специально для тебя наши специалисты создали нежное  классическое мыло с тонким ароматом ванили. Cake Soap составлено таким  образом, чтобы учесть все потребности твоей кожи и максимально защитить  ее как во время мытья, так и после него. Мыло содержит экстракт ромашки,  который продезинфицирует невидимые глазу</p>', 1000, 78, NULL, '{}', '/uploads/catalog/p1120001-d60b0c5358.jpg', 'red-soap', 1472056018, 1),
-(61, 52, '"Lovely" сухое молочко для умывания и масок', '<p style="margin-left: 20px;">Кокосовые плиточки " Lovely"  для умывания - самое мягкое очищение Вашей кожи. Основа плиток – натуральные 100% масла.</p>', 50, 110, 0, '{}', '/uploads/catalog/screenshot6-f08012a017.jpg', 'lovely-suhoe-molocko-dla-umyvania-i-masok', 1476965353, 1),
-(62, 52, '"Soft" гидрофильное масло "Soft"', '', 50, 60, 0, '{}', '', 'soft-gidrofilnoe-maslo-soft', 1476965509, 1),
-(63, 54, '"Strawberry" увлажняющий  крем "Strawberry"', '', 50, 160, 0, '{}', '/uploads/catalog/screenshot7-78637acd6a.jpg', 'strawberry-uvlaznausij-krem-strawberry', 1476965883, 1),
-(64, 54, '"Shea" питательный крем', '', 50, 160, 0, '{}', '', 'shea-pitatelnyj-krem', 1476965919, 1),
-(65, 53, '"ROSE" омолаживающий тоник для лица, шеи и декольте', '<p style="margin-left: 20px;">Главной задачей&nbsp;<strong style="background-color: initial;">тоника</strong><strong style="background-color: initial;">"</strong><strong style="background-color: initial;">ROSE" </strong>является увлажнение, питание и регенерация.</p><p style="margin-left: 20px;">Входящие в состав гидролизаты выводят токсины, увлажняют, питают кожу. Алоэ вера и коллаген удерживают живительную влагу в коже, укрепляют ее иммунитет выравнивают тон кожи, оздоравливая эпидермис.</p><p style="margin-left: 20px;">Тоникспособствует деликатному очищению кожи, устранению раздражений, разглаживает, повышает эластичность, регенерирует клетки эпидермиса, увлажняет его, помогает при несвежем цвете лица, нормализует работу сальных и потовых желез, эффективно матирует эпидермис, а также подготавливает кожу к дальнейшему уходу.</p><p>Состав: гидролат чайной розы,коллаген, экстракты алоэ-вера и лотоса, гидролизат протеинов фасоли, гидролизат протеинов зеленого горошка, гидролизат протеинов риса, сквалан, д-пантенол, бетаин, таурин, водорастворимое масло макадамии, витамины A, E, F</p>', 50, 90, 0, '{}', '', 'rose-omolazivausij-tonik-dla-lica-sei-i-dekolte', 1476985485, 1),
-(78, 23, '"Frutti" shower gel', '<div><p><em>Глубоко питает и увлажняет кожу,  нежно очищает, делая кожу мягкой и гладкой. Комплекс экстрактов брусники, клюквы, голубики, ежевики, тонизируют при усталости и помогают снять напряжение. Б</em><em>ез сульфатов и других агрессивных вспенивателей – не пересушивает и бережно очищает кожу.</em></p><ul><li><i style="background-color: initial;">Состав: вода, натуральный пенообразователь из кокосового масла, экстракты брусники, клюквы, голубики, ежевики, молочная кислота, миндальное и оливковое масла, парфюмерная композиция, пищевые красители.</i></li></ul></div>', 50, 75, 0, '{}', '/uploads/catalog/screenshot2-7ee99c516e.jpg', 'frutti-shower-gel', 1477486780, 1),
-(76, 26, '"Sweet" body balm', '<p><em>Превосходно удерживает влагу, глубоко питает кожу, устраняет шелушение, воспаление и раздражение.</em></p><p><em style="background-color: initial;">Создаёт защитную плёнку, благодаря чему кожа становится нежной и не шелушится</em></p><ul><li>Состав: натуральный эмульгатор на оливковой основе, вода очищенная, масло миндаля, масло кокоса, масло абрикосовой косточки, масло какао,  растительные экстракты лотоса, ромашки, ламинарии, розмарина, аллантоин (экстракт окопника), витамины Е, F,  мягкий консервант эуксил, парфюмерная композиция.</li></ul>', 50, 120, 0, '{}', '/uploads/catalog/screenshot19-3a961c0172.jpg', 'sweet-body-balm', 1477485619, 1),
-(40, 37, 'No ingredient', '', NULL, NULL, 0, '{}', '/uploads/catalog/vopros-5763abe87e.jpg', 'no-ingredient', 1474481479, 1),
-(44, 38, 'Подарок 1', '<p>&nbsp;Подарок 1Подарок 1 Подарок 1 Подарок 1Подарок 1Подарок 1 Подарок 1 Подарок 1Подарок 1Подарок 1 Подарок 1 Подарок 1Подарок 1Подарок 1 Подарок 1 Подарок 1Подарок 1Подарок 1 Подарок 1 Подарок 1Подарок 1Подарок 1 Подарок 1 Подарок 1</p>', 100, 200, 0, '{}', '/uploads/catalog/product18-885fd739d3.jpg', 'podarok-1', 1474884411, 1),
-(45, 38, 'Подарок 2', '', 100, 236, 0, '{}', '/uploads/catalog/blog-img3-124243dcc4.jpg', 'podarok-2', 1474884542, 1),
-(46, 38, 'Подарок 3', '', 2121, 450, 0, '{}', '/uploads/catalog/blog-img4-f6556dfe94.jpg', 'podarok-3', 1474884654, 1),
-(47, 38, 'Подарок 4', '<p>вапрварварва &nbsp;ывкпрвапаывпвыап &nbsp;ывапывапывапывп &nbsp;ывпывпывп</p>', 344, 410, 0, '{}', '/uploads/catalog/newsletter-bg-0c3d19d60c.jpg', 'podarok-4', 1474884745, 1),
-(53, 48, '"Therapy" шампунь востанавливающий', '<p><em>Очень мягкий шампунь &nbsp;без сульфатов и парабенов, бережно удаляет загрязнения с кожи головы и волос, укрепляет волосы, делает их мягкими и гладкими.&nbsp;Подходит для ежедневного использования обладателями любого типа кожи головы и волос, в т.ч. детьми.&nbsp;Входящий в состав&nbsp;Витамин B5, легко впитывается в волосы и обладает антистатическим эффектом, а&nbsp;</em><em>также улучшает общее состояние кожи головы. Кератин -восстанавливает структуру поврежденных&nbsp;волос, протеины и аминокислоты шелка активно питают и увлажяют волосы.</em></p><p style="margin-left: 20px;"></p><ul><li>Состав: вода, гидролат крапивы,&nbsp;мягкие биоразлагаемые ПАВ растительного происхождения,&nbsp;протеины шелка, бетаин, гуар шелковый, кератин,&nbsp;глицерин, НУФ, комплекс для укрепления волос, керамидный комплекс, Д-пантенол, аллантоин, экстракт ламинарии,&nbsp;витамин B5.</li></ul>', 50, 135, 0, '{}', '/uploads/catalog/screenshot3-f7926c4ceb.jpg', 'therapy-sampun-vostanavlivausij', 1476963773, 1),
-(54, 48, '"Silk" мыло-шампунь', '', 50, 60, 0, '{}', '', 'silk-mylo-sampun', 1476963809, 1),
-(55, 48, '"Nature" мыло-шампунь', '', 50, 60, 0, '{}', '', 'nature-mylo-sampun', 1476963840, 1),
-(57, 49, '"Silk balm"', '<p style="margin-left: 20px;"></p><p><em>Универсальный бальзам-кондиционер для всех типов волос придаст волосам гладкость и шелковистость.&nbsp;Шелк, кератин, масло жожоба и масло&nbsp;абрикоса ухаживают за волосами,&nbsp;способствуют их росту и укреплению.&nbsp;</em><em>После использования бальзама волосы&nbsp;гораздо лучше расчесываются,&nbsp;укладываются, не пушатся.</em></p><ul><li>Состав: вода, масло жожоба, масло абрикосовой косточки, натуральный эмульгатор, д-пантенол,&nbsp;кератин,гидролизат шелка, шелковый гуар, фитокомплекс для роста волос, алоэ-вера, молочная кислота, эфирные масла лимона и можжевельника.</li></ul>', 50, 135, 0, '{}', '/uploads/catalog/screenshot6-e3ffe48ae7.jpg', 'silk-balm', 1476964103, 1),
-(58, 50, '"Gold" масло для кончиков волос', '<p style="margin-left: 20px;">Масло арганы (жидкое марокканское&nbsp;золото):</p><p style="margin-left: 20px;">cмягчает и укрепляет волосы;&nbsp;</p><p style="margin-left: 20px;">предотвращает ломкость;&nbsp;</p><p style="margin-left: 20px;">придает здоровый блеск</p><p style="margin-left: 20px;">Нанесите нужное количество масла на&nbsp;влажные чистые волосы. Не смывать.</p><p>Состав:</p>', 50, 110, 0, '{}', '/uploads/catalog/screenshot4-8b269b3d9b.jpg', 'gold-maslo-dla-koncikov-volos', 1476964713, 1),
-(59, 51, '"Rich" питательная маска для всех типов волос', '', 50, 100, 0, '{}', '/uploads/catalog/screenshot5-8a4a3896f7.jpg', 'rich-pitatelnaa-maska-dla-vseh-tipov-volos', 1476964993, 1),
-(60, 51, '"Therapy" маска  востанавливающая', '', 50, 100, 0, '{}', '', 'therapy-maska-vostanavlivausaa', 1476965050, 1),
-(67, 53, '"MELISSA" тоник для сухой и чувствительной  кожи', '<p style="margin-left: 20px;">Тоник для&nbsp;сухой и чувствительной кожи- увлажняет, приятно освежает, разглаживает морщинки. Действует мягко и успокаивающе, способствует устранению сухости, шелушения, уменьшению воспалительных процессов эпидермиса. Тоник прекрасно устраняет стянутость и обезвоженность. При регулярном применении постепенно оздоравливает кожу, нормализует гидролипидный (водно-жировой) баланс. Повышается тонус кожи, её упругость, эластичность, улучшается состояние кожи и цвет лица.</p><p>Состав: гидролат календулы, гидролат мелиссы, гидролизат протеинов пшеницы, комплекс Натуральный увлажняющий фактор, экстракты алоэ-вера и ромашки, комплекс Керамидный,&nbsp;бетаин,  глицерин, водорастворимое масло миндаля, д-пантенол, витамины A, E, F</p>', 50, 90, 0, '{}', '', 'melissa-tonik-dla-suhoj-i-cuvstvitelnoj-kozi', 1476985645, 1),
-(68, 53, '"CAMOMILLE" осветляющий тоник', '<p style="margin-left: 20px;">Тоник с высоким содержанием антипигментных экстрактов для осветления кожи лица и уменьшения пигментации. Кожа осветляется и обновляется. Тоник успокаивает кожу и уменьшает гиперреактивность, обеспечивает надлежащее увлажнение.</p><p>Состав: гидролат одуванчика, гидролат ромашки, экстракты софоры, ромашки, петрушки и огурца, гидролизат каштана , магнезия, таурин, триглицериды, комплекс Керамидный, , витамины A, E, F</p>', 50, 90, 0, '{}', '', 'camomille-osvetlausij-tonik', 1476986124, 1),
-(77, 33, '"BABY BOOM" вaby shower gel & shampoo', '<p><em>Мягкий детский гель для душа и шампунь 2 в 1 не вызывает раздражения и не сушит нежную кожу ребенка. Экстракты календулы и ромашки,&nbsp;</em><em>протеины злаковых( овса, пшеницы и ржи) снимут зуд, устранят шелушение кожного покрова.</em></p><ul><li>Состав: минеральная вода, экстракт ромашки, экстракт  календулы, протеины злаковых (овса, пшеницы, ржи), пантенол, глицерин, шелковый гуар, водорастворимое масло миндаля, мягкий ПАВ миндаля.</li></ul>', 50, 130, 0, '{}', '/uploads/catalog/screenshot17-bcbea6113d.jpg', 'baby-boom-vaby-shower-gel-shampoo', 1477486455, 1),
-(69, 25, '"Frutti" гель для душа', '<p style="margin-left: 20px;">Фруктовый гель для душа с ягодными&nbsp; экстрактами глубоко питает и увлажняет кожу, нежно&nbsp;очищая, делает кожу мягкой и гладкой.</p><p style="margin-left: 20px;">Устраняет шелушение, воспаление и&nbsp;раздражение</p><p style="margin-left: 20px;">Комплекс экстрактов брусники, клюквы,&nbsp;голубики, ежевики, тонизируют при&nbsp;усталости и помогают снять напряжение</p><p style="margin-left: 20px;">Без сульфатов и других агрессивных&nbsp;вспенивателей – не пересушивает и&nbsp;бережно очищает кожу</p><p>Состав: вода,&nbsp;натуральный пенообразователь из кокосового масла, экстракты брусники, клюквы, голубики, ежевики, молочная кислота, миндальное и оливковое масла,&nbsp;парфюмерная композиция, пищевые красители.</p>', 50, 75, 0, '{}', '/uploads/catalog/screenshot2-b5ccb16436.jpg', 'frutti-gel-dlya-dusha', 1477299357, 1),
-(70, 25, '"Relax" суфле–мусс для душа', '<p style="margin-left: 20px;">Суфле- мусс для душа - это два продукта в одном:&nbsp;очищение + питание и уход за кожей.&nbsp;Это нежнейшее средство, которое с легкостью заменит&nbsp;гель или мыло. Суфле прекрасно мылится,&nbsp;образуя нежную, обволакивающую Ваше тело, пену,&nbsp;которая прекрасно очищает кожу, ухаживая за ней,&nbsp;благодаря маслам, входящим в состав средства.&nbsp;Суфле обладает тонким ароматом, который&nbsp;остается на теле и после приема душа.&nbsp;</p><p style="margin-left: 20px;">Нанесите суфле на влажную кожу или губку, вспеньте и легкими массажными движениями очистите тело. Ополоснитесь теплой водой.</p><p>Состав: пудра шелка, витамины А и Е,&nbsp;масло абрикосовой косточки,&nbsp;масло жожоба, масло макадамии,&nbsp;масло ромашки, мягкая органическая&nbsp;мыльная основа, сахар.</p>', 50, 120, 0, '{}', '/uploads/catalog/screenshot8-4b002a2ad1.jpg', 'relax-sufle-muss-dla-dusa', 1477302433, 1),
-(71, 12, 'Крем для сухой кожи с маслом карите и ростков пшеницы', '<p>Крем для сухой и чувствительной кожи содержит в составе гель алоэ, который&nbsp;является прекрасным увлажнителем, уменьшает воспаления и&nbsp; продлевает молодость кожи.&nbsp;Масло ростков пшеницы&nbsp;обладает высоким свойством сохранять влагу, имеет превосходные увлажняющие и защитные свойства, легко и быстро впитывается в кожу, гипоаллергенно.&nbsp;Масло карите - защищает кожу от климатических воздействий и УФ-излучения,&nbsp;предупреждает образование морщин.</p>', NULL, 100, 0, '{}', '/uploads/catalog/screenshot9-81ddb7d28c.jpg', 'krem-dla-suhoj-kozi-s-maslom-karite-i-rostkov-psenicy', 1477402133, 1),
-(73, 57, '"Hawaii" facial scrub', '<ul><li>Деликатный скраб для лица с гранулами жожоба.</li><li>Подходит для бережного очищения всех типов кожи от омертвевших клеточек, загрязнений, черных точек.</li></ul><p>Состав: гидролат зеленого чая, гранулы воска жожоба, натуральный эмульгатор, экстракты петрушки, огурца, витамин Е, масло миндаля, отдушка натуральная&nbsp;</p>', 50, 120, 0, '{}', '/uploads/catalog/screenshot21-c9f007d8ae.jpg', 'hawaii-facial-scrub', 1477485003, 1),
-(74, 63, '"Menthol" foot cream', '<ul><li>крем с охлаждающим эффектом разработан для борьбы с усталостью и отеками ног</li><li>избавит от неприятной тяжести в ногах и поможет сохранить  свежесть</li><li>заживит микротрещинки и бережно смягчит загрубевшую кожу ног</li></ul><p>Состав: масло расторопши, масло виноградной косточки, масло кокоса, ментол, эфирное масло мяты, экстракт конского каштана, коллаген, эластин, экстракт плюща и календулы, эмульгатор натуральный, ), витамины Е, А,  мягкий консервант эуксил, парфюмерная композиция.</p>', 50, 120, 0, '{}', '/uploads/catalog/screenshot18-bb2665cbce.jpg', 'menthol-foot-cream', 1477485136, 1),
-(75, 62, '"Velvet" hand cream', '<ul>\r\n<li>натуральные растительные экстракты, витамины и масла интенсивно питают, увлажняют и смягчают кожу рук</li><li>крем нежно обволакивает  руки, защищая их от неблагоприятного воздействия окружающей среды и погодных условий</li></ul><p>Состав: масло миндаля, абрикосовой косточки, виноградной косточки, ши карите, витамин Е, глицерин, аллантоин, Д-пантенол, экстракт облепихи, экстракт зародышей пшеницы, вода очищенная, мягкий консервант, парфюмерная композиция.</p>', 50, 120, 0, '{}', '/uploads/catalog/screenshot20-1dce637699.jpg', 'velvet-hand-cream', 1477485274, 1),
-(79, 27, '"Energy" men\'s shampoo', '<p><em>Cодержит эвкалипт и ментол, благодаря чему обладает охлаждающим эффектом. Великолепно удаляет излишки жира, очищает волосы и тонизирует кожу головы. У</em><em>силивает приток крови к волосяным луковицам, благодаря чему препятствует выпадению волос.</em></p><ul><li>Состав: вода, ПАВ растительного происхождения, растительные экстракты крапивы, имбиря, красного перца, пептиды ржи, овса, пшеницы, кетон малины, молочная кислота, гидрогенизированное касторовое масло, эфирное масло лемонграсса, витамины Е, F,  мягкий консервант эуксил, парфюмерная композиция.</li></ul>', 50, 130, 0, '{}', '/uploads/catalog/screenshot22-ae6c499a6e.jpg', 'energy-mens-shampoo', 1477489366, 1),
-(80, 28, '"Lumberjack" men\'s shower gel', '<p><em>Эффективно удаляет излишки жира и подтягивает кожу. Оставляет ощущение прохлады и обеспечивает более здоровый вид коже после душа. И</em><em>дельно подходит для мужчин, ведущих активный образ жизни</em>.</p><ul>\r\n<li>Состав: вода, ПАВ растительного происхождения, растительные экстракты имбиря, зеленого чая, лайма, молочная кислота, миндальное масло, эфирные масла лимона, мяты и эвкалипта,  мягкий консервант эуксил, парфюмерная композиция.</li></ul>', 50, 130, 0, '{}', '/uploads/catalog/screenshot23-11ce465e84.jpg', 'lumberjack-mens-shower-gel', 1477489800, 1),
-(81, 70, 'Можжевельника эфирное масло', '<p style="margin-left: 20px;"><strong></strong><strong>Можжевельника эфирное масло</strong></p><ul><li><em>Восстанавливает естественный блеск волос, снимает сухость, зуд и перхоть. Укрепляет волосяные луковицы, предотвращая выпадение волос.</em></li></ul>', 50, 25, 0, '{}', '/uploads/catalog/screenshot2-57e73b2d2d.jpg', 'mozhzhevel-nika-efirnoe-maslo', 1478262378, 1),
-(82, 70, '​Розового дерева эфирное масло', '<p style="margin-left: 20px;"><strong></strong><strong>Розового дерева эфирное масло</strong></p><ul><li><em>Питает волосы по всей длине и способствует лечению перхоти. Стимулирует рост волос и укрепляет корни. Восстанавливает структуру волос и натуральный блеск.</em></li></ul>', 50, 25, 0, '{}', '/uploads/catalog/screenshot3-e2708e709e.jpg', 'rozovogo-dereva-efirnoe-maslo', 1478263272, 1),
-(83, 70, '​Алоэ вера гель', '<p style="margin-left: 20px;"><strong></strong><strong>Алоэ вера гель</strong></p><ul>\r\n<li><em>Алоэ гель кладезь витаминов и микроэлементов, исключительно полезных для поддержания силы волос. Ускоряет рост новых волос, поддерживает увлажненность и упругость по всей длине волоса, предотвращает появление секущихся кончиков.</em></li></ul>', 50, 25, 0, '{}', '/uploads/catalog/screenshot5-7d5357ec23.jpg', 'aloe-vera-gel', 1478264524, 1),
-(84, 70, 'Экстракт овса', '<p style="margin-left: 20px;"><strong>Экстракт овса</strong></p><ul><li><em>Помогает защитить корни от агрессивных факторов окружающей среды и снизить сальность.</em></li></ul>', 50, 15, 0, '{}', '/uploads/catalog/screenshot6-115046a254.jpg', 'ekstrakt-ovsa', 1478263396, 1);
+	(52, 48, '"Chilly" шампунь для стимулирования роста волос', '<p><em>Стимулирование роста и профилактика&nbsp;выпадения волос, основанные на&nbsp;природной силе красного перца и трав.&nbsp;Усиление притока крови к волосяным&nbsp;луковицам, благодаря чему&nbsp;активизируется рост новых волос.&nbsp;Стимуляция подкожного кровообращения,&nbsp;снабжение волосяных фолликулов&nbsp;большим количеством витаминов и&nbsp;минералов.</em></p><ul>\r\n<li>Состав: гидрогенизированное масло кокоса, масло&nbsp;авокадо, кофеин, кетон малины, экстракт перца&nbsp;стручкового, гидролат корня лопуха, экстракт&nbsp;ламинарии, экстракт лотоса, алоэ-вера, провитамин В5,&nbsp;эфирные масла - грейпфрута, вербены тропической,&nbsp;чабреца, лимона.</li></ul>', 50, 135, 0, '{}', '/uploads/catalog/screenshot5-50ef753d8a.jpg', 'chilly-sampun-dla-stimulirovania-rosta-volos', 1476963512, 1),
+	(51, 48, '"Herbal" шампунь против перхоти', '<p style="margin-left: 20px;"><em>Оздоравливающие  растительные&nbsp;компоненты (крапива, шалфей, череда и&nbsp;можжевельник) деликатно очищают&nbsp;волосы, устраняя перхоть и препятствуя&nbsp;её повторному появлению.&nbsp;Входящие в состав кетон малины и&nbsp;кофеин укрепляют волосы, питая корни&nbsp;и кожу головы.</em></p><ul><li>Состав:отвары крапивы, череды, экстракты крапивы,&nbsp;репейника, шалфея, пептиды ржи, овса, пшеницы,&nbsp;молочная кислота, гидрогенизированное касторовое&nbsp;масло, эфирные масла чайного дерева, можжевельника,&nbsp;мяты перечной&nbsp;</li></ul>', 50, 135, 0, '{}', '/uploads/catalog/screenshot4-9e45f860f3.jpg', 'herbal-sampun-protiv-perhoti', 1476962593, 1),
+	(4, 13, 'Гель для душа для нормальной и комбинированной кожи с маслом фисташки', '<h6>Гель для душа для нормальной и комбинированной кожи с маслом фисташки</h6><p>Объем: 250 мл</p><p>состав основы: вода, мягкие биоразлагаемые ПАВ  растительного происхождения (кокамидопропил бетаин - вырабатывается из  жирных кислот кокосового масла, лауроил метилизетионат натрия - наиболее  мягкая кокосовая альтернатива сульфатам, кокоглюкозид - на основе  кокоса и фруктовых сахаров, натрия кокоил яблочных аминокислот - на  основе кокосового масла и экстракта яблочного сока), растительные масла  оливковое, фисташки, экстракт календулы, лимонная кислота, молочная  кислота, эуксил (безопасный консервант и антиоксидант на основе  этилгексилглицерина и токоферола).</p>', 100, 20, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/gel1-aeb66737d3.jpg', 'gel-fist-body', 1468838313, 1),
+	(5, 13, 'Гель для душа для сухой или возрастной кожи с маслом пшеницы', '<h5></h5><h6>Гель для душа для сухой или возрастной кожи с маслом пшеницы</h6><p>Объем: 250 мл</p><p>состав основы: вода, мягкие биоразлагаемые ПАВ  растительного происхождения (кокамидопропил бетаин - вырабатывается из  жирных кислот кокосового масла, лауроил метилизетионат натрия - наиболее  мягкая кокосовая альтернатива сульфатам, кокоглюкозид - на основе  кокоса и фруктовых сахаров, натрия кокоил яблочных аминокислот - на  основе кокосового масла и экстракта яблочного сока), растительные масла  оливковое, зерен пшеницы, авокадо, лимонная кислота, молочная кислота,  эуксил (безопасный консервант и антиоксидант на основе  этилгексилглицерина и токоферола).</p><h5></h5>', 100, 35, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/gel2-426281d734.jpg', 'gel-pshen-body', 1468838418, 1),
+	(6, 14, 'Скраб сахарный для нормальной и комбинированной кожи', '<h6>Скраб сахарный для нормальной и комбинированной кожи</h6><p>Объем: 150 мл</p><p>состав основы: растительные масла миндальное,  макадамского ореха, сои, очищенный тростниковый сахар, экстракт  розмарина (антиоксидант), сорбитан монолаурат (пищевая добавка, повышает  вязкость, получают из кокоса и листьев лаврового дерева).</p>', 100, 26, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/scrab1-5a18b2b3a6.jpg', 'scrab-sugar-body', 1468839017, 1),
+	(7, 14, 'Скраб солевой для нормальной и комбинированной кожи', '<h6>Скраб солевой для нормальной и комбинированной кожи</h6><p>Объем: 150 мл</p><p>состав основы: растительные масла миндальное, виноградной  косточки, сои, морская соль, экстракт розмарина (антиоксидант),  сорбитан монолаурат (пищевая добавка, повышает вязкость, получают из  кокоса и листьев лаврового дерева).</p>', 100, 42, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/scrab2-8fec94f6dd.jpg', 'scrab-sol-body', 1468839881, 1),
+	(8, 15, 'Бальзам для тела для нормальной и комбинированной кожи с маслом ши', '<h6>Бальзам для тела для нормальной и комбинированной кожи с маслом ши</h6><p>Объем: 150 мл</p><p>состав основы: растительные масла ши, миндальное, рисовых  отрубей, сои, пчелиный воск, глицерил стеарат (мягкий эмульгатор,  вырабатывается на основе глицерина и стеариновой кислоты кокосового  масла), экстракт розмарина (антиоксидант), эуксил (безопасный консервант  и антиоксидант на основе этилгексилглицерина и токоферола).</p>', 100, 41, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/bal1-6c7cd90412.jpg', 'bal-shi-body', 1468840117, 1),
+	(9, 15, 'Бальзам для тела для сухой или возрастной кожи с маслом какао', '<h6>Бальзам для тела для сухой или возрастной кожи с маслом какао</h6><p>Объем: 150 мл</p><p>состав основы: растительные масла какао, ши, миндальное,  облепиховое, сои, пчелиный воск, глицерил стеарат (мягкий эмульгатор,  вырабатывается на основе глицерина и стеариновой кислоты кокосового  масла), экстракт розмарина (антиоксидант), эуксил (безопасный консервант  и антиоксидант на основе этилгексилглицерина и токоферола).</p>', 100, 23, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/bal2-00411460f7.jpg', 'bal-kakao-body', 1468840459, 1),
+	(10, 12, 'Крем для возрастной кожи с гиалуроновой кислотой', '<h6></h6><p>Крем антивозрастной лифтинг-эффект, может применяться с 30 лет. Крем хорошо увлажняет и подтягивает кожу, делает ее более эластичной, убирает дряблость.&nbsp;Гиалуроновая кислота, входящая в состав крема, позволяет не только увлажнить кожу и предохранить ее от внешних негативных факторов, но и действительно помогает предупредить образование морщин, способствует выравниванию поверхности кожи, улучшению ее тона, удалению синяков под глазами и неприятных мешков.В состав этого кремс&nbsp;также входят&nbsp;экстракт плаценты,&nbsp;ценные масла виноградной косточки, льна и кунжута.</p>', 100, 100, NULL, '{}', '/uploads/catalog/screenshot12-6be5e8c2f6.jpg', 'krem-dla-vozrastnoj-kozi-s-gialuronovoj-kislotoj', 1468840675, 1),
+	(11, 12, 'Крем для жирной кожи с кофеином и зеленым чаем', '<p>Крем&nbsp;для проблемной кожи на основе специального фитокомплекса, оценят те, чья&nbsp;кожа вырабатывает излишек себума (кожного сала). &nbsp;Надежным помощником в деле донесения активных веществ до глубоких слоев эпидермиса выступает зеленый чай: его полифенолы способствуют проникновению биологически активных веществ в кожу. Содержащийся в экстракте кофеин усиливает микроциркуляцию крови и питание тканей, сужает поры,&nbsp;танины придают коже упругость, а&nbsp;сульфат цинка - подсушивает и матирует кожу.</p>', 100, 100, NULL, '{}', '/uploads/catalog/screenshot10-f2e75d31d6.jpg', 'krem-dla-zirnoj-kozi-s-kofeinom-i-zelenym-caem', 1468840961, 1),
+	(12, 12, 'Крем для нормальной и комбинированной кожи с маслом жожоба', '<h6></h6><p>Крем для комбинированной и нормальной&nbsp;кожи питает ее живительной влагой, выравнивает тон кожи, матирует и эффективно снимает покраснения и воспалительные процессы. Благодаря входящим в состав маслам жожоба и лавра, экстрактам лотоса, водорослей и ивы, протеинам шелка, крем обладает антиоксидантными свойствами, увлажняет, балансирует, тонизирует кожу, делает ее упругой и бархатистой.&nbsp;</p>', 100, 100, NULL, '{}', '/uploads/catalog/screenshot11-dbd21c7174.jpg', 'krem-dla-normalnoj-i-kombinirovannoj-kozi-s-maslom-zozoba', 1468841030, 1),
+	(72, 71, '​Экстракт облепихи', '<p><strong>Экстракт облепихи</strong></p><ul><li>Питает кожу всеми жизненно важными витаминами и микроэлементами, эффективно предотвращает ранние признаки старения. Имеет уникальное увлажняющее действие и вспомогательные средства омоложения кожи. Обладает противовоспалительными и укрепляющие свойства, уменьшает покраснение и предотвращает появление прыщей.&nbsp;Питает, смягчает и повышает эластичность кожи.</li></ul>', 60, 25, 0, '{"type":"\\u042d\\u043a\\u0441\\u0442\\u0440\\u0430\\u043a\\u0442\\u044b"}', '/uploads/catalog/screenshot14-73afdf7f08.jpg', 'ekstrakt-oblepihi', 1477474971, 1),
+	(13, 9, 'Скраб для возрастной кожи с маслом жожоба', '<h6>Скраб для возрастной кожи с маслом жожоба</h6><p>Объем: 50 мл</p><p>состав основы: вода, растительные масла ши, жожоба, рисовых  отрубей, миндальное, сои, гранулы масла жожоба и подсолнечника,  глицерил стеарат (мягкий эмульгатор, вырабатывается на основе глицерина и  стеариновой кислоты кокосового масла), цетеариловый спирт (мягкий  эмульгатор, вырабатывается из кокосового масла), альгинат натрия (мягкий  загуститель, вырабатывается из водорослей), экстракт розмарина, эуксил  (безопасный консервант и антиоксидант на основе этилгексилглицерина и  токоферола)</p>', 100, 23, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/scrab1-370abbc7e1.jpg', 'scrab-gogoba-face', 1468849524, 1),
+	(14, 9, 'Скраб для жирной кожи с маслом сладкого миндаля', '<h6>Скраб для жирной кожи с маслом сладкого миндаля</h6><p>Объем: 50 мл</p><p>состав основы: вода, растительные масла ши, миндальное,  зверобоя, сои, гранулы кедрового ореха, глицерил стеарат (мягкий  эмульгатор, вырабатывается на основе глицерина и стеариновой кислоты  кокосового масла), цетеариловый спирт (мягкий эмульгатор, вырабатывается  из кокосового масла), альгинат натрия (мягкий загуститель,  вырабатывается из водорослей), экстракт розмарина, эуксил (безопасный  консервант и антиоксидант на основе этилгексилглицерина и токоферола)</p>', 100, 36, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/scrab2-2963dbc550.jpg', 'scrab-mindale-face', 1468849625, 1),
+	(15, 9, 'Скраб для нормальной и комбинированной кожи с маслом ши', '<h6>Скраб для нормальной и комбинированной кожи с маслом ши</h6><p>Объем: 50 мл</p><p>состав основы: вода, растительные масла ши, макадамского  ореха, зерен пшеницы, сои, гранулы скорлумина (специально обработанная  яичная скорлупа), глицерил стеарат (мягкий эмульгатор, вырабатывается на  основе глицерина и стеариновой кислоты кокосового масла), цетеариловый  спирт (мягкий эмульгатор, вырабатывается из кокосового масла), альгинат  натрия (мягкий загуститель, вырабатывается из водорослей), экстракт  розмарина, эуксил (безопасный консервант и антиоксидант на основе  этилгексилглицерина и токоферола)</p>', 100, 42, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/scrab1-67e8858b4f.jpg', 'scrab-shi-face', 1468849659, 1),
+	(16, 72, 'Экстракт арники', '<h6>Экстракт арники</h6><p>"Arnica  montana L.". С давних лет "иванов цвет" считается тайным оружием для  сохранения молодости и красоты усталой кожи. Арника - мощный  антиоксидант, активизирует кровообращение, способствует выводу токсинов,  ускоряет внутрикожный метаболизм, существенно сокращает отеки.</p>', 100, 12, NULL, '{"type":"\\u042d\\u043a\\u0441\\u0442\\u0440\\u0430\\u043a\\u0442\\u044b"}', '/uploads/catalog/extr1-d3ddedd999.jpg', 'extr-arniki', 1468850276, 1),
+	(17, 72, 'Экстракт коры дуба', '<h6>Экстракт коры дуба</h6>', 100, 13, NULL, '{"type":"\\u042d\\u043a\\u0441\\u0442\\u0440\\u0430\\u043a\\u0442\\u044b"}', '/uploads/catalog/extr2-6b34ebfac7.jpg', 'extr-koraduba', 1468851048, 1),
+	(18, 72, 'Экстракт женьшеня', '<h6>Экстракт женьшеня</h6><p>"Panax  ginseng". Биоактивный антиоксидант, стимулятор и адаптоген, помогающий  девушкам на протяжении веков сохранять юность и чистоту линий. Обогащает  кожу микроэлементами, защищает от УФ-лучей, стимулирует выработку  коллагена. Тонизирует, помогает победить усталость и дряблость кожи,  усиливая ее жизнеспособность.</p>', 100, 16, NULL, '{"type":"\\u042d\\u043a\\u0441\\u0442\\u0440\\u0430\\u043a\\u0442\\u044b"}', '/uploads/catalog/extr3-d31d9686d3.jpg', 'extr-jenshen', 1468851103, 1),
+	(19, 72, 'Актив гель алоэ вера', '<h6>Актив гель алоэ вера</h6><p>"Aloe  Barbadensis". Актив Алоэ гель обладает мощным регенерирующим действием и  содержит большое количество витаминов и микроэлементов, исключительно  полезных для возрастной кожи. Гель снимает отечность, нормализует цвет  лица, обладает успокаивающим эффектом. Глубоко проникает в кожу,  увлажняя ее "изнутри".</p>', 100, 17, NULL, '{"type":"\\u0410\\u043a\\u0442\\u0438\\u0432\\u044b"}', '/uploads/catalog/active1-f40abf6242.jpg', 'active-aloe', 1468851234, 1),
+	(20, 72, 'Актив сквалан оливковый', '<h6>Актив сквалан оливковый</h6><p>"Squalane".  Оливковый сквалан является агентом 007 в области смягчения и увлажнения  кожи, по своему составу очень напоминает собственный кожный жир  человека. Сквалан помогает проникать глубже другим полезным компонентам,  придает коже ощущение мягкости и шелковистости. Образует легкую  проницаемую защитную пленку на поверхности кожи, не создавая излишней  липкости.</p>', 100, 14, NULL, '{"type":"\\u0410\\u043a\\u0442\\u0438\\u0432\\u044b"}', '/uploads/catalog/active2-e8aeb83cae.jpg', 'active-scvalan', 1468851398, 1),
+	(21, 72, 'Актив ментол', '<h6>Актив ментол</h6><p>"Menthol".  Ментол подарит восхитительную прохладу и поможет проснуться. Обладает  выраженными анестезирующими и антисептическими свойствами. Снижает зуд,  раздражение, уменьшает воспаления и красноту. Хорошо тонизирует кожу,  снимает отечность, улучшает микроциркуляцию, повышает всасывающую  способность кожи.</p>', 100, 9, NULL, '{"type":"\\u0410\\u043a\\u0442\\u0438\\u0432\\u044b"}', '/uploads/catalog/active3-918c664336.jpg', 'active-mentol', 1468851285, 1),
+	(22, 71, 'Эфирное масло апельсина', '<h6>Эфирное масло апельсина</h6><p>"Сitrus  sinensis". Прекрасное масло, решающее многие проблемы. Твой выбор, если  планируешь составить средство для жирной кожи. Способно балансировать  процесс производства себума, укрепляет эпидермис, восстанавливает общую  эластичность и упругость кожи.</p>', 100, 16, NULL, '{"type":"\\u042d\\u0444\\u0438\\u0440\\u043d\\u044b\\u0435 \\u043c\\u0430\\u0441\\u043b\\u0430"}', '/uploads/catalog/efir1-631e9c01c1.jpg', 'efir-apelsin', 1468851619, 1),
+	(23, 71, 'Эфирное масло гвоздики', '<h6>Эфирное масло гвоздики</h6>', 100, 20.34, NULL, '{"type":"\\u042d\\u0444\\u0438\\u0440\\u043d\\u044b\\u0435 \\u043c\\u0430\\u0441\\u043b\\u0430"}', '/uploads/catalog/efir2-2c442f7c89.jpg', 'efir-gvozd', 1468851667, 1),
+	(24, 71, 'Витамин F', '<h6>Витамин F</h6><p>"Linoleic  and linolenic acids". Этот комплекс незаменимых жирных кислот не  синтезируется в нашем организме, но играет важнейшую роль в строительном  деле липидных пластов кожи. Они поддерживают правильную проницаемость  липидного барьера кожи, регулируют уровень увлажненности кожи,  "скрепляют" клетки эпидермиса. Уменьшают шелушения, "выравнивают" кожу.</p>', 100, 10.35, NULL, '{"type":"\\u0412\\u0438\\u0442\\u0430\\u043c\\u0438\\u043d\\u044b"}', '/uploads/catalog/vitamine1-8b9a21934e.jpg', 'vitamin-f', 1468851814, 1),
+	(25, 14, 'Скраб сахарный для сухой или возрастной кожи', '<p> 			Скраб сахарный для сухой или возрастной кожи</p><p> 				150 г			</p><p>состав основы:  растительные масла миндальное, зерен пшеницы, сои, очищенный  тростниковый сахар, экстракт розмарина (антиоксидант), сорбитан  монолаурат (пищевая добавка, повышает вязкость, получают из кокоса и  листьев лаврового дерева).</p>', 100, 25, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/e3c28ec476b7307d1d6bfb2ce09a7fae-c04819b070.png', NULL, 1470672448, 1),
+	(26, 14, 'Скраб солевой для сухой или возрастной кожи', '<p> 			Скраб солевой для сухой или возрастной кожи</p> 			<p> 				150 г			</p> 			<p>состав основы:  растительные масла миндальное, жожоба, сои, морская соль, экстракт  розмарина (антиоксидант), сорбитан монолаурат (пищевая добавка, повышает  вязкость, получают из кокоса и листьев лаврового дерева).</p> 		', 100, 26, NULL, '{"ingridient1":"","ingridient2":"","ingridient3":"","ingridient4":"","ingridient5":"","ingridient6":""}', '/uploads/catalog/db3d4c63640b0a4697ce4ba1fb3b805a-bd70364a8f.png', NULL, 1470672527, 1),
+	(66, 53, '"MINT" тоник для жирной кожи', '<p style="margin-left: 20px;">Тоник для лица приятно охлаждает и освежает кожу. Растительные компоненты в составе способствуют нежному очищению кожи, укрепляют сосуды, придают им тонус. Проявляя антисептическое и противовоспалительное действие, тоник сужает поры, уменьшает жирность кожи, препятствует образованию угревой сыпи.</p><p>Состав: гидролат полыни, гидролат мяты, гидролат зеленого чая , экстракт сои, экстракт ламинарии, экстракт хмеля, алоэ-вера концентрат, д-пантенол, магнезия, таурин, гидрованс,  бетаин, аскорбиновая кислота, витамин РР</p>', 50, 90, 0, '{}', '', 'mint-tonik-dla-zirnoj-kozi', 1476985572, 1),
+	(31, 21, 'Cake Soap', '<p>Мыло косметическое для сухой кожи</p><p>Если у тебя сухая кожа, стоит быть особенно внимательной в выборе  средств для ухода. Специально для тебя наши специалисты создали нежное  классическое мыло с тонким ароматом ванили. Cake Soap составлено таким  образом, чтобы учесть все потребности твоей кожи и максимально защитить  ее как во время мытья, так и после него. Мыло содержит экстракт ромашки,  который продезинфицирует невидимые глазу</p>', 100, 65, NULL, '{}', '/uploads/catalog/70b9beede0eb4e0ecd1ac7ad5bdb6f63-391177aa48.jpg', 'cake-soap', 1472055709, 1),
+	(32, 21, 'Castile Soap', '<p>Мыло косметическое для сухой кожи</p><p>Если у тебя сухая кожа, стоит быть особенно внимательной в выборе  средств для ухода. Специально для тебя наши специалисты создали нежное  классическое мыло с тонким ароматом ванили. Cake Soap составлено таким  образом, чтобы учесть все потребности твоей кожи и максимально защитить  ее как во время мытья, так и после него. Мыло содержит экстракт ромашки,  который продезинфицирует невидимые глазу трещинки, и витамин Е, который  поможет заживлению и сделает кожу более эластичной. Ты быстро заметишь  разницу!</p>', 1000, 32, NULL, '{}', '/uploads/catalog/8457fe3d78a0d8224c0f307c6974ea43-9bfbb9bee4.jpg', 'castile-soap', 1472055876, 1),
+	(33, 21, 'Breakfast Scrub Soap', '<p>Мыло косметическое для сухой кожи</p><h1>Cake Soap</h1><p>Если у тебя сухая кожа, стоит быть особенно внимательной в выборе  средств для ухода. Специально для тебя наши специалисты создали нежное  классическое мыло с тонким ароматом ванили. Cake Soap составлено таким  образом, чтобы учесть все потребности твоей кожи и максимально защитить  ее как во время мытья, так и после него. Мыло содержит экстракт ромашки,  который продезинфицирует невидимые глазу</p>', NULL, 46, NULL, '{}', '/uploads/catalog/0dca0a918bd0eadf91b56bf11c2282fd-88c040adb3.jpg', 'breakfast-scrub-soap', 1472055951, 1),
+	(34, 21, 'Red Soap', '<p>Если у тебя сухая кожа, стоит быть особенно внимательной в выборе  средств для ухода. Специально для тебя наши специалисты создали нежное  классическое мыло с тонким ароматом ванили. Cake Soap составлено таким  образом, чтобы учесть все потребности твоей кожи и максимально защитить  ее как во время мытья, так и после него. Мыло содержит экстракт ромашки,  который продезинфицирует невидимые глазу</p>', 1000, 78, NULL, '{}', '/uploads/catalog/p1120001-d60b0c5358.jpg', 'red-soap', 1472056018, 1),
+	(61, 52, '"Lovely" сухое молочко для умывания и масок', '<p style="margin-left: 20px;">Кокосовые плиточки " Lovely"  для умывания - самое мягкое очищение Вашей кожи. Основа плиток – натуральные 100% масла.</p>', 50, 110, 0, '{}', '/uploads/catalog/screenshot6-f08012a017.jpg', 'lovely-suhoe-molocko-dla-umyvania-i-masok', 1476965353, 1),
+	(62, 52, '"Soft" гидрофильное масло "Soft"', '', 50, 60, 0, '{}', '', 'soft-gidrofilnoe-maslo-soft', 1476965509, 1),
+	(63, 54, '"Strawberry" увлажняющий  крем "Strawberry"', '', 50, 160, 0, '{}', '/uploads/catalog/screenshot7-78637acd6a.jpg', 'strawberry-uvlaznausij-krem-strawberry', 1476965883, 1),
+	(64, 54, '"Shea" питательный крем', '', 50, 160, 0, '{}', '', 'shea-pitatelnyj-krem', 1476965919, 1),
+	(65, 53, '"ROSE" омолаживающий тоник для лица, шеи и декольте', '<p style="margin-left: 20px;">Главной задачей&nbsp;<strong style="background-color: initial;">тоника</strong><strong style="background-color: initial;">"</strong><strong style="background-color: initial;">ROSE" </strong>является увлажнение, питание и регенерация.</p><p style="margin-left: 20px;">Входящие в состав гидролизаты выводят токсины, увлажняют, питают кожу. Алоэ вера и коллаген удерживают живительную влагу в коже, укрепляют ее иммунитет выравнивают тон кожи, оздоравливая эпидермис.</p><p style="margin-left: 20px;">Тоникспособствует деликатному очищению кожи, устранению раздражений, разглаживает, повышает эластичность, регенерирует клетки эпидермиса, увлажняет его, помогает при несвежем цвете лица, нормализует работу сальных и потовых желез, эффективно матирует эпидермис, а также подготавливает кожу к дальнейшему уходу.</p><p>Состав: гидролат чайной розы,коллаген, экстракты алоэ-вера и лотоса, гидролизат протеинов фасоли, гидролизат протеинов зеленого горошка, гидролизат протеинов риса, сквалан, д-пантенол, бетаин, таурин, водорастворимое масло макадамии, витамины A, E, F</p>', 50, 90, 0, '{}', '', 'rose-omolazivausij-tonik-dla-lica-sei-i-dekolte', 1476985485, 1),
+	(78, 23, '"Frutti" shower gel', '<div><p><em>Глубоко питает и увлажняет кожу,  нежно очищает, делая кожу мягкой и гладкой. Комплекс экстрактов брусники, клюквы, голубики, ежевики, тонизируют при усталости и помогают снять напряжение. Б</em><em>ез сульфатов и других агрессивных вспенивателей – не пересушивает и бережно очищает кожу.</em></p><ul><li><i style="background-color: initial;">Состав: вода, натуральный пенообразователь из кокосового масла, экстракты брусники, клюквы, голубики, ежевики, молочная кислота, миндальное и оливковое масла, парфюмерная композиция, пищевые красители.</i></li></ul></div>', 50, 75, 0, '{}', '/uploads/catalog/screenshot2-7ee99c516e.jpg', 'frutti-shower-gel', 1477486780, 1),
+	(76, 26, '"Sweet" body balm', '<p><em>Превосходно удерживает влагу, глубоко питает кожу, устраняет шелушение, воспаление и раздражение.</em></p><p><em style="background-color: initial;">Создаёт защитную плёнку, благодаря чему кожа становится нежной и не шелушится</em></p><ul><li>Состав: натуральный эмульгатор на оливковой основе, вода очищенная, масло миндаля, масло кокоса, масло абрикосовой косточки, масло какао,  растительные экстракты лотоса, ромашки, ламинарии, розмарина, аллантоин (экстракт окопника), витамины Е, F,  мягкий консервант эуксил, парфюмерная композиция.</li></ul>', 50, 120, 0, '{}', '/uploads/catalog/screenshot19-3a961c0172.jpg', 'sweet-body-balm', 1477485619, 1),
+	(40, 37, 'No ingredient', '', NULL, NULL, 0, '{}', '/uploads/catalog/vopros-5763abe87e.jpg', 'no-ingredient', 1474481479, 1),
+	(44, 38, 'Подарок 1', '<p>&nbsp;Подарок 1Подарок 1 Подарок 1 Подарок 1Подарок 1Подарок 1 Подарок 1 Подарок 1Подарок 1Подарок 1 Подарок 1 Подарок 1Подарок 1Подарок 1 Подарок 1 Подарок 1Подарок 1Подарок 1 Подарок 1 Подарок 1Подарок 1Подарок 1 Подарок 1 Подарок 1</p>', 100, 200, 0, '{}', '/uploads/catalog/product18-885fd739d3.jpg', 'podarok-1', 1474884411, 1),
+	(45, 38, 'Подарок 2', '', 100, 236, 0, '{}', '/uploads/catalog/blog-img3-124243dcc4.jpg', 'podarok-2', 1474884542, 1),
+	(46, 38, 'Подарок 3', '', 2121, 450, 0, '{}', '/uploads/catalog/blog-img4-f6556dfe94.jpg', 'podarok-3', 1474884654, 1),
+	(47, 38, 'Подарок 4', '<p>вапрварварва &nbsp;ывкпрвапаывпвыап &nbsp;ывапывапывапывп &nbsp;ывпывпывп</p>', 344, 410, 0, '{}', '/uploads/catalog/newsletter-bg-0c3d19d60c.jpg', 'podarok-4', 1474884745, 1),
+	(53, 48, '"Therapy" шампунь востанавливающий', '<p><em>Очень мягкий шампунь &nbsp;без сульфатов и парабенов, бережно удаляет загрязнения с кожи головы и волос, укрепляет волосы, делает их мягкими и гладкими.&nbsp;Подходит для ежедневного использования обладателями любого типа кожи головы и волос, в т.ч. детьми.&nbsp;Входящий в состав&nbsp;Витамин B5, легко впитывается в волосы и обладает антистатическим эффектом, а&nbsp;</em><em>также улучшает общее состояние кожи головы. Кератин -восстанавливает структуру поврежденных&nbsp;волос, протеины и аминокислоты шелка активно питают и увлажяют волосы.</em></p><p style="margin-left: 20px;"></p><ul><li>Состав: вода, гидролат крапивы,&nbsp;мягкие биоразлагаемые ПАВ растительного происхождения,&nbsp;протеины шелка, бетаин, гуар шелковый, кератин,&nbsp;глицерин, НУФ, комплекс для укрепления волос, керамидный комплекс, Д-пантенол, аллантоин, экстракт ламинарии,&nbsp;витамин B5.</li></ul>', 50, 135, 0, '{}', '/uploads/catalog/screenshot3-f7926c4ceb.jpg', 'therapy-sampun-vostanavlivausij', 1476963773, 1),
+	(54, 48, '"Silk" мыло-шампунь', '', 50, 60, 0, '{}', '', 'silk-mylo-sampun', 1476963809, 1),
+	(55, 48, '"Nature" мыло-шампунь', '', 50, 60, 0, '{}', '', 'nature-mylo-sampun', 1476963840, 1),
+	(57, 49, '"Silk balm"', '<p style="margin-left: 20px;"></p><p><em>Универсальный бальзам-кондиционер для всех типов волос придаст волосам гладкость и шелковистость.&nbsp;Шелк, кератин, масло жожоба и масло&nbsp;абрикоса ухаживают за волосами,&nbsp;способствуют их росту и укреплению.&nbsp;</em><em>После использования бальзама волосы&nbsp;гораздо лучше расчесываются,&nbsp;укладываются, не пушатся.</em></p><ul><li>Состав: вода, масло жожоба, масло абрикосовой косточки, натуральный эмульгатор, д-пантенол,&nbsp;кератин,гидролизат шелка, шелковый гуар, фитокомплекс для роста волос, алоэ-вера, молочная кислота, эфирные масла лимона и можжевельника.</li></ul>', 50, 135, 0, '{}', '/uploads/catalog/screenshot6-e3ffe48ae7.jpg', 'silk-balm', 1476964103, 1),
+	(58, 50, '"Gold" масло для кончиков волос', '<p style="margin-left: 20px;">Масло арганы (жидкое марокканское&nbsp;золото):</p><p style="margin-left: 20px;">cмягчает и укрепляет волосы;&nbsp;</p><p style="margin-left: 20px;">предотвращает ломкость;&nbsp;</p><p style="margin-left: 20px;">придает здоровый блеск</p><p style="margin-left: 20px;">Нанесите нужное количество масла на&nbsp;влажные чистые волосы. Не смывать.</p><p>Состав:</p>', 50, 110, 0, '{}', '/uploads/catalog/screenshot4-8b269b3d9b.jpg', 'gold-maslo-dla-koncikov-volos', 1476964713, 1),
+	(59, 51, '"Rich" питательная маска для всех типов волос', '', 50, 100, 0, '{}', '/uploads/catalog/screenshot5-8a4a3896f7.jpg', 'rich-pitatelnaa-maska-dla-vseh-tipov-volos', 1476964993, 1),
+	(60, 51, '"Therapy" маска  востанавливающая', '', 50, 100, 0, '{}', '', 'therapy-maska-vostanavlivausaa', 1476965050, 1),
+	(67, 53, '"MELISSA" тоник для сухой и чувствительной  кожи', '<p style="margin-left: 20px;">Тоник для&nbsp;сухой и чувствительной кожи- увлажняет, приятно освежает, разглаживает морщинки. Действует мягко и успокаивающе, способствует устранению сухости, шелушения, уменьшению воспалительных процессов эпидермиса. Тоник прекрасно устраняет стянутость и обезвоженность. При регулярном применении постепенно оздоравливает кожу, нормализует гидролипидный (водно-жировой) баланс. Повышается тонус кожи, её упругость, эластичность, улучшается состояние кожи и цвет лица.</p><p>Состав: гидролат календулы, гидролат мелиссы, гидролизат протеинов пшеницы, комплекс Натуральный увлажняющий фактор, экстракты алоэ-вера и ромашки, комплекс Керамидный,&nbsp;бетаин,  глицерин, водорастворимое масло миндаля, д-пантенол, витамины A, E, F</p>', 50, 90, 0, '{}', '', 'melissa-tonik-dla-suhoj-i-cuvstvitelnoj-kozi', 1476985645, 1),
+	(68, 53, '"CAMOMILLE" осветляющий тоник', '<p style="margin-left: 20px;">Тоник с высоким содержанием антипигментных экстрактов для осветления кожи лица и уменьшения пигментации. Кожа осветляется и обновляется. Тоник успокаивает кожу и уменьшает гиперреактивность, обеспечивает надлежащее увлажнение.</p><p>Состав: гидролат одуванчика, гидролат ромашки, экстракты софоры, ромашки, петрушки и огурца, гидролизат каштана , магнезия, таурин, триглицериды, комплекс Керамидный, , витамины A, E, F</p>', 50, 90, 0, '{}', '', 'camomille-osvetlausij-tonik', 1476986124, 1),
+	(77, 33, '"BABY BOOM" вaby shower gel & shampoo', '<p><em>Мягкий детский гель для душа и шампунь 2 в 1 не вызывает раздражения и не сушит нежную кожу ребенка. Экстракты календулы и ромашки,&nbsp;</em><em>протеины злаковых( овса, пшеницы и ржи) снимут зуд, устранят шелушение кожного покрова.</em></p><ul><li>Состав: минеральная вода, экстракт ромашки, экстракт  календулы, протеины злаковых (овса, пшеницы, ржи), пантенол, глицерин, шелковый гуар, водорастворимое масло миндаля, мягкий ПАВ миндаля.</li></ul>', 50, 130, 0, '{}', '/uploads/catalog/screenshot17-bcbea6113d.jpg', 'baby-boom-vaby-shower-gel-shampoo', 1477486455, 1),
+	(69, 25, '"Frutti" гель для душа', '<p style="margin-left: 20px;">Фруктовый гель для душа с ягодными&nbsp; экстрактами глубоко питает и увлажняет кожу, нежно&nbsp;очищая, делает кожу мягкой и гладкой.</p><p style="margin-left: 20px;">Устраняет шелушение, воспаление и&nbsp;раздражение</p><p style="margin-left: 20px;">Комплекс экстрактов брусники, клюквы,&nbsp;голубики, ежевики, тонизируют при&nbsp;усталости и помогают снять напряжение</p><p style="margin-left: 20px;">Без сульфатов и других агрессивных&nbsp;вспенивателей – не пересушивает и&nbsp;бережно очищает кожу</p><p>Состав: вода,&nbsp;натуральный пенообразователь из кокосового масла, экстракты брусники, клюквы, голубики, ежевики, молочная кислота, миндальное и оливковое масла,&nbsp;парфюмерная композиция, пищевые красители.</p>', 50, 75, 0, '{}', '/uploads/catalog/screenshot2-b5ccb16436.jpg', 'frutti-gel-dlya-dusha', 1477299357, 1),
+	(70, 25, '"Relax" суфле–мусс для душа', '<p style="margin-left: 20px;">Суфле- мусс для душа - это два продукта в одном:&nbsp;очищение + питание и уход за кожей.&nbsp;Это нежнейшее средство, которое с легкостью заменит&nbsp;гель или мыло. Суфле прекрасно мылится,&nbsp;образуя нежную, обволакивающую Ваше тело, пену,&nbsp;которая прекрасно очищает кожу, ухаживая за ней,&nbsp;благодаря маслам, входящим в состав средства.&nbsp;Суфле обладает тонким ароматом, который&nbsp;остается на теле и после приема душа.&nbsp;</p><p style="margin-left: 20px;">Нанесите суфле на влажную кожу или губку, вспеньте и легкими массажными движениями очистите тело. Ополоснитесь теплой водой.</p><p>Состав: пудра шелка, витамины А и Е,&nbsp;масло абрикосовой косточки,&nbsp;масло жожоба, масло макадамии,&nbsp;масло ромашки, мягкая органическая&nbsp;мыльная основа, сахар.</p>', 50, 120, 0, '{}', '/uploads/catalog/screenshot8-4b002a2ad1.jpg', 'relax-sufle-muss-dla-dusa', 1477302433, 1),
+	(71, 12, 'Крем для сухой кожи с маслом карите и ростков пшеницы', '<p>Крем для сухой и чувствительной кожи содержит в составе гель алоэ, который&nbsp;является прекрасным увлажнителем, уменьшает воспаления и&nbsp; продлевает молодость кожи.&nbsp;Масло ростков пшеницы&nbsp;обладает высоким свойством сохранять влагу, имеет превосходные увлажняющие и защитные свойства, легко и быстро впитывается в кожу, гипоаллергенно.&nbsp;Масло карите - защищает кожу от климатических воздействий и УФ-излучения,&nbsp;предупреждает образование морщин.</p>', NULL, 100, 0, '{}', '/uploads/catalog/screenshot9-81ddb7d28c.jpg', 'krem-dla-suhoj-kozi-s-maslom-karite-i-rostkov-psenicy', 1477402133, 1),
+	(73, 57, '"Hawaii" facial scrub', '<ul><li>Деликатный скраб для лица с гранулами жожоба.</li><li>Подходит для бережного очищения всех типов кожи от омертвевших клеточек, загрязнений, черных точек.</li></ul><p>Состав: гидролат зеленого чая, гранулы воска жожоба, натуральный эмульгатор, экстракты петрушки, огурца, витамин Е, масло миндаля, отдушка натуральная&nbsp;</p>', 50, 120, 0, '{}', '/uploads/catalog/screenshot21-c9f007d8ae.jpg', 'hawaii-facial-scrub', 1477485003, 1),
+	(74, 63, '"Menthol" foot cream', '<ul><li>крем с охлаждающим эффектом разработан для борьбы с усталостью и отеками ног</li><li>избавит от неприятной тяжести в ногах и поможет сохранить  свежесть</li><li>заживит микротрещинки и бережно смягчит загрубевшую кожу ног</li></ul><p>Состав: масло расторопши, масло виноградной косточки, масло кокоса, ментол, эфирное масло мяты, экстракт конского каштана, коллаген, эластин, экстракт плюща и календулы, эмульгатор натуральный, ), витамины Е, А,  мягкий консервант эуксил, парфюмерная композиция.</p>', 50, 120, 0, '{}', '/uploads/catalog/screenshot18-bb2665cbce.jpg', 'menthol-foot-cream', 1477485136, 1),
+	(75, 62, '"Velvet" hand cream', '<ul>\r\n<li>натуральные растительные экстракты, витамины и масла интенсивно питают, увлажняют и смягчают кожу рук</li><li>крем нежно обволакивает  руки, защищая их от неблагоприятного воздействия окружающей среды и погодных условий</li></ul><p>Состав: масло миндаля, абрикосовой косточки, виноградной косточки, ши карите, витамин Е, глицерин, аллантоин, Д-пантенол, экстракт облепихи, экстракт зародышей пшеницы, вода очищенная, мягкий консервант, парфюмерная композиция.</p>', 50, 120, 0, '{}', '/uploads/catalog/screenshot20-1dce637699.jpg', 'velvet-hand-cream', 1477485274, 1),
+	(79, 27, '"Energy" men\'s shampoo', '<p><em>Cодержит эвкалипт и ментол, благодаря чему обладает охлаждающим эффектом. Великолепно удаляет излишки жира, очищает волосы и тонизирует кожу головы. У</em><em>силивает приток крови к волосяным луковицам, благодаря чему препятствует выпадению волос.</em></p><ul><li>Состав: вода, ПАВ растительного происхождения, растительные экстракты крапивы, имбиря, красного перца, пептиды ржи, овса, пшеницы, кетон малины, молочная кислота, гидрогенизированное касторовое масло, эфирное масло лемонграсса, витамины Е, F,  мягкий консервант эуксил, парфюмерная композиция.</li></ul>', 50, 130, 0, '{}', '/uploads/catalog/screenshot22-ae6c499a6e.jpg', 'energy-mens-shampoo', 1477489366, 1),
+	(80, 28, '"Lumberjack" men\'s shower gel', '<p><em>Эффективно удаляет излишки жира и подтягивает кожу. Оставляет ощущение прохлады и обеспечивает более здоровый вид коже после душа. И</em><em>дельно подходит для мужчин, ведущих активный образ жизни</em>.</p><ul>\r\n<li>Состав: вода, ПАВ растительного происхождения, растительные экстракты имбиря, зеленого чая, лайма, молочная кислота, миндальное масло, эфирные масла лимона, мяты и эвкалипта,  мягкий консервант эуксил, парфюмерная композиция.</li></ul>', 50, 130, 0, '{}', '/uploads/catalog/screenshot23-11ce465e84.jpg', 'lumberjack-mens-shower-gel', 1477489800, 1),
+	(81, 70, 'Можжевельника эфирное масло', '<p style="margin-left: 20px;"><strong></strong><strong>Можжевельника эфирное масло</strong></p><ul><li><em>Восстанавливает естественный блеск волос, снимает сухость, зуд и перхоть. Укрепляет волосяные луковицы, предотвращая выпадение волос.</em></li></ul>', 50, 25, 0, '{}', '/uploads/catalog/screenshot2-57e73b2d2d.jpg', 'mozhzhevel-nika-efirnoe-maslo', 1478262378, 1),
+	(82, 70, '​Розового дерева эфирное масло', '<p style="margin-left: 20px;"><strong></strong><strong>Розового дерева эфирное масло</strong></p><ul><li><em>Питает волосы по всей длине и способствует лечению перхоти. Стимулирует рост волос и укрепляет корни. Восстанавливает структуру волос и натуральный блеск.</em></li></ul>', 50, 25, 0, '{}', '/uploads/catalog/screenshot3-e2708e709e.jpg', 'rozovogo-dereva-efirnoe-maslo', 1478263272, 1),
+	(83, 70, '​Алоэ вера гель', '<p style="margin-left: 20px;"><strong></strong><strong>Алоэ вера гель</strong></p><ul>\r\n<li><em>Алоэ гель кладезь витаминов и микроэлементов, исключительно полезных для поддержания силы волос. Ускоряет рост новых волос, поддерживает увлажненность и упругость по всей длине волоса, предотвращает появление секущихся кончиков.</em></li></ul>', 50, 25, 0, '{}', '/uploads/catalog/screenshot5-7d5357ec23.jpg', 'aloe-vera-gel', 1478264524, 1),
+	(84, 70, 'Экстракт овса', '<p style="margin-left: 20px;"><strong>Экстракт овса</strong></p><ul><li><em>Помогает защитить корни от агрессивных факторов окружающей среды и снизить сальность.</em></li></ul>', 50, 15, 0, '{}', '/uploads/catalog/screenshot6-115046a254.jpg', 'ekstrakt-ovsa', 1478263396, 1);
+/*!40000 ALTER TABLE `easyii_catalog_items` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_faq`
---
+-- Дамп структуры для таблица shop-yii2.easyii_catalog_item_data
+CREATE TABLE IF NOT EXISTS `easyii_catalog_item_data` (
+  `data_id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_id` int(11) DEFAULT NULL,
+  `name` varchar(128) NOT NULL,
+  `value` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`data_id`),
+  KEY `item_id_name` (`item_id`,`name`),
+  KEY `value` (`value`(300))
+) ENGINE=MyISAM AUTO_INCREMENT=229 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `easyii_faq` (
-  `faq_id` int(11) NOT NULL,
+-- Дамп данных таблицы shop-yii2.easyii_catalog_item_data: 11 rows
+DELETE FROM `easyii_catalog_item_data`;
+/*!40000 ALTER TABLE `easyii_catalog_item_data` DISABLE KEYS */;
+INSERT INTO `easyii_catalog_item_data` (`data_id`, `item_id`, `name`, `value`) VALUES
+	(228, 72, 'type', 'Экстракты'),
+	(188, 16, 'type', 'Экстракты'),
+	(187, 17, 'type', 'Экстракты'),
+	(186, 18, 'type', 'Экстракты'),
+	(194, 19, 'type', 'Активы'),
+	(223, 20, 'type', 'Активы'),
+	(222, 21, 'type', 'Активы'),
+	(225, 23, 'type', 'Эфирные масла'),
+	(199, 22, 'type', 'Эфирные масла'),
+	(224, 24, 'type', 'Витамины'),
+	(215, 26, 'ingridient6', '');
+/*!40000 ALTER TABLE `easyii_catalog_item_data` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица shop-yii2.easyii_faq
+CREATE TABLE IF NOT EXISTS `easyii_faq` (
+  `faq_id` int(11) NOT NULL AUTO_INCREMENT,
   `question` text NOT NULL,
   `answer` text NOT NULL,
   `order_num` int(11) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`faq_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_faq`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_faq: 3 rows
+DELETE FROM `easyii_faq`;
+/*!40000 ALTER TABLE `easyii_faq` DISABLE KEYS */;
 INSERT INTO `easyii_faq` (`faq_id`, `question`, `answer`, `order_num`, `status`) VALUES
-(1, 'Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it?', 'But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure', 1, 1),
-(2, 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum?', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta <a href="http://easyiicms.com/">sunt explicabo</a>.', 2, 1),
-(3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 't enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 3, 1);
+	(1, 'Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it?', 'But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure', 1, 1),
+	(2, 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum?', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta <a href="http://easyiicms.com/">sunt explicabo</a>.', 2, 1),
+	(3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 't enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 3, 1);
+/*!40000 ALTER TABLE `easyii_faq` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_feedback`
---
-
-CREATE TABLE `easyii_feedback` (
-  `feedback_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_feedback
+CREATE TABLE IF NOT EXISTS `easyii_feedback` (
+  `feedback_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `email` varchar(128) NOT NULL,
   `phone` varchar(64) DEFAULT NULL,
@@ -365,48 +335,43 @@ CREATE TABLE `easyii_feedback` (
   `answer_text` text,
   `time` int(11) DEFAULT '0',
   `ip` varchar(16) NOT NULL,
-  `status` tinyint(1) DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `status` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`feedback_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_feedback`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_feedback: 1 rows
+DELETE FROM `easyii_feedback`;
+/*!40000 ALTER TABLE `easyii_feedback` DISABLE KEYS */;
 INSERT INTO `easyii_feedback` (`feedback_id`, `name`, `email`, `phone`, `title`, `text`, `answer_subject`, `answer_text`, `time`, `ip`, `status`) VALUES
-(1, 'serg', 'qw@mail.ru', '32323', '', 'asdads', NULL, NULL, 1475503010, '127.0.0.1', 1);
+	(1, 'serg', 'qw@mail.ru', '32323', '', 'asdads', NULL, NULL, 1475503010, '127.0.0.1', 1);
+/*!40000 ALTER TABLE `easyii_feedback` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_files`
---
-
-CREATE TABLE `easyii_files` (
-  `file_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_files
+CREATE TABLE IF NOT EXISTS `easyii_files` (
+  `file_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(128) NOT NULL,
   `file` varchar(255) NOT NULL,
   `size` int(11) NOT NULL,
   `slug` varchar(128) DEFAULT NULL,
   `downloads` int(11) DEFAULT '0',
   `time` int(11) DEFAULT '0',
-  `order_num` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `order_num` int(11) DEFAULT NULL,
+  PRIMARY KEY (`file_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_files`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_files: 1 rows
+DELETE FROM `easyii_files`;
+/*!40000 ALTER TABLE `easyii_files` DISABLE KEYS */;
 INSERT INTO `easyii_files` (`file_id`, `title`, `file`, `size`, `slug`, `downloads`, `time`, `order_num`) VALUES
-(1, 'Price list', '/uploads/files/example.csv', 104, 'price-list', 0, 1468832918, 1);
+	(1, 'Price list', '/uploads/files/example.csv', 104, 'price-list', 0, 1468832918, 1);
+/*!40000 ALTER TABLE `easyii_files` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_gallery_categories`
---
-
-CREATE TABLE `easyii_gallery_categories` (
-  `category_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_gallery_categories
+CREATE TABLE IF NOT EXISTS `easyii_gallery_categories` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(128) NOT NULL,
   `image` varchar(128) DEFAULT NULL,
   `slug` varchar(128) DEFAULT NULL,
@@ -415,25 +380,23 @@ CREATE TABLE `easyii_gallery_categories` (
   `rgt` int(11) DEFAULT NULL,
   `depth` int(11) DEFAULT NULL,
   `order_num` int(11) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`category_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_gallery_categories`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_gallery_categories: 2 rows
+DELETE FROM `easyii_gallery_categories`;
+/*!40000 ALTER TABLE `easyii_gallery_categories` DISABLE KEYS */;
 INSERT INTO `easyii_gallery_categories` (`category_id`, `title`, `image`, `slug`, `tree`, `lft`, `rgt`, `depth`, `order_num`, `status`) VALUES
-(1, 'Album 1', '/uploads/gallery/album-1.jpg', 'album-1', 1, 1, 2, 0, 2, 1),
-(2, 'Album 2', '/uploads/gallery/album-2.jpg', 'album-2', 2, 1, 2, 0, 1, 1);
+	(1, 'Album 1', '/uploads/gallery/album-1.jpg', 'album-1', 1, 1, 2, 0, 2, 1),
+	(2, 'Album 2', '/uploads/gallery/album-2.jpg', 'album-2', 2, 1, 2, 0, 1, 1);
+/*!40000 ALTER TABLE `easyii_gallery_categories` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_guestbook`
---
-
-CREATE TABLE `easyii_guestbook` (
-  `guestbook_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_guestbook
+CREATE TABLE IF NOT EXISTS `easyii_guestbook` (
+  `guestbook_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) NOT NULL,
   `title` varchar(128) DEFAULT NULL,
   `text` text NOT NULL,
@@ -442,139 +405,131 @@ CREATE TABLE `easyii_guestbook` (
   `time` int(11) DEFAULT '0',
   `ip` varchar(16) NOT NULL,
   `new` tinyint(1) DEFAULT '0',
-  `status` tinyint(1) DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `status` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`guestbook_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_guestbook`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_guestbook: 17 rows
+DELETE FROM `easyii_guestbook`;
+/*!40000 ALTER TABLE `easyii_guestbook` DISABLE KEYS */;
 INSERT INTO `easyii_guestbook` (`guestbook_id`, `name`, `title`, `text`, `answer`, `email`, `time`, `ip`, `new`, `status`) VALUES
-(1, 'First user', '', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.', NULL, NULL, 1468832914, '127.0.0.1', 0, 1),
-(2, 'Second user', '', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.', NULL, 1468832916, '127.0.0.1', 0, 1),
-(3, 'Third user', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', NULL, NULL, 1468832917, '127.0.0.1', 0, 1),
-(4, 'Sergey', '', 'Классный магазин', NULL, 'qweer@mail.ru', 1473097384, '127.0.0.1', 0, 1),
-(5, 'Сергей', '', 'Супер пупер дупер', NULL, 'qweer@mail.ru', 1473618255, '127.0.0.1', 0, 1),
-(10, 'цйуй', '', 'qwqwqw', NULL, 'qweer@mail.ru', 1475319795, '127.0.0.1', 0, 1),
-(11, 'qwe', '', 'dsfsdfsf', NULL, 'qweer@mail.ru', 1475320344, '127.0.0.1', 0, 1),
-(12, 'йцу', '', 'qwwqwrqe', NULL, 'qweer@mail.ru', 1475320806, '127.0.0.1', 0, 1),
-(13, 'ыфвфыв', '', 'ЛВВЛВЛВЛВЛ', NULL, 'xcdc@2DDD.SS', 1475495521, '127.0.0.1', 0, 1),
-(14, 'ывава', '', 'тест тест', NULL, 'asdf@asd.ss', 1475496221, '127.0.0.1', 0, 1),
-(15, 'ыуквывс', '', 'фывцувс', NULL, 'qwee@ddd.fg', 1475498813, '127.0.0.1', 0, 1),
-(16, 'qwqw', '', 'zxzx', NULL, 'qwee@ddd.fg', 1475503373, '127.0.0.1', 0, 1),
-(17, 'qw', '', 'qw', NULL, 'qwee@ddd.fg', 1475503513, '127.0.0.1', 0, 1),
-(18, 'qw', '', 'qqq', NULL, 'qwee@ddd.fg', 1475504399, '127.0.0.1', 0, 1),
-(19, 'qww', '', 'wwss', NULL, 'qwee@ddd.fg', 1475506363, '127.0.0.1', 0, 1),
-(20, 'сергей', '', 'qww', NULL, 'qwee@ddd.fg', 1475507800, '127.0.0.1', 0, 1),
-(21, 'сергей', '', 'qww', NULL, 'qwee@ddd.fg', 1475507903, '127.0.0.1', 0, 1);
+	(1, 'First user', '', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.', NULL, NULL, 1468832914, '127.0.0.1', 0, 1),
+	(2, 'Second user', '', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.', NULL, 1468832916, '127.0.0.1', 0, 1),
+	(3, 'Third user', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', NULL, NULL, 1468832917, '127.0.0.1', 0, 1),
+	(4, 'Sergey', '', 'Классный магазин', NULL, 'qweer@mail.ru', 1473097384, '127.0.0.1', 0, 1),
+	(5, 'Сергей', '', 'Супер пупер дупер', NULL, 'qweer@mail.ru', 1473618255, '127.0.0.1', 0, 1),
+	(10, 'цйуй', '', 'qwqwqw', NULL, 'qweer@mail.ru', 1475319795, '127.0.0.1', 0, 1),
+	(11, 'qwe', '', 'dsfsdfsf', NULL, 'qweer@mail.ru', 1475320344, '127.0.0.1', 0, 1),
+	(12, 'йцу', '', 'qwwqwrqe', NULL, 'qweer@mail.ru', 1475320806, '127.0.0.1', 0, 1),
+	(13, 'ыфвфыв', '', 'ЛВВЛВЛВЛВЛ', NULL, 'xcdc@2DDD.SS', 1475495521, '127.0.0.1', 0, 1),
+	(14, 'ывава', '', 'тест тест', NULL, 'asdf@asd.ss', 1475496221, '127.0.0.1', 0, 1),
+	(15, 'ыуквывс', '', 'фывцувс', NULL, 'qwee@ddd.fg', 1475498813, '127.0.0.1', 0, 1),
+	(16, 'qwqw', '', 'zxzx', NULL, 'qwee@ddd.fg', 1475503373, '127.0.0.1', 0, 1),
+	(17, 'qw', '', 'qw', NULL, 'qwee@ddd.fg', 1475503513, '127.0.0.1', 0, 1),
+	(18, 'qw', '', 'qqq', NULL, 'qwee@ddd.fg', 1475504399, '127.0.0.1', 0, 1),
+	(19, 'qww', '', 'wwss', NULL, 'qwee@ddd.fg', 1475506363, '127.0.0.1', 0, 1),
+	(20, 'сергей', '', 'qww', NULL, 'qwee@ddd.fg', 1475507800, '127.0.0.1', 0, 1),
+	(21, 'сергей', '', 'qww', NULL, 'qwee@ddd.fg', 1475507903, '127.0.0.1', 0, 1);
+/*!40000 ALTER TABLE `easyii_guestbook` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_loginform`
---
-
-CREATE TABLE `easyii_loginform` (
-  `log_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_loginform
+CREATE TABLE IF NOT EXISTS `easyii_loginform` (
+  `log_id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(128) NOT NULL,
   `password` varchar(128) NOT NULL,
   `ip` varchar(16) NOT NULL,
   `user_agent` varchar(1024) NOT NULL,
   `time` int(11) DEFAULT '0',
-  `success` tinyint(1) DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `success` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`log_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_loginform`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_loginform: 59 rows
+DELETE FROM `easyii_loginform`;
+/*!40000 ALTER TABLE `easyii_loginform` DISABLE KEYS */;
 INSERT INTO `easyii_loginform` (`log_id`, `username`, `password`, `ip`, `user_agent`, `time`, `success`) VALUES
-(1, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1468832910, 1),
-(2, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1; rv:46.0) Gecko/20100101 Firefox/46.0', 1468834439, 1),
-(3, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1468937448, 1),
-(4, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1469449127, 1),
-(5, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1469813290, 1),
-(6, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1470506936, 1),
-(7, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1470672395, 1),
-(8, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1471189881, 1),
-(9, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1471244109, 1),
-(10, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2202.3 Safari/537.36', 1471453295, 1),
-(11, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1471536960, 1),
-(12, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1471538024, 1),
-(13, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2202.3 Safari/537.36', 1471712746, 1),
-(14, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1472054693, 1),
-(15, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1472057831, 1),
-(16, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1472123484, 1),
-(17, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1472125016, 1),
-(18, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1472125950, 1),
-(19, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1472141048, 1),
-(20, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1472492562, 1),
-(21, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1473008423, 1),
-(22, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1473008509, 1),
-(23, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1473015426, 1),
-(24, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1473015541, 1),
-(25, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1474188628, 1),
-(26, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1474481290, 1),
-(27, 'root', '56xbast', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1474884293, 0),
-(28, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1474884308, 1),
-(29, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475316345, 1),
-(30, 'root', '6xbas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475318251, 0),
-(31, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475318264, 1),
-(32, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475320287, 1),
-(33, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475342580, 1),
-(34, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.2; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1475572040, 1),
-(35, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475591990, 1),
-(36, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1476619554, 1),
-(43, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1476632762, 1),
-(44, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1476633188, 1),
-(45, 'root', '******', '176.37.63.40', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1476727292, 1),
-(46, 'root', '******', '195.245.221.69', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1476776567, 1),
-(47, 'root', '******', '85.114.202.243', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1476962368, 1),
-(48, 'root', '******', '95.67.46.154', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1476964680, 1),
-(49, 'root', '******', '85.238.101.115', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1476967673, 1),
-(50, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 5.2; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1476968559, 1),
-(51, 'root', '******', '195.245.221.69', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1476985470, 1),
-(52, 'root', '******', '195.245.221.69', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1477120473, 1),
-(53, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1477242350, 1),
-(54, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1477250638, 1),
-(55, 'root', '******', '85.114.202.243', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1477295264, 1),
-(56, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1477334106, 1),
-(57, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1477389685, 1),
-(58, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1477391050, 1),
-(59, 'root', '******', '95.67.46.154', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1477403980, 1),
-(60, 'root', '******', '85.238.103.52', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1477487678, 1),
-(61, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 5.2; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1478085352, 1),
-(62, 'root', '******', '85.238.103.50', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1478111672, 1),
-(63, 'root', '******', '85.114.202.243', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1478261980, 1),
-(64, 'root', '******', '85.238.103.50', 'Mozilla/5.0 (Android; Tablet; rv:33.0) Gecko/33.0 Firefox/33.0', 1478329117, 1);
+	(1, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1468832910, 1),
+	(2, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1; rv:46.0) Gecko/20100101 Firefox/46.0', 1468834439, 1),
+	(3, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1468937448, 1),
+	(4, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1469449127, 1),
+	(5, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1469813290, 1),
+	(6, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1470506936, 1),
+	(7, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1470672395, 1),
+	(8, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1471189881, 1),
+	(9, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1471244109, 1),
+	(10, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2202.3 Safari/537.36', 1471453295, 1),
+	(11, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1471536960, 1),
+	(12, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1471538024, 1),
+	(13, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2202.3 Safari/537.36', 1471712746, 1),
+	(14, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1472054693, 1),
+	(15, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1472057831, 1),
+	(16, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1472123484, 1),
+	(17, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1472125016, 1),
+	(18, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1472125950, 1),
+	(19, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1472141048, 1),
+	(20, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1472492562, 1),
+	(21, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1473008423, 1),
+	(22, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1473008509, 1),
+	(23, 'admin', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1473015426, 1),
+	(24, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1473015541, 1),
+	(25, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1474188628, 1),
+	(26, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 1474481290, 1),
+	(27, 'root', '56xbast', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1474884293, 0),
+	(28, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1474884308, 1),
+	(29, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475316345, 1),
+	(30, 'root', '6xbas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475318251, 0),
+	(31, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475318264, 1),
+	(32, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475320287, 1),
+	(33, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475342580, 1),
+	(34, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.2; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0', 1475572040, 1),
+	(35, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1475591990, 1),
+	(36, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1476619554, 1),
+	(43, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1476632762, 1),
+	(44, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1476633188, 1),
+	(45, 'root', '******', '176.37.63.40', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1476727292, 1),
+	(46, 'root', '******', '195.245.221.69', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1476776567, 1),
+	(47, 'root', '******', '85.114.202.243', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1476962368, 1),
+	(48, 'root', '******', '95.67.46.154', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1476964680, 1),
+	(49, 'root', '******', '85.238.101.115', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1476967673, 1),
+	(50, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 5.2; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1476968559, 1),
+	(51, 'root', '******', '195.245.221.69', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1476985470, 1),
+	(52, 'root', '******', '195.245.221.69', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1477120473, 1),
+	(53, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1477242350, 1),
+	(54, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1477250638, 1),
+	(55, 'root', '******', '85.114.202.243', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1477295264, 1),
+	(56, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1477334106, 1),
+	(57, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1477389685, 1),
+	(58, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1477391050, 1),
+	(59, 'root', '******', '95.67.46.154', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1477403980, 1),
+	(60, 'root', '******', '85.238.103.52', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36', 1477487678, 1),
+	(61, 'root', '******', '176.119.122.136', 'Mozilla/5.0 (Windows NT 5.2; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1478085352, 1),
+	(62, 'root', '******', '85.238.103.50', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1478111672, 1),
+	(63, 'root', '******', '85.114.202.243', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1478261980, 1),
+	(64, 'root', '******', '85.238.103.50', 'Mozilla/5.0 (Android; Tablet; rv:33.0) Gecko/33.0 Firefox/33.0', 1478329117, 1),
+	(65, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1478428749, 1);
+/*!40000 ALTER TABLE `easyii_loginform` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_migration`
---
-
-CREATE TABLE `easyii_migration` (
+-- Дамп структуры для таблица shop-yii2.easyii_migration
+CREATE TABLE IF NOT EXISTS `easyii_migration` (
   `version` varchar(180) NOT NULL,
-  `apply_time` int(11) DEFAULT NULL
+  `apply_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`version`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
---
--- Дамп данных таблицы `easyii_migration`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_migration: 2 rows
+DELETE FROM `easyii_migration`;
+/*!40000 ALTER TABLE `easyii_migration` DISABLE KEYS */;
 INSERT INTO `easyii_migration` (`version`, `apply_time`) VALUES
-('m000000_000000_base', 1468832904),
-('m000000_000000_install', 1468832909);
+	('m000000_000000_base', 1468832904),
+	('m000000_000000_install', 1468832909);
+/*!40000 ALTER TABLE `easyii_migration` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_modules`
---
-
-CREATE TABLE `easyii_modules` (
-  `module_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_modules
+CREATE TABLE IF NOT EXISTS `easyii_modules` (
+  `module_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `class` varchar(128) NOT NULL,
   `title` varchar(128) NOT NULL,
@@ -582,36 +537,34 @@ CREATE TABLE `easyii_modules` (
   `settings` text NOT NULL,
   `notice` int(11) DEFAULT '0',
   `order_num` int(11) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `status` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`module_id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_modules`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_modules: 13 rows
+DELETE FROM `easyii_modules`;
+/*!40000 ALTER TABLE `easyii_modules` DISABLE KEYS */;
 INSERT INTO `easyii_modules` (`module_id`, `name`, `class`, `title`, `icon`, `settings`, `notice`, `order_num`, `status`) VALUES
-(1, 'article', 'yii\\easyii\\modules\\article\\ArticleModule', 'Статьи', 'pencil', '{"categoryThumb":true,"articleThumb":true,"enablePhotos":true,"enableShort":true,"shortMaxLength":255,"enableTags":true,"itemsInFolder":false}', 0, 65, 1),
-(2, 'carousel', 'yii\\easyii\\modules\\carousel\\CarouselModule', 'Карусель', 'picture', '{"enableTitle":true,"enableText":true}', 0, 40, 1),
-(3, 'catalog', 'yii\\easyii\\modules\\catalog\\CatalogModule', 'Каталог', 'list-alt', '{"categoryThumb":true,"itemsInFolder":false,"itemThumb":true,"itemPhotos":true,"itemDescription":true,"itemSale":true}', 0, 100, 1),
-(4, 'faq', 'yii\\easyii\\modules\\faq\\FaqModule', 'Вопросы и ответы', 'question-sign', '[]', 0, 45, 1),
-(5, 'feedback', 'yii\\easyii\\modules\\feedback\\FeedbackModule', 'Обратная связь', 'earphone', '{"mailAdminOnNewFeedback":true,"subjectOnNewFeedback":"New feedback","templateOnNewFeedback":"@easyii\\/modules\\/feedback\\/mail\\/en\\/new_feedback","answerTemplate":"@easyii\\/modules\\/feedback\\/mail\\/en\\/answer","answerSubject":"Answer on your feedback message","answerHeader":"Hello,","answerFooter":"Best regards.","enableTitle":false,"enablePhone":true,"enableCaptcha":false}', 0, 60, 1),
-(6, 'file', 'yii\\easyii\\modules\\file\\FileModule', 'Файлы', 'floppy-disk', '[]', 0, 30, 1),
-(7, 'gallery', 'yii\\easyii\\modules\\gallery\\GalleryModule', 'Фотогалерея', 'camera', '{"categoryThumb":true,"itemsInFolder":false}', 0, 90, 1),
-(8, 'guestbook', 'yii\\easyii\\modules\\guestbook\\GuestbookModule', 'Гостевая книга', 'book', '{"enableTitle":false,"enableEmail":true,"preModerate":false,"enableCaptcha":false,"mailAdminOnNewPost":true,"subjectOnNewPost":"\\u041d\\u043e\\u0432\\u043e\\u0435 \\u0441\\u043e\\u043e\\u0431\\u0449\\u0435\\u043d\\u0438\\u0435 \\u0432 \\u0433\\u043e\\u0441\\u0442\\u0435\\u0432\\u043e\\u0439 \\u043a\\u043d\\u0438\\u0433\\u0435.","templateOnNewPost":"@easyii\\/modules\\/guestbook\\/mail\\/ru\\/new_post","frontendGuestbookRoute":"\\/guestbook","subjectNotifyUser":"\\u041d\\u0430 \\u0432\\u0430\\u0448 \\u043e\\u0442\\u0437\\u044b\\u0432 \\u043f\\u043e\\u043b\\u0443\\u0447\\u0435\\u043d \\u043e\\u0442\\u0432\\u0435\\u0442.","templateNotifyUser":"@easyii\\/modules\\/guestbook\\/mail\\/ru\\/notify_user"}', 0, 80, 1),
-(9, 'news', 'yii\\easyii\\modules\\news\\NewsModule', 'Новости', 'bullhorn', '{"enableThumb":true,"enablePhotos":true,"enableShort":true,"shortMaxLength":256,"enableTags":true}', 0, 70, 1),
-(10, 'page', 'yii\\easyii\\modules\\page\\PageModule', 'Страницы', 'file', '[]', 0, 50, 1),
-(11, 'shopcart', 'yii\\easyii\\modules\\shopcart\\ShopcartModule', 'Заказы', 'shopping-cart', '{"mailAdminOnNewOrder":true,"subjectOnNewOrder":"\\u041d\\u043e\\u0432\\u044b\\u0439 \\u0437\\u0430\\u043a\\u0430\\u0437","templateOnNewOrder":"@easyii\\/modules\\/shopcart\\/mail\\/ru\\/new_order","subjectNotifyUser":"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441 \\u0412\\u0430\\u0448\\u0435\\u0433\\u043e \\u0437\\u0430\\u043a\\u0430\\u0437\\u0430 \\u0438\\u0437\\u043c\\u0435\\u043d\\u0438\\u043b\\u0441\\u044f","templateNotifyUser":"@easyii\\/modules\\/shopcart\\/mail\\/ru\\/notify_user","frontendShopcartRoute":"\\/shopcart\\/order","enablePhone":true,"enableEmail":true}', 0, 120, 1),
-(12, 'subscribe', 'yii\\easyii\\modules\\subscribe\\SubscribeModule', 'E-mail рассылка', 'envelope', '[]', 0, 10, 1),
-(13, 'text', 'yii\\easyii\\modules\\text\\TextModule', 'Текстовые блоки', 'font', '[]', 0, 20, 1);
+	(1, 'article', 'yii\\easyii\\modules\\article\\ArticleModule', 'Статьи', 'pencil', '{"categoryThumb":true,"articleThumb":true,"enablePhotos":true,"enableShort":true,"shortMaxLength":255,"enableTags":true,"itemsInFolder":false}', 0, 65, 1),
+	(2, 'carousel', 'yii\\easyii\\modules\\carousel\\CarouselModule', 'Карусель', 'picture', '{"enableTitle":true,"enableText":true}', 0, 40, 1),
+	(3, 'catalog', 'yii\\easyii\\modules\\catalog\\CatalogModule', 'Каталог', 'list-alt', '{"categoryThumb":true,"itemsInFolder":false,"itemThumb":true,"itemPhotos":true,"itemDescription":true,"itemSale":true}', 0, 100, 1),
+	(4, 'faq', 'yii\\easyii\\modules\\faq\\FaqModule', 'Вопросы и ответы', 'question-sign', '[]', 0, 45, 1),
+	(5, 'feedback', 'yii\\easyii\\modules\\feedback\\FeedbackModule', 'Обратная связь', 'earphone', '{"mailAdminOnNewFeedback":true,"subjectOnNewFeedback":"New feedback","templateOnNewFeedback":"@easyii\\/modules\\/feedback\\/mail\\/en\\/new_feedback","answerTemplate":"@easyii\\/modules\\/feedback\\/mail\\/en\\/answer","answerSubject":"Answer on your feedback message","answerHeader":"Hello,","answerFooter":"Best regards.","enableTitle":false,"enablePhone":true,"enableCaptcha":false}', 0, 60, 1),
+	(6, 'file', 'yii\\easyii\\modules\\file\\FileModule', 'Файлы', 'floppy-disk', '[]', 0, 30, 1),
+	(7, 'gallery', 'yii\\easyii\\modules\\gallery\\GalleryModule', 'Фотогалерея', 'camera', '{"categoryThumb":true,"itemsInFolder":false}', 0, 90, 1),
+	(8, 'guestbook', 'yii\\easyii\\modules\\guestbook\\GuestbookModule', 'Гостевая книга', 'book', '{"enableTitle":false,"enableEmail":true,"preModerate":false,"enableCaptcha":false,"mailAdminOnNewPost":true,"subjectOnNewPost":"\\u041d\\u043e\\u0432\\u043e\\u0435 \\u0441\\u043e\\u043e\\u0431\\u0449\\u0435\\u043d\\u0438\\u0435 \\u0432 \\u0433\\u043e\\u0441\\u0442\\u0435\\u0432\\u043e\\u0439 \\u043a\\u043d\\u0438\\u0433\\u0435.","templateOnNewPost":"@easyii\\/modules\\/guestbook\\/mail\\/ru\\/new_post","frontendGuestbookRoute":"\\/guestbook","subjectNotifyUser":"\\u041d\\u0430 \\u0432\\u0430\\u0448 \\u043e\\u0442\\u0437\\u044b\\u0432 \\u043f\\u043e\\u043b\\u0443\\u0447\\u0435\\u043d \\u043e\\u0442\\u0432\\u0435\\u0442.","templateNotifyUser":"@easyii\\/modules\\/guestbook\\/mail\\/ru\\/notify_user"}', 0, 80, 1),
+	(9, 'news', 'yii\\easyii\\modules\\news\\NewsModule', 'Новости', 'bullhorn', '{"enableThumb":true,"enablePhotos":true,"enableShort":true,"shortMaxLength":256,"enableTags":true}', 0, 70, 1),
+	(10, 'page', 'yii\\easyii\\modules\\page\\PageModule', 'Страницы', 'file', '[]', 0, 50, 1),
+	(11, 'shopcart', 'yii\\easyii\\modules\\shopcart\\ShopcartModule', 'Заказы', 'shopping-cart', '{"mailAdminOnNewOrder":true,"subjectOnNewOrder":"\\u041d\\u043e\\u0432\\u044b\\u0439 \\u0437\\u0430\\u043a\\u0430\\u0437","templateOnNewOrder":"@easyii\\/modules\\/shopcart\\/mail\\/ru\\/new_order","subjectNotifyUser":"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441 \\u0412\\u0430\\u0448\\u0435\\u0433\\u043e \\u0437\\u0430\\u043a\\u0430\\u0437\\u0430 \\u0438\\u0437\\u043c\\u0435\\u043d\\u0438\\u043b\\u0441\\u044f","templateNotifyUser":"@easyii\\/modules\\/shopcart\\/mail\\/ru\\/notify_user","frontendShopcartRoute":"\\/shopcart\\/order","enablePhone":true,"enableEmail":true}', 0, 120, 1),
+	(12, 'subscribe', 'yii\\easyii\\modules\\subscribe\\SubscribeModule', 'E-mail рассылка', 'envelope', '[]', 0, 10, 1),
+	(13, 'text', 'yii\\easyii\\modules\\text\\TextModule', 'Текстовые блоки', 'font', '[]', 0, 20, 1);
+/*!40000 ALTER TABLE `easyii_modules` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_news`
---
-
-CREATE TABLE `easyii_news` (
-  `news_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_news
+CREATE TABLE IF NOT EXISTS `easyii_news` (
+  `news_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(128) NOT NULL,
   `image` varchar(128) DEFAULT NULL,
   `short` varchar(1024) DEFAULT NULL,
@@ -619,290 +572,277 @@ CREATE TABLE `easyii_news` (
   `slug` varchar(128) DEFAULT NULL,
   `time` int(11) DEFAULT '0',
   `views` int(11) DEFAULT '0',
-  `status` tinyint(1) DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`news_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_news`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_news: 3 rows
+DELETE FROM `easyii_news`;
+/*!40000 ALTER TABLE `easyii_news` DISABLE KEYS */;
 INSERT INTO `easyii_news` (`news_id`, `title`, `image`, `short`, `text`, `slug`, `time`, `views`, `status`) VALUES
-(1, 'Заработал наш сайт!', '/uploads/news/s7j5nssnsmc-fd675b153e.jpg', '1 октября 2016 года заработал наш сайт! Ура! Теперь наши любимые клиенты могут быстро получать новую информацию о новинках и делать заказы.', '<p>1 октября 2016 года заработал наш сайт! Ура! Теперь наши любимые клиенты могут быстро получать новую информацию о новинках и делать заказы.</p><p>1 октября 2016 года заработал наш сайт! Ура! Теперь наши любимые клиенты могут быстро получать новую информацию о новинках и делать заказы.</p><p>1 октября 2016 года заработал наш сайт! Ура! Теперь наши любимые клиенты могут быстро получать новую информацию о новинках и делать заказы.</p>', 'zarabotal-nash-sajt', 1473239280, 8, 1),
-(2, 'Настала осень, холода не за горами!', '/uploads/news/n2b29ful1bq-e7d12fcc90.jpg', 'Не только в зимнеее время нужно баловать ваши губы! Горячий, сухой воздух летом может легко высушить ваши губы, а может и хлорка из плавательных бассейнов. Чтобы сохранить ваши губы красивыми круглый год, мы разработали для вас скраб "Ягодный"!', '<p>Не только в зимнеее время нужно баловать ваши губы! Горячий, сухой воздух летом может легко высушить ваши губы, а может и хлорка из плавательных бассейнов. Чтобы сохранить ваши губы красивыми круглый год, мы разработали для вас скраб "Ягодный"!</p>', 'nastala-osen-holoda-ne-za-gorami', 1473325680, 14, 1),
-(3, 'Third news title', '/uploads/news/news-3.jpg', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt molliti', '<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>', 'third-news-title', 1468660112, 3, 1);
+	(1, 'Заработал наш сайт!', '/uploads/news/s7j5nssnsmc-fd675b153e.jpg', '1 октября 2016 года заработал наш сайт! Ура! Теперь наши любимые клиенты могут быстро получать новую информацию о новинках и делать заказы.', '<p>1 октября 2016 года заработал наш сайт! Ура! Теперь наши любимые клиенты могут быстро получать новую информацию о новинках и делать заказы.</p><p>1 октября 2016 года заработал наш сайт! Ура! Теперь наши любимые клиенты могут быстро получать новую информацию о новинках и делать заказы.</p><p>1 октября 2016 года заработал наш сайт! Ура! Теперь наши любимые клиенты могут быстро получать новую информацию о новинках и делать заказы.</p>', 'zarabotal-nash-sajt', 1473239280, 8, 1),
+	(2, 'Настала осень, холода не за горами!', '/uploads/news/n2b29ful1bq-e7d12fcc90.jpg', 'Не только в зимнеее время нужно баловать ваши губы! Горячий, сухой воздух летом может легко высушить ваши губы, а может и хлорка из плавательных бассейнов. Чтобы сохранить ваши губы красивыми круглый год, мы разработали для вас скраб "Ягодный"!', '<p>Не только в зимнеее время нужно баловать ваши губы! Горячий, сухой воздух летом может легко высушить ваши губы, а может и хлорка из плавательных бассейнов. Чтобы сохранить ваши губы красивыми круглый год, мы разработали для вас скраб "Ягодный"!</p>', 'nastala-osen-holoda-ne-za-gorami', 1473325680, 14, 1),
+	(3, 'Third news title', '/uploads/news/news-3.jpg', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt molliti', '<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>', 'third-news-title', 1468660112, 3, 1);
+/*!40000 ALTER TABLE `easyii_news` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_pages`
---
-
-CREATE TABLE `easyii_pages` (
-  `page_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_pages
+CREATE TABLE IF NOT EXISTS `easyii_pages` (
+  `page_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(128) NOT NULL,
   `text` text NOT NULL,
-  `slug` varchar(128) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `slug` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`page_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_pages`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_pages: 19 rows
+DELETE FROM `easyii_pages`;
+/*!40000 ALTER TABLE `easyii_pages` DISABLE KEYS */;
 INSERT INTO `easyii_pages` (`page_id`, `title`, `text`, `slug`) VALUES
-(1, 'Index', '<p><strong>Мы рады приветствовать всех на нашем сайте!</strong>&nbsp;</p><p>У нас вы сможете приобрести для себя или же для других членов вашей семьи готовую косметику, в основе которой содержатся исключительно натуральные ингредиенты. А также заказать индивидуальное средство, содержащее в себе набор ваших любимых ароматов. Кроме того, на нашем сайте вы найдете множество полезных советов по уходу за кожей, телом и волосами. Сделав заказ в нашем интернет-магазине, не забудьте потом оставить свой отзыв - так вы сможете поделиться своими впечатлениями о нашей продукции с другими покупателями и дать нам обратную. Следите за новинками - мы постоянно экспериментируем и создаем праздничные косметические средства. Будьте с нами!    </p>', 'index'),
-(2, 'Shop', '', 'page-shop'),
-(3, 'Результаты поиска', '', 'page-shop-search'),
-(4, 'Корзина', '', 'page-shopcart'),
-(5, 'Order created', '<p>Your order successfully created. Our manager will contact you as soon as possible.</p>', 'page-shopcart-success'),
-(6, 'Новости', '', 'page-news'),
-(7, 'Articles', '', 'page-articles'),
-(8, 'Gallery', '', 'page-gallery'),
-(9, 'Guestbook', '', 'page-guestbook'),
-(10, 'FAQ', '', 'page-faq'),
-(11, 'Contact', '<p>Мы рады предложить Вам консультацию и поддержку!</p><p>Не стесняйтесь обращаться к нам&nbsp;если:</p><p>- Вам необходима консультация с целью выявления наилучшего сочетания продуктов, которые наилучшим образом соответствует Вашим потребностям, покупаете Вы&nbsp;для себя или для своих близких;</p><p>- Вы хотели бы предложить персонализированные подарки для специальных мероприятий;</p><p>- Вы заинтересованы в возможности партнерства;</p><p>- Вам нужно больше информации или разъяснения по поводу нашей продукции;</p><p>Вы можете связаться с нами по телефону или по почте!</p><p>Мы обещаем дать Вам четкие и краткие ответы!</p><p>Мы постараемся ответить на ваши электронную почту либо в тот же день или в интервале 24часов, в зависимости от объема запросов.</p><p>Не стесняйтесь, звоните нам для руководства! Любой вопрос, предложение или рекомендация приветствуется, потому что она помогает нам плотнее&nbsp;общаться с Вами! Спасибо!</p>', 'page-contact'),
-(12, 'Создайте свое индивидуальное косметическое средство!', '<p>Если в ассортименте нашей готовой продукции Вы не нашли нужное косметическое средство с необходимым Вам составом и&nbsp;ароматом или нашли, но в его составе имеются ингредиенты, вызывающие у Вас аллергическую реакцию, мы можем изготовить средство с индивидуальным для Вас составом. Это реально, недорого и удобно!&nbsp;</p><p>Подобным образом можно заказывать индивидуальные косметические наборы в подарок.</p><p>Лучшая органическая натуральная&nbsp;косметика в Украине собрана на нашем сайте. Качественная продукция, большой выбор – здесь есть все для Вашего идеального внешнего вида.&nbsp;</p><p>Покупайте и возвращайтесь к нам снова: ассортимент постоянно расширяется.</p>', 'page-custom'),
-(13, 'Выберите основу для Вашего средства:', '<p>Ключ к здоровой, сияющей кожи лежит в правильном по уходу за кожей ритуал. Наша продукция аккуратно сформулировали с редкими, драгоценных ингредиентов и подвергаются энергичной дерматологические испытания. Каждый ингредиент является высокоэффективным и очаровательно простой, тщательно выбирают так, чтобы охватить все беспокойство и обеспечить отличные результаты.</p><p>Наш режим красоты состоит из натуральных нежных моющих средств и тонеров, с последующим обогащением и увлажняющим кремы и процедуры для лица и области вокруг глаз, испытанной раскрыть свой самый красивый сам. Кроме того, глубоко очищающие и питательные маски для лица, скрабы и уходу за губами продукты завершить ритуал по уходу за кожей, предлагая весьма заметные результаты.</p>', 'page-base'),
-(14, 'Выберите ингредиенты для Вашего средства:', '', 'page-ingridients'),
-(15, 'Готовые средства', '<hr><p>Свежая косметика ручной работы традиционно наносится утром и вечеров. Большинство такой косметики используют смешивая с теплой водой для умывания. Если Вы в течении длительного времени будете наносить крем на кожу 2 раза в день, то это поспособствует очищению и омоложению кожи. Для того, чтобы крем или тоник тщательно и равномерно впитывался - используйте ватные диски и круговыми движениями разглаживайте смесь по коже.</p><p><strong>Свойства косметики ручной работы</strong></p><p>  Благодаря природным компонентам данная косметика при использовании придает коже омолаживающий эффект, гладкость, подтянутость и упругость;<br>  Предотвращает пигментацию кожи и образование морщин, угрей на теле;<br>  При использовании не возникает аллергическая реакция на кожу, а также не вызывает привыкания от частого использования;<br>  Косметика при нанесении на кожу действует как отличный релаксант, способствуя быстрому восстановлению клеток кожи и расслаблению организма в целом;</p><p>Косметика ручной работы - купить в интернет магазине в Украине</p><p>Если Вы ищете магазин, где могли бы приобрести косметику для кожи лица и тела из натуральных компонентов, то Вы зашли по адресу. У нас Вы найдете отличную косметику для умывания высокого качества, которая реально действует. Мы уверены в своей продукции, поскольку сотрудничаем только с проверенными поставщиками из различных стран. Косметика ручной работы в интернет магазине Мыло-опт.com.ua - это качественные товары по доступной для Вас цене, которая не ударит по карману.</p>', 'page-grid'),
-(16, 'О проекте', '<p>\r\n	Своим появлением на свет косметика Lerox обязана не команде высококвалифицированных химиков-лаборантов, не суперсовременному центру исследований, а симпатичной девчушке Арише - доченьке одной из основательниц компании, Оксане. Все началось</p><p style="text-align: center;">\r\n	<img src="/uploads/pages/1-e407c91a02.jpg"></p><p>\r\n	с того, что...</p><p>\r\n	Наши приоритеты - экологически чистая продукция, максимальная польза здоровью, борьба с возрастными изменениями кожи. <br>\r\n	Для  нашего мыла, мы не используем мыльную основу, все наше мыло является  полностью натуральным, !!!сваренным "с нуля"!!!  только из натуральных  природных ингредиентов и добавок, как по старинным рецептурам, так и с  использованием современных разработок в области косметологии и  дерматологии.<br>\r\n	Натуральное мыло ручной работы  – это замечательный  продукт, дар от природы, поддерживающий здоровье и красоту Вашей кожи,  разработанный и созданный с любовью, знаниями и наилучшими пожеланиями  красоты и здоровья специально для Вас!</p><p>\r\n	Мы  любим все настоящее и экологическое: косметику, еду, ткани, моющие  средства, а также отношения между людьми и отношение к делу.<br>\r\n	Будьте  уверены - покупая нашу продукцию, будь то натуральное мыло "с нуля" или  косметика из натуральных компонентов, в неё будет вложено знания и  чувство ответственности за то, что мы делаем. <br>\r\n	Побалуйте себя натуральным мылом и косметикой ручной работы!</p><hr><p>\r\n	<br>\r\n	<strong>Немного о хранении нашей продукции. </strong></p><p>\r\n	Натуральное  мыло со временем только набирает плюсов. Трехмесячной выдержки мыло  лучше по свойствам, чем свежесваренное, полугодичное - лучше, чем  трехмесячное. Единственный минус - со временем аромат и цвет станет  менее выраженным. <br>\r\n	Натуральное мыло с нуля хранится в сухом  проветриваемом помещении до начала использования, от года до трех лет со  дня изготовления, в зависимости от вида мыла. Натуральное мыло лучше  хранить без упаковки, или приоткрыв упаковку, чтобы мыло "дышало".<br>\r\n	Натуральная косметика ручной работы хранится только в холодильнике, согласно указанному сроку хранения.</p><p>\r\n	Внимательно  читайте описание продукции перед заказом, обращая внимание на  ингредиенты. Обязательно оговорите, если у вас есть аллергия. <br>\r\n	Смело обращайтесь, если у Вас есть вопросы, пожелания, замечания. <br>\r\n	Перед заказом лучше списаться, чтобы оговорить ваши пожелания. Мы будем стараться максимально точно им следовать.</p><p style="text-align: center;">\r\n	<img src="/uploads/pages/123-5694b3b8e6.jpg"></p>', 'page-about'),
-(17, 'Доставка', '<li><strong> Курьерская доставка по городу Киеву. </strong></li>\r\n<p>\r\nИнтернет-магазин компьютеров, офисной и бытовой техники «USB» располагает собственной транспортной службой, сотрудники которой осуществят доставку товара к вашему дому, месту работы или отдыха месту в пределах города Одессы. Если этот вариант получения товара для вас наиболее удобен, выберите его в списке при оформлении заказа. Наш менеджер при обработке заказа свяжется по указанному вами номеру телефона и уточнит удобные для вас время и место получения товара. Доставка осуществляется непосредственно до дверей здания местонахождения покупателя.\r\n</p>\r\n<p>\r\n		График доставок:\r\n	ежедневно с ПН по ПТ- с 10.00 до 19.00\r\n</p>\r\n<p>\r\n		Доставка заказов, оформленых до 15:00, будет произведена в тот же день при наличии товара на складе.\r\n</p>\r\n<p>\r\n		Расценки на доставку:\r\n</p>\r\n<p>\r\n		  40 грн, если сумма заказа от 2500 грн. и выше;\r\n	  60 грн., если общая сумма заказа составляет менее 2500 грн.\r\n</p>\r\n<hr>\r\n<li><strong>Курьерская доставка по городу Одессе. </strong></li>\r\nИнтернет-магазин компьютеров, офисной и бытовой техники «USB» располагает собственной транспортной службой, сотрудники которой осуществят доставку товара к вашему дому, месту работы или отдыха месту в пределах города Одессы. Если этот вариант получения товара для вас наиболее удобен, выберите его в списке при оформлении заказа. Наш менеджер при обработке заказа свяжется по указанному вами номеру телефона и уточнит удобные для вас время и место получения товара. Доставка осуществляется непосредственно до дверей здания местонахождения покупателя.\r\n<p>\r\n		График доставок:\r\n	ежедневно с ПН по ПТ- с 10.00 до 19.00\r\n</p>\r\n<p>\r\n		Доставка заказов, оформленых до 15:00, будет произведена в тот же день при наличии товара на складе.\r\n	Расценки на доставку:\r\n</p>\r\n<p>\r\n		  40 грн, если сумма заказа от 2500 грн. и выше;\r\n	  60 грн., если общая сумма заказа составляет менее 2500 грн.\r\n</p>\r\n<hr>\r\n<br>\r\n<li><strong>Доставка по Украине</strong></li>\r\n	Интернет-магазин компьютеров, офисной и  бытовой техники «USB» для жителей Украины осуществляет доставку с  помощью любой почтовой службы, службы доставки, или перевозчика,  располагающих представительством в городе или населенном пункте  получателя.\r\n<p>\r\n	<img src="http://shop-yii2.loc/uploads/pages/content305799-d1dc383594.png">\r\n</p>\r\n<p>\r\n		 	Список наиболее популярных служб доставки товаров по Украине:\r\n	 	- ИнТайм\r\n	 	- Новая Почта\r\n	<img src="/uploads/pages/3-45a042358c.jpg">\r\n</p>\r\n<p>\r\n		 	Оплату доставки и страховки осуществляет получатель согласно тарифам избранной службы доставки.\r\n</p>\r\n<p>\r\n		 	Ежедневно Львов, Ивано-франковск, Мукачево  и остальные населенные пункты западной украины, Черкассы, Хмельницкий и  другие города центральной и восточной Украины получают грузы от  интернет-магазина "USB".\r\n</p>', 'page-delivery'),
-(18, 'Контакты', '<p>Мы рады предложить Вам консультацию и поддержку!</p><p>Не стесняйтесь обращаться к нам если:</p><p>- Вам необходима консультация с целью выявления наилучшего сочетания продуктов, которые наилучшим образом соответствует Вашим потребностям, покупаете Вы для себя или для своих близких;</p><p>- Вы хотели бы предложить персонализированные подарки для специальных мероприятий;</p><p>- Вы заинтересованы в возможности партнерства;</p><p>- Вам нужно больше информации или разъяснения по поводу нашей продукции;</p><p>Вы можете связаться с нами по телефону или по почте!</p><p>Мы обещаем дать Вам четкие и краткие ответы!</p><p>Мы постараемся ответить на электронную почту либо в тот же день или в интервале 24&nbsp;часа, в зависимости от объема запросов.</p><p>Не стесняйтесь, звоните нам для руководства! Любой вопрос, предложение или рекомендация приветствуется, потому что она помогает нам плотнее общаться с Вами! Спасибо!</p><p style="margin-left: 40px;"><img src="/uploads/pages/tel-7a5200e5e9.jpg"> &nbsp;<strong>+38 (093) 4221010<br></strong></p><p style="margin-left: 20px;"><strong></strong></p><p style="margin-left: 40px;"><img src="/uploads/pages/tel-7cb5e67dcb.jpg"> <strong> &nbsp;+38 (093) 4221010<br></strong></p><hr><br><p style="margin-left: 40px;"><img src="/uploads/pages/mail-3914109deb.jpg"> <strong>lerox@gmail.com<br></strong></p><hr><p style="margin-left: 20px;"><br><strong></strong></p><p style="margin-left: 20px;"><strong></strong></p><p><strong></strong></p><p style="margin-left: 40px;"><img src="/uploads/pages/vk-2b52541089.jpg"><strong> <a href="https://vk.com/lerox.cosmetics"> https://vk.com/lerox.cosmetics<br></a></strong></p><p style="margin-left: 40px;"><img src="/uploads/pages/fb-38811c5285.jpg"><a href="https://www.facebook.com/lerox_cosmetics"><strong>https://www.facebook.com/lerox_cosmetics</strong></a></p><p style="margin-left: 20px;"><a href="https://www.facebook.com/lerox_cosmetics"><strong></strong></a></p><p style="margin-left: 40px;"><img src="/uploads/pages/ig-6db812399d.jpg"> <strong></strong><a href="https://www.instagram.com/lerox_cosmetics"><strong>https://www.instagram.com/lerox_cosmetics</strong></a></p><p><cite></cite></p><p style="margin-left: 20px;"> </p><p style="margin-left: 20px;"><a href="https://www.facebook.com/lerox_cosmetics"><strong></strong></a></p><p style="text-align: center;"><img src="/uploads/pages/slajjdshou-2-glavnaya-df543abd11.jpg"></p><p style="margin-left: 20px;"><br><a href="https://www.facebook.com/lerox_cosmetics"><strong></strong></a></p><p style="margin-left: 20px;"><strong><a href="https://vk.com/lerox.cosmetics"></a></strong></p><p style="margin-left: 20px;"><strong></strong></p>', 'page-contacts'),
-(19, 'Магазины', '', 'page-shops');
+	(1, 'Index', '<p><strong>Мы рады приветствовать всех на нашем сайте!</strong>&nbsp;</p><p>У нас вы сможете приобрести для себя или же для других членов вашей семьи готовую косметику, в основе которой содержатся исключительно натуральные ингредиенты. А также заказать индивидуальное средство, содержащее в себе набор ваших любимых ароматов. Кроме того, на нашем сайте вы найдете множество полезных советов по уходу за кожей, телом и волосами. Сделав заказ в нашем интернет-магазине, не забудьте потом оставить свой отзыв - так вы сможете поделиться своими впечатлениями о нашей продукции с другими покупателями и дать нам обратную. Следите за новинками - мы постоянно экспериментируем и создаем праздничные косметические средства. Будьте с нами!    </p>', 'index'),
+	(2, 'Shop', '', 'page-shop'),
+	(3, 'Результаты поиска', '', 'page-shop-search'),
+	(4, 'Корзина', '', 'page-shopcart'),
+	(5, 'Order created', '<p>Your order successfully created. Our manager will contact you as soon as possible.</p>', 'page-shopcart-success'),
+	(6, 'Новости', '', 'page-news'),
+	(7, 'Articles', '', 'page-articles'),
+	(8, 'Gallery', '', 'page-gallery'),
+	(9, 'Guestbook', '', 'page-guestbook'),
+	(10, 'FAQ', '', 'page-faq'),
+	(11, 'Contact', '<p>Мы рады предложить Вам консультацию и поддержку!</p><p>Не стесняйтесь обращаться к нам&nbsp;если:</p><p>- Вам необходима консультация с целью выявления наилучшего сочетания продуктов, которые наилучшим образом соответствует Вашим потребностям, покупаете Вы&nbsp;для себя или для своих близких;</p><p>- Вы хотели бы предложить персонализированные подарки для специальных мероприятий;</p><p>- Вы заинтересованы в возможности партнерства;</p><p>- Вам нужно больше информации или разъяснения по поводу нашей продукции;</p><p>Вы можете связаться с нами по телефону или по почте!</p><p>Мы обещаем дать Вам четкие и краткие ответы!</p><p>Мы постараемся ответить на ваши электронную почту либо в тот же день или в интервале 24часов, в зависимости от объема запросов.</p><p>Не стесняйтесь, звоните нам для руководства! Любой вопрос, предложение или рекомендация приветствуется, потому что она помогает нам плотнее&nbsp;общаться с Вами! Спасибо!</p>', 'page-contact'),
+	(12, 'Создайте свое индивидуальное косметическое средство!', '<p>Если в ассортименте нашей готовой продукции Вы не нашли нужное косметическое средство с необходимым Вам составом и&nbsp;ароматом или нашли, но в его составе имеются ингредиенты, вызывающие у Вас аллергическую реакцию, мы можем изготовить средство с индивидуальным для Вас составом. Это реально, недорого и удобно!&nbsp;</p><p>Подобным образом можно заказывать индивидуальные косметические наборы в подарок.</p><p>Лучшая органическая натуральная&nbsp;косметика в Украине собрана на нашем сайте. Качественная продукция, большой выбор – здесь есть все для Вашего идеального внешнего вида.&nbsp;</p><p>Покупайте и возвращайтесь к нам снова: ассортимент постоянно расширяется.</p>', 'page-custom'),
+	(13, 'Выберите основу для Вашего средства:', '<p>Ключ к здоровой, сияющей кожи лежит в правильном по уходу за кожей ритуал. Наша продукция аккуратно сформулировали с редкими, драгоценных ингредиентов и подвергаются энергичной дерматологические испытания. Каждый ингредиент является высокоэффективным и очаровательно простой, тщательно выбирают так, чтобы охватить все беспокойство и обеспечить отличные результаты.</p><p>Наш режим красоты состоит из натуральных нежных моющих средств и тонеров, с последующим обогащением и увлажняющим кремы и процедуры для лица и области вокруг глаз, испытанной раскрыть свой самый красивый сам. Кроме того, глубоко очищающие и питательные маски для лица, скрабы и уходу за губами продукты завершить ритуал по уходу за кожей, предлагая весьма заметные результаты.</p>', 'page-base'),
+	(14, 'Выберите ингредиенты для Вашего средства:', '', 'page-ingridients'),
+	(15, 'Готовые средства', '<hr><p>Свежая косметика ручной работы традиционно наносится утром и вечеров. Большинство такой косметики используют смешивая с теплой водой для умывания. Если Вы в течении длительного времени будете наносить крем на кожу 2 раза в день, то это поспособствует очищению и омоложению кожи. Для того, чтобы крем или тоник тщательно и равномерно впитывался - используйте ватные диски и круговыми движениями разглаживайте смесь по коже.</p><p><strong>Свойства косметики ручной работы</strong></p><p>  Благодаря природным компонентам данная косметика при использовании придает коже омолаживающий эффект, гладкость, подтянутость и упругость;<br>  Предотвращает пигментацию кожи и образование морщин, угрей на теле;<br>  При использовании не возникает аллергическая реакция на кожу, а также не вызывает привыкания от частого использования;<br>  Косметика при нанесении на кожу действует как отличный релаксант, способствуя быстрому восстановлению клеток кожи и расслаблению организма в целом;</p><p>Косметика ручной работы - купить в интернет магазине в Украине</p><p>Если Вы ищете магазин, где могли бы приобрести косметику для кожи лица и тела из натуральных компонентов, то Вы зашли по адресу. У нас Вы найдете отличную косметику для умывания высокого качества, которая реально действует. Мы уверены в своей продукции, поскольку сотрудничаем только с проверенными поставщиками из различных стран. Косметика ручной работы в интернет магазине Мыло-опт.com.ua - это качественные товары по доступной для Вас цене, которая не ударит по карману.</p>', 'page-grid'),
+	(16, 'О проекте', '<p>\r\n	Своим появлением на свет косметика Lerox обязана не команде высококвалифицированных химиков-лаборантов, не суперсовременному центру исследований, а симпатичной девчушке Арише - доченьке одной из основательниц компании, Оксане. Все началось</p><p style="text-align: center;">\r\n	<img src="/uploads/pages/1-e407c91a02.jpg"></p><p>\r\n	с того, что...</p><p>\r\n	Наши приоритеты - экологически чистая продукция, максимальная польза здоровью, борьба с возрастными изменениями кожи. <br>\r\n	Для  нашего мыла, мы не используем мыльную основу, все наше мыло является  полностью натуральным, !!!сваренным "с нуля"!!!  только из натуральных  природных ингредиентов и добавок, как по старинным рецептурам, так и с  использованием современных разработок в области косметологии и  дерматологии.<br>\r\n	Натуральное мыло ручной работы  – это замечательный  продукт, дар от природы, поддерживающий здоровье и красоту Вашей кожи,  разработанный и созданный с любовью, знаниями и наилучшими пожеланиями  красоты и здоровья специально для Вас!</p><p>\r\n	Мы  любим все настоящее и экологическое: косметику, еду, ткани, моющие  средства, а также отношения между людьми и отношение к делу.<br>\r\n	Будьте  уверены - покупая нашу продукцию, будь то натуральное мыло "с нуля" или  косметика из натуральных компонентов, в неё будет вложено знания и  чувство ответственности за то, что мы делаем. <br>\r\n	Побалуйте себя натуральным мылом и косметикой ручной работы!</p><hr><p>\r\n	<br>\r\n	<strong>Немного о хранении нашей продукции. </strong></p><p>\r\n	Натуральное  мыло со временем только набирает плюсов. Трехмесячной выдержки мыло  лучше по свойствам, чем свежесваренное, полугодичное - лучше, чем  трехмесячное. Единственный минус - со временем аромат и цвет станет  менее выраженным. <br>\r\n	Натуральное мыло с нуля хранится в сухом  проветриваемом помещении до начала использования, от года до трех лет со  дня изготовления, в зависимости от вида мыла. Натуральное мыло лучше  хранить без упаковки, или приоткрыв упаковку, чтобы мыло "дышало".<br>\r\n	Натуральная косметика ручной работы хранится только в холодильнике, согласно указанному сроку хранения.</p><p>\r\n	Внимательно  читайте описание продукции перед заказом, обращая внимание на  ингредиенты. Обязательно оговорите, если у вас есть аллергия. <br>\r\n	Смело обращайтесь, если у Вас есть вопросы, пожелания, замечания. <br>\r\n	Перед заказом лучше списаться, чтобы оговорить ваши пожелания. Мы будем стараться максимально точно им следовать.</p><p style="text-align: center;">\r\n	<img src="/uploads/pages/123-5694b3b8e6.jpg"></p>', 'page-about'),
+	(17, 'Доставка', '<li><strong> Курьерская доставка по городу Киеву. </strong></li>\r\n<p>\r\nИнтернет-магазин компьютеров, офисной и бытовой техники «USB» располагает собственной транспортной службой, сотрудники которой осуществят доставку товара к вашему дому, месту работы или отдыха месту в пределах города Одессы. Если этот вариант получения товара для вас наиболее удобен, выберите его в списке при оформлении заказа. Наш менеджер при обработке заказа свяжется по указанному вами номеру телефона и уточнит удобные для вас время и место получения товара. Доставка осуществляется непосредственно до дверей здания местонахождения покупателя.\r\n</p>\r\n<p>\r\n		График доставок:\r\n	ежедневно с ПН по ПТ- с 10.00 до 19.00\r\n</p>\r\n<p>\r\n		Доставка заказов, оформленых до 15:00, будет произведена в тот же день при наличии товара на складе.\r\n</p>\r\n<p>\r\n		Расценки на доставку:\r\n</p>\r\n<p>\r\n		  40 грн, если сумма заказа от 2500 грн. и выше;\r\n	  60 грн., если общая сумма заказа составляет менее 2500 грн.\r\n</p>\r\n<hr>\r\n<li><strong>Курьерская доставка по городу Одессе. </strong></li>\r\nИнтернет-магазин компьютеров, офисной и бытовой техники «USB» располагает собственной транспортной службой, сотрудники которой осуществят доставку товара к вашему дому, месту работы или отдыха месту в пределах города Одессы. Если этот вариант получения товара для вас наиболее удобен, выберите его в списке при оформлении заказа. Наш менеджер при обработке заказа свяжется по указанному вами номеру телефона и уточнит удобные для вас время и место получения товара. Доставка осуществляется непосредственно до дверей здания местонахождения покупателя.\r\n<p>\r\n		График доставок:\r\n	ежедневно с ПН по ПТ- с 10.00 до 19.00\r\n</p>\r\n<p>\r\n		Доставка заказов, оформленых до 15:00, будет произведена в тот же день при наличии товара на складе.\r\n	Расценки на доставку:\r\n</p>\r\n<p>\r\n		  40 грн, если сумма заказа от 2500 грн. и выше;\r\n	  60 грн., если общая сумма заказа составляет менее 2500 грн.\r\n</p>\r\n<hr>\r\n<br>\r\n<li><strong>Доставка по Украине</strong></li>\r\n	Интернет-магазин компьютеров, офисной и  бытовой техники «USB» для жителей Украины осуществляет доставку с  помощью любой почтовой службы, службы доставки, или перевозчика,  располагающих представительством в городе или населенном пункте  получателя.\r\n<p>\r\n	<img src="http://shop-yii2.loc/uploads/pages/content305799-d1dc383594.png">\r\n</p>\r\n<p>\r\n		 	Список наиболее популярных служб доставки товаров по Украине:\r\n	 	- ИнТайм\r\n	 	- Новая Почта\r\n	<img src="/uploads/pages/3-45a042358c.jpg">\r\n</p>\r\n<p>\r\n		 	Оплату доставки и страховки осуществляет получатель согласно тарифам избранной службы доставки.\r\n</p>\r\n<p>\r\n		 	Ежедневно Львов, Ивано-франковск, Мукачево  и остальные населенные пункты западной украины, Черкассы, Хмельницкий и  другие города центральной и восточной Украины получают грузы от  интернет-магазина "USB".\r\n</p>', 'page-delivery'),
+	(18, 'Контакты', '<p>Мы рады предложить Вам консультацию и поддержку!</p><p>Не стесняйтесь обращаться к нам если:</p><p>- Вам необходима консультация с целью выявления наилучшего сочетания продуктов, которые наилучшим образом соответствует Вашим потребностям, покупаете Вы для себя или для своих близких;</p><p>- Вы хотели бы предложить персонализированные подарки для специальных мероприятий;</p><p>- Вы заинтересованы в возможности партнерства;</p><p>- Вам нужно больше информации или разъяснения по поводу нашей продукции;</p><p>Вы можете связаться с нами по телефону или по почте!</p><p>Мы обещаем дать Вам четкие и краткие ответы!</p><p>Мы постараемся ответить на электронную почту либо в тот же день или в интервале 24&nbsp;часа, в зависимости от объема запросов.</p><p>Не стесняйтесь, звоните нам для руководства! Любой вопрос, предложение или рекомендация приветствуется, потому что она помогает нам плотнее общаться с Вами! Спасибо!</p><p style="margin-left: 40px;"><img src="/uploads/pages/tel-7a5200e5e9.jpg"> &nbsp;<strong>+38 (093) 4221010<br></strong></p><p style="margin-left: 20px;"><strong></strong></p><p style="margin-left: 40px;"><img src="/uploads/pages/tel-7cb5e67dcb.jpg"> <strong> &nbsp;+38 (093) 4221010<br></strong></p><hr><br><p style="margin-left: 40px;"><img src="/uploads/pages/mail-3914109deb.jpg"> <strong>lerox@gmail.com<br></strong></p><hr><p style="margin-left: 20px;"><br><strong></strong></p><p style="margin-left: 20px;"><strong></strong></p><p><strong></strong></p><p style="margin-left: 40px;"><img src="/uploads/pages/vk-2b52541089.jpg"><strong> <a href="https://vk.com/lerox.cosmetics"> https://vk.com/lerox.cosmetics<br></a></strong></p><p style="margin-left: 40px;"><img src="/uploads/pages/fb-38811c5285.jpg"><a href="https://www.facebook.com/lerox_cosmetics"><strong>https://www.facebook.com/lerox_cosmetics</strong></a></p><p style="margin-left: 20px;"><a href="https://www.facebook.com/lerox_cosmetics"><strong></strong></a></p><p style="margin-left: 40px;"><img src="/uploads/pages/ig-6db812399d.jpg"> <strong></strong><a href="https://www.instagram.com/lerox_cosmetics"><strong>https://www.instagram.com/lerox_cosmetics</strong></a></p><p><cite></cite></p><p style="margin-left: 20px;"> </p><p style="margin-left: 20px;"><a href="https://www.facebook.com/lerox_cosmetics"><strong></strong></a></p><p style="text-align: center;"><img src="/uploads/pages/slajjdshou-2-glavnaya-df543abd11.jpg"></p><p style="margin-left: 20px;"><br><a href="https://www.facebook.com/lerox_cosmetics"><strong></strong></a></p><p style="margin-left: 20px;"><strong><a href="https://vk.com/lerox.cosmetics"></a></strong></p><p style="margin-left: 20px;"><strong></strong></p>', 'page-contacts'),
+	(19, 'Магазины', '', 'page-shops');
+/*!40000 ALTER TABLE `easyii_pages` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_photos`
---
-
-CREATE TABLE `easyii_photos` (
-  `photo_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_photos
+CREATE TABLE IF NOT EXISTS `easyii_photos` (
+  `photo_id` int(11) NOT NULL AUTO_INCREMENT,
   `class` varchar(128) NOT NULL,
   `item_id` int(11) NOT NULL,
   `image` varchar(128) NOT NULL,
   `description` varchar(1024) NOT NULL,
-  `order_num` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `order_num` int(11) NOT NULL,
+  PRIMARY KEY (`photo_id`),
+  KEY `model_item` (`class`,`item_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_photos`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_photos: 10 rows
+DELETE FROM `easyii_photos`;
+/*!40000 ALTER TABLE `easyii_photos` DISABLE KEYS */;
 INSERT INTO `easyii_photos` (`photo_id`, `class`, `item_id`, `image`, `description`, `order_num`) VALUES
-(28, 'yii\\easyii\\modules\\news\\models\\News', 1, '/uploads/photos/s7j5nssnsmc-585eb4127a.jpg', '', 28),
-(29, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/deliverytransportation4577-a04c6b2c3a.png', 'Мы доставляем косметику во все города и населенные пункты Украины с помощью перевозчиков.', 24),
-(15, 'yii\\easyii\\modules\\article\\models\\Item', 1, '/uploads/photos/article-1-1.jpg', '', 15),
-(16, 'yii\\easyii\\modules\\article\\models\\Item', 1, '/uploads/photos/article-1-2.jpg', '', 16),
-(17, 'yii\\easyii\\modules\\article\\models\\Item', 1, '/uploads/photos/article-1-3.jpg', '', 17),
-(18, 'yii\\easyii\\modules\\article\\models\\Item', 1, '/uploads/photos/news-1-4.jpg', '', 18),
-(30, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/feat-quint-nature-is-43e76ad433.jpg', 'Органическая косметика из Германии Topfer – это нежнейшие средства на основе ценных масел холодного отжима, молочной сыворотки и пшеничных отрубей. Вся линия имеет немецкий органический сертификат и рекомендована малышам с первого дня жизни.Особой любовью среди клиентов пользуется сухая смесь для ванн на основе отрубей и сухого молока. Одна крышечка этого средства превращает воду в ванной в увлажняющее молочко, которое смягчает кожу и не оставляет жирных следов. Ваш малыш останется довольным приятным ароматом и нежным прикосновением воды к коже.', 30),
-(24, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/familiar-copy-14109438844k8gn-4c0ebba5eb.png', 'Уникальная рецептура - универсального крема "для всех" быть просто не может, так как каждый человек уникален! Мы уверены, что именно такой подход гарантирует результат - отзывы наших дорогих клиенток это подтверждают! \n    Активный состав и гарантированно высокое качество. Состав производства нашей косметики включает в себя около 2000 ингредиентов. Используются только лучшие, современные активные вещества. \n    Максимум натуральных компонентов! Мы не используем в производстве косметики вытяжки - в лабораториях индивидуальной косметики I.C.Lab применяются только живые клетки растений. Их эффективность работы проверена и доказана многими учеными. \n    Накопительный эффект и пролонгированное действие. Живые клетки воздействуют на клеточном уровне, и кожа, получив такую подпитку, сохраняется молодой довольно долго, а процесс увядания тормозится.', 25),
-(25, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/laboratory-logo-icon-65057-84ae33a64a.png', 'Уникальная рецептура - универсального крема "для всех" быть просто не может, так как каждый человек уникален! Мы уверены, что именно такой подход гарантирует результат - отзывы наших дорогих клиенток это подтверждают! \n    Активный состав и гарантированно высокое качество. Состав производства нашей косметики включает в себя около 2000 ингредиентов. Используются только лучшие, современные активные вещества. \n    Максимум натуральных компонентов! Мы не используем в производстве косметики вытяжки - в лабораториях индивидуальной косметики I.C.Lab применяются только живые клетки растений. Их эффективность работы проверена и доказана многими учеными. \n    Накопительный эффект и пролонгированное действие. Живые клетки воздействуют на клеточном уровне, и кожа, получив такую подпитку, сохраняется молодой довольно долго, а процесс увядания тормозится.', 27),
-(27, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/21c2d575e9a7a1624f498b38cdeb788b-86474c911b.jpg', 'В разработке рецептур принимают участие косметологи и химики-технологи с многолетним опытом работы. В нашем ассортименте фито-минеральные средства для очищения и ухода за кожей лица и тела (литобиочистки, литобиомаски, литобиоскраб), солевые скрабы для тела, мягкое мыло Бельди.\n\nФито-минеральная косметика производится на основе уникального по своим характеристикам минерала вулканического происхождения – цеолита с добавлением каолина, сухих растительных экстрактов. Продукция не содержит искусственных консервантов, ароматизаторов, синтетических витаминов, загустителей и прочих вредных для здоровья модификаций. Производится и хранится в виде порошка, комбинируется с водой, маслами, душистыми водами, разнообразными активами. Разводится непосредственно перед применением и наносится на кожу. После нанесения начинает активно работать, отдавая коже полезные микроэлементы, витамины и помогает сохранить природную естественную красоту Вашей кожи.\n\nСолевые скрабы для тела изготовлены из натуральных компонетов, обладают н', 29);
+	(28, 'yii\\easyii\\modules\\news\\models\\News', 1, '/uploads/photos/s7j5nssnsmc-585eb4127a.jpg', '', 28),
+	(29, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/deliverytransportation4577-a04c6b2c3a.png', 'Мы доставляем косметику во все города и населенные пункты Украины с помощью перевозчиков.', 24),
+	(15, 'yii\\easyii\\modules\\article\\models\\Item', 1, '/uploads/photos/article-1-1.jpg', '', 15),
+	(16, 'yii\\easyii\\modules\\article\\models\\Item', 1, '/uploads/photos/article-1-2.jpg', '', 16),
+	(17, 'yii\\easyii\\modules\\article\\models\\Item', 1, '/uploads/photos/article-1-3.jpg', '', 17),
+	(18, 'yii\\easyii\\modules\\article\\models\\Item', 1, '/uploads/photos/news-1-4.jpg', '', 18),
+	(30, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/feat-quint-nature-is-43e76ad433.jpg', 'Органическая косметика из Германии Topfer – это нежнейшие средства на основе ценных масел холодного отжима, молочной сыворотки и пшеничных отрубей. Вся линия имеет немецкий органический сертификат и рекомендована малышам с первого дня жизни.Особой любовью среди клиентов пользуется сухая смесь для ванн на основе отрубей и сухого молока. Одна крышечка этого средства превращает воду в ванной в увлажняющее молочко, которое смягчает кожу и не оставляет жирных следов. Ваш малыш останется довольным приятным ароматом и нежным прикосновением воды к коже.', 30),
+	(24, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/familiar-copy-14109438844k8gn-4c0ebba5eb.png', 'Уникальная рецептура - универсального крема "для всех" быть просто не может, так как каждый человек уникален! Мы уверены, что именно такой подход гарантирует результат - отзывы наших дорогих клиенток это подтверждают! \n    Активный состав и гарантированно высокое качество. Состав производства нашей косметики включает в себя около 2000 ингредиентов. Используются только лучшие, современные активные вещества. \n    Максимум натуральных компонентов! Мы не используем в производстве косметики вытяжки - в лабораториях индивидуальной косметики I.C.Lab применяются только живые клетки растений. Их эффективность работы проверена и доказана многими учеными. \n    Накопительный эффект и пролонгированное действие. Живые клетки воздействуют на клеточном уровне, и кожа, получив такую подпитку, сохраняется молодой довольно долго, а процесс увядания тормозится.', 25),
+	(25, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/laboratory-logo-icon-65057-84ae33a64a.png', 'Уникальная рецептура - универсального крема "для всех" быть просто не может, так как каждый человек уникален! Мы уверены, что именно такой подход гарантирует результат - отзывы наших дорогих клиенток это подтверждают! \n    Активный состав и гарантированно высокое качество. Состав производства нашей косметики включает в себя около 2000 ингредиентов. Используются только лучшие, современные активные вещества. \n    Максимум натуральных компонентов! Мы не используем в производстве косметики вытяжки - в лабораториях индивидуальной косметики I.C.Lab применяются только живые клетки растений. Их эффективность работы проверена и доказана многими учеными. \n    Накопительный эффект и пролонгированное действие. Живые клетки воздействуют на клеточном уровне, и кожа, получив такую подпитку, сохраняется молодой довольно долго, а процесс увядания тормозится.', 27),
+	(27, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, '/uploads/photos/21c2d575e9a7a1624f498b38cdeb788b-86474c911b.jpg', 'В разработке рецептур принимают участие косметологи и химики-технологи с многолетним опытом работы. В нашем ассортименте фито-минеральные средства для очищения и ухода за кожей лица и тела (литобиочистки, литобиомаски, литобиоскраб), солевые скрабы для тела, мягкое мыло Бельди.\n\nФито-минеральная косметика производится на основе уникального по своим характеристикам минерала вулканического происхождения – цеолита с добавлением каолина, сухих растительных экстрактов. Продукция не содержит искусственных консервантов, ароматизаторов, синтетических витаминов, загустителей и прочих вредных для здоровья модификаций. Производится и хранится в виде порошка, комбинируется с водой, маслами, душистыми водами, разнообразными активами. Разводится непосредственно перед применением и наносится на кожу. После нанесения начинает активно работать, отдавая коже полезные микроэлементы, витамины и помогает сохранить природную естественную красоту Вашей кожи.\n\nСолевые скрабы для тела изготовлены из натуральных компонетов, обладают н', 29);
+/*!40000 ALTER TABLE `easyii_photos` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_seotext`
---
-
-CREATE TABLE `easyii_seotext` (
-  `seotext_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_seotext
+CREATE TABLE IF NOT EXISTS `easyii_seotext` (
+  `seotext_id` int(11) NOT NULL AUTO_INCREMENT,
   `class` varchar(128) NOT NULL,
   `item_id` int(11) NOT NULL,
   `h1` varchar(128) DEFAULT NULL,
   `title` varchar(128) DEFAULT NULL,
   `keywords` varchar(128) DEFAULT NULL,
-  `description` varchar(128) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `description` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`seotext_id`),
+  UNIQUE KEY `model_item` (`class`,`item_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_seotext`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_seotext: 26 rows
+DELETE FROM `easyii_seotext`;
+/*!40000 ALTER TABLE `easyii_seotext` DISABLE KEYS */;
 INSERT INTO `easyii_seotext` (`seotext_id`, `class`, `item_id`, `h1`, `title`, `keywords`, `description`) VALUES
-(1, 'yii\\easyii\\modules\\page\\models\\Page', 1, '', 'Lerox косметика', 'Косметика Lerox', ''),
-(2, 'yii\\easyii\\modules\\page\\models\\Page', 2, 'Shop categories', 'Extended shop title', '', ''),
-(3, 'yii\\easyii\\modules\\page\\models\\Page', 3, 'Shop search results', 'Extended shop search title', '', ''),
-(4, 'yii\\easyii\\modules\\page\\models\\Page', 4, 'Ваша корзина', '', '', ''),
-(5, 'yii\\easyii\\modules\\page\\models\\Page', 5, 'Success', 'Extended order success title', '', ''),
-(7, 'yii\\easyii\\modules\\page\\models\\Page', 7, 'Articles H1', 'Extended articles title', '', ''),
-(8, 'yii\\easyii\\modules\\page\\models\\Page', 8, 'Photo gallery', 'Extended gallery title', '', ''),
-(9, 'yii\\easyii\\modules\\page\\models\\Page', 9, 'Guestbook H1', 'Отзывы', '', ''),
-(10, 'yii\\easyii\\modules\\page\\models\\Page', 10, 'Frequently Asked Question', 'Extended faq title', '', ''),
-(11, 'yii\\easyii\\modules\\page\\models\\Page', 11, 'Contact us', 'Extended contact title', '', ''),
-(18, 'yii\\easyii\\modules\\news\\models\\News', 2, 'Second news H1', '', '', ''),
-(19, 'yii\\easyii\\modules\\news\\models\\News', 3, 'Third news H1', '', '', ''),
-(20, 'yii\\easyii\\modules\\article\\models\\Category', 1, 'Articles category 1 H1', 'Extended category 1 title', '', ''),
-(21, 'yii\\easyii\\modules\\article\\models\\Category', 3, 'Subcategory 1 H1', 'Extended subcategory 1 title', '', ''),
-(22, 'yii\\easyii\\modules\\article\\models\\Category', 4, 'Subcategory 2 H1', 'Extended subcategory 2 title', '', ''),
-(34, 'yii\\easyii\\modules\\catalog\\models\\Category', 18, '', '', '', 'Текст в кремы для тела'),
-(24, 'yii\\easyii\\modules\\article\\models\\Item', 2, 'Second article H1', '', '', ''),
-(25, 'yii\\easyii\\modules\\article\\models\\Item', 3, 'Third article H1', '', '', ''),
-(26, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, 'Album 1 H1', 'Extended Album 1 title', '', ''),
-(27, 'yii\\easyii\\modules\\gallery\\models\\Category', 2, 'Album 2 H1', 'Extended Album 2 title', '', ''),
-(28, 'yii\\easyii\\modules\\page\\models\\Page', 12, 'Выберите нужную категорию:', '', '', ''),
-(29, 'yii\\easyii\\modules\\catalog\\models\\Category', 5, 'Уход за лицом', 'Уход за лицом', '', 'Крема, маски, лосьоны'),
-(30, 'yii\\easyii\\modules\\catalog\\models\\Category', 6, '', 'Уход за телом', '', 'Лосьоны, крема, и тд'),
-(31, 'yii\\easyii\\modules\\catalog\\models\\Category', 7, '', 'Уход за волосами', '', 'Шампуни, бальзамы.'),
-(32, 'yii\\easyii\\modules\\catalog\\models\\Category', 16, '', 'готовые средства', '', 'Страниц готовые средства\r\n\r\nСтраниц готовые средства Страниц готовые средства Страниц готовые средства Страниц готовые средства'),
-(35, 'yii\\easyii\\modules\\page\\models\\Page', 15, '', 'Готовая продукция', '', '');
+	(1, 'yii\\easyii\\modules\\page\\models\\Page', 1, '', 'Lerox косметика', 'Косметика Lerox', ''),
+	(2, 'yii\\easyii\\modules\\page\\models\\Page', 2, 'Shop categories', 'Extended shop title', '', ''),
+	(3, 'yii\\easyii\\modules\\page\\models\\Page', 3, 'Shop search results', 'Extended shop search title', '', ''),
+	(4, 'yii\\easyii\\modules\\page\\models\\Page', 4, 'Ваша корзина', '', '', ''),
+	(5, 'yii\\easyii\\modules\\page\\models\\Page', 5, 'Success', 'Extended order success title', '', ''),
+	(7, 'yii\\easyii\\modules\\page\\models\\Page', 7, 'Articles H1', 'Extended articles title', '', ''),
+	(8, 'yii\\easyii\\modules\\page\\models\\Page', 8, 'Photo gallery', 'Extended gallery title', '', ''),
+	(9, 'yii\\easyii\\modules\\page\\models\\Page', 9, 'Guestbook H1', 'Отзывы', '', ''),
+	(10, 'yii\\easyii\\modules\\page\\models\\Page', 10, 'Frequently Asked Question', 'Extended faq title', '', ''),
+	(11, 'yii\\easyii\\modules\\page\\models\\Page', 11, 'Contact us', 'Extended contact title', '', ''),
+	(18, 'yii\\easyii\\modules\\news\\models\\News', 2, 'Second news H1', '', '', ''),
+	(19, 'yii\\easyii\\modules\\news\\models\\News', 3, 'Third news H1', '', '', ''),
+	(20, 'yii\\easyii\\modules\\article\\models\\Category', 1, 'Articles category 1 H1', 'Extended category 1 title', '', ''),
+	(21, 'yii\\easyii\\modules\\article\\models\\Category', 3, 'Subcategory 1 H1', 'Extended subcategory 1 title', '', ''),
+	(22, 'yii\\easyii\\modules\\article\\models\\Category', 4, 'Subcategory 2 H1', 'Extended subcategory 2 title', '', ''),
+	(34, 'yii\\easyii\\modules\\catalog\\models\\Category', 18, '', '', '', 'Текст в кремы для тела'),
+	(24, 'yii\\easyii\\modules\\article\\models\\Item', 2, 'Second article H1', '', '', ''),
+	(25, 'yii\\easyii\\modules\\article\\models\\Item', 3, 'Third article H1', '', '', ''),
+	(26, 'yii\\easyii\\modules\\gallery\\models\\Category', 1, 'Album 1 H1', 'Extended Album 1 title', '', ''),
+	(27, 'yii\\easyii\\modules\\gallery\\models\\Category', 2, 'Album 2 H1', 'Extended Album 2 title', '', ''),
+	(28, 'yii\\easyii\\modules\\page\\models\\Page', 12, 'Выберите нужную категорию:', '', '', ''),
+	(29, 'yii\\easyii\\modules\\catalog\\models\\Category', 5, 'Уход за лицом', 'Уход за лицом', '', 'Крема, маски, лосьоны'),
+	(30, 'yii\\easyii\\modules\\catalog\\models\\Category', 6, '', 'Уход за телом', '', 'Лосьоны, крема, и тд'),
+	(31, 'yii\\easyii\\modules\\catalog\\models\\Category', 7, '', 'Уход за волосами', '', 'Шампуни, бальзамы.'),
+	(32, 'yii\\easyii\\modules\\catalog\\models\\Category', 16, '', 'готовые средства', '', 'Страниц готовые средства\r\n\r\nСтраниц готовые средства Страниц готовые средства Страниц готовые средства Страниц готовые средства'),
+	(35, 'yii\\easyii\\modules\\page\\models\\Page', 15, '', 'Готовая продукция', '', '');
+/*!40000 ALTER TABLE `easyii_seotext` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_settings`
---
-
-CREATE TABLE `easyii_settings` (
-  `setting_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_settings
+CREATE TABLE IF NOT EXISTS `easyii_settings` (
+  `setting_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `title` varchar(128) NOT NULL,
   `value` varchar(1024) NOT NULL,
-  `visibility` tinyint(1) DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `visibility` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`setting_id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_settings`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_settings: 10 rows
+DELETE FROM `easyii_settings`;
+/*!40000 ALTER TABLE `easyii_settings` DISABLE KEYS */;
 INSERT INTO `easyii_settings` (`setting_id`, `name`, `title`, `value`, `visibility`) VALUES
-(1, 'easyii_version', 'EasyiiCMS version', '0.9', 0),
-(2, 'recaptcha_key', 'ReCaptcha key', '', 1),
-(3, 'password_salt', 'Password salt', 'JCTp7oC5-XVyLbALv5GkMLCjzp1R6zKy', 0),
-(4, 'root_auth_key', 'Root authorization key', 'UoDZ3v3KHc6eSDcWLLu6rJVlo_v-q99a', 0),
-(5, 'root_password', 'Пароль разработчика', 'c2289103cc08534427d1b9791f9c1aa59ce373f4', 1),
-(6, 'auth_time', 'Время авторизации', '86400', 1),
-(7, 'robot_email', 'E-mail рассыльщика', 'noreply@shop-yii2.loc', 1),
-(8, 'admin_email', 'E-mail администратора', 'admin@shop.loc', 2),
-(9, 'recaptcha_secret', 'ReCaptcha secret', '', 1),
-(10, 'toolbar_position', 'Позиция панели на сайте ("top" or "bottom")', 'top', 1);
+	(1, 'easyii_version', 'EasyiiCMS version', '0.9', 0),
+	(2, 'recaptcha_key', 'ReCaptcha key', '', 1),
+	(3, 'password_salt', 'Password salt', 'JCTp7oC5-XVyLbALv5GkMLCjzp1R6zKy', 0),
+	(4, 'root_auth_key', 'Root authorization key', 'UoDZ3v3KHc6eSDcWLLu6rJVlo_v-q99a', 0),
+	(5, 'root_password', 'Пароль разработчика', 'c2289103cc08534427d1b9791f9c1aa59ce373f4', 1),
+	(6, 'auth_time', 'Время авторизации', '86400', 1),
+	(7, 'robot_email', 'E-mail рассыльщика', 'noreply@shop-yii2.loc', 1),
+	(8, 'admin_email', 'E-mail администратора', 'admin@shop.loc', 2),
+	(9, 'recaptcha_secret', 'ReCaptcha secret', '', 1),
+	(10, 'toolbar_position', 'Позиция панели на сайте ("top" or "bottom")', 'top', 1);
+/*!40000 ALTER TABLE `easyii_settings` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_shopcart_goods`
---
-
-CREATE TABLE `easyii_shopcart_goods` (
-  `good_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_shopcart_goods
+CREATE TABLE IF NOT EXISTS `easyii_shopcart_goods` (
+  `good_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) DEFAULT NULL,
   `item_id` int(11) DEFAULT NULL,
   `count` int(11) DEFAULT NULL,
   `options` varchar(255) NOT NULL,
   `price` float DEFAULT '0',
-  `discount` int(11) DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `discount` int(11) DEFAULT '0',
+  PRIMARY KEY (`good_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=146 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_shopcart_goods`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_shopcart_goods: 95 rows
+DELETE FROM `easyii_shopcart_goods`;
+/*!40000 ALTER TABLE `easyii_shopcart_goods` DISABLE KEYS */;
 INSERT INTO `easyii_shopcart_goods` (`good_id`, `order_id`, `item_id`, `count`, `options`, `price`, `discount`) VALUES
-(2, 1, 11, 1, 'extr-jenshen|extr-arniki|active-mentol', 24, 0),
-(3, 1, 6, 1, 'extr-koraduba|active-mentol', 26, 0),
-(4, 1, 2, 1, '', 1000, 10),
-(5, 2, 14, 1, 'extr-koraduba|extr-jenshen|active-aloe|efir-apelsin', 36, 0),
-(6, 2, 13, 1, 'extr-koraduba|extr-jenshen|extr-arniki', 23, 0),
-(7, 3, 5, 1, 'efir-gvozd|vitamin-f', 35, 0),
-(8, 3, 5, 1, 'vitamin-f', 35, 0),
-(9, 4, 5, 1, 'active-scvalan|active-aloe', 35, 0),
-(10, 4, 9, 1, 'active-aloe|vitamin-f|efir-gvozd|extr-arniki', 23, 0),
-(11, 5, 5, 1, 'vitamin-f', 35, 0),
-(12, 6, 6, 1, 'active-scvalan|active-mentol', 26, 0),
-(13, 6, 11, 1, 'extr-jenshen|extr-arniki|extr-koraduba', 24, 0),
-(14, 6, 2, 1, '', 1000, 10),
-(15, 7, 5, 3, 'active-scvalan|active-mentol|active-aloe', 35, 0),
-(16, 7, 14, 1, 'extr-koraduba|extr-jenshen|active-scvalan', 36, 0),
-(17, 7, 11, 5, 'efir-gvozd|extr-koraduba|extr-arniki', 24, 0),
-(113, 53, 55, 1, '', 60, 0),
-(112, 53, 52, 3, '', 135, 0),
-(115, 52, 55, 1, '', 60, 0),
-(110, 52, 51, 1, '', 135, 0),
-(108, 51, 58, 1, '', 110, 0),
-(109, 51, 61, 1, '', 110, 0),
-(107, 51, 27, 1, '', 56, 0),
-(106, 51, 51, 1, '', 135, 0),
-(25, 11, 5, 10, 'active-scvalan', 35, 0),
-(27, 11, 10, 2, 'extr-jenshen|extr-koraduba|extr-arniki', 21, 0),
-(28, 12, 5, 1, 'efir-gvozd|active-mentol|extr-jenshen', 35, 0),
-(29, 13, 5, 1, 'efir-gvozd|active-mentol|extr-arniki', 35, 0),
-(31, 14, 5, 1, 'active-scvalan|extr-koraduba|active-aloe', 35, 0),
-(32, 14, 11, 1, 'active-scvalan|active-mentol|extr-koraduba|extr-arniki', 24, 0),
-(33, 15, 10, 3, 'active-scvalan|active-mentol|active-aloe', 21, 0),
-(34, 15, 5, 1, 'extr-jenshen|extr-koraduba|active-scvalan', 35, 0),
-(37, 15, 5, 1, 'vitamin-f', 35, 0),
-(39, 16, 13, 1, 'active-scvalan|active-mentol', 23, 0),
-(40, 17, 5, 1, 'active-scvalan|active-mentol|active-aloe', 35, 0),
-(58, 18, 13, 2, 'vitamin-f|active-mentol|extr-koraduba', 23, 0),
-(61, 21, 31, 1, '', 65, 0),
-(60, 20, 27, 1, '', 56, 0),
-(59, 19, 31, 1, '', 65, 0),
-(62, 21, 7, 1, 'active-mentol|extr-koraduba', 42, 0),
-(63, 22, 27, 1, '', 56, 0),
-(64, 23, 37, 1, '', 23, 0),
-(65, 24, 29, 1, '', 45, 0),
-(66, 25, 4, 1, 'efir-apelsin', 20, 0),
-(67, 26, 4, 1, 'vitamin-f|active-aloe|efir-apelsin', 20, 0),
-(68, 26, 7, 1, 'efir-apelsin|active-scvalan|extr-jenshen', 42, 0),
-(69, 26, 6, 1, 'efir-gvozd|vitamin-f', 26, 0),
-(70, 26, 37, 1, '', 23, 0),
-(71, 27, 28, 1, '', 43, 0),
-(72, 27, 13, 1, '', 23, 0),
-(73, 28, 27, 1, '', 56, 0),
-(74, 29, 30, 1, '', 65, 0),
-(75, 29, 28, 1, '', 43, 0),
-(76, 30, 6, 1, 'efir-gvozd|efir-apelsin|extr-jenshen', 26, 0),
-(77, 30, 30, 1, '', 65, 0),
-(78, 31, 28, 1, '', 43, 0),
-(79, 32, 10, 1, 'efir-gvozd|efir-apelsin|active-scvalan', 21, 0),
-(80, 32, 29, 1, '', 45.23, 0),
-(81, 33, 14, 1, 'efir-apelsin|active-scvalan|vitamin-f', 36, 0),
-(82, 34, 29, 1, '', 45.23, 0),
-(83, 34, 5, 1, 'efir-apelsin|efir-gvozd|active-scvalan', 35, 0),
-(102, 48, 5, 1, 'efir-apelsin|efir-gvozd|vitamin-f', 35, 0),
-(103, 49, 27, 1, '', 56, 0),
-(114, 53, 54, 2, '', 60, 0),
-(105, 50, 11, 1, 'efir-gvozd|efir-apelsin|vitamin-f|extr-jenshen|active-aloe', 24, 0),
-(116, 54, 64, 1, '', 160, 0),
-(117, 54, 5, 1, 'efir-apelsin|efir-gvozd|active-scvalan', 35, 0),
-(118, 55, 52, 1, '', 135, 0),
-(119, 56, 52, 2, '', 135, 0),
-(120, 57, 5, 1, 'efir-apelsin|active-scvalan|extr-jenshen', 35, 0),
-(121, 58, 63, 1, '', 160, 0),
-(122, 59, 5, 1, 'efir-gvozd|efir-apelsin|active-mentol', 35, 0),
-(123, 60, 52, 1, '', 135, 0),
-(124, 61, 53, 1, '', 135, 0),
-(125, 62, 64, 1, '', 160, 0),
-(126, 63, 78, 1, '', 75, 0),
-(127, 64, 63, 1, '', 160, 0),
-(128, 65, 80, 1, '', 130, 0),
-(129, 66, 61, 1, '', 110, 0),
-(130, 67, 63, 1, '', 160, 0),
-(131, 68, 80, 1, '', 130, 0),
-(132, 69, 51, 1, '', 135, 0),
-(133, 70, 62, 1, '', 60, 0),
-(134, 71, 66, 1, '', 90, 0),
-(135, 72, 79, 1, '', 130, 0),
-(136, 73, 76, 1, '', 120, 0),
-(137, 74, 75, 1, '', 120, 0),
-(138, 75, 77, 1, '', 130, 0),
-(139, 76, 54, 1, '', 60, 0),
-(140, 77, 70, 1, '', 120, 0),
-(141, 78, 74, 1, '', 120, 0),
-(142, 79, 69, 1, '', 75, 0),
-(143, 80, 55, 1, '', 60, 0),
-(144, 81, 57, 1, '', 135, 0),
-(145, 82, 65, 1, '', 90, 0);
+	(2, 1, 11, 1, 'extr-jenshen|extr-arniki|active-mentol', 24, 0),
+	(3, 1, 6, 1, 'extr-koraduba|active-mentol', 26, 0),
+	(4, 1, 2, 1, '', 1000, 10),
+	(5, 2, 14, 1, 'extr-koraduba|extr-jenshen|active-aloe|efir-apelsin', 36, 0),
+	(6, 2, 13, 1, 'extr-koraduba|extr-jenshen|extr-arniki', 23, 0),
+	(7, 3, 5, 1, 'efir-gvozd|vitamin-f', 35, 0),
+	(8, 3, 5, 1, 'vitamin-f', 35, 0),
+	(9, 4, 5, 1, 'active-scvalan|active-aloe', 35, 0),
+	(10, 4, 9, 1, 'active-aloe|vitamin-f|efir-gvozd|extr-arniki', 23, 0),
+	(11, 5, 5, 1, 'vitamin-f', 35, 0),
+	(12, 6, 6, 1, 'active-scvalan|active-mentol', 26, 0),
+	(13, 6, 11, 1, 'extr-jenshen|extr-arniki|extr-koraduba', 24, 0),
+	(14, 6, 2, 1, '', 1000, 10),
+	(15, 7, 5, 3, 'active-scvalan|active-mentol|active-aloe', 35, 0),
+	(16, 7, 14, 1, 'extr-koraduba|extr-jenshen|active-scvalan', 36, 0),
+	(17, 7, 11, 5, 'efir-gvozd|extr-koraduba|extr-arniki', 24, 0),
+	(113, 53, 55, 1, '', 60, 0),
+	(112, 53, 52, 3, '', 135, 0),
+	(115, 52, 55, 1, '', 60, 0),
+	(110, 52, 51, 1, '', 135, 0),
+	(108, 51, 58, 1, '', 110, 0),
+	(109, 51, 61, 1, '', 110, 0),
+	(107, 51, 27, 1, '', 56, 0),
+	(106, 51, 51, 1, '', 135, 0),
+	(25, 11, 5, 10, 'active-scvalan', 35, 0),
+	(27, 11, 10, 2, 'extr-jenshen|extr-koraduba|extr-arniki', 21, 0),
+	(28, 12, 5, 1, 'efir-gvozd|active-mentol|extr-jenshen', 35, 0),
+	(29, 13, 5, 1, 'efir-gvozd|active-mentol|extr-arniki', 35, 0),
+	(31, 14, 5, 1, 'active-scvalan|extr-koraduba|active-aloe', 35, 0),
+	(32, 14, 11, 1, 'active-scvalan|active-mentol|extr-koraduba|extr-arniki', 24, 0),
+	(33, 15, 10, 3, 'active-scvalan|active-mentol|active-aloe', 21, 0),
+	(34, 15, 5, 1, 'extr-jenshen|extr-koraduba|active-scvalan', 35, 0),
+	(37, 15, 5, 1, 'vitamin-f', 35, 0),
+	(39, 16, 13, 1, 'active-scvalan|active-mentol', 23, 0),
+	(40, 17, 5, 1, 'active-scvalan|active-mentol|active-aloe', 35, 0),
+	(58, 18, 13, 2, 'vitamin-f|active-mentol|extr-koraduba', 23, 0),
+	(61, 21, 31, 1, '', 65, 0),
+	(60, 20, 27, 1, '', 56, 0),
+	(59, 19, 31, 1, '', 65, 0),
+	(62, 21, 7, 1, 'active-mentol|extr-koraduba', 42, 0),
+	(63, 22, 27, 1, '', 56, 0),
+	(64, 23, 37, 1, '', 23, 0),
+	(65, 24, 29, 1, '', 45, 0),
+	(66, 25, 4, 1, 'efir-apelsin', 20, 0),
+	(67, 26, 4, 1, 'vitamin-f|active-aloe|efir-apelsin', 20, 0),
+	(68, 26, 7, 1, 'efir-apelsin|active-scvalan|extr-jenshen', 42, 0),
+	(69, 26, 6, 1, 'efir-gvozd|vitamin-f', 26, 0),
+	(70, 26, 37, 1, '', 23, 0),
+	(71, 27, 28, 1, '', 43, 0),
+	(72, 27, 13, 1, '', 23, 0),
+	(73, 28, 27, 1, '', 56, 0),
+	(74, 29, 30, 1, '', 65, 0),
+	(75, 29, 28, 1, '', 43, 0),
+	(76, 30, 6, 1, 'efir-gvozd|efir-apelsin|extr-jenshen', 26, 0),
+	(77, 30, 30, 1, '', 65, 0),
+	(78, 31, 28, 1, '', 43, 0),
+	(79, 32, 10, 1, 'efir-gvozd|efir-apelsin|active-scvalan', 21, 0),
+	(80, 32, 29, 1, '', 45.23, 0),
+	(81, 33, 14, 1, 'efir-apelsin|active-scvalan|vitamin-f', 36, 0),
+	(82, 34, 29, 1, '', 45.23, 0),
+	(83, 34, 5, 1, 'efir-apelsin|efir-gvozd|active-scvalan', 35, 0),
+	(102, 48, 5, 1, 'efir-apelsin|efir-gvozd|vitamin-f', 35, 0),
+	(103, 49, 27, 1, '', 56, 0),
+	(114, 53, 54, 2, '', 60, 0),
+	(105, 50, 11, 1, 'efir-gvozd|efir-apelsin|vitamin-f|extr-jenshen|active-aloe', 24, 0),
+	(116, 54, 64, 1, '', 160, 0),
+	(117, 54, 5, 1, 'efir-apelsin|efir-gvozd|active-scvalan', 35, 0),
+	(118, 55, 52, 1, '', 135, 0),
+	(119, 56, 52, 2, '', 135, 0),
+	(120, 57, 5, 1, 'efir-apelsin|active-scvalan|extr-jenshen', 35, 0),
+	(121, 58, 63, 1, '', 160, 0),
+	(122, 59, 5, 1, 'efir-gvozd|efir-apelsin|active-mentol', 35, 0),
+	(123, 60, 52, 1, '', 135, 0),
+	(124, 61, 53, 1, '', 135, 0),
+	(125, 62, 64, 1, '', 160, 0),
+	(126, 63, 78, 1, '', 75, 0),
+	(127, 64, 63, 1, '', 160, 0),
+	(128, 65, 80, 1, '', 130, 0),
+	(129, 66, 61, 1, '', 110, 0),
+	(130, 67, 63, 1, '', 160, 0),
+	(131, 68, 80, 1, '', 130, 0),
+	(132, 69, 51, 1, '', 135, 0),
+	(133, 70, 62, 1, '', 60, 0),
+	(134, 71, 66, 1, '', 90, 0),
+	(135, 72, 79, 1, '', 130, 0),
+	(136, 73, 76, 1, '', 120, 0),
+	(137, 74, 75, 1, '', 120, 0),
+	(138, 75, 77, 1, '', 130, 0),
+	(139, 76, 54, 1, '', 60, 0),
+	(140, 77, 70, 1, '', 120, 0),
+	(141, 78, 74, 1, '', 120, 0),
+	(142, 79, 69, 1, '', 75, 0),
+	(143, 80, 55, 1, '', 60, 0),
+	(144, 81, 57, 1, '', 135, 0),
+	(145, 82, 65, 1, '', 90, 0);
+/*!40000 ALTER TABLE `easyii_shopcart_goods` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_shopcart_orders`
---
-
-CREATE TABLE `easyii_shopcart_orders` (
-  `order_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_shopcart_orders
+CREATE TABLE IF NOT EXISTS `easyii_shopcart_orders` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `address` varchar(255) NOT NULL,
   `phone` varchar(64) NOT NULL,
@@ -913,492 +853,172 @@ CREATE TABLE `easyii_shopcart_orders` (
   `ip` varchar(16) NOT NULL,
   `time` int(11) DEFAULT '0',
   `new` tinyint(1) DEFAULT '0',
-  `status` tinyint(1) DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `status` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`order_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_shopcart_orders`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_shopcart_orders: 66 rows
+DELETE FROM `easyii_shopcart_orders`;
+/*!40000 ALTER TABLE `easyii_shopcart_orders` DISABLE KEYS */;
 INSERT INTO `easyii_shopcart_orders` (`order_id`, `name`, `address`, `phone`, `email`, `comment`, `remark`, `access_token`, `ip`, `time`, `new`, `status`) VALUES
-(1, '', '', '', '', '', '', 'pYZF0k0DE4cizh1_x-A9d2YPEHlCcFCA', '127.0.0.1', 1469810530, 0, 0),
-(2, 'rewrewr', 'hgfdhjgfhjgf', '654654', 'wqwere@nnn.yty', 'kjhkljhlkjh', '', '22yAWWDxXvFlOmfIfs3-L7ng3mA_B_ph', '127.0.0.1', 1469813207, 0, 2),
-(3, '', '', '', '', '', '', 'S4ToGxaK3Sc-10DYTCF8gK7Y-zlE3E0t', '127.0.0.1', 1470915598, 0, 0),
-(4, '', '', '', '', '', '', 'm-JMXtfZr7tjKIr4WoQSijEMeG2odx61', '127.0.0.1', 1470999561, 0, 0),
-(5, '', '', '', '', '', '', 'oazDcL4VU0bqYjfblC3OoHNfhpn1khjz', '127.0.0.1', 1471078613, 0, 0),
-(6, '', '', '', '', '', '', 'Cnrz6kEiVwh8MpsbH7ydxSkMptFhhA_o', '127.0.0.1', 1471167397, 0, 0),
-(7, '', '', '', '', '', '', 'v0_sHEocBA9_OpNAXSqGmB5qY8-D6DqD', '127.0.0.1', 1471185106, 0, 0),
-(53, '', '', '', '', '', '', 'zliSovsbX0b3MCMh79Lj9cNNxDuLevbJ', '85.238.101.115', 1476967477, 0, 0),
-(54, '', '', '', '', '', '', 'vVGqO51eMdUEtWmIyyEfrXMXSzkQxu94', '176.119.122.136', 1477242559, 0, 0),
-(52, '', '', '', '', '', '', 'nqYyC1gqh5Fr-HJwhVICr1mm4HbHxtYv', '176.119.122.136', 1476967170, 0, 0),
-(51, '', '', '', '', '', '', 'oez_Kt5aIhr8Wo75i03MLop3AunMth21', '85.114.202.243', 1476962826, 0, 0),
-(11, 'serg614', 'qqqq', '2112412', 'qqq@dfdgf.rt', 'zfzfzsfa', '', 't9EUDRlIEHLRpzDbkzC0fQqjOCmzUIlE', '127.0.0.1', 1471247595, 0, 1),
-(12, '', '', '', '', '', '', 'HchBFHrOrQdPUAOO2ftw0SZJ65Snq67M', '127.0.0.1', 1471545979, 0, 0),
-(13, '', '', '', '', '', '', 'OAxQ86yraT7CqMJx5CXQM0i-pN4Ps4IA', '127.0.0.1', 1471784343, 0, 0),
-(14, '', '', '', '', '', '', 'TFLtc_lkJjXGyxbjUslE15FMwwdkdII4', '127.0.0.1', 1471799769, 0, 0),
-(15, '', '', '', '', '', '', 'vINzAe0YZkdV7fnjSUBXR6CnIvsyKmZT', '127.0.0.1', 1471884442, 0, 0),
-(16, '', '', '', '', '', '', 'eNiQ5FK0e0DdDAd5RQv7HSgMijp4RUXb', '127.0.0.1', 1471975843, 0, 0),
-(17, '', '', '', '', '', '', 'Ozxw3bwPLvYYcviQ2eewo8enuCbo65zo', '127.0.0.1', 1472840328, 0, 0),
-(18, '', '', '', '', '', '', 'WsIbqp7q1z0TNVl6KVmDde5e7eTVKlQy', '127.0.0.1', 1472985374, 0, 0),
-(19, '', '', '', '', '', '', 'jeFUwMk5AXeFRDJ2oJ6Y4EURqob2Zt9H', '127.0.0.1', 1473008594, 0, 0),
-(20, '', '', '', '', '', '', 'qi9kAii-thwNcxU-feaBlWDNt_DzAj3z', '127.0.0.1', 1473094079, 0, 0),
-(21, '', '', '', '', '', '', 'RHdMM7z5CUMQwcpka1_BtWZoI_zVk2tn', '127.0.0.1', 1473191489, 0, 0),
-(22, '', '', '', '', '', '', '3LkQR_C4tr2n_Tk9dz264mB9i2mXMV6h', '127.0.0.1', 1473353164, 0, 0),
-(23, 'juytuyt', 'oiuoiu', '876798', 'hgfhgf@mcff.ty', 'lkjlkj', '', 'hTR5abU9D1gLnlJ4A7JeCEduO0tTNcNx', '127.0.0.1', 1473595314, 0, 2),
-(24, '', '', '', '', '', '', '_7-weMlr3CT1G8BaygoswJO3Iz5yXBef', '127.0.0.1', 1473783409, 0, 0),
-(25, '', '', '', '', '', '', 'UIsYnOwjybJaMvyYw3Y0hpbaQsNLVI9M', '127.0.0.1', 1474554986, 0, 0),
-(26, '', '', '', '', '', '', 'tsZr4KcOAqUZI9Tqlrp8Qt9vToQlWRYL', '127.0.0.1', 1474883408, 0, 0),
-(27, '', '', '', '', '', '', '_RsdFHo8VmPsPU8Svw7EzSM_NT0Jkmc4', '127.0.0.1', 1474968074, 0, 0),
-(28, 'adada', 'aaddad', '3442424', 'adada@dfdf.df', 'dxsfsdgsdgsdgsdg', '', 'sctHl30oFrtRzhuKPvx-UgCRzvBjw4ms', '127.0.0.1', 1475313361, 0, 1),
-(29, '', '', '', '', '', '', 'hhL5Gas1_Y78DtV8EBQsinCTYR7T5iP_', '127.0.0.1', 1475314595, 0, 0),
-(30, '', '', '', '', '', '', 'QLaq7r5CHY_F2yxgFzD5H5LvvW2Alkoh', '127.0.0.1', 1475327722, 0, 0),
-(31, '', '', '', '', '', '', 'lP_bEK-fbl9ZK9EHXp-p8Z84u2WDlKgQ', '127.0.0.1', 1475344072, 0, 0),
-(32, '', '', '', '', '', '', '-vQCP7ySbdKp7GpnsA4Pk7Gnbcb7__v-', '127.0.0.1', 1475574027, 0, 0),
-(33, '', '', '', '', '', '', '67QlVTuld7XhdGNAbM1pSmKPJYyc53W3', '127.0.0.1', 1475587326, 0, 0),
-(34, '', '', '', '', '', '', 'KW3wvaldMkOVCOF7mGUr4nFDDwwpAr9b', '127.0.0.1', 1475591210, 0, 0),
-(48, '', '', '', '', '', '', 'I3EZgWzY_JgLSsSLTFKcg40DwFw8Aqi5', '176.119.122.136', 1476633075, 0, 0),
-(49, '', '', '', '', '', '', '7FFdFQZqeho2VfRdguKf5Dy-hAbQgXn5', '195.245.221.69', 1476723709, 0, 0),
-(50, 'Аннння', 'Нагорная', '2222', 'perina100@gmail.com', '', 'Ваш заказ обработан', '7NO7ZDu0srSCcEhxJ89jaOLscWvnqkKg', '195.245.221.69', 1476819365, 0, 4),
-(55, '', '', '', '', '', '', 'thL82Hjb50ZZcbgmo8XO8Qr58smFLUtQ', '85.114.202.243', 1477295275, 0, 0),
-(56, '', '', '', '', '', '', 'iR4SNlr7Eyx8XbA000N8JgHw-p60YPc5', '85.238.102.42', 1477319938, 0, 0),
-(57, '', '', '', '', '', '', 'Vq4iDXfz-KX4HWw9YN_HzJdIgKGoEJwo', '176.119.122.136', 1477385650, 0, 0),
-(58, '', '', '', '', '', '', '9LFulQ9wrcf2L-LHz6t_VeXqswUmQPiE', '85.114.202.243', 1477401141, 0, 0),
-(59, '', '', '', '', '', '', '0vNkgx5GFc7OnhZ3UjJZJJN1IsXvUVjE', '85.238.103.52', 1477480139, 0, 0),
-(60, '', '', '', '', '', '', 'xiCK9MRGmGc6aek0SMn_I7EmAwbHRcSt', '141.8.184.10', 1477907138, 0, 0),
-(61, '', '', '', '', '', '', 'uYMd1kLVGUIDjb9WsnJS79hyw7X3lVJJ', '130.193.51.9', 1477907409, 0, 0),
-(62, '', '', '', '', '', '', 'Ty0QXrwV_I7M3r0aRpEbmLEzTmxNU3K1', '141.8.183.29', 1477907670, 0, 0),
-(63, '', '', '', '', '', '', 'QKgcO23OSs1PGu5S_aDjC1No_74iN0yX', '141.8.142.53', 1477910939, 0, 0),
-(64, '', '', '', '', '', '', 'Lg-pNzCc93dbsONV8pu9ZcKTJup-M83n', '141.8.132.36', 1477920129, 0, 0),
-(65, '', '', '', '', '', '', 'rtGKv6r4b6qOMg0KoTSPjiBXwJ2YmSzI', '141.8.184.10', 1477920441, 0, 0),
-(66, '', '', '', '', '', '', 'La-TGQEIM5OcH2D-gFGfuTd_a3OKNvUl', '141.8.183.13', 1477924924, 0, 0),
-(67, '', '', '', '', '', '', 'i_hg2bXL49KceFD_hoaIGBnkl8MjjlX5', '141.8.184.27', 1477932392, 0, 0),
-(68, '', '', '', '', '', '', 'HLWjJL8xi3cpuwbz9a9TZBNvB9hC6fhh', '130.193.51.9', 1477936029, 0, 0),
-(69, '', '', '', '', '', '', 'ACvaYc6aGOc0Occ26qKFb5SRkYqj6-XR', '141.8.184.27', 1477936516, 0, 0),
-(70, '', '', '', '', '', '', 'cKm3qtynmFxUlDRNxTZb99dg3CY_C0kO', '130.193.51.9', 1477944876, 0, 0),
-(71, '', '', '', '', '', '', 'DZEzP-5rS4wVxUckeNKbUT5DSVQyoH_A', '141.8.142.53', 1477948566, 0, 0),
-(72, '', '', '', '', '', '', 'xGEulUU3r_7ilmrEscWNJw4Y5SqiN__X', '141.8.183.13', 1477952680, 0, 0),
-(73, '', '', '', '', '', '', 'QPdtzwgAHdwrNZzdG65oqAu9nJHYdzCx', '93.158.152.49', 1477953238, 0, 0),
-(74, '', '', '', '', '', '', 'MWZubsr-25KqfUPRSjUegi3l9zLe1-MU', '130.193.50.12', 1477972028, 0, 0),
-(75, '', '', '', '', '', '', 'eb-qHHqAdqGtEkBtC_BVKx-pzLBY_eQa', '141.8.184.27', 1477972410, 0, 0),
-(76, '', '', '', '', '', '', 'vP9C0SK1dsRI43_WCm4R-Vlu7jcXuIgB', '93.158.152.49', 1477990104, 0, 0),
-(77, '', '', '', '', '', '', 'sm_MoQm9y-SR93nNEizKHD-7vYpJJZ3G', '130.193.51.9', 1477990438, 0, 0),
-(78, '', '', '', '', '', '', 'LMR-lPBC1NoCzartbnqtUBoINGbs2eOU', '141.8.184.10', 1478031131, 0, 0),
-(79, '', '', '', '', '', '', 'D-5JHO4XpsuTs_s7-X1QvoYj5_18Zo77', '93.158.152.37', 1478031930, 0, 0),
-(80, '', '', '', '', '', '', 'C-fdSwNtDdBggNSFEIOw4shQ1CV-Oh5N', '141.8.142.68', 1478032652, 0, 0),
-(81, '', '', '', '', '', '', 'KSTJyifSIGb6C7LYDmn4XlygpAG2mgtw', '141.8.183.13', 1478077008, 0, 0),
-(82, '', '', '', '', '', '', 'csK3EfGfpBzTE2rThugrtxkQte74wU_x', '178.154.149.12', 1478117943, 0, 0);
+	(1, '', '', '', '', '', '', 'pYZF0k0DE4cizh1_x-A9d2YPEHlCcFCA', '127.0.0.1', 1469810530, 0, 0),
+	(2, 'rewrewr', 'hgfdhjgfhjgf', '654654', 'wqwere@nnn.yty', 'kjhkljhlkjh', '', '22yAWWDxXvFlOmfIfs3-L7ng3mA_B_ph', '127.0.0.1', 1469813207, 0, 2),
+	(3, '', '', '', '', '', '', 'S4ToGxaK3Sc-10DYTCF8gK7Y-zlE3E0t', '127.0.0.1', 1470915598, 0, 0),
+	(4, '', '', '', '', '', '', 'm-JMXtfZr7tjKIr4WoQSijEMeG2odx61', '127.0.0.1', 1470999561, 0, 0),
+	(5, '', '', '', '', '', '', 'oazDcL4VU0bqYjfblC3OoHNfhpn1khjz', '127.0.0.1', 1471078613, 0, 0),
+	(6, '', '', '', '', '', '', 'Cnrz6kEiVwh8MpsbH7ydxSkMptFhhA_o', '127.0.0.1', 1471167397, 0, 0),
+	(7, '', '', '', '', '', '', 'v0_sHEocBA9_OpNAXSqGmB5qY8-D6DqD', '127.0.0.1', 1471185106, 0, 0),
+	(53, '', '', '', '', '', '', 'zliSovsbX0b3MCMh79Lj9cNNxDuLevbJ', '85.238.101.115', 1476967477, 0, 0),
+	(54, '', '', '', '', '', '', 'vVGqO51eMdUEtWmIyyEfrXMXSzkQxu94', '176.119.122.136', 1477242559, 0, 0),
+	(52, '', '', '', '', '', '', 'nqYyC1gqh5Fr-HJwhVICr1mm4HbHxtYv', '176.119.122.136', 1476967170, 0, 0),
+	(51, '', '', '', '', '', '', 'oez_Kt5aIhr8Wo75i03MLop3AunMth21', '85.114.202.243', 1476962826, 0, 0),
+	(11, 'serg614', 'qqqq', '2112412', 'qqq@dfdgf.rt', 'zfzfzsfa', '', 't9EUDRlIEHLRpzDbkzC0fQqjOCmzUIlE', '127.0.0.1', 1471247595, 0, 1),
+	(12, '', '', '', '', '', '', 'HchBFHrOrQdPUAOO2ftw0SZJ65Snq67M', '127.0.0.1', 1471545979, 0, 0),
+	(13, '', '', '', '', '', '', 'OAxQ86yraT7CqMJx5CXQM0i-pN4Ps4IA', '127.0.0.1', 1471784343, 0, 0),
+	(14, '', '', '', '', '', '', 'TFLtc_lkJjXGyxbjUslE15FMwwdkdII4', '127.0.0.1', 1471799769, 0, 0),
+	(15, '', '', '', '', '', '', 'vINzAe0YZkdV7fnjSUBXR6CnIvsyKmZT', '127.0.0.1', 1471884442, 0, 0),
+	(16, '', '', '', '', '', '', 'eNiQ5FK0e0DdDAd5RQv7HSgMijp4RUXb', '127.0.0.1', 1471975843, 0, 0),
+	(17, '', '', '', '', '', '', 'Ozxw3bwPLvYYcviQ2eewo8enuCbo65zo', '127.0.0.1', 1472840328, 0, 0),
+	(18, '', '', '', '', '', '', 'WsIbqp7q1z0TNVl6KVmDde5e7eTVKlQy', '127.0.0.1', 1472985374, 0, 0),
+	(19, '', '', '', '', '', '', 'jeFUwMk5AXeFRDJ2oJ6Y4EURqob2Zt9H', '127.0.0.1', 1473008594, 0, 0),
+	(20, '', '', '', '', '', '', 'qi9kAii-thwNcxU-feaBlWDNt_DzAj3z', '127.0.0.1', 1473094079, 0, 0),
+	(21, '', '', '', '', '', '', 'RHdMM7z5CUMQwcpka1_BtWZoI_zVk2tn', '127.0.0.1', 1473191489, 0, 0),
+	(22, '', '', '', '', '', '', '3LkQR_C4tr2n_Tk9dz264mB9i2mXMV6h', '127.0.0.1', 1473353164, 0, 0),
+	(23, 'juytuyt', 'oiuoiu', '876798', 'hgfhgf@mcff.ty', 'lkjlkj', '', 'hTR5abU9D1gLnlJ4A7JeCEduO0tTNcNx', '127.0.0.1', 1473595314, 0, 2),
+	(24, '', '', '', '', '', '', '_7-weMlr3CT1G8BaygoswJO3Iz5yXBef', '127.0.0.1', 1473783409, 0, 0),
+	(25, '', '', '', '', '', '', 'UIsYnOwjybJaMvyYw3Y0hpbaQsNLVI9M', '127.0.0.1', 1474554986, 0, 0),
+	(26, '', '', '', '', '', '', 'tsZr4KcOAqUZI9Tqlrp8Qt9vToQlWRYL', '127.0.0.1', 1474883408, 0, 0),
+	(27, '', '', '', '', '', '', '_RsdFHo8VmPsPU8Svw7EzSM_NT0Jkmc4', '127.0.0.1', 1474968074, 0, 0),
+	(28, 'adada', 'aaddad', '3442424', 'adada@dfdf.df', 'dxsfsdgsdgsdgsdg', '', 'sctHl30oFrtRzhuKPvx-UgCRzvBjw4ms', '127.0.0.1', 1475313361, 0, 1),
+	(29, '', '', '', '', '', '', 'hhL5Gas1_Y78DtV8EBQsinCTYR7T5iP_', '127.0.0.1', 1475314595, 0, 0),
+	(30, '', '', '', '', '', '', 'QLaq7r5CHY_F2yxgFzD5H5LvvW2Alkoh', '127.0.0.1', 1475327722, 0, 0),
+	(31, '', '', '', '', '', '', 'lP_bEK-fbl9ZK9EHXp-p8Z84u2WDlKgQ', '127.0.0.1', 1475344072, 0, 0),
+	(32, '', '', '', '', '', '', '-vQCP7ySbdKp7GpnsA4Pk7Gnbcb7__v-', '127.0.0.1', 1475574027, 0, 0),
+	(33, '', '', '', '', '', '', '67QlVTuld7XhdGNAbM1pSmKPJYyc53W3', '127.0.0.1', 1475587326, 0, 0),
+	(34, '', '', '', '', '', '', 'KW3wvaldMkOVCOF7mGUr4nFDDwwpAr9b', '127.0.0.1', 1475591210, 0, 0),
+	(48, '', '', '', '', '', '', 'I3EZgWzY_JgLSsSLTFKcg40DwFw8Aqi5', '176.119.122.136', 1476633075, 0, 0),
+	(49, '', '', '', '', '', '', '7FFdFQZqeho2VfRdguKf5Dy-hAbQgXn5', '195.245.221.69', 1476723709, 0, 0),
+	(50, 'Аннння', 'Нагорная', '2222', 'perina100@gmail.com', '', 'Ваш заказ обработан', '7NO7ZDu0srSCcEhxJ89jaOLscWvnqkKg', '195.245.221.69', 1476819365, 0, 4),
+	(55, '', '', '', '', '', '', 'thL82Hjb50ZZcbgmo8XO8Qr58smFLUtQ', '85.114.202.243', 1477295275, 0, 0),
+	(56, '', '', '', '', '', '', 'iR4SNlr7Eyx8XbA000N8JgHw-p60YPc5', '85.238.102.42', 1477319938, 0, 0),
+	(57, '', '', '', '', '', '', 'Vq4iDXfz-KX4HWw9YN_HzJdIgKGoEJwo', '176.119.122.136', 1477385650, 0, 0),
+	(58, '', '', '', '', '', '', '9LFulQ9wrcf2L-LHz6t_VeXqswUmQPiE', '85.114.202.243', 1477401141, 0, 0),
+	(59, '', '', '', '', '', '', '0vNkgx5GFc7OnhZ3UjJZJJN1IsXvUVjE', '85.238.103.52', 1477480139, 0, 0),
+	(60, '', '', '', '', '', '', 'xiCK9MRGmGc6aek0SMn_I7EmAwbHRcSt', '141.8.184.10', 1477907138, 0, 0),
+	(61, '', '', '', '', '', '', 'uYMd1kLVGUIDjb9WsnJS79hyw7X3lVJJ', '130.193.51.9', 1477907409, 0, 0),
+	(62, '', '', '', '', '', '', 'Ty0QXrwV_I7M3r0aRpEbmLEzTmxNU3K1', '141.8.183.29', 1477907670, 0, 0),
+	(63, '', '', '', '', '', '', 'QKgcO23OSs1PGu5S_aDjC1No_74iN0yX', '141.8.142.53', 1477910939, 0, 0),
+	(64, '', '', '', '', '', '', 'Lg-pNzCc93dbsONV8pu9ZcKTJup-M83n', '141.8.132.36', 1477920129, 0, 0),
+	(65, '', '', '', '', '', '', 'rtGKv6r4b6qOMg0KoTSPjiBXwJ2YmSzI', '141.8.184.10', 1477920441, 0, 0),
+	(66, '', '', '', '', '', '', 'La-TGQEIM5OcH2D-gFGfuTd_a3OKNvUl', '141.8.183.13', 1477924924, 0, 0),
+	(67, '', '', '', '', '', '', 'i_hg2bXL49KceFD_hoaIGBnkl8MjjlX5', '141.8.184.27', 1477932392, 0, 0),
+	(68, '', '', '', '', '', '', 'HLWjJL8xi3cpuwbz9a9TZBNvB9hC6fhh', '130.193.51.9', 1477936029, 0, 0),
+	(69, '', '', '', '', '', '', 'ACvaYc6aGOc0Occ26qKFb5SRkYqj6-XR', '141.8.184.27', 1477936516, 0, 0),
+	(70, '', '', '', '', '', '', 'cKm3qtynmFxUlDRNxTZb99dg3CY_C0kO', '130.193.51.9', 1477944876, 0, 0),
+	(71, '', '', '', '', '', '', 'DZEzP-5rS4wVxUckeNKbUT5DSVQyoH_A', '141.8.142.53', 1477948566, 0, 0),
+	(72, '', '', '', '', '', '', 'xGEulUU3r_7ilmrEscWNJw4Y5SqiN__X', '141.8.183.13', 1477952680, 0, 0),
+	(73, '', '', '', '', '', '', 'QPdtzwgAHdwrNZzdG65oqAu9nJHYdzCx', '93.158.152.49', 1477953238, 0, 0),
+	(74, '', '', '', '', '', '', 'MWZubsr-25KqfUPRSjUegi3l9zLe1-MU', '130.193.50.12', 1477972028, 0, 0),
+	(75, '', '', '', '', '', '', 'eb-qHHqAdqGtEkBtC_BVKx-pzLBY_eQa', '141.8.184.27', 1477972410, 0, 0),
+	(76, '', '', '', '', '', '', 'vP9C0SK1dsRI43_WCm4R-Vlu7jcXuIgB', '93.158.152.49', 1477990104, 0, 0),
+	(77, '', '', '', '', '', '', 'sm_MoQm9y-SR93nNEizKHD-7vYpJJZ3G', '130.193.51.9', 1477990438, 0, 0),
+	(78, '', '', '', '', '', '', 'LMR-lPBC1NoCzartbnqtUBoINGbs2eOU', '141.8.184.10', 1478031131, 0, 0),
+	(79, '', '', '', '', '', '', 'D-5JHO4XpsuTs_s7-X1QvoYj5_18Zo77', '93.158.152.37', 1478031930, 0, 0),
+	(80, '', '', '', '', '', '', 'C-fdSwNtDdBggNSFEIOw4shQ1CV-Oh5N', '141.8.142.68', 1478032652, 0, 0),
+	(81, '', '', '', '', '', '', 'KSTJyifSIGb6C7LYDmn4XlygpAG2mgtw', '141.8.183.13', 1478077008, 0, 0),
+	(82, '', '', '', '', '', '', 'csK3EfGfpBzTE2rThugrtxkQte74wU_x', '178.154.149.12', 1478117943, 0, 0);
+/*!40000 ALTER TABLE `easyii_shopcart_orders` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_subscribe_history`
---
-
-CREATE TABLE `easyii_subscribe_history` (
-  `history_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_subscribe_history
+CREATE TABLE IF NOT EXISTS `easyii_subscribe_history` (
+  `history_id` int(11) NOT NULL AUTO_INCREMENT,
   `subject` varchar(128) NOT NULL,
   `body` text NOT NULL,
   `sent` int(11) DEFAULT '0',
-  `time` int(11) DEFAULT '0'
+  `time` int(11) DEFAULT '0',
+  PRIMARY KEY (`history_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Дамп данных таблицы shop-yii2.easyii_subscribe_history: 0 rows
+DELETE FROM `easyii_subscribe_history`;
+/*!40000 ALTER TABLE `easyii_subscribe_history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `easyii_subscribe_history` ENABLE KEYS */;
 
---
--- Структура таблицы `easyii_subscribe_subscribers`
---
 
-CREATE TABLE `easyii_subscribe_subscribers` (
-  `subscriber_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_subscribe_subscribers
+CREATE TABLE IF NOT EXISTS `easyii_subscribe_subscribers` (
+  `subscriber_id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(128) NOT NULL,
   `ip` varchar(16) NOT NULL,
-  `time` int(11) DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `time` int(11) DEFAULT '0',
+  PRIMARY KEY (`subscriber_id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_subscribe_subscribers`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_subscribe_subscribers: 3 rows
+DELETE FROM `easyii_subscribe_subscribers`;
+/*!40000 ALTER TABLE `easyii_subscribe_subscribers` DISABLE KEYS */;
 INSERT INTO `easyii_subscribe_subscribers` (`subscriber_id`, `email`, `ip`, `time`) VALUES
-(1, 'wasilewsky@mail.ru', '127.0.0.1', 1476627568),
-(2, 'test@mas.er', '176.119.122.136', 1476633144),
-(3, 'Kaleriya-mv@ukr.net', '176.37.63.40', 1476727875);
+	(1, 'wasilewsky@mail.ru', '127.0.0.1', 1476627568),
+	(2, 'test@mas.er', '176.119.122.136', 1476633144),
+	(3, 'Kaleriya-mv@ukr.net', '176.37.63.40', 1476727875);
+/*!40000 ALTER TABLE `easyii_subscribe_subscribers` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_tags`
---
-
-CREATE TABLE `easyii_tags` (
-  `tag_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_tags
+CREATE TABLE IF NOT EXISTS `easyii_tags` (
+  `tag_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) NOT NULL,
-  `frequency` int(11) DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `frequency` int(11) DEFAULT '0',
+  PRIMARY KEY (`tag_id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_tags`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_tags: 3 rows
+DELETE FROM `easyii_tags`;
+/*!40000 ALTER TABLE `easyii_tags` DISABLE KEYS */;
 INSERT INTO `easyii_tags` (`tag_id`, `name`, `frequency`) VALUES
-(2, 'yii2', 1),
-(3, 'jquery', 1),
-(7, 'ajax', 1);
+	(2, 'yii2', 1),
+	(3, 'jquery', 1),
+	(7, 'ajax', 1);
+/*!40000 ALTER TABLE `easyii_tags` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_tags_assign`
---
-
-CREATE TABLE `easyii_tags_assign` (
+-- Дамп структуры для таблица shop-yii2.easyii_tags_assign
+CREATE TABLE IF NOT EXISTS `easyii_tags_assign` (
   `class` varchar(128) NOT NULL,
   `item_id` int(11) NOT NULL,
-  `tag_id` int(11) NOT NULL
+  `tag_id` int(11) NOT NULL,
+  KEY `class` (`class`),
+  KEY `item_tag` (`item_id`,`tag_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_tags_assign`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_tags_assign: 3 rows
+DELETE FROM `easyii_tags_assign`;
+/*!40000 ALTER TABLE `easyii_tags_assign` DISABLE KEYS */;
 INSERT INTO `easyii_tags_assign` (`class`, `item_id`, `tag_id`) VALUES
-('yii\\easyii\\modules\\article\\models\\Item', 2, 2),
-('yii\\easyii\\modules\\article\\models\\Item', 2, 3),
-('yii\\easyii\\modules\\article\\models\\Item', 2, 7);
+	('yii\\easyii\\modules\\article\\models\\Item', 2, 2),
+	('yii\\easyii\\modules\\article\\models\\Item', 2, 3),
+	('yii\\easyii\\modules\\article\\models\\Item', 2, 7);
+/*!40000 ALTER TABLE `easyii_tags_assign` ENABLE KEYS */;
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `easyii_texts`
---
-
-CREATE TABLE `easyii_texts` (
-  `text_id` int(11) NOT NULL,
+-- Дамп структуры для таблица shop-yii2.easyii_texts
+CREATE TABLE IF NOT EXISTS `easyii_texts` (
+  `text_id` int(11) NOT NULL AUTO_INCREMENT,
   `text` text NOT NULL,
-  `slug` varchar(128) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `slug` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`text_id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `easyii_texts`
---
-
+-- Дамп данных таблицы shop-yii2.easyii_texts: 1 rows
+DELETE FROM `easyii_texts`;
+/*!40000 ALTER TABLE `easyii_texts` DISABLE KEYS */;
 INSERT INTO `easyii_texts` (`text_id`, `text`, `slug`) VALUES
-(1, 'Добро пожаловать на сайт Lerox!', 'index-welcome-title');
-
---
--- Индексы сохранённых таблиц
---
-
---
--- Индексы таблицы `easyii_admins`
---
-ALTER TABLE `easyii_admins`
-  ADD PRIMARY KEY (`admin_id`),
-  ADD UNIQUE KEY `access_token` (`access_token`);
-
---
--- Индексы таблицы `easyii_article_categories`
---
-ALTER TABLE `easyii_article_categories`
-  ADD PRIMARY KEY (`category_id`),
-  ADD UNIQUE KEY `slug` (`slug`);
-
---
--- Индексы таблицы `easyii_article_items`
---
-ALTER TABLE `easyii_article_items`
-  ADD PRIMARY KEY (`item_id`),
-  ADD UNIQUE KEY `slug` (`slug`);
-
---
--- Индексы таблицы `easyii_carousel`
---
-ALTER TABLE `easyii_carousel`
-  ADD PRIMARY KEY (`carousel_id`);
-
---
--- Индексы таблицы `easyii_catalog_categories`
---
-ALTER TABLE `easyii_catalog_categories`
-  ADD PRIMARY KEY (`category_id`),
-  ADD UNIQUE KEY `slug` (`slug`);
-
---
--- Индексы таблицы `easyii_catalog_item_data`
---
-ALTER TABLE `easyii_catalog_item_data`
-  ADD PRIMARY KEY (`data_id`),
-  ADD KEY `item_id_name` (`item_id`,`name`),
-  ADD KEY `value` (`value`(300));
-
---
--- Индексы таблицы `easyii_catalog_items`
---
-ALTER TABLE `easyii_catalog_items`
-  ADD PRIMARY KEY (`item_id`),
-  ADD UNIQUE KEY `slug` (`slug`);
-
---
--- Индексы таблицы `easyii_faq`
---
-ALTER TABLE `easyii_faq`
-  ADD PRIMARY KEY (`faq_id`);
-
---
--- Индексы таблицы `easyii_feedback`
---
-ALTER TABLE `easyii_feedback`
-  ADD PRIMARY KEY (`feedback_id`);
-
---
--- Индексы таблицы `easyii_files`
---
-ALTER TABLE `easyii_files`
-  ADD PRIMARY KEY (`file_id`),
-  ADD UNIQUE KEY `slug` (`slug`);
-
---
--- Индексы таблицы `easyii_gallery_categories`
---
-ALTER TABLE `easyii_gallery_categories`
-  ADD PRIMARY KEY (`category_id`),
-  ADD UNIQUE KEY `slug` (`slug`);
-
---
--- Индексы таблицы `easyii_guestbook`
---
-ALTER TABLE `easyii_guestbook`
-  ADD PRIMARY KEY (`guestbook_id`);
-
---
--- Индексы таблицы `easyii_loginform`
---
-ALTER TABLE `easyii_loginform`
-  ADD PRIMARY KEY (`log_id`);
-
---
--- Индексы таблицы `easyii_migration`
---
-ALTER TABLE `easyii_migration`
-  ADD PRIMARY KEY (`version`);
-
---
--- Индексы таблицы `easyii_modules`
---
-ALTER TABLE `easyii_modules`
-  ADD PRIMARY KEY (`module_id`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Индексы таблицы `easyii_news`
---
-ALTER TABLE `easyii_news`
-  ADD PRIMARY KEY (`news_id`),
-  ADD UNIQUE KEY `slug` (`slug`);
-
---
--- Индексы таблицы `easyii_pages`
---
-ALTER TABLE `easyii_pages`
-  ADD PRIMARY KEY (`page_id`),
-  ADD UNIQUE KEY `slug` (`slug`);
-
---
--- Индексы таблицы `easyii_photos`
---
-ALTER TABLE `easyii_photos`
-  ADD PRIMARY KEY (`photo_id`),
-  ADD KEY `model_item` (`class`,`item_id`);
-
---
--- Индексы таблицы `easyii_seotext`
---
-ALTER TABLE `easyii_seotext`
-  ADD PRIMARY KEY (`seotext_id`),
-  ADD UNIQUE KEY `model_item` (`class`,`item_id`);
-
---
--- Индексы таблицы `easyii_settings`
---
-ALTER TABLE `easyii_settings`
-  ADD PRIMARY KEY (`setting_id`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Индексы таблицы `easyii_shopcart_goods`
---
-ALTER TABLE `easyii_shopcart_goods`
-  ADD PRIMARY KEY (`good_id`);
-
---
--- Индексы таблицы `easyii_shopcart_orders`
---
-ALTER TABLE `easyii_shopcart_orders`
-  ADD PRIMARY KEY (`order_id`);
-
---
--- Индексы таблицы `easyii_subscribe_history`
---
-ALTER TABLE `easyii_subscribe_history`
-  ADD PRIMARY KEY (`history_id`);
-
---
--- Индексы таблицы `easyii_subscribe_subscribers`
---
-ALTER TABLE `easyii_subscribe_subscribers`
-  ADD PRIMARY KEY (`subscriber_id`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- Индексы таблицы `easyii_tags`
---
-ALTER TABLE `easyii_tags`
-  ADD PRIMARY KEY (`tag_id`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Индексы таблицы `easyii_tags_assign`
---
-ALTER TABLE `easyii_tags_assign`
-  ADD KEY `class` (`class`),
-  ADD KEY `item_tag` (`item_id`,`tag_id`);
-
---
--- Индексы таблицы `easyii_texts`
---
-ALTER TABLE `easyii_texts`
-  ADD PRIMARY KEY (`text_id`),
-  ADD UNIQUE KEY `slug` (`slug`);
-
---
--- AUTO_INCREMENT для сохранённых таблиц
---
-
---
--- AUTO_INCREMENT для таблицы `easyii_admins`
---
-ALTER TABLE `easyii_admins`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `easyii_article_categories`
---
-ALTER TABLE `easyii_article_categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT для таблицы `easyii_article_items`
---
-ALTER TABLE `easyii_article_items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT для таблицы `easyii_carousel`
---
-ALTER TABLE `easyii_carousel`
-  MODIFY `carousel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT для таблицы `easyii_catalog_categories`
---
-ALTER TABLE `easyii_catalog_categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
---
--- AUTO_INCREMENT для таблицы `easyii_catalog_item_data`
---
-ALTER TABLE `easyii_catalog_item_data`
-  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
---
--- AUTO_INCREMENT для таблицы `easyii_catalog_items`
---
-ALTER TABLE `easyii_catalog_items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
---
--- AUTO_INCREMENT для таблицы `easyii_faq`
---
-ALTER TABLE `easyii_faq`
-  MODIFY `faq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT для таблицы `easyii_feedback`
---
-ALTER TABLE `easyii_feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `easyii_files`
---
-ALTER TABLE `easyii_files`
-  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `easyii_gallery_categories`
---
-ALTER TABLE `easyii_gallery_categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT для таблицы `easyii_guestbook`
---
-ALTER TABLE `easyii_guestbook`
-  MODIFY `guestbook_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
---
--- AUTO_INCREMENT для таблицы `easyii_loginform`
---
-ALTER TABLE `easyii_loginform`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
---
--- AUTO_INCREMENT для таблицы `easyii_modules`
---
-ALTER TABLE `easyii_modules`
-  MODIFY `module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT для таблицы `easyii_news`
---
-ALTER TABLE `easyii_news`
-  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT для таблицы `easyii_pages`
---
-ALTER TABLE `easyii_pages`
-  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
---
--- AUTO_INCREMENT для таблицы `easyii_photos`
---
-ALTER TABLE `easyii_photos`
-  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
---
--- AUTO_INCREMENT для таблицы `easyii_seotext`
---
-ALTER TABLE `easyii_seotext`
-  MODIFY `seotext_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
---
--- AUTO_INCREMENT для таблицы `easyii_settings`
---
-ALTER TABLE `easyii_settings`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT для таблицы `easyii_shopcart_goods`
---
-ALTER TABLE `easyii_shopcart_goods`
-  MODIFY `good_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
---
--- AUTO_INCREMENT для таблицы `easyii_shopcart_orders`
---
-ALTER TABLE `easyii_shopcart_orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
---
--- AUTO_INCREMENT для таблицы `easyii_subscribe_history`
---
-ALTER TABLE `easyii_subscribe_history`
-  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `easyii_subscribe_subscribers`
---
-ALTER TABLE `easyii_subscribe_subscribers`
-  MODIFY `subscriber_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT для таблицы `easyii_tags`
---
-ALTER TABLE `easyii_tags`
-  MODIFY `tag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT для таблицы `easyii_texts`
---
-ALTER TABLE `easyii_texts`
-  MODIFY `text_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+	(1, 'Добро пожаловать на сайт Lerox!', 'index-welcome-title');
+/*!40000 ALTER TABLE `easyii_texts` ENABLE KEYS */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

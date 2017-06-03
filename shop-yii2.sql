@@ -11,8 +11,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Дамп структуры базы данных shop-yii2
-CREATE DATABASE IF NOT EXISTS `shop-yii2` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `shop-yii2`;
+
 
 
 -- Дамп структуры для таблица shop-yii2.easyii_admins
@@ -127,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `easyii_catalog_categories` (
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`category_id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы shop-yii2.easyii_catalog_categories: 49 rows
 DELETE FROM `easyii_catalog_categories`;
@@ -155,6 +154,7 @@ INSERT INTO `easyii_catalog_categories` (`category_id`, `title`, `image`, `field
 	(37, 'NoIngredient', '', '[]', 'noingredient', 37, 1, 2, 0, 6, 1),
 	(6, 'Тело', '/uploads/catalog/body-663fd3c514.jpg', '[]', 'body', 4, 12, 19, 1, 1, 1),
 	(7, 'Волосы', '/uploads/catalog/hair1-ae8fec2f69.jpg', '[]', 'hair', 4, 20, 21, 1, 1, 1),
+	(73, 'Витамины', '', '[]', 'itaminy', 69, 8, 9, 1, 8, 1),
 	(9, 'Скраб', '/uploads/catalog/959ab9a069.jpg', '[{"name":"ingredients","title":"\\u0418\\u043d\\u0433\\u0440\\u0435\\u0434\\u0438\\u0435\\u043d\\u0442\\u044b","type":"select","options":["71","72"]}]', 'scrab-face', 4, 5, 6, 2, 1, 1),
 	(10, 'Мыло', '/uploads/catalog/ee2689a415.jpg', '[{"name":"ingredients","title":"\\u0418\\u043d\\u0433\\u0440\\u0435\\u0434\\u0438\\u0435\\u043d\\u0442\\u044b","type":"checkbox","options":["72"]}]', 'soap-face', 4, 7, 8, 2, 1, 1),
 	(29, 'Средства для бритья', '', '[]', 'sredstva-dla-brita', 16, 51, 52, 2, 5, 1),
@@ -171,13 +171,13 @@ INSERT INTO `easyii_catalog_categories` (`category_id`, `title`, `image`, `field
 	(18, 'Для тела', '/uploads/catalog/body-92b4f19a07.jpg', '[]', 'dlya-tela', 16, 28, 45, 1, 5, 1),
 	(19, 'Для мужчин', '/uploads/catalog/hair-92a0e7a415.jpg', '[]', 'dlya-muzhchin', 16, 46, 55, 1, 5, 1),
 	(13, 'Гель для душа', '/uploads/catalog/8e269c86c8.jpg', '[{"name":"ingredients","title":"\\u0418\\u0433\\u0440\\u0435\\u0434\\u0438\\u0435\\u043d\\u0442\\u044b","type":"checkbox","options":["71"]}]', 'gel-body', 4, 13, 14, 2, 1, 1),
-	(14, 'Скраб', '/uploads/catalog/6a7c8b3c6b.jpg', '[]', 'scrab-body', 4, 15, 16, 2, 1, 1),
+	(14, 'Скраб', '/uploads/catalog/6a7c8b3c6b.jpg', '[{"name":"ingredients","title":"\\u0418\\u043d\\u0433\\u0440\\u0435\\u0434\\u0438\\u0435\\u043d\\u0442\\u044b","type":"select","options":["73","71"]}]', 'scrab-body', 4, 15, 16, 2, 1, 1),
 	(15, 'Бальзам', '/uploads/catalog/2c64be033e.jpg', '[]', 'balm-body', 4, 17, 18, 2, 1, 1),
 	(38, 'Подарочная категория', '', '[]', 'podarochnaya-kategoriya', 38, 1, 2, 0, 7, 1),
 	(53, 'Тоники', '', '[]', 'toniki', 16, 15, 16, 2, 5, 1),
 	(47, 'Для волос', '', '[]', 'dla-volos', 16, 2, 11, 1, 5, 1),
 	(48, 'Шампуни', '', '[]', 'sampuni', 16, 3, 4, 2, 5, 1),
-	(69, 'Ингредиенты', '', '[]', 'ingredienty', 69, 1, 8, 0, 8, 1),
+	(69, 'Ингредиенты', '', '[]', 'ingredienty', 69, 1, 10, 0, 8, 1),
 	(70, 'Для блеска', '', '[]', 'dla-bleska-2', 69, 2, 3, 1, 8, 1),
 	(71, 'Увлажнение', '', '[]', 'uvlaznenie', 69, 4, 5, 1, 8, 1),
 	(72, 'Лицо', '', '[]', 'lico', 69, 6, 7, 1, 8, 1);
@@ -200,9 +200,9 @@ CREATE TABLE IF NOT EXISTS `easyii_catalog_items` (
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`item_id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=85 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=86 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_catalog_items: 65 rows
+-- Дамп данных таблицы shop-yii2.easyii_catalog_items: 66 rows
 DELETE FROM `easyii_catalog_items`;
 /*!40000 ALTER TABLE `easyii_catalog_items` DISABLE KEYS */;
 INSERT INTO `easyii_catalog_items` (`item_id`, `category_id`, `title`, `description`, `available`, `price`, `discount`, `data`, `image`, `slug`, `time`, `status`) VALUES
@@ -270,7 +270,8 @@ INSERT INTO `easyii_catalog_items` (`item_id`, `category_id`, `title`, `descript
 	(81, 70, 'Можжевельника эфирное масло', '<p style="margin-left: 20px;"><strong></strong><strong>Можжевельника эфирное масло</strong></p><ul><li><em>Восстанавливает естественный блеск волос, снимает сухость, зуд и перхоть. Укрепляет волосяные луковицы, предотвращая выпадение волос.</em></li></ul>', 50, 25, 0, '{}', '/uploads/catalog/screenshot2-57e73b2d2d.jpg', 'mozhzhevel-nika-efirnoe-maslo', 1478262378, 1),
 	(82, 70, '​Розового дерева эфирное масло', '<p style="margin-left: 20px;"><strong></strong><strong>Розового дерева эфирное масло</strong></p><ul><li><em>Питает волосы по всей длине и способствует лечению перхоти. Стимулирует рост волос и укрепляет корни. Восстанавливает структуру волос и натуральный блеск.</em></li></ul>', 50, 25, 0, '{}', '/uploads/catalog/screenshot3-e2708e709e.jpg', 'rozovogo-dereva-efirnoe-maslo', 1478263272, 1),
 	(83, 70, '​Алоэ вера гель', '<p style="margin-left: 20px;"><strong></strong><strong>Алоэ вера гель</strong></p><ul>\r\n<li><em>Алоэ гель кладезь витаминов и микроэлементов, исключительно полезных для поддержания силы волос. Ускоряет рост новых волос, поддерживает увлажненность и упругость по всей длине волоса, предотвращает появление секущихся кончиков.</em></li></ul>', 50, 25, 0, '{}', '/uploads/catalog/screenshot5-7d5357ec23.jpg', 'aloe-vera-gel', 1478264524, 1),
-	(84, 70, 'Экстракт овса', '<p style="margin-left: 20px;"><strong>Экстракт овса</strong></p><ul><li><em>Помогает защитить корни от агрессивных факторов окружающей среды и снизить сальность.</em></li></ul>', 50, 15, 0, '{}', '/uploads/catalog/screenshot6-115046a254.jpg', 'ekstrakt-ovsa', 1478263396, 1);
+	(84, 70, 'Экстракт овса', '<p style="margin-left: 20px;"><strong>Экстракт овса</strong></p><ul><li><em>Помогает защитить корни от агрессивных факторов окружающей среды и снизить сальность.</em></li></ul>', 50, 15, 0, '{}', '/uploads/catalog/screenshot6-115046a254.jpg', 'ekstrakt-ovsa', 1478263396, 1),
+	(85, 73, 'Витамин Ю', '', 100, 35, 0, '{}', '', NULL, 1478630448, 1);
 /*!40000 ALTER TABLE `easyii_catalog_items` ENABLE KEYS */;
 
 
@@ -443,9 +444,9 @@ CREATE TABLE IF NOT EXISTS `easyii_loginform` (
   `time` int(11) DEFAULT '0',
   `success` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`log_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы shop-yii2.easyii_loginform: 59 rows
+-- Дамп данных таблицы shop-yii2.easyii_loginform: 60 rows
 DELETE FROM `easyii_loginform`;
 /*!40000 ALTER TABLE `easyii_loginform` DISABLE KEYS */;
 INSERT INTO `easyii_loginform` (`log_id`, `username`, `password`, `ip`, `user_agent`, `time`, `success`) VALUES
@@ -507,7 +508,8 @@ INSERT INTO `easyii_loginform` (`log_id`, `username`, `password`, `ip`, `user_ag
 	(62, 'root', '******', '85.238.103.50', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1478111672, 1),
 	(63, 'root', '******', '85.114.202.243', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 1478261980, 1),
 	(64, 'root', '******', '85.238.103.50', 'Mozilla/5.0 (Android; Tablet; rv:33.0) Gecko/33.0 Firefox/33.0', 1478329117, 1),
-	(65, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1478428749, 1);
+	(65, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1478428749, 1),
+	(66, 'root', '******', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0', 1478630310, 1);
 /*!40000 ALTER TABLE `easyii_loginform` ENABLE KEYS */;
 
 

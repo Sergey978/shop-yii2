@@ -332,7 +332,7 @@ $goodsCount = count($goods);
     <div class="footer-middle container">
       <div class="col-md-3 col-sm-4">
         <div class="footer-logo"><a href="/" title="Logo"><img src="<?= $asset->baseUrl ?>/images/footer-logo.png" alt="logo"></a></div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus diam arcu. </p>
+        
         <div class="payment-accept">
           <div><img src="<?= $asset->baseUrl ?>/images/payment-1.png" alt="payment"> <img src="<?= $asset->baseUrl ?>/images/payment-2.png" alt="payment"> <img src="<?= $asset->baseUrl ?>/images/payment-3.png" alt="payment"> <img src="<?= $asset->baseUrl ?>/images/payment-4.png" alt="payment"></div>
         </div>

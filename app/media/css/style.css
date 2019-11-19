@@ -1288,7 +1288,7 @@ li.level0 > a:hover > span > .pin-bottom:before, #nav li.level0:hover > a > span
 }
 #nav > li > a {
 	color: #504c4ce6;
-	font-size: 12px;
+	font-size: 14px;
 	padding: 10px 0px 9px;
 	text-decoration: none;
 	text-transform: uppercase;

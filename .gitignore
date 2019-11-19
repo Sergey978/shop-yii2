@@ -5,3 +5,6 @@ Thumbs.db
 /uploads/thumbs/
 /assets/
 /runtime/
+/.project
+/uploads/
+/nbproject/

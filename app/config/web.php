@@ -26,6 +26,8 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
+                   
+
         ],
         'urlManager' => [
             'rules' => [
@@ -43,7 +45,7 @@ $config = [
             //'linkAssets' => true,
             
             'class' => 'yii\web\AssetManager',
-            'forceCopy' => true, 
+            
             
             'bundles' => [
                 'yii\web\JqueryAsset' => [

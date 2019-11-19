@@ -1,3 +1,12 @@
+
+
+
+## Online store with the ability to order custom cosmetics
+Based on YII2 and EasyiiCMS
+
+
+
+
 ## EasyiiCMS
 Control panel and tools based on php framework Yii2. Easy cms for easy websites.
 
